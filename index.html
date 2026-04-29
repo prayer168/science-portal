@@ -3,823 +3,583 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>種菜好好玩 🌱 互動視覺學習儀表板</title>
+<title>自然科數位教材中心</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --green-dark: #2d6a4f;
-    --green-mid: #52b788;
-    --green-light: #b7e4c7;
-    --green-pale: #d8f3dc;
-    --soil: #8b5e3c;
-    --sky: #caf0f8;
-    --sun: #ffd60a;
-    --water: #48cae4;
-    --accent: #f77f00;
-    --red: #e63946;
-    --white: #ffffff;
-    --shadow: rgba(0,0,0,0.15);
+    --g3:#FF6B6B; --g3-light:#fff0f0; --g3-soft:#ffe0e0;
+    --g4:#FF9F43; --g4-light:#fff5e6; --g4-soft:#ffe8c0;
+    --g5:#1DD1A1; --g5-light:#e6fdf7; --g5-soft:#b8f5e6;
+    --g6:#54A0FF; --g6-light:#eaf3ff; --g6-soft:#c0d9ff;
+    --fun:#A29BFE; --fun-light:#f2f0ff; --fun-soft:#d6d0ff;
+    --bg:#F8F9FF; --text:#2d3436; --text-sub:#636e72;
+    --card-bg:#ffffff;
+    --shadow:0 4px 24px rgba(0,0,0,0.07);
+    --shadow-hover:0 10px 40px rgba(0,0,0,0.13);
+    --radius:18px; --radius-sm:12px;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Segoe UI', '微軟正黑體', sans-serif;
-    background: linear-gradient(180deg, #caf0f8 0%, #d8f3dc 50%, #b7e4c7 100%);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
 
-  /* HERO */
-  .hero {
-    position: relative;
-    background: linear-gradient(135deg, #90e0ef 0%, #caf0f8 40%, #d8f3dc 70%, #95d5b2 100%);
-    padding: 40px 20px 80px;
-    text-align: center;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 60px;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60'%3E%3Cpath fill='%23b7e4c7' d='M0,30 C360,60 720,0 1080,30 C1260,45 1380,20 1440,30 L1440,60 L0,60 Z'/%3E%3C/svg%3E") no-repeat bottom;
-    background-size: cover;
-  }
-  .sun-anim {
-    position: absolute; top: 20px; right: 60px;
-    width: 80px; height: 80px;
-    background: radial-gradient(circle, #ffd60a 60%, transparent 70%);
-    border-radius: 50%;
-    animation: sunPulse 3s ease-in-out infinite;
-    box-shadow: 0 0 30px #ffd60a88;
-  }
-  @keyframes sunPulse {
-    0%,100% { transform: scale(1); box-shadow: 0 0 30px #ffd60a88; }
-    50% { transform: scale(1.1); box-shadow: 0 0 50px #ffd60aaa; }
-  }
-  .cloud {
-    position: absolute; background: white; border-radius: 50px;
-    opacity: 0.8; animation: floatCloud 12s linear infinite;
-  }
-  .cloud::before,.cloud::after { content:''; position:absolute; background:white; border-radius:50%; }
-  .cloud1 { width:100px; height:30px; top:30px; left:-120px; animation-duration:14s; }
-  .cloud1::before { width:50px; height:50px; top:-25px; left:10px; }
-  .cloud1::after { width:35px; height:35px; top:-18px; left:45px; }
-  .cloud2 { width:70px; height:22px; top:70px; left:-90px; animation-duration:18s; animation-delay:-6s; opacity:0.6; }
-  .cloud2::before { width:35px; height:35px; top:-18px; left:8px; }
-  .cloud2::after { width:25px; height:25px; top:-12px; left:33px; }
-  @keyframes floatCloud {
-    from { transform: translateX(0); }
-    to { transform: translateX(calc(100vw + 200px)); }
-  }
-  .hero h1 {
-    font-size: clamp(2rem, 6vw, 3.5rem);
-    color: var(--green-dark);
-    text-shadow: 3px 3px 0 #fff, -1px -1px 0 #fff;
-    margin-bottom: 10px;
-    position: relative; z-index: 1;
-  }
-  .hero p { font-size: clamp(1rem, 3vw, 1.3rem); color: var(--green-dark); opacity: 0.85; position: relative; z-index: 1; }
-  .hero-plants {
-    display: flex; justify-content: center; gap: 20px;
-    margin-top: 30px; position: relative; z-index: 1;
-  }
-  .hero-plant {
-    font-size: 3rem;
-    animation: heroPlantBounce 2s ease-in-out infinite;
-    cursor: pointer; transition: transform 0.2s;
-  }
-  .hero-plant:nth-child(2) { animation-delay: 0.3s; }
-  .hero-plant:nth-child(3) { animation-delay: 0.6s; }
-  .hero-plant:nth-child(4) { animation-delay: 0.9s; }
-  .hero-plant:nth-child(5) { animation-delay: 1.2s; }
-  @keyframes heroPlantBounce {
-    0%,100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-10px) rotate(5deg); }
-  }
-  .hero-plant:hover { transform: scale(1.3) rotate(-10deg); }
+  /* HEADER */
+  header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);padding:36px 24px 28px;text-align:center;position:relative;overflow:hidden;}
+  header::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+  .header-icon{font-size:48px;margin-bottom:8px;display:block;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.2));}
+  header h1{font-family:'Nunito','Noto Sans TC',sans-serif;font-size:clamp(22px,5vw,34px);font-weight:900;color:#fff;letter-spacing:2px;text-shadow:0 2px 12px rgba(0,0,0,0.18);position:relative;}
+  header p{color:rgba(255,255,255,0.85);margin-top:6px;font-size:14px;position:relative;}
 
-  /* NAV */
-  .nav {
-    display: flex; justify-content: center; gap: 15px;
-    padding: 20px; flex-wrap: wrap;
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(255,255,255,0.92); backdrop-filter: blur(10px);
-    box-shadow: 0 2px 10px var(--shadow);
-  }
-  .nav-btn {
-    padding: 10px 24px; border: none; border-radius: 30px;
-    font-size: 1.05rem; font-weight: bold; cursor: pointer;
-    transition: all 0.3s; color: white;
-  }
-  .nav-btn:nth-child(1) { background: linear-gradient(135deg, #2d6a4f, #52b788); }
-  .nav-btn:nth-child(2) { background: linear-gradient(135deg, #1d8fa8, #48cae4); }
-  .nav-btn:nth-child(3) { background: linear-gradient(135deg, #d4722a, #f77f00); }
-  .nav-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px var(--shadow); }
+  /* HEADER RIGHT BUTTONS */
+  .header-btns{position:absolute;top:16px;right:16px;display:flex;gap:8px;align-items:center;}
+  .manage-toggle{background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.4);color:#fff;border-radius:50px;padding:7px 16px;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.2s;backdrop-filter:blur(4px);font-family:'Noto Sans TC',sans-serif;letter-spacing:0.5px;}
+  .manage-toggle:hover{background:rgba(255,255,255,0.35);}
+  .manage-toggle.active{background:#fff;color:#764ba2;}
+  .btn-signout{background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.9);border-radius:50px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:'Noto Sans TC',sans-serif;display:none;}
+  .btn-signout:hover{background:rgba(255,255,255,0.3);}
+  .user-avatar{width:30px;height:30px;border-radius:50%;border:2px solid rgba(255,255,255,0.6);display:none;vertical-align:middle;}
 
-  /* SECTIONS */
-  .section { padding: 50px 20px; max-width: 1100px; margin: 0 auto; }
-  .section-title { text-align: center; margin-bottom: 40px; }
-  .section-title h2 {
-    font-size: clamp(1.6rem, 4vw, 2.4rem);
-    display: inline-block;
-    background: linear-gradient(135deg, #52b788, #2d6a4f);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  }
-  .section-title h2.blue { background: linear-gradient(135deg, #1d8fa8, #023e8a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .section-title h2.orange { background: linear-gradient(135deg, #f77f00, #d62828); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .section-title .underline { display:block; width:80px; height:4px; background:var(--green-mid); margin:8px auto 0; border-radius:2px; }
+  /* LOGIN OVERLAY */
+  .login-overlay{position:fixed;inset:0;background:rgba(30,20,60,0.7);backdrop-filter:blur(6px);z-index:1000;display:flex;align-items:center;justify-content:center;}
+  .login-overlay.hidden{display:none;}
+  .login-box{background:#fff;border-radius:24px;padding:40px 36px;text-align:center;max-width:360px;width:90%;box-shadow:0 24px 60px rgba(0,0,0,0.25);animation:popIn 0.3s cubic-bezier(.34,1.56,.64,1);}
+  @keyframes popIn{from{opacity:0;transform:scale(0.85);}to{opacity:1;transform:scale(1);}}
+  .login-icon{font-size:52px;margin-bottom:12px;}
+  .login-title{font-size:20px;font-weight:900;color:#2d3436;margin-bottom:6px;font-family:'Nunito',sans-serif;}
+  .login-sub{font-size:13px;color:#636e72;margin-bottom:28px;line-height:1.6;}
+  .btn-google-login{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;padding:13px 20px;border:2px solid #e0e0e0;border-radius:14px;background:#fff;cursor:pointer;font-size:15px;font-weight:700;color:#333;font-family:'Noto Sans TC',sans-serif;transition:all 0.2s;box-shadow:0 2px 8px rgba(0,0,0,0.07);}
+  .btn-google-login:hover{background:#f8f8ff;border-color:#a29bfe;box-shadow:0 4px 16px rgba(102,126,234,0.2);transform:translateY(-1px);}
+  .btn-google-login img{width:22px;height:22px;}
+  .login-hint{margin-top:16px;font-size:11px;color:#b2bec3;}
+  .login-error{margin-top:12px;font-size:13px;color:#ff6b6b;font-weight:600;min-height:20px;}
+  .login-loading{margin-top:12px;font-size:13px;color:#a29bfe;display:none;}
 
-  /* VEGGIE GRID */
-  .veggie-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 20px; margin-top: 20px;
-  }
-  .veggie-card {
-    background: white; border-radius: 20px; padding: 20px 15px;
-    text-align: center; cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: 0 4px 15px var(--shadow);
-    position: relative; overflow: hidden; border: 3px solid transparent;
-  }
-  .veggie-card::before {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(135deg, var(--green-pale), white);
-    opacity: 0; transition: opacity 0.3s;
-  }
-  .veggie-card:hover {
-    transform: translateY(-8px) scale(1.05);
-    box-shadow: 0 12px 30px rgba(82,183,136,0.4); border-color: var(--green-mid);
-  }
-  .veggie-card:hover::before { opacity: 1; }
-  .veggie-card.selected { border-color: var(--green-mid); background: var(--green-pale); transform: scale(1.05); }
-  .veggie-icon { font-size: 3.5rem; margin-bottom: 8px; position: relative; z-index: 1; }
-  .veggie-name { font-size: 1.1rem; font-weight: bold; color: var(--green-dark); position: relative; z-index: 1; }
-  .veggie-tag { display:inline-block; font-size:0.75rem; padding:2px 10px; border-radius:20px; margin-top:5px; position:relative; z-index:1; }
-  .tag-leaf { background:#d8f3dc; color:#1b4332; }
-  .tag-root { background:#fde8d8; color:#7c3d12; }
-  .tag-fruit { background:#fef9c3; color:#7c5e0a; }
+  /* TABS */
+  .tab-bar{display:flex;gap:8px;padding:20px 16px 0;overflow-x:auto;justify-content:center;flex-wrap:wrap;max-width:960px;margin:0 auto;-webkit-overflow-scrolling:touch;}
+  .tab-bar::-webkit-scrollbar{display:none;}
+  .tab-btn{font-family:'Nunito','Noto Sans TC',sans-serif;font-weight:800;font-size:15px;border:none;cursor:pointer;border-radius:50px;padding:10px 22px;transition:all 0.22s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;background:#e0e0ee;color:#888;letter-spacing:0.5px;}
+  .tab-btn .tab-count{display:inline-block;background:rgba(0,0,0,0.12);color:inherit;font-size:11px;border-radius:20px;padding:1px 7px;margin-left:5px;font-weight:700;vertical-align:middle;}
+  .tab-btn[data-cat="三年級"]{--tc:var(--g3);--tc-light:var(--g3-light);}
+  .tab-btn[data-cat="四年級"]{--tc:var(--g4);--tc-light:var(--g4-light);}
+  .tab-btn[data-cat="五年級"]{--tc:var(--g5);--tc-light:var(--g5-light);}
+  .tab-btn[data-cat="六年級"]{--tc:var(--g6);--tc-light:var(--g6-light);}
+  .tab-btn[data-cat="休閒（動動腦）"]{--tc:var(--fun);--tc-light:var(--fun-light);}
+  .tab-btn.active{background:var(--tc);color:#fff;box-shadow:0 4px 18px color-mix(in srgb,var(--tc) 50%,transparent);transform:translateY(-2px) scale(1.04);}
+  .tab-btn:not(.active):hover{background:var(--tc-light,#f0f0f8);color:var(--tc,#555);transform:translateY(-1px);}
 
-  .veggie-info-panel {
-    background: white; border-radius: 20px; padding: 25px;
-    box-shadow: 0 4px 20px var(--shadow); min-height: 120px;
-    display: none; animation: slideDown 0.4s ease; margin-top: 20px;
-  }
-  .veggie-info-panel.show { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-  @keyframes slideDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
-  .info-icon { font-size: 4rem; }
-  .info-content h3 { color: var(--green-dark); font-size: 1.4rem; margin-bottom: 8px; }
-  .info-content p { color: #555; line-height: 1.7; font-size: 1rem; }
-  .info-tags { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
-  .info-badge { padding:4px 12px; border-radius:20px; font-size:0.85rem; font-weight:bold; }
-  .badge-sun { background:#fef9c3; color:#854d0e; }
-  .badge-water { background:#e0f2fe; color:#075985; }
-  .badge-time { background:#f3e8ff; color:#6b21a8; }
+  /* MANAGE PANEL */
+  .manage-panel{display:none;max-width:960px;margin:0 auto;padding:20px 16px 0;}
+  .manage-panel.open{display:block;animation:fadeUp 0.28s ease;}
+  .panel-box{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;border:2px solid #e8e0ff;}
+  .panel-title{font-size:16px;font-weight:800;color:#764ba2;margin-bottom:18px;display:flex;align-items:center;gap:8px;}
+  .add-form{display:grid;grid-template-columns:180px 1fr 2fr auto;gap:10px;align-items:end;}
+  .form-group{display:flex;flex-direction:column;gap:5px;}
+  .form-group label{font-size:12px;font-weight:700;color:var(--text-sub);letter-spacing:0.5px;}
+  .form-group select,.form-group input{border:2px solid #e0e0ee;border-radius:10px;padding:9px 12px;font-size:14px;font-family:'Noto Sans TC',sans-serif;color:var(--text);outline:none;transition:border-color 0.2s;background:#fafafa;width:100%;}
+  .form-group select:focus,.form-group input:focus{border-color:#a29bfe;background:#fff;}
+  .btn-add{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border:none;border-radius:10px;padding:10px 20px;font-size:14px;font-weight:800;cursor:pointer;font-family:'Noto Sans TC',sans-serif;transition:all 0.2s;white-space:nowrap;height:42px;align-self:end;}
+  .btn-add:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(118,75,162,0.35);}
+  .toast{display:inline-block;margin-left:12px;font-size:13px;font-weight:600;color:#1DD1A1;opacity:0;transition:opacity 0.3s;}
+  .toast.show{opacity:1;}
+  .manage-list-header{display:flex;align-items:center;justify-content:space-between;margin-top:22px;margin-bottom:10px;}
+  .manage-list-title{font-size:14px;font-weight:700;color:var(--text-sub);}
+  .manage-filter{border:2px solid #e0e0ee;border-radius:8px;padding:5px 10px;font-size:13px;font-family:'Noto Sans TC',sans-serif;outline:none;color:var(--text);}
+  .manage-filter:focus{border-color:#a29bfe;}
+  .manage-table{width:100%;border-collapse:collapse;}
+  .manage-table th{text-align:left;font-size:12px;font-weight:700;color:var(--text-sub);padding:8px 10px;border-bottom:2px solid #f0f0f8;letter-spacing:0.5px;}
+  .manage-table td{padding:9px 10px;border-bottom:1px solid #f4f4f8;font-size:13px;vertical-align:middle;}
+  .manage-table tr:last-child td{border-bottom:none;}
+  .manage-table tr:hover td{background:#faf9ff;}
+  .manage-table tr.row-checked td{background:#f5f0ff;}
+  .manage-table th:first-child,.manage-table td:first-child{width:36px;padding-right:4px;}
+  .row-cb{width:17px;height:17px;accent-color:#764ba2;cursor:pointer;vertical-align:middle;}
+  .th-cb{width:17px;height:17px;accent-color:#764ba2;cursor:pointer;vertical-align:middle;}
+  .cat-badge{display:inline-block;border-radius:20px;padding:2px 10px;font-size:11px;font-weight:700;color:#fff;white-space:nowrap;}
+  .td-name{font-weight:600;max-width:180px;}
+  .td-url{color:var(--text-sub);font-size:12px;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .td-url a{color:#667eea;text-decoration:none;}
+  .td-url a:hover{text-decoration:underline;}
+  .btn-del{background:#fff0f0;color:#ff6b6b;border:2px solid #ffcdd2;border-radius:8px;padding:4px 12px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.18s;font-family:'Noto Sans TC',sans-serif;}
+  .btn-del:hover{background:#ff6b6b;color:#fff;border-color:#ff6b6b;}
+  .batch-bar{display:none;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px;padding:10px 14px;background:#fff5f5;border:2px solid #ffcdd2;border-radius:12px;}
+  .batch-bar.show{display:flex;animation:fadeUp 0.2s ease;}
+  .batch-count{font-size:13px;font-weight:700;color:#ff6b6b;}
+  .btn-batch-del{background:#ff6b6b;color:#fff;border:none;border-radius:8px;padding:7px 18px;font-size:13px;font-weight:800;cursor:pointer;font-family:'Noto Sans TC',sans-serif;transition:all 0.18s;}
+  .btn-batch-del:hover{background:#e55555;transform:translateY(-1px);}
+  .btn-batch-cancel{background:#fff;color:#888;border:2px solid #ddd;border-radius:8px;padding:6px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Noto Sans TC',sans-serif;transition:all 0.18s;}
+  .btn-batch-cancel:hover{border-color:#aaa;color:#555;}
+  .export-row{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+  .btn-export{background:#f0f0ff;color:#667eea;border:2px solid #c5c0ff;border-radius:10px;padding:7px 16px;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.18s;font-family:'Noto Sans TC',sans-serif;}
+  .btn-export:hover{background:#667eea;color:#fff;border-color:#667eea;}
+  .export-hint{font-size:11px;color:var(--text-sub);}
 
-  /* CARE SECTION */
-  .care-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:25px; }
-  .care-card {
-    background: white; border-radius: 24px; padding: 30px 25px;
-    text-align: center; box-shadow: 0 4px 20px var(--shadow);
-    position: relative; overflow: hidden; transition: transform 0.3s;
-  }
-  .care-card:hover { transform: translateY(-5px); }
-  .care-card h3 { font-size: 1.3rem; color: var(--green-dark); margin: 15px 0 10px; }
-  .care-card p { color: #666; line-height: 1.7; font-size: 0.95rem; }
-  .care-icon-wrap {
-    width:80px; height:80px; border-radius:50%;
-    display:flex; align-items:center; justify-content:center;
-    font-size:2.5rem; margin:0 auto 10px;
-  }
-  .care-water .care-icon-wrap { background:#e0f2fe; }
-  .care-sun .care-icon-wrap { background:#fef9c3; }
-  .care-soil .care-icon-wrap { background:#fde8d8; }
-  .care-remove .care-icon-wrap { background:#fce7f3; }
+  /* CONTENT */
+  .content-area{max-width:960px;margin:0 auto;padding:20px 16px 48px;}
+  .category-section{display:none;}
+  .category-section.active{display:block;animation:fadeUp 0.32s ease;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+  .section-header{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding:16px 20px;border-radius:var(--radius);background:var(--header-bg);}
+  .section-emoji{font-size:32px;}
+  .section-title{font-family:'Nunito','Noto Sans TC',sans-serif;font-size:20px;font-weight:900;color:var(--header-color);letter-spacing:1px;}
+  .section-subtitle{font-size:12px;color:var(--header-color);opacity:0.7;margin-top:2px;}
+  [data-section="三年級"] .section-header{--header-bg:var(--g3-light);--header-color:var(--g3);}
+  [data-section="四年級"] .section-header{--header-bg:var(--g4-light);--header-color:var(--g4);}
+  [data-section="五年級"] .section-header{--header-bg:var(--g5-light);--header-color:var(--g5);}
+  [data-section="六年級"] .section-header{--header-bg:var(--g6-light);--header-color:var(--g6);}
+  [data-section="休閒（動動腦）"] .section-header{--header-bg:var(--fun-light);--header-color:var(--fun);}
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;}
+  .card{background:var(--card-bg);border-radius:var(--radius-sm);padding:18px 16px;box-shadow:var(--shadow);cursor:pointer;text-decoration:none;color:var(--text);transition:all 0.22s cubic-bezier(.34,1.56,.64,1);display:flex;flex-direction:column;align-items:flex-start;gap:10px;border:2px solid transparent;position:relative;overflow:hidden;}
+  .card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--card-accent);opacity:0;transition:opacity 0.2s;}
+  .card:hover{transform:translateY(-5px) scale(1.02);box-shadow:var(--shadow-hover);border-color:var(--card-accent);}
+  .card:hover::before{opacity:1;}
+  [data-section="三年級"] .card{--card-accent:var(--g3);}
+  [data-section="四年級"] .card{--card-accent:var(--g4);}
+  [data-section="五年級"] .card{--card-accent:var(--g5);}
+  [data-section="六年級"] .card{--card-accent:var(--g6);}
+  [data-section="休閒（動動腦）"] .card{--card-accent:var(--fun);}
+  .card-icon{width:40px;height:40px;border-radius:10px;background:var(--card-icon-bg);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+  [data-section="三年級"] .card-icon{--card-icon-bg:var(--g3-soft);}
+  [data-section="四年級"] .card-icon{--card-icon-bg:var(--g4-soft);}
+  [data-section="五年級"] .card-icon{--card-icon-bg:var(--g5-soft);}
+  [data-section="六年級"] .card-icon{--card-icon-bg:var(--g6-soft);}
+  [data-section="休閒（動動腦）"] .card-icon{--card-icon-bg:var(--fun-soft);}
+  .card-name{font-size:14px;font-weight:700;line-height:1.5;color:var(--text);}
+  .card-arrow{margin-top:auto;font-size:12px;color:var(--card-accent);font-weight:700;opacity:0.7;}
+  .empty-state{text-align:center;padding:40px 20px;color:var(--text-sub);font-size:14px;}
+  .empty-state .empty-icon{font-size:40px;margin-bottom:10px;}
 
-  /* Water game */
-  .water-game {
-    margin-top: 20px;
-    background: linear-gradient(180deg, #e0f7fa 0%, #e0f7fa 65%, #6b4226 65%, #5a3621 100%);
-    border-radius: 16px; padding: 20px 15px 15px; min-height: 160px;
-  }
-  .game-plant { font-size:4rem; transition:all 0.8s ease; display:block; text-align:center; margin-bottom:5px; filter:grayscale(60%); }
-  .game-plant.watered { filter:grayscale(0); animation:growUp 0.8s ease; }
-  @keyframes growUp {
-    0% { transform:scale(0.8) translateY(10px); }
-    60% { transform:scale(1.2) translateY(-5px); }
-    100% { transform:scale(1) translateY(0); }
-  }
-  .water-bar-bg { background:#b8e0f7; border-radius:8px; height:14px; overflow:hidden; }
-  .water-bar-fill { height:100%; background:linear-gradient(90deg,#48cae4,#0096c7); border-radius:8px; width:0%; transition:width 0.6s ease; }
-
-  .game-btn {
-    margin-top: 12px; padding: 10px 28px; border: none;
-    border-radius: 30px; font-size: 1rem; font-weight: bold;
-    cursor: pointer; transition: all 0.3s; color: white;
-  }
-  .btn-water { background:linear-gradient(135deg,#48cae4,#0096c7); }
-  .btn-water:hover { transform:scale(1.05); box-shadow:0 4px 15px #48cae488; }
-  .btn-sun { background:linear-gradient(135deg,#ffd60a,#f77f00); }
-  .btn-sun:hover { transform:scale(1.05); box-shadow:0 4px 15px #ffd60a88; }
-  .btn-reset { background:linear-gradient(135deg,#95d5b2,#52b788); font-size:0.85rem; padding:7px 18px; }
-
-  /* Sun meter */
-  .sun-o-meter {
-    width:120px; height:120px; border-radius:50%;
-    background: conic-gradient(#ffd60a 0deg, #e5e7eb 0deg);
-    display:flex; align-items:center; justify-content:center;
-    margin:15px auto; transition:background 0.5s;
-    position:relative; box-shadow:0 0 0 8px #fef9c3;
-  }
-  .sun-o-meter::before { content:'☀️'; font-size:2.5rem; position:absolute; }
-
-  /* Soil */
-  .soil-choices { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:15px; }
-  .soil-btn {
-    padding:10px 18px; border:3px solid transparent; border-radius:16px;
-    cursor:pointer; font-size:0.9rem; font-weight:bold;
-    transition:all 0.3s; background:#f5f5f5; color:#444;
-  }
-  .soil-btn:hover { transform:scale(1.05); }
-  .soil-btn.correct { border-color:var(--green-mid); background:var(--green-pale); color:var(--green-dark); }
-  .soil-btn.wrong { border-color:var(--red); background:#fee2e2; color:var(--red); animation:shake 0.4s ease; }
-  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-8px)} 75%{transform:translateX(8px)} }
-  .soil-feedback { margin-top:10px; font-size:0.95rem; min-height:24px; font-weight:bold; }
-
-  /* Weed */
-  .weed-field { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:15px; padding:15px; background:#f0fdf4; border-radius:16px; }
-  .weed-item { font-size:2.2rem; cursor:pointer; transition:all 0.3s; }
-  .weed-item.removed { opacity:0; transform:scale(0) rotate(45deg); pointer-events:none; }
-
-  /* GROWTH TIMELINE */
-  .growth-timeline { position:relative; display:flex; flex-direction:column; }
-  .growth-step {
-    display:flex; align-items:flex-start; gap:25px;
-    padding:25px 0; position:relative; cursor:pointer; transition:all 0.3s;
-  }
-  .growth-step:not(:last-child)::after {
-    content:''; position:absolute; left:40px; top:90px; bottom:-10px;
-    width:4px; background:linear-gradient(180deg,var(--green-mid),var(--green-light)); border-radius:2px;
-  }
-  .step-circle {
-    width:80px; height:80px; border-radius:50%; background:white;
-    border:4px solid var(--green-light);
-    display:flex; align-items:center; justify-content:center;
-    font-size:2.5rem; flex-shrink:0; transition:all 0.4s;
-    box-shadow:0 4px 15px var(--shadow); position:relative; z-index:1;
-  }
-  .growth-step.active .step-circle { border-color:var(--green-mid); box-shadow:0 0 0 6px var(--green-pale),0 4px 20px rgba(82,183,136,0.4); animation:circlePop 0.5s cubic-bezier(0.34,1.56,0.64,1); }
-  @keyframes circlePop { 0%{transform:scale(0.8)} 100%{transform:scale(1)} }
-  .step-content {
-    flex:1; background:white; border-radius:20px; padding:20px 25px;
-    box-shadow:0 4px 15px var(--shadow); border-left:5px solid var(--green-light); transition:all 0.4s;
-  }
-  .growth-step.active .step-content { border-left-color:var(--green-mid); background:var(--green-pale); transform:translateX(5px); }
-  .step-content h3 { color:var(--green-dark); font-size:1.2rem; margin-bottom:8px; }
-  .step-content p { color:#666; line-height:1.7; font-size:0.95rem; }
-  .step-num { display:inline-block; background:var(--green-mid); color:white; font-size:0.8rem; font-weight:bold; padding:2px 10px; border-radius:20px; margin-bottom:6px; }
-
-  /* Progress */
-  .progress-tracker { background:white; border-radius:24px; padding:30px; margin-top:40px; box-shadow:0 4px 20px var(--shadow); }
-  .progress-tracker h3 { color:var(--green-dark); font-size:1.3rem; margin-bottom:20px; text-align:center; }
-  .veggie-progress-item { margin-bottom:18px; }
-  .vp-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
-  .vp-name { font-weight:bold; color:#444; font-size:0.95rem; }
-  .vp-days { font-size:0.85rem; color:#888; }
-  .vp-bar-bg { background:#e5e7eb; border-radius:8px; height:16px; overflow:hidden; }
-  .vp-bar-fill { height:100%; border-radius:8px; transition:width 1.2s cubic-bezier(0.4,0,0.2,1); width:0%; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; }
-  .vp-harvest { background:linear-gradient(90deg,#52b788,#2d6a4f); }
-  .vp-mid { background:linear-gradient(90deg,#74c69d,#52b788); }
-  .vp-early { background:linear-gradient(90deg,#95d5b2,#74c69d); }
-  .vp-bar-fill span { font-size:0.7rem; color:white; font-weight:bold; white-space:nowrap; }
-
-  /* Quiz */
-  .quiz-section { background:linear-gradient(135deg,#f0fdf4,white); border-radius:24px; padding:30px; margin-top:40px; box-shadow:0 4px 20px var(--shadow); }
-  .quiz-section h3 { color:var(--green-dark); font-size:1.3rem; margin-bottom:20px; text-align:center; }
-  .quiz-q { margin-bottom:20px; padding:18px; background:white; border-radius:16px; box-shadow:0 2px 10px var(--shadow); }
-  .quiz-q p { font-size:1rem; color:#333; margin-bottom:12px; font-weight:bold; }
-  .quiz-options { display:flex; gap:10px; flex-wrap:wrap; }
-  .quiz-opt { padding:8px 18px; border:2px solid #e5e7eb; border-radius:20px; background:#f9fafb; cursor:pointer; font-size:0.9rem; color:#444; transition:all 0.3s; }
-  .quiz-opt:hover { border-color:var(--green-mid); background:var(--green-pale); color:var(--green-dark); }
-  .quiz-opt.correct { border-color:var(--green-mid); background:var(--green-pale); color:var(--green-dark); font-weight:bold; }
-  .quiz-opt.wrong { border-color:var(--red); background:#fee2e2; color:var(--red); }
-  .quiz-fb { font-size:0.85rem; margin-top:8px; min-height:20px; font-weight:bold; }
-
-  /* Score board */
-  .score-board {
-    background:linear-gradient(135deg,#2d6a4f,#52b788); border-radius:24px; padding:30px;
-    text-align:center; margin:30px auto; max-width:500px; color:white;
-    box-shadow:0 8px 30px rgba(45,106,79,0.4);
-  }
-  .score-board h3 { font-size:1.5rem; margin-bottom:10px; }
-  .score-num { font-size:4rem; font-weight:bold; line-height:1; }
-  .score-msg { font-size:1.1rem; margin-top:10px; opacity:0.9; }
-  .stars { font-size:2rem; margin:10px 0; }
-
-  /* Confetti */
-  .confetti-piece { position:fixed; width:10px; height:10px; border-radius:2px; animation:confettiFall 1.5s ease forwards; pointer-events:none; z-index:9999; }
-  @keyframes confettiFall { 0%{opacity:1;transform:translateY(0) rotate(0deg)} 100%{opacity:0;transform:translateY(400px) rotate(720deg)} }
-
-  /* Tooltip */
-  .tooltip { position:fixed; background:rgba(45,106,79,0.95); color:white; padding:8px 16px; border-radius:12px; font-size:0.9rem; pointer-events:none; z-index:999; opacity:0; transition:opacity 0.2s; max-width:200px; text-align:center; }
-
-  /* Scroll reveal */
-  .reveal { opacity:0; transform:translateY(30px); transition:opacity 0.6s ease,transform 0.6s ease; }
-  .reveal.visible { opacity:1; transform:translateY(0); }
-
-  /* Rain */
-  .particle-rain { position:fixed; top:0;left:0;right:0;bottom:0; pointer-events:none; z-index:9998; overflow:hidden; }
-  .rain-drop { position:absolute; top:-20px; width:2px; height:15px; background:linear-gradient(180deg,transparent,var(--water)); border-radius:50%; animation:rainFall linear forwards; opacity:0.7; }
-  @keyframes rainFall { from{transform:translateY(0);opacity:0.7} to{transform:translateY(110vh);opacity:0} }
-
-  footer { text-align:center; padding:30px 20px; color:var(--green-dark); font-size:0.9rem; opacity:0.7; }
-
-  @media (max-width:600px) {
-    .growth-step { flex-direction:column; align-items:center; }
-    .growth-step::after { display:none; }
-    .step-circle { width:60px; height:60px; font-size:1.8rem; }
-  }
+  footer{text-align:center;padding:24px;color:var(--text-sub);font-size:12px;border-top:1px solid #eee;}
+  @media(max-width:640px){.add-form{grid-template-columns:1fr 1fr;}}
+  @media(max-width:480px){.card-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;}.tab-btn{font-size:13px;padding:8px 16px;}.add-form{grid-template-columns:1fr;}.header-btns{top:10px;right:10px;gap:5px;}.manage-toggle{padding:6px 10px;font-size:12px;}}
 </style>
 </head>
 <body>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="sun-anim"></div>
-  <div class="cloud cloud1"></div>
-  <div class="cloud cloud2"></div>
-  <h1>🌱 種菜好好玩</h1>
-  <p>探索菜園的秘密，學習照顧蔬菜，見證奇蹟成長！</p>
-  <div class="hero-plants">
-    <span class="hero-plant">🍅</span>
-    <span class="hero-plant">🥕</span>
-    <span class="hero-plant">🥬</span>
-    <span class="hero-plant">🥒</span>
-    <span class="hero-plant">🌽</span>
+<!-- Google 登入彈窗 -->
+<div class="login-overlay hidden" id="loginOverlay">
+  <div class="login-box">
+    <div class="login-icon">🔐</div>
+    <div class="login-title">管理員登入</div>
+    <div class="login-sub">此功能僅限授權帳號使用<br>請用指定的 Google 帳號登入</div>
+    <button class="btn-google-login" id="btnGoogleLogin">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+      使用 Google 帳號登入
+    </button>
+    <div class="login-error" id="loginError"></div>
+    <div class="login-loading" id="loginLoading">⏳ 登入中，請稍候...</div>
+    <div class="login-hint">僅 prayer168@gmail.com 可進入管理後台</div>
   </div>
 </div>
 
-<!-- NAV -->
-<nav class="nav">
-  <button class="nav-btn" onclick="goTo('section1')">🌿 菜園裡的菜</button>
-  <button class="nav-btn" onclick="goTo('section2')">💧 照顧蔬菜</button>
-  <button class="nav-btn" onclick="goTo('section3')">🌽 蔬菜長大了</button>
-</nav>
-
-<!-- SECTION 1 -->
-<section class="section" id="section1">
-  <div class="section-title reveal">
-    <h2>🌿 菜園裡的菜</h2>
-    <span class="underline"></span>
-    <p style="color:#666;margin-top:10px;font-size:0.95rem;">點擊蔬菜卡片，認識它們！</p>
+<header>
+  <span class="header-icon">🔬</span>
+  <h1>自然科數位教材中心</h1>
+  <p>點擊卡片即可開啟互動教材</p>
+  <div class="header-btns">
+    <img class="user-avatar" id="userAvatar" src="" alt="avatar">
+    <button class="btn-signout" id="btnSignOut" onclick="signOut()">登出</button>
+    <button class="manage-toggle" id="manageToggle" onclick="onManageClick()">⚙️ 管理教材</button>
   </div>
-  <div class="veggie-grid reveal" id="veggieGrid"></div>
-  <div class="veggie-info-panel" id="veggieInfo">
-    <div class="info-icon" id="infoIcon"></div>
-    <div class="info-content">
-      <h3 id="infoName"></h3>
-      <p id="infoDesc"></p>
-      <div class="info-tags" id="infoTags"></div>
-    </div>
-  </div>
-</section>
+</header>
 
-<!-- SECTION 2 -->
-<section id="section2" style="background:linear-gradient(135deg,#e0f7fa,#d8f3dc);padding:50px 20px;">
-  <div style="max-width:1100px;margin:0 auto;">
-    <div class="section-title reveal">
-      <h2 class="blue">💧 照顧蔬菜</h2>
-      <span class="underline" style="background:var(--water);"></span>
-      <p style="color:#555;margin-top:10px;font-size:0.95rem;">蔬菜需要細心照料，一起試試看！</p>
-    </div>
-    <div class="care-grid">
+<nav class="tab-bar" id="tabBar"></nav>
 
-      <!-- WATER -->
-      <div class="care-card care-water reveal">
-        <div class="care-icon-wrap">💧</div>
-        <h3>澆水</h3>
-        <p>蔬菜需要適量水分，太多或太少都不好！</p>
-        <div class="water-game">
-          <span class="game-plant" id="waterPlant">🌱</span>
-          <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:#666;margin-bottom:3px;">
-            <span>缺水</span><span>剛好</span><span>過多</span>
-          </div>
-          <div class="water-bar-bg"><div class="water-bar-fill" id="waterBar"></div></div>
-          <div style="text-align:center;margin-top:10px;">
-            <button class="game-btn btn-water" onclick="doWater()">💧 澆水</button>
-            <button class="game-btn btn-reset" onclick="resetWater()" style="margin-left:8px;">重置</button>
-          </div>
-          <div id="waterMsg" style="text-align:center;margin-top:8px;font-size:0.85rem;color:#0096c7;font-weight:bold;min-height:20px;"></div>
-        </div>
+<!-- 管理面板 -->
+<div class="manage-panel" id="managePanel">
+  <div class="panel-box">
+    <div class="panel-title">➕ 新增教材</div>
+    <div class="add-form">
+      <div class="form-group">
+        <label>年級 / 類別</label>
+        <select id="addCat">
+          <option value="三年級">🌱 三年級</option>
+          <option value="四年級">🌿 四年級</option>
+          <option value="五年級">🌲 五年級</option>
+          <option value="六年級">🌏 六年級</option>
+          <option value="休閒（動動腦）">🎮 休閒（動動腦）</option>
+        </select>
       </div>
-
-      <!-- SUN -->
-      <div class="care-card care-sun reveal">
-        <div class="care-icon-wrap">☀️</div>
-        <h3>日照</h3>
-        <p>大多數蔬菜需要充足陽光進行光合作用！</p>
-        <div style="text-align:center;margin-top:15px;">
-          <div class="sun-o-meter" id="sunMeter"></div>
-          <div id="sunLabel" style="font-size:0.9rem;color:#666;">日照不足</div>
-          <div style="display:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap;">
-            <button class="game-btn btn-sun" onclick="addSun(60)">🌤️ 上午日照</button>
-            <button class="game-btn btn-sun" onclick="addSun(120)">☀️ 全日日照</button>
-          </div>
-          <button class="game-btn btn-reset" onclick="resetSun()" style="margin-top:8px;">重置</button>
-          <div id="sunMsg" style="margin-top:8px;font-size:0.85rem;color:#854d0e;font-weight:bold;min-height:20px;"></div>
-        </div>
+      <div class="form-group">
+        <label>教材名稱</label>
+        <input type="text" id="addName" placeholder="例：光合作用模擬" />
       </div>
-
-      <!-- SOIL -->
-      <div class="care-card care-soil reveal">
-        <div class="care-icon-wrap">🪱</div>
-        <h3>選擇適合的土壤</h3>
-        <p>不同蔬菜需要不同的土壤，哪種最好？</p>
-        <div style="margin-top:15px;">
-          <p style="font-size:0.9rem;color:#555;margin-bottom:5px;">種番茄，應該選哪種土壤？</p>
-          <div class="soil-choices" id="soilChoices">
-            <button class="soil-btn" data-ans="wrong">🏜️ 沙漠沙土</button>
-            <button class="soil-btn" data-ans="correct">🌱 鬆軟腐植土</button>
-            <button class="soil-btn" data-ans="wrong">🪨 堅硬黏土</button>
-            <button class="soil-btn" data-ans="wrong">🧂 鹽鹼土</button>
-          </div>
-          <div class="soil-feedback" id="soilFeedback"></div>
-        </div>
+      <div class="form-group">
+        <label>網址（https://...）</label>
+        <input type="url" id="addUrl" placeholder="https://..." />
       </div>
+      <button class="btn-add" onclick="addItem()">新增 ＋</button>
+    </div>
+    <span class="toast" id="toast">✅ 已新增！</span>
 
-      <!-- WEED -->
-      <div class="care-card care-remove reveal">
-        <div class="care-icon-wrap">🌾</div>
-        <h3>除草</h3>
-        <p>雜草會搶走養分！點擊雜草來拔除它們！</p>
-        <div class="weed-field" id="weedField"></div>
-        <div id="weedScore" style="font-size:0.9rem;color:#666;margin-top:8px;"></div>
-        <button class="game-btn btn-reset" onclick="resetWeeds()" style="margin-top:10px;">重新長草</button>
-      </div>
-
+    <div class="manage-list-header">
+      <div class="manage-list-title" id="listCount"></div>
+      <select class="manage-filter" id="filterCat" onchange="renderManageTable()">
+        <option value="">全部類別</option>
+        <option value="三年級">三年級</option>
+        <option value="四年級">四年級</option>
+        <option value="五年級">五年級</option>
+        <option value="六年級">六年級</option>
+        <option value="休閒（動動腦）">休閒（動動腦）</option>
+      </select>
     </div>
 
-    <!-- TIPS -->
-    <div class="reveal" style="margin-top:30px;background:white;border-radius:24px;padding:25px;box-shadow:0 4px 20px var(--shadow);">
-      <h3 style="color:var(--green-dark);text-align:center;margin-bottom:20px;font-size:1.3rem;">📋 照顧蔬菜小秘訣</h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;">
-        <div style="background:var(--green-pale);border-radius:16px;padding:15px;text-align:center;">
-          <div style="font-size:2rem;">🌅</div>
-          <h4 style="color:var(--green-dark);margin:8px 0 5px;">早晚澆水</h4>
-          <p style="font-size:0.85rem;color:#555;">避免正午澆水，水分容易蒸發</p>
-        </div>
-        <div style="background:#fef9c3;border-radius:16px;padding:15px;text-align:center;">
-          <div style="font-size:2rem;">🌡️</div>
-          <h4 style="color:#854d0e;margin:8px 0 5px;">注意溫度</h4>
-          <p style="font-size:0.85rem;color:#555;">大多數蔬菜適合 15–28°C 環境</p>
-        </div>
-        <div style="background:#fde8d8;border-radius:16px;padding:15px;text-align:center;">
-          <div style="font-size:2rem;">🧪</div>
-          <h4 style="color:#7c3d12;margin:8px 0 5px;">適量施肥</h4>
-          <p style="font-size:0.85rem;color:#555;">有機肥料最佳，避免化學肥料過量</p>
-        </div>
-        <div style="background:#e0f2fe;border-radius:16px;padding:15px;text-align:center;">
-          <div style="font-size:2rem;">🐛</div>
-          <h4 style="color:#075985;margin:8px 0 5px;">防治病蟲害</h4>
-          <p style="font-size:0.85rem;color:#555;">定期觀察葉片，發現異狀立即處理</p>
-        </div>
-      </div>
+    <!-- 批次刪除工具列 -->
+    <div class="batch-bar" id="batchBar">
+      <span class="batch-count" id="batchCount">已選 0 筆</span>
+      <button class="btn-batch-del" onclick="batchDelete()">🗑️ 刪除所選</button>
+      <button class="btn-batch-cancel" onclick="clearSelection()">取消選取</button>
+    </div>
+
+    <div style="overflow-x:auto;">
+      <table class="manage-table">
+        <thead><tr>
+          <th><input type="checkbox" class="th-cb" id="checkAll" onchange="toggleAll(this)" title="全選／取消全選"></th>
+          <th>類別</th><th>名稱</th><th>網址</th><th></th>
+        </tr></thead>
+        <tbody id="manageTableBody"></tbody>
+      </table>
+    </div>
+    <div class="export-row">
+      <button class="btn-export" onclick="exportData()">📋 匯出資料（複製）</button>
+      <span class="export-hint">可備份教材清單，或傳給 Claude 匯入</span>
     </div>
   </div>
-</section>
+</div>
 
-<!-- SECTION 3 -->
-<section class="section" id="section3">
-  <div class="section-title reveal">
-    <h2 class="orange">🌽 蔬菜長大了</h2>
-    <span class="underline" style="background:var(--accent);"></span>
-    <p style="color:#666;margin-top:10px;font-size:0.95rem;">點擊每個成長階段，了解蔬菜的生長過程！</p>
-  </div>
-  <div class="growth-timeline reveal" id="growthTimeline"></div>
+<main class="content-area" id="contentArea"></main>
+<footer>Prayer 老師的自然科數位教材 · 持續更新中 🌱</footer>
 
-  <div class="progress-tracker reveal">
-    <h3>🏆 各種蔬菜生長週期</h3>
-    <p style="text-align:center;color:#666;font-size:0.9rem;margin-bottom:20px;">點擊「開始生長」觀看進度條！</p>
-    <div id="veggieProgressList"></div>
-    <div style="text-align:center;margin-top:20px;">
-      <button class="game-btn" style="background:linear-gradient(135deg,#52b788,#2d6a4f);" onclick="startGrowthAnimation()">🌱 開始生長！</button>
-    </div>
-  </div>
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut as fbSignOut, onAuthStateChanged }
+  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
-  <div class="quiz-section reveal">
-    <h3>🧠 小小測驗，挑戰看看！</h3>
-    <div id="quizContainer"></div>
-    <div style="text-align:center;margin-top:20px;">
-      <button class="game-btn" style="background:linear-gradient(135deg,#f77f00,#d62828);" onclick="checkQuiz()">📝 查看成績</button>
-    </div>
-    <div id="quizResult"></div>
-  </div>
-</section>
+// ── Firebase 設定 ──
+const firebaseConfig = {
+  apiKey: "AIzaSyD2DSmaCFEWETra0JH2M4zZrkc0DvkrKFg",
+  authDomain: "science-portal-8b814.firebaseapp.com",
+  projectId: "science-portal-8b814",
+  storageBucket: "science-portal-8b814.firebasestorage.app",
+  messagingSenderId: "428053709401",
+  appId: "1:428053709401:web:d322b970fe6e868c1d6748",
+  measurementId: "G-8L2VPDNP3N"
+};
 
-<footer>
-  <p>🌱 種菜好好玩 · 互動視覺學習儀表板 · 讓每個孩子都愛上種植！</p>
-</footer>
+const ALLOWED_EMAIL = "prayer168@gmail.com";
 
-<div class="tooltip" id="tooltip"></div>
-<div class="particle-rain" id="particleRain"></div>
+const app  = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+// 監聽登入狀態
+onAuthStateChanged(auth, (user) => {
+  if (user && user.email === ALLOWED_EMAIL) {
+    // 已登入且是授權帳號
+    document.getElementById('userAvatar').src = user.photoURL || '';
+    document.getElementById('userAvatar').style.display = 'inline-block';
+    document.getElementById('btnSignOut').style.display = 'inline-block';
+    window._isAdmin = true;
+    // 如果管理面板是因等待登入而開著，繼續打開
+    if (window._pendingManage) { window._pendingManage = false; openManagePanel(); }
+  } else {
+    document.getElementById('userAvatar').style.display = 'none';
+    document.getElementById('btnSignOut').style.display = 'none';
+    window._isAdmin = false;
+    closeManagePanel();
+  }
+});
+
+// Google 登入
+window.doGoogleLogin = async function() {
+  const errEl = document.getElementById('loginError');
+  const loadEl = document.getElementById('loginLoading');
+  const btnEl  = document.getElementById('btnGoogleLogin');
+  errEl.textContent = '';
+  btnEl.style.display = 'none';
+  loadEl.style.display = 'block';
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+    if (user.email !== ALLOWED_EMAIL) {
+      await fbSignOut(auth);
+      loadEl.style.display = 'none';
+      btnEl.style.display = 'flex';
+      errEl.textContent = `❌ 此帳號 (${user.email}) 沒有管理權限`;
+      return;
+    }
+    // 登入成功，關閉彈窗
+    document.getElementById('loginOverlay').classList.add('hidden');
+    loadEl.style.display = 'none';
+    btnEl.style.display = 'flex';
+  } catch(e) {
+    loadEl.style.display = 'none';
+    btnEl.style.display = 'flex';
+    if (e.code !== 'auth/popup-closed-by-user') {
+      errEl.textContent = '登入失敗，請再試一次';
+    }
+  }
+};
+
+// 登出
+window.signOut = async function() {
+  if (!confirm('確定要登出管理後台？')) return;
+  await fbSignOut(auth);
+};
+
+document.getElementById('btnGoogleLogin').addEventListener('click', window.doGoogleLogin);
+</script>
 
 <script>
-const veggies = [
-  { icon:'🥬', name:'高麗菜', type:'leaf', tag:'葉菜類', desc:'高麗菜喜歡涼爽環境，葉片層層包裹，富含維生素C。適合秋冬種植，從播種到採收約需 60–80 天。', sun:'充足', water:'適中', days:'60-80天' },
-  { icon:'🍅', name:'番茄', type:'fruit', tag:'果菜類', desc:'番茄喜歡溫暖陽光。果實成熟後由綠轉紅，富含茄紅素，對身體非常有益！', sun:'充足', water:'適中', days:'80-100天' },
-  { icon:'🥕', name:'紅蘿蔔', type:'root', tag:'根莖類', desc:'紅蘿蔔的可食部分是根部，長在土壤裡。富含胡蘿蔔素（維生素A），對眼睛很好！', sun:'適中', water:'適中', days:'70-90天' },
-  { icon:'🥒', name:'小黃瓜', type:'fruit', tag:'果菜類', desc:'小黃瓜生長快速，喜歡溫暖潮濕環境。表皮有細小的刺，清脆爽口！', sun:'充足', water:'多', days:'40-60天' },
-  { icon:'🧅', name:'洋蔥', type:'root', tag:'根莖類', desc:'洋蔥是球莖類蔬菜，切的時候會讓人流眼淚！含有硫化合物，有殺菌效果。', sun:'充足', water:'少', days:'120-150天' },
-  { icon:'🥦', name:'花椰菜', type:'leaf', tag:'葉菜類', desc:'花椰菜食用的部分是花蕾，富含維生素C和纖維質，涼拌、炒食皆宜！', sun:'充足', water:'適中', days:'60-90天' },
-  { icon:'🌽', name:'玉米', type:'fruit', tag:'果菜類', desc:'玉米是高大的草本植物，靠風傳粉。每根玉米的鬚與顆粒一一對應，很神奇！', sun:'充足', water:'多', days:'70-90天' },
-  { icon:'🫑', name:'青椒', type:'fruit', tag:'果菜類', desc:'青椒含有豐富維生素C，比橘子還高！成熟後會變成紅色或黃色。', sun:'充足', water:'適中', days:'60-80天' },
-  { icon:'🧄', name:'大蒜', type:'root', tag:'根莖類', desc:'大蒜由多瓣蒜瓣組成，有強烈香氣，具天然殺菌效果，也可驅趕害蟲！', sun:'適中', water:'少', days:'150-180天' },
+// ── 預設資料 ──
+const DEFAULT_DATA = [
+  {cat:"三年級",name:"打雷示範動畫",url:"https://prayer168.github.io/lightning-demo/",icon:"⚡"},
+  {cat:"三年級",name:"雨天動畫",url:"https://prayer168.github.io/Recode/rain.html",icon:"🌧️"},
+  {cat:"三年級",name:"天氣特派員",url:"https://prayer168.github.io/weather_dashboard/",icon:"🌤️"},
+  {cat:"三年級",name:"風向風力彩帶計",url:"https://prayer168.github.io/Anemograph/",icon:"🎐"},
+  {cat:"三年級",name:"雨量筒水位模擬1",url:"https://prayer168.github.io/rain_collector/",icon:"🌂"},
+  {cat:"三年級",name:"雨量筒水位模擬2",url:"https://prayer168.github.io/rain_collector_gemini/",icon:"🌂"},
+  {cat:"三年級",name:"雨量筒水位模擬3",url:"https://prayer168.github.io/prayer168-rain_gauge_simulator_gemini/",icon:"🌂"},
+  {cat:"四年級",name:"光合作用 Dashboard",url:"https://prayer168.github.io/photosynthesis/",icon:"🌿"},
+  {cat:"四年級",name:"陽光對植物葉子的影響",url:"https://prayer168.github.io/sunshine-leaf-dashboard/",icon:"☀️"},
+  {cat:"四年級",name:"植物蒸散作用",url:"https://prayer168.github.io/plant-transpiration-dashboard/",icon:"💧"},
+  {cat:"四年級",name:"植物如何獲取養分",url:"https://prayer168.github.io/plant-nutrients-dashboard/",icon:"🌱"},
+  {cat:"四年級",name:"植物有哪些繁殖方式",url:"https://prayer168.github.io/plant-reproduction-dashboard/",icon:"🌸"},
+  {cat:"四年級",name:"植物有哪些妙招",url:"https://prayer168.github.io/plant-tricks-dashboard/",icon:"🍀"},
+  {cat:"四年級",name:"食蟲植物照顧手冊",url:"https://prayer168.github.io/carnivorous-plants-dashboard/",icon:"🪴"},
+  {cat:"四年級",name:"台灣外來種植物翻牌",url:"https://prayer168.github.io/plant-flip-game/",icon:"🃏"},
+  {cat:"四年級",name:"台灣外來種動物翻牌",url:"https://prayer168.github.io/animal-flip-game/",icon:"🦜"},
+  {cat:"四年級",name:"溫度與物質變化",url:"https://prayer168.github.io/temperature_effect/",icon:"🌡️"},
+  {cat:"四年級",name:"溫度改變對物質體積的影響",url:"https://prayer168.github.io/thermal-expansion-dashboard/",icon:"🔥"},
+  {cat:"四年級",name:"熱是如何傳播的？",url:"https://prayer168.github.io/heat-transfer-dashboard/",icon:"♨️"},
+  {cat:"四年級",name:"如何保溫與散熱",url:"https://prayer168.github.io/heat-insulation-dashboard/",icon:"🧊"},
+  {cat:"五年級",name:"岩石與礦物大富翁",url:"https://prayer168.github.io/richman_rock_stone/",icon:"🎲"},
+  {cat:"五年級",name:"五年級岩石礦物闖關",url:"https://prayer168.github.io/rock_quiz/",icon:"🪨"},
+  {cat:"五年級",name:"自然知識大冒險",url:"https://prayer168.github.io/eco_knowledge_quiz/",icon:"🧭"},
+  {cat:"五年級",name:"食物鏈進化遊戲",url:"https://prayer168.github.io/food_chain_evolution_simulator/",icon:"🦁"},
+  {cat:"五年級",name:"傅科擺",url:"https://prayer168.github.io/ai-debate/foucault.html",icon:"⏳"},
+  {cat:"六年級",name:"月相盈虧互動遊戲",url:"https://prayer168.github.io/moon-phase-game/",icon:"🌙"},
+  {cat:"六年級",name:"太陽系模擬",url:"https://prayer168.github.io/the-nine-planets/",icon:"🪐"},
+  {cat:"六年級",name:"流星雨模擬",url:"https://prayer168.github.io/fireworks/",icon:"🌠"},
+  {cat:"六年級",name:"巨石陣",url:"https://prayer168.github.io/stonehenge-interactive",icon:"🗿"},
+  {cat:"六年級",name:"開心農場",url:"https://prayer168.github.io/happy_farm/",icon:"🚜"},
+  {cat:"休閒（動動腦）",name:"粒子文字",url:"https://prayer168.github.io/particle-type3/",icon:"✨"},
+  {cat:"休閒（動動腦）",name:"星域五子棋",url:"https://prayer168.github.io/chess_5_v2/",icon:"⭐"},
+  {cat:"休閒（動動腦）",name:"城堡對決",url:"https://prayer168.github.io/castle_battle/",icon:"🏰"},
+  {cat:"休閒（動動腦）",name:"Q版貪吃蛇",url:"https://prayer168.github.io/cute-snake/",icon:"🐍"},
+  {cat:"休閒（動動腦）",name:"華麗分形生成器",url:"https://prayer168.github.io/Random-fractal-generator/",icon:"🌀"},
+  {cat:"休閒（動動腦）",name:"風場砲彈挑戰",url:"https://prayer168.github.io/wind_shoot/",icon:"💨"},
+  {cat:"休閒（動動腦）",name:"字母大亂鬥",url:"https://prayer168.github.io/alphabet-brawl",icon:"🔤"},
+  {cat:"休閒（動動腦）",name:"深海水母",url:"https://prayer168.github.io/Recode/",icon:"🪼"},
+  {cat:"休閒（動動腦）",name:"夾娃娃機",url:"https://prayer168.github.io/grab-toys/",icon:"🧸"},
+  {cat:"休閒（動動腦）",name:"文字雲",url:"https://prayer168.github.io/wordcloud-classroom/",icon:"💬"},
+  {cat:"休閒（動動腦）",name:"螢幕保護程式",url:"https://prayer168.github.io/deep-sea-screensaver/",icon:"🐠"},
+  {cat:"休閒（動動腦）",name:"沙漏",url:"https://prayer168.github.io/hourglass-timer/",icon:"⌛"},
+  {cat:"休閒（動動腦）",name:"Q版俄羅斯方塊",url:"https://prayer168.github.io/3d-tetris/",icon:"🟦"},
+  {cat:"休閒（動動腦）",name:"打磚塊遊戲",url:"https://prayer168.github.io/knoc-brick/",icon:"🧱"},
+  {cat:"休閒（動動腦）",name:"撞球遊戲",url:"https://prayer168.github.io/snock/",icon:"🎱"},
+  {cat:"休閒（動動腦）",name:"QR Code 生成器",url:"https://prayer168.github.io/luxury-qr-studio/",icon:"📱"},
+  {cat:"休閒（動動腦）",name:"教室互動儀表板",url:"https://prayer168.github.io/classroom_tools/",icon:"📊"},
 ];
 
-const growthSteps = [
-  { icon:'🫘', num:'第一階段', title:'播種', desc:'選擇健康的種子，放入充滿有機質的土壤中，覆蓋約 0.5–1 公分薄土。澆上少量清水，保持土壤濕潤。' },
-  { icon:'🌱', num:'第二階段', title:'發芽', desc:'播種後 3–7 天，種子開始破土萌芽！這時要保持光線充足，避免強風。幼芽非常脆弱，要輕柔照護。' },
-  { icon:'🌿', num:'第三階段', title:'幼苗期', desc:'幼芽長出 2–4 片真葉後進入幼苗期。這時可以開始施少量有機肥，讓根系更發達！' },
-  { icon:'🪴', num:'第四階段', title:'生長期', desc:'植株快速生長，葉片變多、莖變粗。需要定期除草、澆水，並觀察是否有病蟲害。' },
-  { icon:'🌸', num:'第五階段', title:'開花期', desc:'果菜類（番茄、小黃瓜等）開始開花！花朵吸引蜜蜂授粉，之後才能結果。' },
-  { icon:'🍅', num:'第六階段', title:'採收期', desc:'蔬菜成熟啦！葉菜類葉片飽滿，果菜類顏色鮮豔，根莖類根部膨大，就是採收的好時機！🎉' },
+const CATS=[
+  {key:"三年級",emoji:"🌱",desc:"三年級自然科互動教材"},
+  {key:"四年級",emoji:"🌿",desc:"四年級自然科互動教材"},
+  {key:"五年級",emoji:"🌲",desc:"五年級自然科互動教材"},
+  {key:"六年級",emoji:"🌏",desc:"六年級自然科互動教材"},
+  {key:"休閒（動動腦）",emoji:"🎮",desc:"趣味遊戲與創意工具"},
 ];
+const CAT_ICONS={三年級:"📖",四年級:"🌿",五年級:"🔬",六年級:"🌏","休閒（動動腦）":"🎮"};
+const CAT_COLORS={三年級:"#FF6B6B",四年級:"#FF9F43",五年級:"#1DD1A1",六年級:"#54A0FF","休閒（動動腦）":"#A29BFE"};
 
-const veggieProgress = [
-  { icon:'🥒', name:'小黃瓜', days:50, pct:100, cls:'vp-harvest' },
-  { icon:'🥬', name:'高麗菜', days:70, pct:85, cls:'vp-harvest' },
-  { icon:'🍅', name:'番茄', days:90, pct:70, cls:'vp-mid' },
-  { icon:'🥕', name:'紅蘿蔔', days:80, pct:60, cls:'vp-mid' },
-  { icon:'🌽', name:'玉米', days:80, pct:55, cls:'vp-mid' },
-  { icon:'🧅', name:'洋蔥', days:135, pct:30, cls:'vp-early' },
-  { icon:'🧄', name:'大蒜', days:165, pct:20, cls:'vp-early' },
-];
+const STORE_KEY='science_portal_v1';
+function loadData(){
+  try{const s=localStorage.getItem(STORE_KEY);return s?JSON.parse(s):JSON.parse(JSON.stringify(DEFAULT_DATA));}
+  catch{return JSON.parse(JSON.stringify(DEFAULT_DATA));}
+}
+function saveData(d){localStorage.setItem(STORE_KEY,JSON.stringify(d));}
 
-const quizData = [
-  { q:'蔬菜進行光合作用最需要什麼？', opts:['💧 水分','☀️ 陽光','🧂 鹽份','❄️ 冷空氣'], ans:1, fb:'陽光是光合作用的主要能量來源。' },
-  { q:'下列哪種蔬菜的可食用部分是根？', opts:['🥬 高麗菜','🌽 玉米','🥕 紅蘿蔔','🍅 番茄'], ans:2, fb:'紅蘿蔔的可食部分就是它的根。' },
-  { q:'澆水最好的時機是什麼時候？', opts:['正午豔陽下','🌅 早上或傍晚','🌙 深夜','🌧️ 下大雨時'], ans:1, fb:'早晚澆水水分不易蒸發，效果最好。' },
-  { q:'蔬菜哪個階段會「開花」？', opts:['發芽期','幼苗期','生長期','🌸 開花期'], ans:3, fb:'開花期是果菜類重要的授粉時期。' },
-  { q:'下列哪項最能幫助蔬菜長得好？', opts:['過量澆水','☀️ 適當日照和鬆軟土壤','每天施化學農藥','種在完全遮蔭處'], ans:1, fb:'適當日照加上良好土壤是蔬菜最愛！' },
-];
+let DATA=loadData();
+let currentTab=CATS[0].key;
+let manageOpen=false;
 
-let waterLevel = 0, sunDegrees = 0, weedCount = 0, selectedCard = null;
-let quizAnswered = {};
+const tabBar=document.getElementById('tabBar');
+const contentArea=document.getElementById('contentArea');
 
-// INIT
-(function init() {
-  buildVeggieCards();
-  buildGrowthTimeline();
-  buildVeggieProgress();
-  buildQuiz();
-  buildWeedField();
-  setupSoilBtns();
-  setupScrollReveal();
-})();
-
-function buildVeggieCards() {
-  const grid = document.getElementById('veggieGrid');
-  veggies.forEach((v, i) => {
-    const tagCls = v.type === 'leaf' ? 'tag-leaf' : v.type === 'root' ? 'tag-root' : 'tag-fruit';
-    const card = document.createElement('div');
-    card.className = 'veggie-card';
-    card.innerHTML = `<div class="veggie-icon">${v.icon}</div><div class="veggie-name">${v.name}</div><span class="veggie-tag ${tagCls}">${v.tag}</span>`;
-    card.addEventListener('click', () => showVeggieInfo(i, card));
-    grid.appendChild(card);
+function buildPage(){
+  tabBar.innerHTML='';
+  contentArea.innerHTML='';
+  CATS.forEach((cat)=>{
+    const items=DATA.filter(d=>d.cat===cat.key);
+    const btn=document.createElement('button');
+    btn.className='tab-btn'+(cat.key===currentTab?' active':'');
+    btn.dataset.cat=cat.key;
+    btn.innerHTML=`${cat.emoji} ${cat.key} <span class="tab-count">${items.length}</span>`;
+    btn.addEventListener('click',()=>switchTab(cat.key));
+    tabBar.appendChild(btn);
+    const section=document.createElement('section');
+    section.className='category-section'+(cat.key===currentTab?' active':'');
+    section.dataset.section=cat.key;
+    const cardsHtml=items.length===0
+      ?`<div class="empty-state"><div class="empty-icon">📭</div>尚無教材，請點右上角「管理教材」新增</div>`
+      :items.map(item=>`
+        <a class="card" href="${item.url}" target="_blank" rel="noopener">
+          <div class="card-icon">${item.icon}</div>
+          <div class="card-name">${item.name}</div>
+          <div class="card-arrow">開啟 →</div>
+        </a>`).join('');
+    section.innerHTML=`
+      <div class="section-header">
+        <span class="section-emoji">${cat.emoji}</span>
+        <div>
+          <div class="section-title">${cat.key}</div>
+          <div class="section-subtitle">${cat.desc} · ${items.length} 個教材</div>
+        </div>
+      </div>
+      <div class="card-grid">${cardsHtml}</div>`;
+    contentArea.appendChild(section);
   });
 }
 
-function showVeggieInfo(i, card) {
-  if (selectedCard) selectedCard.classList.remove('selected');
-  selectedCard = card;
-  card.classList.add('selected');
-  const v = veggies[i];
-  const panel = document.getElementById('veggieInfo');
-  document.getElementById('infoIcon').textContent = v.icon;
-  document.getElementById('infoName').textContent = v.name;
-  document.getElementById('infoDesc').textContent = v.desc;
-  document.getElementById('infoTags').innerHTML = `
-    <span class="info-badge badge-sun">☀️ 日照：${v.sun}</span>
-    <span class="info-badge badge-water">💧 澆水：${v.water}</span>
-    <span class="info-badge badge-time">⏱️ 生長期：${v.days}</span>
-  `;
-  panel.classList.remove('show');
-  setTimeout(() => panel.classList.add('show'), 50);
-  panel.scrollIntoView({ behavior:'smooth', block:'nearest' });
+function switchTab(catKey){
+  currentTab=catKey;
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b.dataset.cat===catKey));
+  document.querySelectorAll('.category-section').forEach(s=>s.classList.toggle('active',s.dataset.section===catKey));
 }
 
-// WATER GAME
-const waterPlants = ['🌱','🌿','🪴','🌻','🍅'];
-function doWater() {
-  if (waterLevel >= 100) {
-    setMsg('waterMsg','⚠️ 土壤已經太濕了！小心爛根！','#e63946'); return;
-  }
-  waterLevel = Math.min(100, waterLevel + 20);
-  document.getElementById('waterBar').style.width = waterLevel + '%';
-  triggerRain(3);
-  const plant = document.getElementById('waterPlant');
-  plant.textContent = waterPlants[Math.min(Math.floor(waterLevel/25), 4)];
-  plant.classList.remove('watered');
-  setTimeout(() => plant.classList.add('watered'), 10);
-  const msgs = ['','💧 植物喝到水了！','🌿 葉片開始舒展！','🌸 快要開花了！','🎉 茁壯成長，準備採收！'];
-  setMsg('waterMsg', msgs[Math.min(Math.floor(waterLevel/25), 4)], '#0096c7');
-  if (waterLevel >= 80) triggerConfetti();
-}
-function resetWater() {
-  waterLevel = 0;
-  document.getElementById('waterBar').style.width = '0%';
-  document.getElementById('waterPlant').textContent = '🌱';
-  document.getElementById('waterPlant').classList.remove('watered');
-  setMsg('waterMsg','','#0096c7');
-}
-
-// SUN GAME
-function addSun(deg) {
-  sunDegrees = Math.min(360, sunDegrees + deg);
-  const meter = document.getElementById('sunMeter');
-  meter.style.background = `conic-gradient(#ffd60a ${sunDegrees}deg, #e5e7eb ${sunDegrees}deg)`;
-  if (sunDegrees < 90) { document.getElementById('sunLabel').textContent='日照不足 😢'; setMsg('sunMsg','需要更多陽光！','#854d0e'); }
-  else if (sunDegrees < 240) { document.getElementById('sunLabel').textContent='日照適中 😊'; setMsg('sunMsg','蔬菜在進行光合作用！','#166534'); }
-  else { document.getElementById('sunLabel').textContent='日照充足 🌟'; setMsg('sunMsg','蔬菜愛死這個太陽！','#92400e'); triggerConfetti(); }
-}
-function resetSun() {
-  sunDegrees = 0;
-  document.getElementById('sunMeter').style.background = 'conic-gradient(#ffd60a 0deg, #e5e7eb 0deg)';
-  document.getElementById('sunLabel').textContent = '日照不足';
-  setMsg('sunMsg','','#854d0e');
-}
-
-// SOIL GAME
-function setupSoilBtns() {
-  document.querySelectorAll('#soilChoices .soil-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const ans = btn.dataset.ans;
-      document.querySelectorAll('#soilChoices .soil-btn').forEach(b => b.style.pointerEvents='none');
-      btn.classList.add(ans);
-      if (ans === 'correct') {
-        setMsg('soilFeedback','✅ 正確！鬆軟腐植土排水好、養分豐富，番茄最愛！','#166534');
-        triggerConfetti();
-      } else {
-        setMsg('soilFeedback','❌ 再試試看！番茄需要鬆軟、排水良好的土壤。','#e63946');
-        setTimeout(() => {
-          document.querySelectorAll('#soilChoices .soil-btn').forEach(b => { b.classList.remove('wrong','correct'); b.style.pointerEvents=''; });
-          setMsg('soilFeedback','','#166534');
-        }, 1500);
-      }
-    });
-  });
-}
-
-// WEED GAME
-function buildWeedField() {
-  const field = document.getElementById('weedField');
-  field.innerHTML = ''; weedCount = 0;
-  const weedEmojis = ['🌾','🌿','🍃','🌵','☘️'];
-  const plantEmojis = ['🌱','🪴','🌻','🍅','🥬'];
-  const items = [
-    ...weedEmojis.map(e => ({ isWeed:true, emoji:e })),
-    ...plantEmojis.map(e => ({ isWeed:false, emoji:e }))
-  ].sort(() => Math.random()-0.5);
-
-  items.forEach(item => {
-    const el = document.createElement('span');
-    el.className = 'weed-item';
-    el.textContent = item.emoji;
-    if (item.isWeed) {
-      el.title = '雜草 - 點擊拔除！';
-      el.addEventListener('click', () => {
-        if (!el.classList.contains('removed')) {
-          el.classList.add('removed'); weedCount++;
-          document.getElementById('weedScore').textContent = weedCount >= 5 ? '🎉 雜草全部清除！蔬菜開心生長了！' : `已拔除 ${weedCount}/5 棵雜草`;
-          if (weedCount >= 5) triggerConfetti();
-        }
-      });
-    } else {
-      el.title = '我是蔬菜，別拔我！';
-      el.addEventListener('click', () => showTooltip('這是蔬菜，別拔它！🥺', el));
-    }
-    field.appendChild(el);
-  });
-  document.getElementById('weedScore').textContent = '已拔除 0/5 棵雜草';
-}
-function resetWeeds() { buildWeedField(); }
-
-// GROWTH TIMELINE
-function buildGrowthTimeline() {
-  const tl = document.getElementById('growthTimeline');
-  growthSteps.forEach((s, i) => {
-    const step = document.createElement('div');
-    step.className = 'growth-step';
-    step.innerHTML = `<div class="step-circle">${s.icon}</div><div class="step-content"><span class="step-num">${s.num}</span><h3>${s.title}</h3><p>${s.desc}</p></div>`;
-    step.addEventListener('click', () => {
-      document.querySelectorAll('.growth-step').forEach(el => el.classList.remove('active'));
-      step.classList.add('active');
-    });
-    tl.appendChild(step);
-  });
-}
-
-// VEGGIE PROGRESS
-function buildVeggieProgress() {
-  const list = document.getElementById('veggieProgressList');
-  veggieProgress.forEach((v, i) => {
-    const item = document.createElement('div');
-    item.className = 'veggie-progress-item';
-    item.innerHTML = `
-      <div class="vp-header"><span class="vp-name">${v.icon} ${v.name}</span><span class="vp-days">約 ${v.days} 天</span></div>
-      <div class="vp-bar-bg"><div class="vp-bar-fill ${v.cls}" id="vpBar${i}" style="width:0%"><span>${v.pct}%</span></div></div>
-    `;
-    list.appendChild(item);
-  });
-}
-function startGrowthAnimation() {
-  veggieProgress.forEach((v, i) => {
-    setTimeout(() => { document.getElementById('vpBar'+i).style.width = v.pct+'%'; }, i*200);
-  });
-}
-
-// QUIZ
-function buildQuiz() {
-  const c = document.getElementById('quizContainer');
-  quizData.forEach((q, qi) => {
-    const div = document.createElement('div');
-    div.className = 'quiz-q';
-    const opts = q.opts.map((o, oi) => `<button class="quiz-opt" onclick="answerQuiz(${qi},${oi},this)">${o}</button>`).join('');
-    div.innerHTML = `<p>${qi+1}. ${q.q}</p><div class="quiz-options">${opts}</div><div class="quiz-fb" id="qfb${qi}"></div>`;
-    c.appendChild(div);
-  });
-}
-function answerQuiz(qi, oi, btn) {
-  if (quizAnswered[qi] !== undefined) return;
-  quizAnswered[qi] = oi;
-  const correct = quizData[qi].ans === oi;
-  btn.closest('.quiz-options').querySelectorAll('.quiz-opt').forEach((b,idx) => {
-    b.style.pointerEvents = 'none';
-    if (idx === quizData[qi].ans) b.classList.add('correct');
-  });
-  if (!correct) btn.classList.add('wrong');
-  const fb = document.getElementById('qfb'+qi);
-  fb.textContent = (correct ? '✅ ' : '❌ ') + quizData[qi].fb;
-  fb.style.color = correct ? '#166534' : '#e63946';
-}
-function checkQuiz() {
-  const total = quizData.length;
-  let correct = 0;
-  quizData.forEach((q,i) => { if (quizAnswered[i] === q.ans) correct++; });
-  const pct = Math.round(correct/total*100);
-  const stars = pct>=80?'⭐⭐⭐':pct>=60?'⭐⭐':'⭐';
-  const msg = pct>=80?'非常棒！🏆':pct>=60?'不錯喔！🌿':'繼續加油！🌱';
-  document.getElementById('quizResult').innerHTML = `
-    <div class="score-board">
-      <h3>📊 測驗結果</h3>
-      <div class="score-num">${correct} / ${total}</div>
-      <div class="stars">${stars}</div>
-      <div class="score-msg">${msg} 答對率 ${pct}%</div>
-    </div>`;
-  document.getElementById('quizResult').scrollIntoView({ behavior:'smooth', block:'center' });
-  if (pct >= 60) triggerConfetti();
-}
-
-// EFFECTS
-function triggerConfetti() {
-  const colors = ['#52b788','#ffd60a','#48cae4','#f77f00','#e63946','#7b2d8b'];
-  for (let i=0; i<30; i++) {
-    const c = document.createElement('div');
-    c.className = 'confetti-piece';
-    c.style.cssText = `left:${Math.random()*100}vw;top:${Math.random()*40}vh;background:${colors[Math.floor(Math.random()*colors.length)]};transform:rotate(${Math.random()*360}deg);animation-delay:${Math.random()*0.5}s;`;
-    document.body.appendChild(c);
-    setTimeout(() => c.remove(), 2000);
+// ── 管理面板：需登入才能開 ──
+function onManageClick(){
+  if(window._isAdmin){
+    toggleManagePanel();
+  } else {
+    // 未登入：顯示登入彈窗，登入後自動開管理
+    window._pendingManage = true;
+    document.getElementById('loginOverlay').classList.remove('hidden');
   }
 }
-function triggerRain(count) {
-  const container = document.getElementById('particleRain');
-  for (let i=0; i<count; i++) {
-    const d = document.createElement('div');
-    d.className = 'rain-drop';
-    d.style.cssText = `left:${Math.random()*100}vw;animation-duration:${0.5+Math.random()*0.5}s;animation-delay:${Math.random()*0.3}s;`;
-    container.appendChild(d);
-    setTimeout(() => d.remove(), 1200);
+
+function openManagePanel(){
+  manageOpen=true;
+  document.getElementById('managePanel').classList.add('open');
+  const btn=document.getElementById('manageToggle');
+  btn.classList.add('active');
+  btn.textContent='✕ 關閉管理';
+  renderManageTable();
+}
+
+function closeManagePanel(){
+  manageOpen=false;
+  document.getElementById('managePanel').classList.remove('open');
+  const btn=document.getElementById('manageToggle');
+  btn.classList.remove('active');
+  btn.textContent='⚙️ 管理教材';
+}
+
+function toggleManagePanel(){
+  manageOpen ? closeManagePanel() : openManagePanel();
+}
+
+// ── 管理表格 ──
+let filteredIndices=[];
+
+function renderManageTable(){
+  const filter=document.getElementById('filterCat').value;
+  const filtered=DATA.map((item,i)=>({item,i})).filter(({item})=>!filter||item.cat===filter);
+  filteredIndices=filtered.map(f=>f.i);
+  document.getElementById('listCount').textContent=`共 ${filtered.length} 筆（全部 ${DATA.length} 筆）`;
+  const tbody=document.getElementById('manageTableBody');
+  if(filtered.length===0){
+    tbody.innerHTML=`<tr><td colspan="5" style="text-align:center;padding:24px;color:#999;">此類別尚無教材</td></tr>`;
+    updateBatchBar();return;
   }
+  tbody.innerHTML=filtered.map(({item,i})=>{
+    const color=CAT_COLORS[item.cat]||'#aaa';
+    return`<tr data-idx="${i}">
+      <td><input type="checkbox" class="row-cb" data-idx="${i}" onchange="onRowCheck()"></td>
+      <td><span class="cat-badge" style="background:${color}">${item.cat}</span></td>
+      <td class="td-name">${item.icon} ${item.name}</td>
+      <td class="td-url"><a href="${item.url}" target="_blank" rel="noopener">${item.url}</a></td>
+      <td><button class="btn-del" onclick="deleteItem(${i})">刪除</button></td>
+    </tr>`;
+  }).join('');
+  updateBatchBar();
+  syncCheckAll();
 }
-function showTooltip(text, el) {
-  const tt = document.getElementById('tooltip');
-  const rect = el.getBoundingClientRect();
-  tt.textContent = text;
-  tt.style.left = (rect.left + rect.width/2 - 100) + 'px';
-  tt.style.top = (rect.top - 40) + 'px';
-  tt.style.opacity = '1';
-  setTimeout(() => tt.style.opacity='0', 1500);
+
+function onRowCheck(){
+  const row=event.target.closest('tr');
+  row.classList.toggle('row-checked',event.target.checked);
+  updateBatchBar();syncCheckAll();
 }
-function setMsg(id, text, color) {
-  const el = document.getElementById(id);
-  el.textContent = text; el.style.color = color;
+function toggleAll(masterCb){
+  document.querySelectorAll('.row-cb').forEach(cb=>{
+    cb.checked=masterCb.checked;
+    cb.closest('tr').classList.toggle('row-checked',masterCb.checked);
+  });
+  updateBatchBar();
 }
-function setupScrollReveal() {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+function syncCheckAll(){
+  const cbs=[...document.querySelectorAll('.row-cb')];
+  const allCb=document.getElementById('checkAll');
+  if(!allCb||cbs.length===0){if(allCb)allCb.checked=false;return;}
+  const n=cbs.filter(c=>c.checked).length;
+  allCb.checked=n===cbs.length;
+  allCb.indeterminate=n>0&&n<cbs.length;
 }
-function goTo(id) { document.getElementById(id).scrollIntoView({ behavior:'smooth' }); }
+function getCheckedIndices(){
+  return[...document.querySelectorAll('.row-cb:checked')].map(cb=>parseInt(cb.dataset.idx));
+}
+function updateBatchBar(){
+  const checked=getCheckedIndices();
+  document.getElementById('batchBar').classList.toggle('show',checked.length>0);
+  document.getElementById('batchCount').textContent=`已選 ${checked.length} 筆`;
+}
+function clearSelection(){
+  document.querySelectorAll('.row-cb').forEach(cb=>{cb.checked=false;cb.closest('tr').classList.remove('row-checked');});
+  const allCb=document.getElementById('checkAll');
+  if(allCb){allCb.checked=false;allCb.indeterminate=false;}
+  updateBatchBar();
+}
+function batchDelete(){
+  const indices=getCheckedIndices();
+  if(indices.length===0)return;
+  const names=indices.map(i=>DATA[i].name);
+  const preview=names.length<=5?names.join('、'):names.slice(0,5).join('、')+`…等 ${names.length} 筆`;
+  if(!confirm(`確定刪除以下 ${indices.length} 筆教材？\n\n${preview}`))return;
+  indices.sort((a,b)=>b-a).forEach(i=>DATA.splice(i,1));
+  saveData(DATA);buildPage();renderManageTable();
+}
+
+function addItem(){
+  const cat=document.getElementById('addCat').value.trim();
+  const name=document.getElementById('addName').value.trim();
+  const url=document.getElementById('addUrl').value.trim();
+  if(!name){alert('請輸入教材名稱');return;}
+  if(!url){alert('請輸入網址');return;}
+  if(!url.startsWith('http')){alert('網址需以 http 或 https 開頭');return;}
+  DATA.push({cat,name,url,icon:CAT_ICONS[cat]||'📌'});
+  saveData(DATA);
+  document.getElementById('addName').value='';
+  document.getElementById('addUrl').value='';
+  buildPage();renderManageTable();switchTab(cat);
+  const toast=document.getElementById('toast');
+  toast.classList.add('show');
+  setTimeout(()=>toast.classList.remove('show'),2000);
+}
+function deleteItem(idx){
+  const item=DATA[idx];
+  if(!confirm(`確定刪除「${item.name}」？`))return;
+  DATA.splice(idx,1);saveData(DATA);buildPage();renderManageTable();
+}
+function exportData(){
+  const text=JSON.stringify(DATA,null,2);
+  navigator.clipboard.writeText(text).then(()=>{
+    alert('✅ 已複製到剪貼板！共 '+DATA.length+' 筆教材資料。');
+  }).catch(()=>{prompt('請手動複製以下資料：',text);});
+}
+
+document.getElementById('addUrl').addEventListener('keydown',e=>{if(e.key==='Enter')addItem();});
+document.getElementById('addName').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('addUrl').focus();});
+
+buildPage();
 </script>
 </body>
 </html>
