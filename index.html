@@ -53,7 +53,7 @@
   .login-error{margin-top:12px;font-size:13px;color:#ff6b6b;font-weight:600;min-height:20px;}
   .login-loading{margin-top:12px;font-size:13px;color:#a29bfe;display:none;}
 
-  /* TABS - 顏色由 JS 動態注入 */
+  /* TABS */
   .tab-bar{display:flex;gap:8px;padding:20px 16px 0;overflow-x:auto;justify-content:center;flex-wrap:wrap;max-width:960px;margin:0 auto;-webkit-overflow-scrolling:touch;}
   .tab-bar::-webkit-scrollbar{display:none;}
   .tab-btn{font-family:'Nunito','Noto Sans TC',sans-serif;font-weight:800;font-size:15px;border:none;cursor:pointer;border-radius:50px;padding:10px 22px;transition:all 0.22s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;background:#e0e0ee;color:#888;letter-spacing:0.5px;}
@@ -75,7 +75,7 @@
   .btn-add:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(118,75,162,0.35);}
   .toast{display:inline-block;margin-left:12px;font-size:13px;font-weight:600;color:#1DD1A1;opacity:0;transition:opacity 0.3s;}
   .toast.show{opacity:1;}
-  .manage-list-header{display:flex;align-items:center;justify-content:space-between;margin-top:22px;margin-bottom:10px;}
+  .manage-list-header{display:flex;align-items:center;justify-content:space-between;margin-top:22px;margin-bottom:10px;gap:10px;flex-wrap:wrap;}
   .manage-list-title{font-size:14px;font-weight:700;color:var(--text-sub);}
   .manage-filter{border:2px solid #e0e0ee;border-radius:8px;padding:5px 10px;font-size:13px;font-family:'Noto Sans TC',sans-serif;outline:none;color:var(--text);}
   .manage-filter:focus{border-color:#a29bfe;}
@@ -112,7 +112,42 @@
   .btn-export:hover{background:#667eea;color:#fff;border-color:#667eea;}
   .export-hint{font-size:11px;color:var(--text-sub);}
 
-  /* CONTENT - 顏色由 JS 動態注入 */
+  /* RENAME */
+  .btn-rename{background:#f0f4ff;color:#667eea;border:2px solid #c5ceff;border-radius:8px;padding:4px 8px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.18s;font-family:'Noto Sans TC',sans-serif;white-space:nowrap;}
+  .btn-rename:hover{background:#667eea;color:#fff;border-color:#667eea;}
+  .rename-wrap{display:flex;align-items:center;gap:4px;}
+  .rename-input{border:2px solid #a29bfe;border-radius:8px;padding:4px 8px;font-size:13px;font-family:'Noto Sans TC',sans-serif;outline:none;width:130px;color:var(--text);}
+  .btn-confirm-sm{background:#e6fdf7;color:#1DD1A1;border:2px solid #b8f5e6;border-radius:8px;padding:4px 8px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.18s;}
+  .btn-confirm-sm:hover{background:#1DD1A1;color:#fff;border-color:#1DD1A1;}
+  .btn-cancel-sm{background:#fff;color:#888;border:2px solid #ddd;border-radius:8px;padding:4px 8px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.18s;}
+  .btn-cancel-sm:hover{border-color:#aaa;color:#555;}
+
+  /* SYNC STATUS */
+  .sync-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:8px;}
+  .sync-status{font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px;background:#f0f0f8;transition:color 0.3s;letter-spacing:0.3px;}
+
+  /* DATA LOADING */
+  .data-loading{text-align:center;padding:56px 20px;color:#a29bfe;font-size:15px;display:flex;flex-direction:column;align-items:center;gap:16px;}
+  .loading-spinner{width:38px;height:38px;border:4px solid #e8e0ff;border-top-color:#764ba2;border-radius:50%;animation:spin 0.75s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  /* CATEGORY MANAGEMENT */
+  .cat-manage-box{margin-top:22px;padding-top:20px;border-top:2px dashed #e8e0ff;}
+  .cat-manage-title{font-size:14px;font-weight:800;color:#764ba2;margin-bottom:14px;display:flex;align-items:center;gap:6px;}
+  .cat-add-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+  .cat-input{border:2px solid #e0e0ee;border-radius:10px;padding:8px 12px;font-size:14px;font-family:'Noto Sans TC',sans-serif;outline:none;transition:border-color 0.2s;background:#fafafa;width:80px;}
+  .cat-input:focus{border-color:#a29bfe;background:#fff;}
+  .cat-input.wide{width:140px;}
+  .btn-cat-add{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:13px;font-weight:800;cursor:pointer;font-family:'Noto Sans TC',sans-serif;transition:all 0.2s;white-space:nowrap;}
+  .btn-cat-add:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(118,75,162,0.3);}
+  .cat-list{display:flex;flex-wrap:wrap;gap:8px;}
+  .cat-tag{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:50px;font-size:13px;font-weight:700;color:#fff;position:relative;}
+  .cat-tag.locked{opacity:0.7;padding-right:12px;}
+  .cat-tag-del{background:rgba(0,0,0,0.25);border:none;color:#fff;border-radius:50%;width:18px;height:18px;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;font-weight:900;transition:background 0.15s;padding:0;}
+  .cat-tag-del:hover{background:rgba(0,0,0,0.5);}
+  .cat-lock-hint{font-size:11px;color:#b2bec3;margin-top:8px;}
+
+  /* CONTENT */
   .content-area{max-width:960px;margin:0 auto;padding:20px 16px 48px;}
   .category-section{display:none;}
   .category-section.active{display:block;animation:fadeUp 0.32s ease;}
@@ -131,22 +166,6 @@
   .card-arrow{margin-top:auto;font-size:12px;font-weight:700;opacity:0.7;}
   .empty-state{text-align:center;padding:40px 20px;color:var(--text-sub);font-size:14px;}
   .empty-state .empty-icon{font-size:40px;margin-bottom:10px;}
-
-  /* CATEGORY MANAGEMENT */
-  .cat-manage-box{margin-top:22px;padding-top:20px;border-top:2px dashed #e8e0ff;}
-  .cat-manage-title{font-size:14px;font-weight:800;color:#764ba2;margin-bottom:14px;display:flex;align-items:center;gap:6px;}
-  .cat-add-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
-  .cat-input{border:2px solid #e0e0ee;border-radius:10px;padding:8px 12px;font-size:14px;font-family:'Noto Sans TC',sans-serif;outline:none;transition:border-color 0.2s;background:#fafafa;width:80px;}
-  .cat-input:focus{border-color:#a29bfe;background:#fff;}
-  .cat-input.wide{width:140px;}
-  .btn-cat-add{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:13px;font-weight:800;cursor:pointer;font-family:'Noto Sans TC',sans-serif;transition:all 0.2s;white-space:nowrap;}
-  .btn-cat-add:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(118,75,162,0.3);}
-  .cat-list{display:flex;flex-wrap:wrap;gap:8px;}
-  .cat-tag{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:50px;font-size:13px;font-weight:700;color:#fff;position:relative;}
-  .cat-tag.locked{opacity:0.7;padding-right:12px;}
-  .cat-tag-del{background:rgba(0,0,0,0.25);border:none;color:#fff;border-radius:50%;width:18px;height:18px;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;font-weight:900;transition:background 0.15s;padding:0;}
-  .cat-tag-del:hover{background:rgba(0,0,0,0.5);}
-  .cat-lock-hint{font-size:11px;color:#b2bec3;margin-top:8px;}
 
   footer{text-align:center;padding:24px;color:var(--text-sub);font-size:12px;border-top:1px solid #eee;}
   @media(max-width:640px){.add-form{grid-template-columns:1fr 1fr;}}
@@ -187,18 +206,16 @@
 <!-- 管理面板 -->
 <div class="manage-panel" id="managePanel">
   <div class="panel-box">
-    <div class="panel-title">➕ 新增教材</div>
+    <!-- 同步狀態列 -->
+    <div class="sync-row">
+      <div class="panel-title" style="margin-bottom:0;">➕ 新增教材</div>
+      <span class="sync-status" id="syncStatus">⏳ 連線中…</span>
+    </div>
+
     <div class="add-form">
       <div class="form-group">
         <label>年級 / 類別</label>
-        <select id="addCat">
-          <option value="三年級">🌱 三年級</option>
-          <option value="四年級">🌿 四年級</option>
-          <option value="五年級">🌲 五年級</option>
-          <option value="六年級">🌏 六年級</option>
-          <option value="教學應用">💡 教學應用</option>
-          <option value="休閒（動動腦）">🎮 休閒（動動腦）</option>
-        </select>
+        <select id="addCat"></select>
       </div>
       <div class="form-group">
         <label>教材名稱</label>
@@ -216,16 +233,10 @@
       <div class="manage-list-title" id="listCount"></div>
       <select class="manage-filter" id="filterCat" onchange="renderManageTable()">
         <option value="">全部類別</option>
-        <option value="三年級">三年級</option>
-        <option value="四年級">四年級</option>
-        <option value="五年級">五年級</option>
-        <option value="六年級">六年級</option>
-        <option value="教學應用">教學應用</option>
-        <option value="休閒（動動腦）">休閒（動動腦）</option>
       </select>
     </div>
 
-    <!-- 批次刪除/移動工具列 -->
+    <!-- 批次工具列 -->
     <div class="batch-bar" id="batchBar">
       <span class="batch-count" id="batchCount">已選 0 筆</span>
       <button class="btn-batch-del" onclick="batchDelete()">🗑️ 刪除所選</button>
@@ -262,7 +273,12 @@
   </div>
 </div>
 
-<main class="content-area" id="contentArea"></main>
+<main class="content-area" id="contentArea">
+  <div class="data-loading" id="dataLoadingEl">
+    <div class="loading-spinner"></div>
+    <div>教材資料載入中…</div>
+  </div>
+</main>
 <footer>Prayer 老師的自然科數位教材 · 持續更新中 🌱</footer>
 
 <!-- Firebase SDK -->
@@ -270,8 +286,9 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut as fbSignOut, onAuthStateChanged }
   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getFirestore, doc, onSnapshot, setDoc }
+  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// ── Firebase 設定 ──
 const firebaseConfig = {
   apiKey: "AIzaSyD2DSmaCFEWETra0JH2M4zZrkc0DvkrKFg",
   authDomain: "science-portal-8b814.firebaseapp.com",
@@ -283,36 +300,104 @@ const firebaseConfig = {
 };
 
 const ALLOWED_EMAIL = "prayer168@gmail.com";
-
-const app  = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+const app      = initializeApp(firebaseConfig);
+const auth     = getAuth(app);
+const db       = getFirestore(app);
 const provider = new GoogleAuthProvider();
+const portalDoc = doc(db, 'portal', 'v1');
 
-// 監聽登入狀態
+// ── 同步狀態 UI ──
+function setSyncStatus(status) {
+  const el = document.getElementById('syncStatus');
+  if (!el) return;
+  const map = {
+    loading: ['⏳ 連線中…',  '#a29bfe'],
+    synced:  ['☁️ 已同步',   '#00b894'],
+    saving:  ['⏳ 儲存中…',  '#fdcb6e'],
+    error:   ['⚠️ 儲存失敗', '#e17055'],
+    offline: ['📴 離線模式', '#b2bec3'],
+  };
+  const [text, color] = map[status] || map.synced;
+  el.textContent = text;
+  el.style.color  = color;
+}
+
+// ── Firestore 即時監聽 ──
+onSnapshot(portalDoc, (snap) => {
+  const loadingEl = document.getElementById('dataLoadingEl');
+  if (loadingEl) loadingEl.remove();
+
+  if (snap.exists()) {
+    const data = snap.data();
+    const materials   = Array.isArray(data.materials)   ? data.materials   : null;
+    const customCats  = Array.isArray(data.customCats)  ? data.customCats  : [];
+    if (materials && typeof window._firestoreDataCallback === 'function') {
+      window._firestoreDataCallback(materials, customCats);
+    }
+  } else {
+    // 文件不存在：若管理員已登入，就把 localStorage 的資料上傳初始化
+    if (window._isAdmin && typeof window._firestoreInitCallback === 'function') {
+      window._firestoreInitCallback();
+    }
+  }
+  setSyncStatus('synced');
+}, (err) => {
+  console.error('Firestore error:', err);
+  const loadingEl = document.getElementById('dataLoadingEl');
+  if (loadingEl) loadingEl.remove();
+  setSyncStatus('offline');
+  if (typeof window._firestoreErrorCallback === 'function') window._firestoreErrorCallback();
+});
+
+// ── 儲存教材至 Firestore ──
+window.saveDataToFirestore = async function(materials) {
+  setSyncStatus('saving');
+  try {
+    await setDoc(portalDoc, { materials }, { merge: true });
+    setSyncStatus('synced');
+  } catch(e) {
+    console.error('Firestore save failed:', e);
+    setSyncStatus('error');
+  }
+};
+
+// ── 儲存自訂類別至 Firestore ──
+window.saveCatsToFirestore = async function(cats) {
+  const defaultKeys = ['三年級','四年級','五年級','六年級','教學應用','休閒（動動腦）'];
+  const extra = cats.filter(c => !defaultKeys.includes(c.key));
+  setSyncStatus('saving');
+  try {
+    await setDoc(portalDoc, { customCats: extra }, { merge: true });
+    setSyncStatus('synced');
+  } catch(e) {
+    console.error('Firestore cats save failed:', e);
+    setSyncStatus('error');
+  }
+};
+
+// ── 監聽登入狀態 ──
 onAuthStateChanged(auth, (user) => {
   if (user && user.email === ALLOWED_EMAIL) {
-    // 已登入且是授權帳號
     document.getElementById('userAvatar').src = user.photoURL || '';
     document.getElementById('userAvatar').style.display = 'inline-block';
-    document.getElementById('btnSignOut').style.display = 'inline-block';
+    document.getElementById('btnSignOut').style.display  = 'inline-block';
     window._isAdmin = true;
-    // 如果管理面板是因等待登入而開著，繼續打開
     if (window._pendingManage) { window._pendingManage = false; openManagePanel(); }
   } else {
     document.getElementById('userAvatar').style.display = 'none';
-    document.getElementById('btnSignOut').style.display = 'none';
+    document.getElementById('btnSignOut').style.display  = 'none';
     window._isAdmin = false;
     closeManagePanel();
   }
 });
 
-// Google 登入
+// ── Google 登入 ──
 window.doGoogleLogin = async function() {
-  const errEl = document.getElementById('loginError');
+  const errEl  = document.getElementById('loginError');
   const loadEl = document.getElementById('loginLoading');
   const btnEl  = document.getElementById('btnGoogleLogin');
   errEl.textContent = '';
-  btnEl.style.display = 'none';
+  btnEl.style.display  = 'none';
   loadEl.style.display = 'block';
   try {
     const result = await signInWithPopup(auth, provider);
@@ -320,24 +405,21 @@ window.doGoogleLogin = async function() {
     if (user.email !== ALLOWED_EMAIL) {
       await fbSignOut(auth);
       loadEl.style.display = 'none';
-      btnEl.style.display = 'flex';
+      btnEl.style.display  = 'flex';
       errEl.textContent = `❌ 此帳號 (${user.email}) 沒有管理權限`;
       return;
     }
-    // 登入成功，關閉彈窗
     document.getElementById('loginOverlay').classList.add('hidden');
     loadEl.style.display = 'none';
-    btnEl.style.display = 'flex';
+    btnEl.style.display  = 'flex';
   } catch(e) {
     loadEl.style.display = 'none';
-    btnEl.style.display = 'flex';
-    if (e.code !== 'auth/popup-closed-by-user') {
-      errEl.textContent = '登入失敗，請再試一次';
-    }
+    btnEl.style.display  = 'flex';
+    if (e.code !== 'auth/popup-closed-by-user') errEl.textContent = '登入失敗，請再試一次';
   }
 };
 
-// 登出
+// ── 登出 ──
 window.signOut = async function() {
   if (!confirm('確定要登出管理後台？')) return;
   await fbSignOut(auth);
@@ -398,7 +480,7 @@ const DEFAULT_DATA = [
   {cat:"休閒（動動腦）",name:"教室互動儀表板",url:"https://prayer168.github.io/classroom_tools/",icon:"📊"},
 ];
 
-// ── 預設類別（鎖定，不可刪除）──
+// ── 預設類別 ──
 const DEFAULT_CATS = [
   {key:"三年級",  emoji:"🌱", desc:"三年級自然科互動教材", color:"#FF6B6B"},
   {key:"四年級",  emoji:"🌿", desc:"四年級自然科互動教材", color:"#FF9F43"},
@@ -407,44 +489,86 @@ const DEFAULT_CATS = [
   {key:"教學應用",emoji:"💡", desc:"課堂教學輔助工具",     color:"#00B894"},
   {key:"休閒（動動腦）",emoji:"🎮",desc:"趣味遊戲與創意工具",color:"#A29BFE"},
 ];
+window.DEFAULT_CATS = DEFAULT_CATS;
 
-// 自動指派顏色給新類別
 const EXTRA_COLORS = ["#e17055","#6c5ce7","#fd79a8","#00cec9","#fdcb6e","#74b9ff","#55efc4","#fab1a0"];
 let colorIdx = 0;
 
+const STORE_KEY = 'science_portal_v1';
 const CAT_STORE = 'science_portal_cats_v1';
-function loadCats(){
-  try{
+
+function loadCats() {
+  try {
     const s = localStorage.getItem(CAT_STORE);
     const extra = s ? JSON.parse(s) : [];
     return [...DEFAULT_CATS, ...extra];
   } catch { return [...DEFAULT_CATS]; }
 }
-function saveExtraCats(cats){
+function saveExtraCats(cats) {
   const extra = cats.filter(c => !DEFAULT_CATS.find(d => d.key === c.key));
   localStorage.setItem(CAT_STORE, JSON.stringify(extra));
+  if (window.saveCatsToFirestore) window.saveCatsToFirestore(cats);
+}
+
+function loadDataLocal() {
+  try { const s = localStorage.getItem(STORE_KEY); return s ? JSON.parse(s) : JSON.parse(JSON.stringify(DEFAULT_DATA)); }
+  catch { return JSON.parse(JSON.stringify(DEFAULT_DATA)); }
+}
+function saveData(d) {
+  localStorage.setItem(STORE_KEY, JSON.stringify(d));
+  if (window.saveDataToFirestore) window.saveDataToFirestore(d);
 }
 
 let CATS = loadCats();
+let DATA = loadDataLocal();
+let currentTab = CATS[0].key;
+let manageOpen = false;
 
-function catColor(key){ return (CATS.find(c=>c.key===key)||{color:'#aaa'}).color; }
-function catEmoji(key){ return (CATS.find(c=>c.key===key)||{emoji:'📌'}).emoji; }
-function lighten(hex){
-  // produce a very light tint from hex color
+// ── Firestore 回調：收到雲端資料後更新頁面 ──
+window._firestoreDataCallback = function(materials, customCats) {
+  DATA = materials;
+  localStorage.setItem(STORE_KEY, JSON.stringify(DATA));
+  if (customCats !== undefined) {
+    CATS = [...DEFAULT_CATS, ...customCats];
+    const extra = customCats;
+    localStorage.setItem(CAT_STORE, JSON.stringify(extra));
+    injectCatStyles();
+    syncCatSelects();
+    if (manageOpen) renderCatList();
+  }
+  buildPage();
+  if (manageOpen) renderManageTable();
+};
+
+// ── Firestore 初始化（文件不存在時由管理員建立）──
+window._firestoreInitCallback = function() {
+  if (window.saveDataToFirestore) window.saveDataToFirestore(DATA);
+};
+
+// ── Firestore 離線 fallback ──
+window._firestoreErrorCallback = function() {
+  buildPage();
+};
+
+const tabBar      = document.getElementById('tabBar');
+const contentArea = document.getElementById('contentArea');
+
+// ── 顏色工具 ──
+function catColor(key) { return (CATS.find(c => c.key === key) || {color:'#aaa'}).color; }
+function catEmoji(key) { return (CATS.find(c => c.key === key) || {emoji:'📌'}).emoji; }
+function lighten(hex) {
   const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
   return `rgba(${r},${g},${b},0.12)`;
 }
-function soften(hex){
+function soften(hex) {
   const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
   return `rgba(${r},${g},${b},0.22)`;
 }
 
-// ── 動態注入 tab / card 顏色 ──
-function injectCatStyles(){
+function injectCatStyles() {
   let css = '';
   CATS.forEach(cat => {
     const c = cat.color, light = lighten(c), soft = soften(c);
-    const k = CSS.escape(cat.key);
     css += `.tab-btn[data-cat="${cat.key}"]{background:${light};color:${c};}`;
     css += `.tab-btn[data-cat="${cat.key}"].active{background:${c};color:#fff;box-shadow:0 4px 18px ${light};}`;
     css += `[data-section="${cat.key}"] .section-header{background:${light};color:${c};}`;
@@ -455,45 +579,39 @@ function injectCatStyles(){
     css += `[data-section="${cat.key}"] .card-arrow{color:${c};}`;
   });
   let el = document.getElementById('dynCatStyle');
-  if(!el){ el=document.createElement('style'); el.id='dynCatStyle'; document.head.appendChild(el); }
+  if (!el) { el = document.createElement('style'); el.id = 'dynCatStyle'; document.head.appendChild(el); }
   el.textContent = css;
 }
 
-// ── 新增/刪除類別 ──
-function addCategory(){
+// ── 類別管理 ──
+function addCategory() {
   const emoji = document.getElementById('catEmoji').value.trim() || '📌';
   const name  = document.getElementById('catName').value.trim();
-  if(!name){ alert('請輸入類別名稱'); return; }
-  if(CATS.find(c=>c.key===name)){ alert('此類別名稱已存在'); return; }
+  if (!name) { alert('請輸入類別名稱'); return; }
+  if (CATS.find(c => c.key === name)) { alert('此類別名稱已存在'); return; }
   const color = EXTRA_COLORS[colorIdx % EXTRA_COLORS.length]; colorIdx++;
   CATS.push({ key:name, emoji, desc:name, color, custom:true });
   saveExtraCats(CATS);
-  document.getElementById('catEmoji').value='';
-  document.getElementById('catName').value='';
-  injectCatStyles();
-  syncCatSelects();
-  buildPage();
-  renderCatList();
+  document.getElementById('catEmoji').value = '';
+  document.getElementById('catName').value  = '';
+  injectCatStyles(); syncCatSelects(); buildPage(); renderCatList();
 }
 
-function deleteCategory(key){
-  const hasItems = DATA.some(d=>d.cat===key);
-  if(hasItems){ alert(`請先刪除「${key}」類別內的所有教材，再刪除此類別。`); return; }
-  if(!confirm(`確定刪除類別「${key}」？`)) return;
-  CATS = CATS.filter(c=>c.key!==key);
+function deleteCategory(key) {
+  if (DATA.some(d => d.cat === key)) { alert(`請先刪除「${key}」類別內的所有教材，再刪除此類別。`); return; }
+  if (!confirm(`確定刪除類別「${key}」？`)) return;
+  CATS = CATS.filter(c => c.key !== key);
   saveExtraCats(CATS);
-  injectCatStyles();
-  syncCatSelects();
-  if(currentTab===key) currentTab=CATS[0].key;
-  buildPage();
-  renderCatList();
+  injectCatStyles(); syncCatSelects();
+  if (currentTab === key) currentTab = CATS[0].key;
+  buildPage(); renderCatList();
 }
 
-function renderCatList(){
+function renderCatList() {
   const el = document.getElementById('catList');
-  if(!el) return;
-  el.innerHTML = CATS.map(cat=>{
-    const isDefault = DEFAULT_CATS.find(d=>d.key===cat.key);
+  if (!el) return;
+  el.innerHTML = CATS.map(cat => {
+    const isDefault = DEFAULT_CATS.find(d => d.key === cat.key);
     return `<span class="cat-tag${isDefault?' locked':''}" style="background:${cat.color}">
       ${cat.emoji} ${cat.key}
       ${!isDefault ? `<button class="cat-tag-del" onclick="deleteCategory('${cat.key.replace(/'/g,"\\'")}')">✕</button>` : ''}
@@ -501,90 +619,44 @@ function renderCatList(){
   }).join('');
 }
 
-// ── 同步所有下拉選單 ──
-function syncCatSelects(){
-  const opts = CATS.map(c=>`<option value="${c.key}">${c.emoji} ${c.key}</option>`).join('');
-  const filterOpts = `<option value="">全部類別</option>` + CATS.map(c=>`<option value="${c.key}">${c.key}</option>`).join('');
-  const batchOpts = `<option value="">移動到…</option>` + CATS.map(c=>`<option value="${c.key}">${c.emoji} ${c.key}</option>`).join('');
-  const addCatEl = document.getElementById('addCat');
-  const filterEl = document.getElementById('filterCat');
-  const batchEl  = document.getElementById('batchMoveCat');
-  if(addCatEl) addCatEl.innerHTML = opts;
-  if(filterEl) filterEl.innerHTML = filterOpts;
-  if(batchEl)  batchEl.innerHTML  = batchOpts;
+function syncCatSelects() {
+  const opts       = CATS.map(c => `<option value="${c.key}">${c.emoji} ${c.key}</option>`).join('');
+  const filterOpts = `<option value="">全部類別</option>` + CATS.map(c => `<option value="${c.key}">${c.key}</option>`).join('');
+  const batchOpts  = `<option value="">移動到…</option>` + CATS.map(c => `<option value="${c.key}">${c.emoji} ${c.key}</option>`).join('');
+  const addCatEl   = document.getElementById('addCat');
+  const filterEl   = document.getElementById('filterCat');
+  const batchEl    = document.getElementById('batchMoveCat');
+  if (addCatEl) addCatEl.innerHTML = opts;
+  if (filterEl) filterEl.innerHTML = filterOpts;
+  if (batchEl)  batchEl.innerHTML  = batchOpts;
 }
 
-// ── 單筆移動 ──
-function moveItem(idx, newCat){
-  if(!newCat) return;
-  const item = DATA[idx];
-  const oldCat = item.cat;
-  item.cat = newCat;
-  item.icon = catEmoji(newCat);
-  saveData(DATA);
-  buildPage();
-  renderManageTable();
-  // 顯示提示
-  const toast = document.getElementById('toast');
-  toast.textContent = `✅ 已移至「${newCat}」`;
-  toast.classList.add('show');
-  setTimeout(()=>{ toast.classList.remove('show'); toast.textContent='✅ 已新增！'; }, 2000);
-}
-
-// ── 批次移動 ──
-function batchMove(){
-  const indices = getCheckedIndices();
-  const newCat  = document.getElementById('batchMoveCat').value;
-  if(indices.length===0){ alert('請先勾選要移動的教材'); return; }
-  if(!newCat){ alert('請選擇要移動到的類別'); return; }
-  const names = indices.map(i=>DATA[i].name);
-  const preview = names.length<=5 ? names.join('、') : names.slice(0,5).join('、')+`…等 ${names.length} 筆`;
-  if(!confirm(`確定將以下 ${indices.length} 筆教材移到「${newCat}」？\n\n${preview}`)) return;
-  indices.forEach(i=>{ DATA[i].cat=newCat; DATA[i].icon=catEmoji(newCat); });
-  saveData(DATA);
-  buildPage();
-  clearSelection();
-  renderManageTable();
-}
-
-const STORE_KEY='science_portal_v1';
-function loadData(){
-  try{const s=localStorage.getItem(STORE_KEY);return s?JSON.parse(s):JSON.parse(JSON.stringify(DEFAULT_DATA));}
-  catch{return JSON.parse(JSON.stringify(DEFAULT_DATA));}
-}
-function saveData(d){localStorage.setItem(STORE_KEY,JSON.stringify(d));}
-
-let DATA=loadData();
-let currentTab=CATS[0].key;
-let manageOpen=false;
-
-const tabBar=document.getElementById('tabBar');
-const contentArea=document.getElementById('contentArea');
-
-function buildPage(){
-  tabBar.innerHTML='';
-  contentArea.innerHTML='';
+// ── 建立頁面 ──
+function buildPage() {
+  tabBar.innerHTML = '';
+  contentArea.innerHTML = '';
   injectCatStyles();
-  CATS.forEach((cat)=>{
-    const items=DATA.filter(d=>d.cat===cat.key);
-    const btn=document.createElement('button');
-    btn.className='tab-btn'+(cat.key===currentTab?' active':'');
-    btn.dataset.cat=cat.key;
-    btn.innerHTML=`${cat.emoji} ${cat.key} <span class="tab-count">${items.length}</span>`;
-    btn.addEventListener('click',()=>switchTab(cat.key));
+  CATS.forEach(cat => {
+    const items = DATA.filter(d => d.cat === cat.key);
+    const btn = document.createElement('button');
+    btn.className = 'tab-btn' + (cat.key === currentTab ? ' active' : '');
+    btn.dataset.cat = cat.key;
+    btn.innerHTML = `${cat.emoji} ${cat.key} <span class="tab-count">${items.length}</span>`;
+    btn.addEventListener('click', () => switchTab(cat.key));
     tabBar.appendChild(btn);
-    const section=document.createElement('section');
-    section.className='category-section'+(cat.key===currentTab?' active':'');
-    section.dataset.section=cat.key;
-    const cardsHtml=items.length===0
-      ?`<div class="empty-state"><div class="empty-icon">📭</div>尚無教材，請點右上角「管理教材」新增</div>`
-      :items.map(item=>`
+
+    const section = document.createElement('section');
+    section.className = 'category-section' + (cat.key === currentTab ? ' active' : '');
+    section.dataset.section = cat.key;
+    const cardsHtml = items.length === 0
+      ? `<div class="empty-state"><div class="empty-icon">📭</div>尚無教材，請點右上角「管理教材」新增</div>`
+      : items.map(item => `
         <a class="card" href="${item.url}" target="_blank" rel="noopener">
           <div class="card-icon">${item.icon}</div>
           <div class="card-name">${item.name}</div>
           <div class="card-arrow">開啟 →</div>
         </a>`).join('');
-    section.innerHTML=`
+    section.innerHTML = `
       <div class="section-header">
         <span class="section-emoji">${cat.emoji}</span>
         <div>
@@ -597,156 +669,222 @@ function buildPage(){
   });
 }
 
-function switchTab(catKey){
-  currentTab=catKey;
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b.dataset.cat===catKey));
-  document.querySelectorAll('.category-section').forEach(s=>s.classList.toggle('active',s.dataset.section===catKey));
+function switchTab(catKey) {
+  currentTab = catKey;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === catKey));
+  document.querySelectorAll('.category-section').forEach(s => s.classList.toggle('active', s.dataset.section === catKey));
 }
 
-// ── 管理面板：需登入才能開 ──
-function onManageClick(){
-  if(window._isAdmin){
+// ── 管理面板開關 ──
+function onManageClick() {
+  if (window._isAdmin) {
     toggleManagePanel();
   } else {
-    // 未登入：顯示登入彈窗，登入後自動開管理
     window._pendingManage = true;
     document.getElementById('loginOverlay').classList.remove('hidden');
   }
 }
 
-function openManagePanel(){
-  manageOpen=true;
+function openManagePanel() {
+  manageOpen = true;
   document.getElementById('managePanel').classList.add('open');
-  const btn=document.getElementById('manageToggle');
+  const btn = document.getElementById('manageToggle');
   btn.classList.add('active');
-  btn.textContent='✕ 關閉管理';
-  syncCatSelects();
-  renderManageTable();
-  renderCatList();
+  btn.textContent = '✕ 關閉管理';
+  syncCatSelects(); renderManageTable(); renderCatList();
 }
 
-function closeManagePanel(){
-  manageOpen=false;
+function closeManagePanel() {
+  manageOpen = false;
   document.getElementById('managePanel').classList.remove('open');
-  const btn=document.getElementById('manageToggle');
+  const btn = document.getElementById('manageToggle');
   btn.classList.remove('active');
-  btn.textContent='⚙️ 管理教材';
+  btn.textContent = '⚙️ 管理教材';
 }
 
-function toggleManagePanel(){
-  manageOpen ? closeManagePanel() : openManagePanel();
-}
+function toggleManagePanel() { manageOpen ? closeManagePanel() : openManagePanel(); }
 
 // ── 管理表格 ──
-let filteredIndices=[];
+let filteredIndices = [];
 
-function renderManageTable(){
-  const filter=document.getElementById('filterCat').value;
-  const filtered=DATA.map((item,i)=>({item,i})).filter(({item})=>!filter||item.cat===filter);
-  filteredIndices=filtered.map(f=>f.i);
-  document.getElementById('listCount').textContent=`共 ${filtered.length} 筆（全部 ${DATA.length} 筆）`;
-  const tbody=document.getElementById('manageTableBody');
-  if(filtered.length===0){
-    tbody.innerHTML=`<tr><td colspan="6" style="text-align:center;padding:24px;color:#999;">此類別尚無教材</td></tr>`;
-    updateBatchBar();return;
+function renderManageTable() {
+  const filter   = document.getElementById('filterCat').value;
+  const filtered = DATA.map((item, i) => ({item, i})).filter(({item}) => !filter || item.cat === filter);
+  filteredIndices = filtered.map(f => f.i);
+  document.getElementById('listCount').textContent = `共 ${filtered.length} 筆（全部 ${DATA.length} 筆）`;
+  const tbody = document.getElementById('manageTableBody');
+  if (filtered.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:24px;color:#999;">此類別尚無教材</td></tr>`;
+    updateBatchBar(); return;
   }
-  tbody.innerHTML=filtered.map(({item,i})=>{
-    const color=catColor(item.cat);
-    const moveOpts=CATS.filter(c=>c.key!==item.cat).map(c=>`<option value="${c.key}">${c.emoji} ${c.key}</option>`).join('');
-    return`<tr data-idx="${i}">
-      <td><input type="checkbox" class="row-cb" data-idx="${i}" onchange="onRowCheck()"></td>
+  tbody.innerHTML = filtered.map(({item, i}) => {
+    const color    = catColor(item.cat);
+    const moveOpts = CATS.filter(c => c.key !== item.cat).map(c => `<option value="${c.key}">${c.emoji} ${c.key}</option>`).join('');
+    return `<tr data-idx="${i}">
+      <td><input type="checkbox" class="row-cb" data-idx="${i}" onchange="onRowCheck(event)"></td>
       <td><span class="cat-badge" style="background:${color}">${item.cat}</span></td>
-      <td class="td-name">${item.icon} ${item.name}</td>
+      <td class="td-name" id="namecell-${i}">${item.icon} ${item.name}</td>
       <td class="td-url"><a href="${item.url}" target="_blank" rel="noopener">${item.url}</a></td>
       <td><div class="td-actions">
-        <select class="move-select" id="movesel-${i}" onchange="moveItem(${i},this.value)" title="移動到其他類別">
-          <option value="">📂 移到…</option>
-          ${moveOpts}
+        <select class="move-select" onchange="moveItem(${i},this.value)" title="移動到其他類別">
+          <option value="">📂 移到…</option>${moveOpts}
         </select>
+        <button class="btn-rename" onclick="startRename(${i})">✏️ 改名</button>
         <button class="btn-del" onclick="deleteItem(${i})">刪除</button>
       </div></td>
     </tr>`;
   }).join('');
-  updateBatchBar();
-  syncCheckAll();
+  updateBatchBar(); syncCheckAll();
 }
 
-function onRowCheck(){
-  const row=event.target.closest('tr');
-  row.classList.toggle('row-checked',event.target.checked);
-  updateBatchBar();syncCheckAll();
+// ── 重新命名 ──
+function startRename(idx) {
+  const cell = document.getElementById(`namecell-${idx}`);
+  if (!cell) return;
+  const item = DATA[idx];
+  cell.innerHTML = `<div class="rename-wrap">
+    <input class="rename-input" id="renameInput-${idx}" value="${item.name.replace(/"/g,'&quot;')}" maxlength="40">
+    <button class="btn-confirm-sm" onclick="confirmRename(${idx})">✓</button>
+    <button class="btn-cancel-sm"  onclick="cancelRename(${idx})">✕</button>
+  </div>`;
+  const input = document.getElementById(`renameInput-${idx}`);
+  input.focus();
+  input.select();
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter')  confirmRename(idx);
+    if (e.key === 'Escape') cancelRename(idx);
+  });
 }
-function toggleAll(masterCb){
-  document.querySelectorAll('.row-cb').forEach(cb=>{
-    cb.checked=masterCb.checked;
-    cb.closest('tr').classList.toggle('row-checked',masterCb.checked);
+
+function confirmRename(idx) {
+  const input = document.getElementById(`renameInput-${idx}`);
+  if (!input) return;
+  const newName = input.value.trim();
+  if (!newName) { alert('名稱不可為空'); return; }
+  DATA[idx].name = newName;
+  saveData(DATA);
+  buildPage();
+  renderManageTable();
+  showToast(`✅ 已改名為「${newName}」`);
+}
+
+function cancelRename(idx) {
+  renderManageTable();
+}
+
+// ── 單筆移動 ──
+function moveItem(idx, newCat) {
+  if (!newCat) return;
+  DATA[idx].cat  = newCat;
+  DATA[idx].icon = catEmoji(newCat);
+  saveData(DATA); buildPage(); renderManageTable();
+  showToast(`✅ 已移至「${newCat}」`);
+}
+
+// ── 批次移動 ──
+function batchMove() {
+  const indices = getCheckedIndices();
+  const newCat  = document.getElementById('batchMoveCat').value;
+  if (indices.length === 0) { alert('請先勾選要移動的教材'); return; }
+  if (!newCat) { alert('請選擇要移動到的類別'); return; }
+  const names   = indices.map(i => DATA[i].name);
+  const preview = names.length <= 5 ? names.join('、') : names.slice(0,5).join('、') + `…等 ${names.length} 筆`;
+  if (!confirm(`確定將以下 ${indices.length} 筆教材移到「${newCat}」？\n\n${preview}`)) return;
+  indices.forEach(i => { DATA[i].cat = newCat; DATA[i].icon = catEmoji(newCat); });
+  saveData(DATA); buildPage(); clearSelection(); renderManageTable();
+}
+
+// ── 新增 / 刪除 ──
+function addItem() {
+  const cat  = document.getElementById('addCat').value.trim();
+  const name = document.getElementById('addName').value.trim();
+  const url  = document.getElementById('addUrl').value.trim();
+  if (!name) { alert('請輸入教材名稱'); return; }
+  if (!url)  { alert('請輸入網址'); return; }
+  if (!url.startsWith('http')) { alert('網址需以 http 或 https 開頭'); return; }
+  DATA.push({ cat, name, url, icon: catEmoji(cat) });
+  saveData(DATA);
+  document.getElementById('addName').value = '';
+  document.getElementById('addUrl').value  = '';
+  buildPage(); renderManageTable(); switchTab(cat);
+  showToast('✅ 已新增！');
+}
+
+function deleteItem(idx) {
+  if (!confirm(`確定刪除「${DATA[idx].name}」？`)) return;
+  DATA.splice(idx, 1);
+  saveData(DATA); buildPage(); renderManageTable();
+}
+
+// ── 批次刪除 ──
+function batchDelete() {
+  const indices = getCheckedIndices();
+  if (indices.length === 0) return;
+  const names   = indices.map(i => DATA[i].name);
+  const preview = names.length <= 5 ? names.join('、') : names.slice(0,5).join('、') + `…等 ${names.length} 筆`;
+  if (!confirm(`確定刪除以下 ${indices.length} 筆教材？\n\n${preview}`)) return;
+  indices.sort((a,b) => b-a).forEach(i => DATA.splice(i, 1));
+  saveData(DATA); buildPage(); renderManageTable();
+}
+
+// ── 勾選工具 ──
+function onRowCheck(event) {
+  const row = event.target.closest('tr');
+  row.classList.toggle('row-checked', event.target.checked);
+  updateBatchBar(); syncCheckAll();
+}
+function toggleAll(masterCb) {
+  document.querySelectorAll('.row-cb').forEach(cb => {
+    cb.checked = masterCb.checked;
+    cb.closest('tr').classList.toggle('row-checked', masterCb.checked);
   });
   updateBatchBar();
 }
-function syncCheckAll(){
-  const cbs=[...document.querySelectorAll('.row-cb')];
-  const allCb=document.getElementById('checkAll');
-  if(!allCb||cbs.length===0){if(allCb)allCb.checked=false;return;}
-  const n=cbs.filter(c=>c.checked).length;
-  allCb.checked=n===cbs.length;
-  allCb.indeterminate=n>0&&n<cbs.length;
+function syncCheckAll() {
+  const cbs   = [...document.querySelectorAll('.row-cb')];
+  const allCb = document.getElementById('checkAll');
+  if (!allCb || cbs.length === 0) { if (allCb) allCb.checked = false; return; }
+  const n = cbs.filter(c => c.checked).length;
+  allCb.checked       = n === cbs.length;
+  allCb.indeterminate = n > 0 && n < cbs.length;
 }
-function getCheckedIndices(){
-  return[...document.querySelectorAll('.row-cb:checked')].map(cb=>parseInt(cb.dataset.idx));
+function getCheckedIndices() {
+  return [...document.querySelectorAll('.row-cb:checked')].map(cb => parseInt(cb.dataset.idx));
 }
-function updateBatchBar(){
-  const checked=getCheckedIndices();
-  document.getElementById('batchBar').classList.toggle('show',checked.length>0);
-  document.getElementById('batchCount').textContent=`已選 ${checked.length} 筆`;
+function updateBatchBar() {
+  const checked = getCheckedIndices();
+  document.getElementById('batchBar').classList.toggle('show', checked.length > 0);
+  document.getElementById('batchCount').textContent = `已選 ${checked.length} 筆`;
 }
-function clearSelection(){
-  document.querySelectorAll('.row-cb').forEach(cb=>{cb.checked=false;cb.closest('tr').classList.remove('row-checked');});
-  const allCb=document.getElementById('checkAll');
-  if(allCb){allCb.checked=false;allCb.indeterminate=false;}
+function clearSelection() {
+  document.querySelectorAll('.row-cb').forEach(cb => { cb.checked = false; cb.closest('tr').classList.remove('row-checked'); });
+  const allCb = document.getElementById('checkAll');
+  if (allCb) { allCb.checked = false; allCb.indeterminate = false; }
   updateBatchBar();
 }
-function batchDelete(){
-  const indices=getCheckedIndices();
-  if(indices.length===0)return;
-  const names=indices.map(i=>DATA[i].name);
-  const preview=names.length<=5?names.join('、'):names.slice(0,5).join('、')+`…等 ${names.length} 筆`;
-  if(!confirm(`確定刪除以下 ${indices.length} 筆教材？\n\n${preview}`))return;
-  indices.sort((a,b)=>b-a).forEach(i=>DATA.splice(i,1));
-  saveData(DATA);buildPage();renderManageTable();
-}
 
-function addItem(){
-  const cat=document.getElementById('addCat').value.trim();
-  const name=document.getElementById('addName').value.trim();
-  const url=document.getElementById('addUrl').value.trim();
-  if(!name){alert('請輸入教材名稱');return;}
-  if(!url){alert('請輸入網址');return;}
-  if(!url.startsWith('http')){alert('網址需以 http 或 https 開頭');return;}
-  DATA.push({cat,name,url,icon:catEmoji(cat)});
-  saveData(DATA);
-  document.getElementById('addName').value='';
-  document.getElementById('addUrl').value='';
-  buildPage();renderManageTable();switchTab(cat);
-  const toast=document.getElementById('toast');
+// ── Toast 提示 ──
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
   toast.classList.add('show');
-  setTimeout(()=>toast.classList.remove('show'),2000);
-}
-function deleteItem(idx){
-  const item=DATA[idx];
-  if(!confirm(`確定刪除「${item.name}」？`))return;
-  DATA.splice(idx,1);saveData(DATA);buildPage();renderManageTable();
-}
-function exportData(){
-  const text=JSON.stringify(DATA,null,2);
-  navigator.clipboard.writeText(text).then(()=>{
-    alert('✅ 已複製到剪貼板！共 '+DATA.length+' 筆教材資料。');
-  }).catch(()=>{prompt('請手動複製以下資料：',text);});
+  setTimeout(() => { toast.classList.remove('show'); toast.textContent = '✅ 已新增！'; }, 2200);
 }
 
-document.getElementById('addUrl').addEventListener('keydown',e=>{if(e.key==='Enter')addItem();});
-document.getElementById('addName').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('addUrl').focus();});
-document.getElementById('catName').addEventListener('keydown',e=>{if(e.key==='Enter')addCategory();});
+// ── 匯出 ──
+function exportData() {
+  const text = JSON.stringify(DATA, null, 2);
+  navigator.clipboard.writeText(text).then(() => {
+    alert('✅ 已複製到剪貼板！共 ' + DATA.length + ' 筆教材資料。');
+  }).catch(() => { prompt('請手動複製以下資料：', text); });
+}
 
+// ── 鍵盤快捷鍵 ──
+document.getElementById('addUrl').addEventListener('keydown',  e => { if (e.key === 'Enter') addItem(); });
+document.getElementById('addName').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('addUrl').focus(); });
+document.getElementById('catName').addEventListener('keydown', e => { if (e.key === 'Enter') addCategory(); });
+
+// ── 初始渲染（用 localStorage 快取，Firestore 到後會覆蓋）──
 injectCatStyles();
 syncCatSelects();
 buildPage();
