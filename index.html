@@ -971,7 +971,8 @@ function exportData() {
 
 // ── 一鍵打包匯出 ──
 function exportPack(format) {
-  const date = new Date().toLocaleDateString('zh-TW').replace(/\//g, '-');
+  const _d = new Date();
+  const date = `${_d.getFullYear()}-${String(_d.getMonth()+1).padStart(2,'0')}-${String(_d.getDate()).padStart(2,'0')}`;
   const cats = CATS.map(cat => ({
     key: cat.key, emoji: cat.emoji, desc: cat.desc, color: cat.color,
     items: DATA.filter(d => d.cat === cat.key)
@@ -985,10 +986,10 @@ function exportPack(format) {
       cat.items.forEach(item => { md += `- [${item.name}](${item.url})\n`; });
       md += '\n';
     });
-    downloadExport('﻿' + md, `science-portal-${date}.md`, 'text/markdown');
+    downloadExport('﻿' + md, `science-portal_${date}.md`, 'text/markdown');
 
   } else if (format === 'html') {
-    downloadExport(buildExportHtml(cats, date, false), `science-portal-${date}.html`, 'text/html');
+    downloadExport(buildExportHtml(cats, date, false), `science-portal_${date}.html`, 'text/html');
 
   } else if (format === 'pdf') {
     const win = window.open('', '_blank');
@@ -998,7 +999,7 @@ function exportPack(format) {
     setTimeout(() => { win.print(); }, 600);
 
   } else if (format === 'docx') {
-    downloadExport(buildExportHtml(cats, date, true), `science-portal-${date}.doc`, 'application/msword');
+    downloadExport(buildExportHtml(cats, date, true), `science-portal_${date}.doc`, 'application/msword');
   }
 }
 
