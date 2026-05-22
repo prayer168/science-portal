@@ -7,40 +7,43 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --g3:#FF6B6B; --g3-light:#2a1a1a; --g3-soft:#3a1a1a;
-    --g4:#FF9F43; --g4-light:#2a1e0d; --g4-soft:#3a2510;
-    --g5:#1DD1A1; --g5-light:#0d2a22; --g5-soft:#103320;
-    --g6:#54A0FF; --g6-light:#0d1e3a; --g6-soft:#102540;
-    --fun:#A29BFE; --fun-light:#1a1730; --fun-soft:#221e3a;
-    --app:#00B894; --app-light:#0d2520; --app-soft:#102e25;
-    --bg:#0d1117; --text:#e6edf3; --text-sub:#8b949e;
-    --card-bg:#161b22;
-    --border:#30363d;
-    --shadow:0 1px 4px rgba(0,0,0,0.4);
-    --shadow-hover:0 4px 16px rgba(0,0,0,0.5);
-    --radius:14px; --radius-sm:10px;
-    --accent:#58a6ff;
+    --g3:#FF6B6B; --g4:#FF9F43; --g5:#1DD1A1; --g6:#54A0FF;
+    --fun:#A29BFE; --app:#00B894;
+    --bg:#111216; --text:#e8eaed; --text-sub:#9aa0a6;
+    --card-bg:#1a1d24; --sidebar-bg:#1a1d24;
+    --border:#252833; --border-soft:#1e2130;
+    --shadow:0 1px 3px rgba(0,0,0,0.5);
+    --accent:#4db8ff;
+    --radius:12px; --radius-sm:8px;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
 
-  /* HEADER */
-  header{background:linear-gradient(135deg,#1a1f35 0%,#0d1117 60%,#1a1a2e 100%);padding:32px 24px 24px;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
-  header::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cg fill='%2358a6ff' fill-opacity='.04'%3E%3Cellipse cx='50' cy='68' rx='14' ry='12'/%3E%3Cellipse cx='28' cy='44' rx='7' ry='8' transform='rotate(-20 28 44)'/%3E%3Cellipse cx='41' cy='35' rx='7' ry='8' transform='rotate(-5 41 35)'/%3E%3Cellipse cx='59' cy='35' rx='7' ry='8' transform='rotate(5 59 35)'/%3E%3Cellipse cx='72' cy='44' rx='7' ry='8' transform='rotate(20 72 44)'/%3E%3C/g%3E%3C/svg%3E");}
-  .header-icon{font-size:48px;margin-bottom:8px;display:block;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.4));}
-  .header-bear{display:block;margin:0 auto 2px;filter:drop-shadow(0 4px 16px rgba(0,0,0,0.5));position:relative;}
-  .bear-badge{display:inline-block;background:rgba(88,166,255,0.12);border:1px solid rgba(88,166,255,0.3);border-radius:20px;padding:5px 16px;font-size:12px;color:rgba(88,166,255,0.9);margin-top:10px;letter-spacing:1.5px;font-weight:700;font-family:'Nunito','Noto Sans TC',sans-serif;}
-  header h1{font-family:'Nunito','Noto Sans TC',sans-serif;font-size:clamp(20px,5vw,30px);font-weight:900;color:#e6edf3;letter-spacing:2px;text-shadow:0 2px 12px rgba(0,0,0,0.4);position:relative;}
-  header p{color:#8b949e;margin-top:6px;font-size:13px;position:relative;}
+  /* HEADER - horizontal nav bar */
+  header{background:#0c0e13;border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;height:62px;position:sticky;top:0;z-index:100;}
+  .header-inner{display:flex;align-items:center;gap:14px;max-width:1200px;margin:0 auto;width:100%;}
+  .header-icon{display:none;}
+  .header-bear{display:block;flex-shrink:0;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.5));}
+  .header-title-wrap{flex:1;min-width:0;}
+  header h1{font-family:'Nunito','Noto Sans TC',sans-serif;font-size:clamp(13px,2vw,18px);font-weight:900;color:#e8eaed;letter-spacing:0.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  header p{color:#6b7280;font-size:11px;margin-top:1px;}
+  .bear-badge{display:none;}
 
-  /* HEADER RIGHT BUTTONS */
-  .header-btns{position:absolute;top:16px;right:16px;display:flex;gap:8px;align-items:center;}
-  .manage-toggle{background:rgba(88,166,255,0.1);border:1px solid rgba(88,166,255,0.3);color:#58a6ff;border-radius:6px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:'Noto Sans TC',sans-serif;letter-spacing:0.5px;}
-  .manage-toggle:hover{background:rgba(88,166,255,0.2);border-color:#58a6ff;}
-  .manage-toggle.active{background:#58a6ff;color:#0d1117;border-color:#58a6ff;}
-  .btn-signout{background:rgba(139,148,158,0.1);border:1px solid rgba(139,148,158,0.3);color:#8b949e;border-radius:6px;padding:7px 12px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:'Noto Sans TC',sans-serif;display:none;}
-  .btn-signout:hover{background:rgba(139,148,158,0.2);color:#e6edf3;}
+  /* HEADER BUTTONS */
+  .header-btns{display:flex;gap:8px;align-items:center;flex-shrink:0;}
+  .manage-toggle{background:rgba(77,184,255,0.1);border:1px solid rgba(77,184,255,0.25);color:#4db8ff;border-radius:6px;padding:6px 14px;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:'Noto Sans TC',sans-serif;}
+  .manage-toggle:hover{background:rgba(77,184,255,0.2);}
+  .manage-toggle.active{background:#4db8ff;color:#0c0e13;border-color:#4db8ff;}
+  .btn-signout{background:rgba(154,160,166,0.1);border:1px solid rgba(154,160,166,0.2);color:#9aa0a6;border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:'Noto Sans TC',sans-serif;display:none;}
+  .btn-signout:hover{background:rgba(154,160,166,0.2);color:#e8eaed;}
   .user-avatar{width:28px;height:28px;border-radius:50%;border:2px solid var(--border);display:none;vertical-align:middle;}
+
+  /* PAGE LAYOUT - two columns */
+  .page-wrap{display:grid;grid-template-columns:1fr 236px;gap:0;max-width:1200px;margin:0 auto;padding:0 24px;align-items:start;}
+  .main-col{min-width:0;}
+  .sidebar{position:sticky;top:70px;padding:20px 0 20px 20px;}
+  .sidebar-box{background:var(--sidebar-bg);border:1px solid var(--border);border-radius:var(--radius);padding:16px 14px;}
+  .sidebar-title{font-size:10px;font-weight:700;color:#6b7280;margin-bottom:10px;letter-spacing:2px;text-transform:uppercase;}
 
   /* LOGIN OVERLAY */
   .login-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(6px);z-index:1000;display:flex;align-items:center;justify-content:center;}
@@ -57,17 +60,16 @@
   .login-error{margin-top:10px;font-size:13px;color:#f85149;font-weight:600;min-height:20px;}
   .login-loading{margin-top:10px;font-size:13px;color:#58a6ff;display:none;}
 
-  /* TABS */
-  .tab-bar{display:flex;gap:4px;padding:16px 16px 0;overflow-x:auto;justify-content:center;flex-wrap:wrap;max-width:960px;margin:0 auto;-webkit-overflow-scrolling:touch;}
-  .tab-bar::-webkit-scrollbar{display:none;}
-  .tab-btn{font-family:'Nunito','Noto Sans TC',sans-serif;font-weight:700;font-size:14px;border:1px solid transparent;cursor:pointer;border-radius:6px;padding:8px 18px;transition:all 0.18s;white-space:nowrap;background:transparent;color:#8b949e;letter-spacing:0.3px;}
-  .tab-btn .tab-count{display:inline-block;background:rgba(139,148,158,0.15);color:#8b949e;font-size:11px;border-radius:20px;padding:1px 6px;margin-left:4px;font-weight:700;vertical-align:middle;}
-  .tab-btn.active{color:#e6edf3;background:#21262d;border-color:var(--border);}
-  .tab-btn.active .tab-count{background:rgba(88,166,255,0.2);color:#58a6ff;}
-  .tab-btn:not(.active):hover{color:#e6edf3;background:rgba(255,255,255,0.05);}
+  /* TABS - vertical sidebar */
+  .tab-bar{display:flex;flex-direction:column;gap:2px;}
+  .tab-btn{font-family:'Noto Sans TC',sans-serif;font-weight:600;font-size:13px;border:none;border-left:3px solid transparent;cursor:pointer;border-radius:0 6px 6px 0;padding:7px 10px;transition:all 0.18s;white-space:nowrap;background:transparent;color:#8b949e;text-align:left;width:100%;}
+  .tab-btn .tab-count{display:inline-block;background:rgba(139,148,158,0.12);color:#8b949e;font-size:10px;border-radius:20px;padding:1px 5px;margin-left:4px;font-weight:700;vertical-align:middle;}
+  .tab-btn.active{color:var(--text);background:rgba(255,255,255,0.06);border-left-color:var(--accent);}
+  .tab-btn.active .tab-count{background:rgba(77,184,255,0.15);color:#4db8ff;}
+  .tab-btn:not(.active):hover{color:#c9d1d9;background:rgba(255,255,255,0.04);}
 
   /* MANAGE PANEL */
-  .manage-panel{display:none;max-width:960px;margin:0 auto;padding:16px 16px 0;}
+  .manage-panel{display:none;padding:16px 16px 0;}
   .manage-panel.open{display:block;animation:fadeUp 0.25s ease;}
   .panel-box{background:#161b22;border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;border:1px solid var(--border);}
   .panel-title{font-size:15px;font-weight:800;color:#58a6ff;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
@@ -117,6 +119,21 @@
   .btn-export:hover{background:#1a3a5c;border-color:#58a6ff;}
   .export-hint{font-size:11px;color:var(--text-sub);}
 
+  /* EXPORT PACK */
+  .export-pack-box{margin-top:16px;padding:16px 18px;background:#0d1117;border:1px solid var(--border);border-radius:var(--radius-sm);}
+  .export-pack-title{font-size:14px;font-weight:800;color:#e8eaed;margin-bottom:5px;display:flex;align-items:center;gap:6px;}
+  .export-pack-desc{font-size:12px;color:var(--text-sub);margin-bottom:12px;}
+  .export-format-btns{display:flex;gap:8px;flex-wrap:wrap;}
+  .btn-fmt{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;border:1px solid;transition:all 0.18s;font-family:'Noto Sans TC',sans-serif;white-space:nowrap;}
+  .btn-fmt-md{background:rgba(77,184,255,0.08);color:#4db8ff;border-color:rgba(77,184,255,0.3);}
+  .btn-fmt-md:hover{background:rgba(77,184,255,0.18);border-color:#4db8ff;}
+  .btn-fmt-html{background:rgba(255,159,67,0.08);color:#FF9F43;border-color:rgba(255,159,67,0.3);}
+  .btn-fmt-html:hover{background:rgba(255,159,67,0.18);border-color:#FF9F43;}
+  .btn-fmt-pdf{background:rgba(248,81,73,0.08);color:#f85149;border-color:rgba(248,81,73,0.3);}
+  .btn-fmt-pdf:hover{background:rgba(248,81,73,0.18);border-color:#f85149;}
+  .btn-fmt-docx{background:rgba(63,185,80,0.08);color:#3fb950;border-color:rgba(63,185,80,0.3);}
+  .btn-fmt-docx:hover{background:rgba(63,185,80,0.18);border-color:#3fb950;}
+
   /* RENAME */
   .btn-rename{background:transparent;color:#58a6ff;border:1px solid #1a3a5c;border-radius:6px;padding:4px 8px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.18s;font-family:'Noto Sans TC',sans-serif;white-space:nowrap;}
   .btn-rename:hover{background:#1a3a5c;border-color:#58a6ff;}
@@ -153,7 +170,7 @@
   .cat-lock-hint{font-size:11px;color:#484f58;margin-top:8px;}
 
   /* CONTENT */
-  .content-area{max-width:960px;margin:0 auto;padding:16px 16px 48px;}
+  .content-area{padding:16px 16px 48px;}
   .category-section{display:none;}
   .category-section.active{display:block;animation:fadeUp 0.28s ease;}
   @keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
@@ -172,8 +189,16 @@
   .empty-state .empty-icon{font-size:36px;margin-bottom:10px;}
 
   footer{text-align:center;padding:20px;color:#484f58;font-size:12px;border-top:1px solid var(--border);}
+  @media(max-width:760px){
+    .page-wrap{grid-template-columns:1fr;}
+    .sidebar{position:static;padding:0;order:-1;}
+    .sidebar-box{border-radius:0;border-left:none;border-right:none;}
+    .tab-bar{flex-direction:row;flex-wrap:wrap;gap:4px;padding:10px 12px;}
+    .tab-btn{border-left:none;border-bottom:3px solid transparent;border-radius:6px;width:auto;padding:6px 12px;}
+    .tab-btn.active{border-bottom-color:var(--accent);background:rgba(255,255,255,0.08);}
+  }
   @media(max-width:640px){.add-form{grid-template-columns:1fr 1fr;}}
-  @media(max-width:480px){.tab-btn{font-size:13px;padding:7px 14px;}.add-form{grid-template-columns:1fr;}.header-btns{top:10px;right:10px;gap:5px;}.manage-toggle{padding:6px 10px;font-size:12px;}}
+  @media(max-width:480px){.add-form{grid-template-columns:1fr;}.manage-toggle{padding:6px 10px;font-size:12px;}}
 </style>
 </head>
 <body>
@@ -195,55 +220,45 @@
 </div>
 
 <header>
-  <!-- 台灣黑熊吉祥物 -->
-  <div class="header-bear">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 112" width="96" height="108">
-      <!-- Body -->
-      <ellipse cx="50" cy="86" rx="28" ry="24" fill="#111827"/>
-      <!-- Head -->
-      <circle cx="50" cy="50" r="26" fill="#111827"/>
-      <!-- Outer ears -->
-      <circle cx="27" cy="27" r="12" fill="#111827"/>
-      <circle cx="73" cy="27" r="12" fill="#111827"/>
-      <!-- Inner ears (pink-brown) -->
-      <circle cx="27" cy="27" r="6.5" fill="#7c3f4f"/>
-      <circle cx="73" cy="27" r="6.5" fill="#7c3f4f"/>
-      <!-- Muzzle -->
-      <ellipse cx="50" cy="59" rx="13" ry="10" fill="#3b2213"/>
-      <!-- Eye whites -->
-      <circle cx="41" cy="45" r="5.5" fill="white"/>
-      <circle cx="59" cy="45" r="5.5" fill="white"/>
-      <!-- Pupils -->
-      <circle cx="42" cy="45" r="3.5" fill="#111"/>
-      <circle cx="60" cy="45" r="3.5" fill="#111"/>
-      <!-- Eye shines -->
-      <circle cx="43.8" cy="43.2" r="1.3" fill="white"/>
-      <circle cx="61.8" cy="43.2" r="1.3" fill="white"/>
-      <!-- Nose -->
-      <ellipse cx="50" cy="53" rx="3.5" ry="2.5" fill="#111"/>
-      <!-- Mouth -->
-      <path d="M44 60 Q50 66 56 60" stroke="#111" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-      <!-- 白色月形胸紋（台灣黑熊特徵）-->
-      <path d="M35 75 Q43 95 50 99 Q57 95 65 75" stroke="white" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      <!-- Arms -->
-      <ellipse cx="20" cy="89" rx="9" ry="7" fill="#111827"/>
-      <ellipse cx="80" cy="89" rx="9" ry="7" fill="#111827"/>
-      <!-- Feet -->
-      <ellipse cx="37" cy="107" rx="11" ry="6" fill="#111827"/>
-      <ellipse cx="63" cy="107" rx="11" ry="6" fill="#111827"/>
-    </svg>
-  </div>
-  <h1>黑熊老師自然科學數位教材中心</h1>
-  <p>點擊卡片即可開啟互動教材</p>
-  <div class="bear-badge">🐾 台灣黑熊 · 守護自然</div>
-  <div class="header-btns">
-    <img class="user-avatar" id="userAvatar" src="" alt="avatar">
-    <button class="btn-signout" id="btnSignOut" onclick="signOut()">登出</button>
-    <button class="manage-toggle" id="manageToggle" onclick="onManageClick()">⚙️ 管理教材</button>
+  <div class="header-inner">
+    <div class="header-bear">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 112" width="42" height="47">
+        <ellipse cx="50" cy="86" rx="28" ry="24" fill="#111827"/>
+        <circle cx="50" cy="50" r="26" fill="#111827"/>
+        <circle cx="27" cy="27" r="12" fill="#111827"/>
+        <circle cx="73" cy="27" r="12" fill="#111827"/>
+        <circle cx="27" cy="27" r="6.5" fill="#7c3f4f"/>
+        <circle cx="73" cy="27" r="6.5" fill="#7c3f4f"/>
+        <ellipse cx="50" cy="59" rx="13" ry="10" fill="#3b2213"/>
+        <circle cx="41" cy="45" r="5.5" fill="white"/>
+        <circle cx="59" cy="45" r="5.5" fill="white"/>
+        <circle cx="42" cy="45" r="3.5" fill="#111"/>
+        <circle cx="60" cy="45" r="3.5" fill="#111"/>
+        <circle cx="43.8" cy="43.2" r="1.3" fill="white"/>
+        <circle cx="61.8" cy="43.2" r="1.3" fill="white"/>
+        <ellipse cx="50" cy="53" rx="3.5" ry="2.5" fill="#111"/>
+        <path d="M44 60 Q50 66 56 60" stroke="#111" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <path d="M35 75 Q43 95 50 99 Q57 95 65 75" stroke="white" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <ellipse cx="20" cy="89" rx="9" ry="7" fill="#111827"/>
+        <ellipse cx="80" cy="89" rx="9" ry="7" fill="#111827"/>
+        <ellipse cx="37" cy="107" rx="11" ry="6" fill="#111827"/>
+        <ellipse cx="63" cy="107" rx="11" ry="6" fill="#111827"/>
+      </svg>
+    </div>
+    <div class="header-title-wrap">
+      <h1>黑熊老師自然科學數位教材中心</h1>
+      <p>🐾 台灣黑熊自然科 · 互動數位教材</p>
+    </div>
+    <div class="header-btns">
+      <img class="user-avatar" id="userAvatar" src="" alt="avatar">
+      <button class="btn-signout" id="btnSignOut" onclick="signOut()">登出</button>
+      <button class="manage-toggle" id="manageToggle" onclick="onManageClick()">⚙️ 管理教材</button>
+    </div>
   </div>
 </header>
 
-<nav class="tab-bar" id="tabBar"></nav>
+<div class="page-wrap">
+  <div class="main-col">
 
 <!-- 管理面板 -->
 <div class="manage-panel" id="managePanel">
@@ -301,6 +316,18 @@
       <span class="export-hint">可備份教材清單，或傳給 Claude 匯入</span>
     </div>
 
+    <!-- 一鍵打包匯出 -->
+    <div class="export-pack-box">
+      <div class="export-pack-title">📦 一鍵打包匯出</div>
+      <div class="export-pack-desc">將全部教材按分類整理，選擇格式下載：</div>
+      <div class="export-format-btns">
+        <button class="btn-fmt btn-fmt-md"   onclick="exportPack('md')">⬇ Markdown (.md)</button>
+        <button class="btn-fmt btn-fmt-html" onclick="exportPack('html')">⬇ 網頁 (.html)</button>
+        <button class="btn-fmt btn-fmt-pdf"  onclick="exportPack('pdf')">🖨 PDF（列印存檔）</button>
+        <button class="btn-fmt btn-fmt-docx" onclick="exportPack('docx')">⬇ Word (.doc)</button>
+      </div>
+    </div>
+
     <!-- 類別管理 -->
     <div class="cat-manage-box">
       <div class="cat-manage-title">🗂️ 類別管理</div>
@@ -321,6 +348,15 @@
     <div>教材資料載入中…</div>
   </div>
 </main>
+
+  </div><!-- /.main-col -->
+  <aside class="sidebar">
+    <div class="sidebar-box">
+      <div class="sidebar-title">目錄</div>
+      <nav class="tab-bar" id="tabBar"></nav>
+    </div>
+  </aside>
+</div><!-- /.page-wrap -->
 <footer>🐻 黑熊老師的自然科學數位教材 · 持續更新中 🐾</footer>
 
 <!-- Firebase SDK -->
@@ -617,15 +653,11 @@ function soften(hex) {
 function injectCatStyles() {
   let css = '';
   CATS.forEach(cat => {
-    const c = cat.color, light = lighten(c), soft = soften(c);
-    css += `.tab-btn[data-cat="${cat.key}"]{background:${light};color:${c};}`;
-    css += `.tab-btn[data-cat="${cat.key}"].active{background:${c};color:#fff;box-shadow:0 4px 18px ${light};}`;
-    css += `[data-section="${cat.key}"] .section-header{background:${light};color:${c};}`;
-    css += `[data-section="${cat.key}"] .section-title,[data-section="${cat.key}"] .section-subtitle{color:${c};}`;
-    css += `[data-section="${cat.key}"] .card:hover{border-color:${c};}`;
-    css += `[data-section="${cat.key}"] .card::before{background:${c};}`;
-    css += `[data-section="${cat.key}"] .card-icon{background:${soft};}`;
-    css += `[data-section="${cat.key}"] .card-arrow{color:${c};}`;
+    const c = cat.color, light = lighten(c);
+    css += `.tab-btn[data-cat="${cat.key}"].active{border-left-color:${c};color:${c};}`;
+    css += `[data-section="${cat.key}"] .section-title{color:${c};}`;
+    css += `[data-section="${cat.key}"] .card-icon{background:${light};}`;
+    css += `[data-section="${cat.key}"] .card-arrow{color:${c};opacity:0.8;}`;
   });
   let el = document.getElementById('dynCatStyle');
   if (!el) { el = document.createElement('style'); el.id = 'dynCatStyle'; document.head.appendChild(el); }
@@ -713,7 +745,7 @@ function buildPage() {
         <a class="card" href="${item.url}" target="_blank" rel="noopener">
           <div class="card-icon">${ICON_MAP[item.name] || item.icon}</div>
           <div class="card-name">${item.name}</div>
-          <div class="card-arrow">開啟 →</div>
+          <div class="card-arrow">↗</div>
         </a>`).join('');
     section.innerHTML = `
       <div class="section-header">
@@ -936,6 +968,91 @@ function exportData() {
   navigator.clipboard.writeText(text).then(() => {
     alert('✅ 已複製到剪貼板！共 ' + DATA.length + ' 筆教材資料。');
   }).catch(() => { prompt('請手動複製以下資料：', text); });
+}
+
+// ── 一鍵打包匯出 ──
+function exportPack(format) {
+  const date = new Date().toLocaleDateString('zh-TW').replace(/\//g, '-');
+  const cats = CATS.map(cat => ({
+    key: cat.key, emoji: cat.emoji, desc: cat.desc, color: cat.color,
+    items: DATA.filter(d => d.cat === cat.key)
+  }));
+
+  if (format === 'md') {
+    let md = `# 🐻 黑熊老師自然科學數位教材中心\n\n> 匯出時間：${date}　·　共 ${DATA.length} 個教材\n\n---\n\n`;
+    cats.forEach(cat => {
+      md += `## ${cat.emoji} ${cat.key}\n\n`;
+      if (cat.items.length === 0) { md += '_（尚無教材）_\n\n'; return; }
+      cat.items.forEach(item => { md += `- [${item.name}](${item.url})\n`; });
+      md += '\n';
+    });
+    downloadExport('﻿' + md, `science-portal-${date}.md`, 'text/markdown');
+
+  } else if (format === 'html') {
+    downloadExport(buildExportHtml(cats, date, false), `science-portal-${date}.html`, 'text/html');
+
+  } else if (format === 'pdf') {
+    const win = window.open('', '_blank');
+    win.document.write(buildExportHtml(cats, date, true));
+    win.document.close();
+    win.focus();
+    setTimeout(() => { win.print(); }, 600);
+
+  } else if (format === 'docx') {
+    downloadExport(buildExportHtml(cats, date, true), `science-portal-${date}.doc`, 'application/msword');
+  }
+}
+
+function downloadExport(content, filename, mimeType) {
+  const blob = new Blob([content], { type: mimeType + ';charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+
+function buildExportHtml(cats, date, forPrint) {
+  const catSections = cats.map(cat => {
+    const items = cat.items.map(item =>
+      `<li><a href="${item.url}"${forPrint ? '' : ' target="_blank"'}>${item.name}</a></li>`
+    ).join('');
+    return `<section>
+      <h2 style="color:${cat.color};margin:32px 0 10px;font-size:18px;display:flex;align-items:baseline;gap:8px;border-bottom:2px solid ${cat.color};padding-bottom:6px;">
+        ${cat.emoji} ${cat.key}
+        <span style="color:#888;font-size:13px;font-weight:400;">${cat.items.length} 個教材</span>
+      </h2>
+      ${cat.items.length ? `<ul style="margin:8px 0 0;padding-left:22px;line-height:2.1;">${items}</ul>` : '<p style="color:#888;margin:8px 0;">（尚無教材）</p>'}
+    </section>`;
+  }).join('');
+
+  return `<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>黑熊老師自然科學數位教材中心</title>
+<style>
+  body{font-family:'Noto Sans TC','Microsoft JhengHei','PingFang TC',sans-serif;max-width:800px;margin:40px auto;padding:0 28px 60px;color:#1a1a2e;line-height:1.7;font-size:15px;}
+  h1{font-size:24px;color:#111;margin-bottom:4px;font-weight:900;}
+  .meta{color:#666;font-size:13px;margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid #e5e7eb;}
+  a{color:#0070f3;text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  li{padding:1px 0;}
+  @media print{
+    body{margin:0;padding:20px;}
+    a{color:#1a1a2e;}
+    h2{break-after:avoid;}
+    section{break-inside:avoid;}
+    @page{margin:18mm 20mm;}
+  }
+</style>
+</head>
+<body>
+<h1>🐻 黑熊老師自然科學數位教材中心</h1>
+<div class="meta">匯出時間：${date}　·　共 ${DATA.length} 個教材</div>
+${catSections}
+</body>
+</html>`;
 }
 
 // ── 鍵盤快捷鍵 ──
