@@ -316,17 +316,6 @@
       <span class="export-hint">可備份教材清單，或傳給 Claude 匯入</span>
     </div>
 
-    <!-- 一鍵打包匯出 -->
-    <div class="export-pack-box">
-      <div class="export-pack-title">📦 一鍵打包匯出</div>
-      <div class="export-pack-desc">將全部教材按分類整理，選擇格式下載：</div>
-      <div class="export-format-btns">
-        <button class="btn-fmt btn-fmt-md"   onclick="exportPack('md')">⬇ Markdown (.md)</button>
-        <button class="btn-fmt btn-fmt-html" onclick="exportPack('html')">⬇ 網頁 (.html)</button>
-        <button class="btn-fmt btn-fmt-pdf"  onclick="exportPack('pdf')">🖨 PDF（列印存檔）</button>
-        <button class="btn-fmt btn-fmt-docx" onclick="exportPack('docx')">⬇ Word (.doc)</button>
-      </div>
-    </div>
 
     <!-- 類別管理 -->
     <div class="cat-manage-box">
@@ -354,6 +343,16 @@
     <div class="sidebar-box">
       <div class="sidebar-title">目錄</div>
       <nav class="tab-bar" id="tabBar"></nav>
+    </div>
+    <div class="sidebar-box" style="margin-top:10px;">
+      <div class="sidebar-title">打包匯出</div>
+      <div style="font-size:11px;color:var(--text-sub);margin-bottom:10px;">按分類整理全部教材</div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <button class="btn-fmt btn-fmt-md"   onclick="exportPack('md')"   style="width:100%;justify-content:center;font-size:12px;padding:7px 10px;">⬇ Markdown (.md)</button>
+        <button class="btn-fmt btn-fmt-html" onclick="exportPack('html')" style="width:100%;justify-content:center;font-size:12px;padding:7px 10px;">⬇ 網頁 (.html)</button>
+        <button class="btn-fmt btn-fmt-pdf"  onclick="exportPack('pdf')"  style="width:100%;justify-content:center;font-size:12px;padding:7px 10px;">🖨 PDF（列印）</button>
+        <button class="btn-fmt btn-fmt-docx" onclick="exportPack('docx')" style="width:100%;justify-content:center;font-size:12px;padding:7px 10px;">⬇ Word (.doc)</button>
+      </div>
     </div>
   </aside>
 </div><!-- /.page-wrap -->
