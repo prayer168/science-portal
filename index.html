@@ -184,12 +184,16 @@
   .section-title{font-family:'Nunito','Noto Sans TC',sans-serif;font-size:17px;font-weight:900;letter-spacing:0.5px;color:var(--text);}
   .section-subtitle{font-size:11px;color:var(--text-sub);margin-top:2px;}
   .card-grid{display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);}
-  .card{background:var(--card-bg);padding:13px 18px;cursor:pointer;text-decoration:none;color:var(--text);transition:background 0.15s;display:flex;flex-direction:row;align-items:center;gap:14px;border:none;position:relative;}
-  .card:hover{background:#1c2128;}
+  .card{background:var(--card-bg);padding:13px 18px;cursor:pointer;text-decoration:none;color:var(--text);transition:background 0.18s, transform 0.18s, box-shadow 0.18s;display:flex;flex-direction:row;align-items:center;gap:14px;border:none;position:relative;}
+  .card:hover{background:#243044;transform:scale(1.012) translateX(3px);box-shadow:0 4px 18px rgba(0,0,0,0.28);z-index:2;}
   .card::before{display:none;}
-  .card-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+  .card-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;transition:transform 0.18s;}
+  .card:hover .card-icon{transform:rotate(-8deg) scale(1.18);}
   .card-name{font-size:14px;font-weight:600;line-height:1.4;color:var(--text);flex:1;}
-  .card-arrow{font-size:12px;font-weight:700;color:var(--text-sub);flex-shrink:0;margin-top:0;}
+  .card-arrow{font-size:12px;font-weight:700;color:var(--text-sub);flex-shrink:0;margin-top:0;transition:transform 0.18s;}
+  .card:hover .card-arrow{transform:translateX(4px);}
+  @keyframes cardBounce{0%{transform:scale(1.012) translateX(3px)}30%{transform:scale(1.012) translateX(3px) rotate(1.2deg)}60%{transform:scale(1.012) translateX(3px) rotate(-0.8deg)}100%{transform:scale(1.012) translateX(3px) rotate(0deg)}}
+  .card:hover{animation:cardBounce 0.35s ease forwards;}
   .empty-state{text-align:center;padding:36px 20px;color:var(--text-sub);font-size:14px;}
   .empty-state .empty-icon{font-size:36px;margin-bottom:10px;}
 
@@ -1194,6 +1198,29 @@ document.getElementById('catName').addEventListener('keydown', e => { if (e.key 
 injectCatStyles();
 syncCatSelects();
 buildPage();
+</script>
+
+<script>
+function playDong() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const o = ctx.createOscillator();
+    const g = ctx.createGain();
+    o.connect(g); g.connect(ctx.destination);
+    o.type = 'sine';
+    o.frequency.setValueAtTime(220, ctx.currentTime);
+    o.frequency.exponentialRampToValueAtTime(110, ctx.currentTime + 0.3);
+    g.gain.setValueAtTime(0.35, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.45);
+    o.start(ctx.currentTime);
+    o.stop(ctx.currentTime + 0.45);
+  } catch(e) {}
+}
+document.addEventListener('mouseenter', function(e) {
+  if (e.target && e.target.closest && e.target.closest('.card')) {
+    playDong();
+  }
+}, true);
 </script>
 </body>
 </html>
