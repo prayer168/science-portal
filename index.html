@@ -1201,24 +1201,35 @@ buildPage();
 </script>
 
 <script>
-function playDong() {
+// 共用 AudioContext（瀏覽器要求先有互動才能建立）
+let _audioCtx = null;
+function getCtx() {
+  if (!_audioCtx) _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (_audioCtx.state === 'suspended') _audioCtx.resume();
+  return _audioCtx;
+}
+// 第一次點擊 / 觸摸時初始化 AudioContext
+document.addEventListener('click', () => getCtx(), { once: false });
+document.addEventListener('touchstart', () => getCtx(), { once: false });
+
+function playSlide() {
   try {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const ctx = getCtx();
     const o = ctx.createOscillator();
     const g = ctx.createGain();
     o.connect(g); g.connect(ctx.destination);
     o.type = 'sine';
-    o.frequency.setValueAtTime(880, ctx.currentTime);
-    o.frequency.exponentialRampToValueAtTime(220, ctx.currentTime + 0.18);
-    g.gain.setValueAtTime(0.18, ctx.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
+    o.frequency.setValueAtTime(900, ctx.currentTime);
+    o.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.15);
+    g.gain.setValueAtTime(0.22, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.18);
     o.start(ctx.currentTime);
-    o.stop(ctx.currentTime + 0.2);
+    o.stop(ctx.currentTime + 0.18);
   } catch(e) {}
 }
 document.addEventListener('mouseenter', function(e) {
   if (e.target && e.target.closest && e.target.closest('.card')) {
-    playDong();
+    playSlide();
   }
 }, true);
 </script>
