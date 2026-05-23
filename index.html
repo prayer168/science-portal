@@ -1227,18 +1227,15 @@ function playSlide() {
     o.stop(ctx.currentTime + 0.18);
   } catch(e) {}
 }
-let _lastCard = null;
-document.addEventListener('mouseenter', function(e) {
+let _soundCooldown = false;
+document.addEventListener('mouseover', function(e) {
   const card = e.target && e.target.closest && e.target.closest('.card');
-  if (card && card !== _lastCard) {
-    _lastCard = card;
+  if (card && !_soundCooldown) {
+    _soundCooldown = true;
     playSlide();
+    setTimeout(() => { _soundCooldown = false; }, 300);
   }
-}, true);
-document.addEventListener('mouseleave', function(e) {
-  const card = e.target && e.target.closest && e.target.closest('.card');
-  if (card && card === _lastCard) _lastCard = null;
-}, true);
+});
 </script>
 </body>
 </html>
