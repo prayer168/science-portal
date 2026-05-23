@@ -173,6 +173,8 @@
   .cat-tag-rename:hover{background:rgba(255,255,255,0.25);}
   .cat-rename-input{background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.4);border-radius:4px;color:#fff;font-size:12px;font-weight:700;font-family:'Noto Sans TC',sans-serif;padding:1px 6px;width:80px;outline:none;}
   .cat-lock-hint{font-size:11px;color:#484f58;margin-top:8px;}
+  .drag-over{background:#1a2a3a !important;outline:2px dashed #4db8ff;}
+  .drag-handle:hover{color:#4db8ff !important;}
 
   /* CONTENT */
   .content-area{padding:16px 16px 48px;}
@@ -376,6 +378,7 @@
     <div style="overflow-x:auto;">
       <table class="manage-table">
         <thead><tr>
+          <th style="width:28px;"></th>
           <th><input type="checkbox" class="th-cb" id="checkAll" onchange="toggleAll(this)" title="全選／取消全選"></th>
           <th>類別</th><th>名稱</th><th>網址</th><th>操作</th>
         </tr></thead>
@@ -949,6 +952,9 @@ function buildPage() {
 function switchTab(catKey) {
   currentTab = catKey;
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === catKey));
+  // 同步管理列表篩選
+  const filterEl = document.getElementById('filterCat');
+  if (filterEl && manageOpen) { filterEl.value = catKey; renderManageTable(); }
   document.querySelectorAll('.category-section').forEach(s => s.classList.toggle('active', s.dataset.section === catKey));
 }
 
@@ -985,19 +991,28 @@ function toggleManagePanel() { manageOpen ? closeManagePanel() : openManagePanel
 let filteredIndices = [];
 
 function renderManageTable() {
-  const filter   = document.getElementById('filterCat').value;
-  const filtered = DATA.map((item, i) => ({item, i})).filter(({item}) => !filter || item.cat === filter);
+  const filter = document.getElementById('filterCat').value;
+  // 按類別排序（依照 CATS 順序），再依原本 DATA 順序
+  const catOrder = CATS.map(c => c.key);
+  const sorted = DATA.map((item, i) => ({item, i}))
+    .sort((a, b) => {
+      const ai = catOrder.indexOf(a.item.cat);
+      const bi = catOrder.indexOf(b.item.cat);
+      return ai !== bi ? ai - bi : a.i - b.i;
+    });
+  const filtered = sorted.filter(({item}) => !filter || item.cat === filter);
   filteredIndices = filtered.map(f => f.i);
   document.getElementById('listCount').textContent = `共 ${filtered.length} 筆（全部 ${DATA.length} 筆）`;
   const tbody = document.getElementById('manageTableBody');
   if (filtered.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:24px;color:#999;">此類別尚無教材</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:24px;color:#999;">此類別尚無教材</td></tr>`;
     updateBatchBar(); return;
   }
   tbody.innerHTML = filtered.map(({item, i}) => {
     const color    = catColor(item.cat);
     const moveOpts = CATS.filter(c => c.key !== item.cat).map(c => `<option value="${c.key}">${c.emoji} ${c.key}</option>`).join('');
-    return `<tr data-idx="${i}">
+    return `<tr data-idx="${i}" draggable="true">
+      <td style="cursor:grab;color:#555;font-size:16px;text-align:center;user-select:none;" class="drag-handle" title="拖曳排序">⠿</td>
       <td><input type="checkbox" class="row-cb" data-idx="${i}" onchange="onRowCheck(event)"></td>
       <td><span class="cat-badge" style="background:${color}">${item.cat}</span></td>
       <td class="td-name" id="namecell-${i}">${item.icon} ${item.name}</td>
@@ -1012,6 +1027,47 @@ function renderManageTable() {
     </tr>`;
   }).join('');
   updateBatchBar(); syncCheckAll();
+  initDragSort(tbody, filtered);
+}
+
+// ── 拖曳排序 ──
+function initDragSort(tbody, filtered) {
+  let dragIdx = null;
+  let dragDataIdx = null;
+  tbody.querySelectorAll('tr[draggable]').forEach((row, pos) => {
+    row.addEventListener('dragstart', e => {
+      dragIdx = pos;
+      dragDataIdx = parseInt(row.dataset.idx);
+      row.style.opacity = '0.4';
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    row.addEventListener('dragend', e => {
+      row.style.opacity = '';
+      tbody.querySelectorAll('tr').forEach(r => r.classList.remove('drag-over'));
+    });
+    row.addEventListener('dragover', e => {
+      e.preventDefault();
+      tbody.querySelectorAll('tr').forEach(r => r.classList.remove('drag-over'));
+      row.classList.add('drag-over');
+    });
+    row.addEventListener('drop', e => {
+      e.preventDefault();
+      if (dragIdx === null || dragIdx === pos) return;
+      const targetDataIdx = parseInt(row.dataset.idx);
+      // 只允許同類別內拖曳
+      if (DATA[dragDataIdx].cat !== DATA[targetDataIdx].cat) {
+        alert('只能在相同類別內拖曳排序');
+        return;
+      }
+      // 在 DATA 中移動
+      const item = DATA.splice(dragDataIdx, 1)[0];
+      const newPos = DATA.indexOf(DATA[targetDataIdx]);
+      DATA.splice(newPos, 0, item);
+      saveData(DATA);
+      buildPage();
+      renderManageTable();
+    });
+  });
 }
 
 // ── 重新命名 ──
