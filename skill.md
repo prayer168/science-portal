@@ -19,7 +19,7 @@ description: >
 - Firestore 雲端同步（跨裝置資料一致）
 - 教材的新增、刪除、移動類別、重新命名
 - 批次操作（勾選多筆刪除或移動）
-- 自訂類別（新增 / 刪除）
+- 自訂類別（新增 / 刪除 / 重新命名）
 - 資料匯出（複製 JSON 備份）
 
 ---
@@ -84,7 +84,7 @@ service cloud.firestore {
   登入彈窗（loginOverlay）
   <header>  吉祥物 SVG + 標題 + 管理按鈕
   <nav>     分類 Tab 列（tabBar）
-  管理面板  新增表單 + 管理表格 + 類別管理
+  管理面板  類別管理（上）+ 新增表單 + 管理表格（下）
   <main>    各類別卡片區（category-section）
   <footer>
 
@@ -102,6 +102,7 @@ service cloud.firestore {
 ```
 Firestore onSnapshot
   └─▶ window._firestoreDataCallback(materials, customCats)
+        └─▶ applyIconMap(materials)        ← 強制套用 icon 對照表
         └─▶ DATA = materials
         └─▶ CATS = [...DEFAULT_CATS, ...customCats]
         └─▶ buildPage()
@@ -118,11 +119,14 @@ Firestore onSnapshot
 | `saveData(d)` | 儲存至 localStorage + Firestore |
 | `saveExtraCats(cats)` | 儲存自訂類別至 localStorage + Firestore |
 | `renderManageTable()` | 渲染管理後台的教材列表 |
+| `applyIconMap(arr)` | 對照 MATERIAL_ICON_MAP 強制修正教材 icon |
 | `startRename(idx)` | 將名稱欄位切換為可編輯 input |
 | `confirmRename(idx)` | 確認改名並儲存 |
 | `moveItem(idx, newCat)` | 移動單筆教材至其他類別 |
 | `batchMove()` | 批次移動所選教材 |
 | `batchDelete()` | 批次刪除所選教材 |
+| `startRenameCategory(key)` | 類別標籤切換為重新命名輸入框 |
+| `confirmRenameCategory(key)` | 確認類別改名，同步更新所有教材的 cat 欄位 |
 
 ---
 
@@ -148,6 +152,72 @@ Firestore onSnapshot
 | `saving`  | ⏳ 儲存中… | #fdcb6e |
 | `error`   | ⚠️ 儲存失敗 | #e17055 |
 | `offline` | 📴 離線模式 | #b2bec3 |
+
+---
+
+## ⚠️ 重要陷阱與注意事項
+
+### 1. Firestore 優先，DEFAULT_DATA 只是備用
+
+**問題**：修改程式碼裡的 `DEFAULT_DATA`（icon、名稱等），前台完全看不到變化。
+
+**原因**：網站啟動後 Firestore 資料會蓋過 DEFAULT_DATA，localStorage 快取也會優先被讀取。
+
+**解法**：
+- 使用全域 `MATERIAL_ICON_MAP` + `applyIconMap()` 函式，在每次資料載入後強制套用
+- `applyIconMap` 必須**同時**掛在 `loadDataLocal()` 和 `_firestoreDataCallback()` 兩個路徑上
+- 注意：`applyIconMap` 函式必須在 `loadDataLocal()` 被呼叫之前就定義好，否則會報錯
+
+```js
+// 正確的定義順序
+const MATERIAL_ICON_MAP = { '教材名稱': '🎯', ... };
+function applyIconMap(arr) {
+  arr.forEach(d => { if (MATERIAL_ICON_MAP[d.name]) d.icon = MATERIAL_ICON_MAP[d.name]; });
+  return arr;
+}
+function loadDataLocal() {
+  return applyIconMap(...); // ← 這裡才能呼叫
+}
+```
+
+### 2. 教材名稱要完全一致才能對應到 ICON_MAP
+
+**問題**：「月相變化」和「月相盈虧互動遊戲」是兩筆不同教材，ICON_MAP 只對其中一個，另一個不會改。
+
+**解法**：ICON_MAP 的 key 必須與 Firestore 裡的 `name` 欄位**完全相同**（包含全形/半形、空格）。
+
+### 3. 更改程式碼 DEFAULT_DATA 不會更新 Firestore
+
+**問題**：在 DEFAULT_DATA 新增或刪除教材，Firestore 不會跟著變。
+
+**解法**：
+- 日常新增/編輯教材 → 用**後台管理介面**操作
+- 大量更新 → 後台匯出 JSON → 修改後請 Claude 幫忙透過 Firestore API 匯入
+
+### 4. 資料備份流程（每次大改前必做）
+
+1. 登入後台管理員
+2. 點「📋 匯出資料（複製）」
+3. 將 JSON 貼給 Claude 保存，或自行存檔
+
+最新備份日期：**2026-05-23**，共 62 筆教材。
+
+### 5. 打包匯出區塊的顯示控制
+
+「打包匯出」側欄區塊預設 `display:none`，僅管理員登入後顯示。
+控制邏輯掛在 `onAuthStateChanged` 的登入/登出回呼裡：
+
+```js
+document.getElementById('export-pack-box').style.display = isAdmin ? 'block' : 'none';
+```
+
+### 6. 類別重新命名注意事項
+
+重新命名類別時，必須同步更新所有教材的 `cat` 欄位，否則教材會消失在舊類別下：
+
+```js
+DATA.forEach(d => { if (d.cat === oldKey) d.cat = newName; });
+```
 
 ---
 
