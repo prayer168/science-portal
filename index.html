@@ -34,6 +34,8 @@
   /* HEADER BUTTONS */
   .header-btns{display:flex;gap:8px;align-items:center;flex-shrink:0;}
   .manage-toggle{background:rgba(77,184,255,0.1);border:1px solid rgba(77,184,255,0.25);color:#4db8ff;border-radius:6px;padding:6px 14px;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:'Noto Sans TC',sans-serif;}
+  .btn-manual{background:rgba(61,255,160,0.08);border:1px solid rgba(61,255,160,0.25);color:#3dffa0;border-radius:6px;padding:6px 14px;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:'Noto Sans TC',sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:5px;}
+  .btn-manual:hover{background:rgba(61,255,160,0.18);border-color:#3dffa0;}
   .manage-toggle:hover{background:rgba(77,184,255,0.2);}
   .manage-toggle.active{background:#4db8ff;color:#0c0e13;border-color:#4db8ff;}
   .btn-signout{background:rgba(154,160,166,0.1);border:1px solid rgba(154,160,166,0.2);color:#9aa0a6;border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:'Noto Sans TC',sans-serif;display:none;}
@@ -257,6 +259,7 @@
   @media(max-width:360px){
     header h1{font-size:11px;}
     .manage-toggle{font-size:11px;padding:4px 6px;}
+    .btn-manual{font-size:11px;padding:4px 6px;}
     .tab-btn{padding:4px 6px;font-size:10px;}
     .card-name{font-size:11px;}
   }
@@ -313,6 +316,7 @@
     <div class="header-btns">
       <img class="user-avatar" id="userAvatar" src="" alt="avatar">
       <button class="btn-signout" id="btnSignOut" onclick="signOut()">登出</button>
+      <a class="btn-manual" href="https://prayer168.github.io/science-portal-manual/" target="_blank" rel="noopener">📋 使用手冊</a>
       <button class="manage-toggle" id="manageToggle" onclick="onManageClick()">⚙️ 管理教材</button>
     </div>
   </div>
