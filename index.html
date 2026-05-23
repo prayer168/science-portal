@@ -1015,7 +1015,7 @@ function renderManageTable() {
   tbody.innerHTML = filtered.map(({item, i}) => {
     const color    = catColor(item.cat);
     const moveOpts = CATS.filter(c => c.key !== item.cat).map(c => `<option value="${c.key}">${c.emoji} ${c.key}</option>`).join('');
-    return `<tr data-idx="${i}" draggable="true">
+    return `<tr data-idx="${i}">
       <td style="cursor:grab;color:#555;font-size:16px;text-align:center;user-select:none;" class="drag-handle" title="拖曳排序">⠿</td>
       <td><input type="checkbox" class="row-cb" data-idx="${i}" onchange="onRowCheck(event)"></td>
       <td><span class="cat-badge" style="background:${color}">${item.cat}</span></td>
@@ -1036,40 +1036,75 @@ function renderManageTable() {
 
 // ── 拖曳排序 ──
 function initDragSort(tbody, filtered) {
-  let dragIdx = null;
-  let dragDataIdx = null;
-  tbody.querySelectorAll('tr[draggable]').forEach((row, pos) => {
-    row.addEventListener('dragstart', e => {
-      dragIdx = pos;
-      dragDataIdx = parseInt(row.dataset.idx);
-      row.style.opacity = '0.4';
-      e.dataTransfer.effectAllowed = 'move';
-    });
-    row.addEventListener('dragend', e => {
-      row.style.opacity = '';
-      tbody.querySelectorAll('tr').forEach(r => r.classList.remove('drag-over'));
-    });
-    row.addEventListener('dragover', e => {
+  let srcPos = null;   // filtered 中的位置
+  let ghost = null;
+  let hoverPos = null;
+  let offsetY = 0;
+  const rows = [...tbody.querySelectorAll('tr')];
+
+  rows.forEach((row, pos) => {
+    const handle = row.querySelector('.drag-handle');
+    if (!handle) return;
+    handle.style.cursor = 'grab';
+
+    handle.addEventListener('mousedown', e => {
       e.preventDefault();
-      tbody.querySelectorAll('tr').forEach(r => r.classList.remove('drag-over'));
-      row.classList.add('drag-over');
-    });
-    row.addEventListener('drop', e => {
-      e.preventDefault();
-      if (dragIdx === null || dragIdx === pos) return;
-      const targetDataIdx = parseInt(row.dataset.idx);
-      // 只允許同類別內拖曳
-      if (DATA[dragDataIdx].cat !== DATA[targetDataIdx].cat) {
-        alert('只能在相同類別內拖曳排序');
-        return;
-      }
-      // 在 DATA 中移動
-      const item = DATA.splice(dragDataIdx, 1)[0];
-      const newPos = DATA.indexOf(DATA[targetDataIdx]);
-      DATA.splice(newPos, 0, item);
-      saveData(DATA);
-      buildPage();
-      renderManageTable();
+      srcPos = pos;
+      const rect = row.getBoundingClientRect();
+      offsetY = e.clientY - rect.top;
+
+      ghost = row.cloneNode(true);
+      ghost.style.cssText = `position:fixed;left:${rect.left}px;top:${rect.top}px;width:${rect.width}px;opacity:0.88;background:#1a2a3a;box-shadow:0 6px 24px rgba(0,0,0,0.6);border-radius:6px;pointer-events:none;z-index:9999;border:1px solid #4db8ff;`;
+      document.body.appendChild(ghost);
+      row.style.opacity = '0.25';
+      document.body.style.userSelect = 'none';
+      handle.style.cursor = 'grabbing';
+
+      const onMove = e2 => {
+        ghost.style.top = (e2.clientY - offsetY) + 'px';
+        rows.forEach(r => r.classList.remove('drag-over'));
+        hoverPos = null;
+        rows.forEach((r, p) => {
+          if (p === srcPos) return;
+          const rr = r.getBoundingClientRect();
+          if (e2.clientY >= rr.top && e2.clientY <= rr.bottom) {
+            r.classList.add('drag-over');
+            hoverPos = p;
+          }
+        });
+      };
+
+      const onUp = () => {
+        document.removeEventListener('mousemove', onMove);
+        document.removeEventListener('mouseup', onUp);
+        document.body.style.userSelect = '';
+        ghost && ghost.remove(); ghost = null;
+        rows.forEach(r => { r.style.opacity = ''; r.classList.remove('drag-over'); });
+        handle.style.cursor = 'grab';
+
+        if (hoverPos === null || hoverPos === srcPos) { srcPos = null; return; }
+
+        const srcDataIdx = filtered[srcPos].i;
+        const tgtDataIdx = filtered[hoverPos].i;
+
+        if (DATA[srcDataIdx].cat !== DATA[tgtDataIdx].cat) { srcPos = null; return; }
+
+        // 直接操作 DATA：把 srcDataIdx 的項目移到 tgtDataIdx 的位置
+        const item = DATA[srcDataIdx];
+        DATA.splice(srcDataIdx, 1);
+        // splice 後 tgtDataIdx 若在 src 後面要減 1
+        const adjustedTgt = tgtDataIdx > srcDataIdx ? tgtDataIdx - 1 : tgtDataIdx;
+        DATA.splice(adjustedTgt, 0, item);
+
+        saveData(DATA);
+        buildPage();
+        renderManageTable();
+        showToast('✅ 排序已儲存');
+        srcPos = null;
+      };
+
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onUp);
     });
   });
 }
