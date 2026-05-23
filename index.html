@@ -538,7 +538,7 @@ const DEFAULT_DATA = [
   {cat:"五年級",name:"五年級岩石礦物闖關",url:"https://prayer168.github.io/rock_quiz/",icon:"🪨"},
   {cat:"五年級",name:"自然知識大冒險",url:"https://prayer168.github.io/eco_knowledge_quiz/",icon:"🗺️"},
   {cat:"五年級",name:"食物鏈進化遊戲",url:"https://prayer168.github.io/food_chain_evolution_simulator/",icon:"🦁"},
-  {cat:"五年級",name:"傅科擺",url:"https://prayer168.github.io/ai-debate/foucault.html",icon:"🔵"},
+  {cat:"五年級",name:"傅科擺",url:"https://prayer168.github.io/ai-debate/foucault.html",icon:"🌍"},
   {cat:"六年級",name:"月相盈虧互動遊戲",url:"https://prayer168.github.io/moon-phase-game/",icon:"🌙"},
   {cat:"六年級",name:"太陽系模擬",url:"https://prayer168.github.io/the-nine-planets/",icon:"🪐"},
   {cat:"六年級",name:"流星雨模擬",url:"https://prayer168.github.io/fireworks/",icon:"🌠"},
@@ -558,15 +558,15 @@ const DEFAULT_DATA = [
   {cat:"休閒（動動腦）",name:"華麗分形生成器",url:"https://prayer168.github.io/Random-fractal-generator/",icon:"🌀"},
   {cat:"休閒（動動腦）",name:"風場砲彈挑戰",url:"https://prayer168.github.io/wind_shoot/",icon:"💨"},
   {cat:"休閒（動動腦）",name:"字母大亂鬥",url:"https://prayer168.github.io/alphabet-brawl",icon:"🔤"},
-  {cat:"休閒（動動腦）",name:"深海水母",url:"https://prayer168.github.io/Recode/",icon:"🪼"},
+  {cat:"休閒（動動腦）",name:"深海水母",url:"https://prayer168.github.io/Recode/",icon:"🌊"},
   {cat:"休閒（動動腦）",name:"夾娃娃機",url:"https://prayer168.github.io/grab-toys/",icon:"🧸"},
   {cat:"休閒（動動腦）",name:"文字雲",url:"https://prayer168.github.io/wordcloud-classroom/",icon:"💬"},
   {cat:"休閒（動動腦）",name:"螢幕保護程式",url:"https://prayer168.github.io/deep-sea-screensaver/",icon:"🐠"},
   {cat:"休閒（動動腦）",name:"沙漏",url:"https://prayer168.github.io/hourglass-timer/",icon:"⌛"},
-  {cat:"休閒（動動腦）",name:"Q版俄羅斯方塊",url:"https://prayer168.github.io/3d-tetris/",icon:"🟦"},
+  {cat:"休閒（動動腦）",name:"Q版俄羅斯方塊",url:"https://prayer168.github.io/3d-tetris/",icon:"🧩"},
   {cat:"休閒（動動腦）",name:"打磚塊遊戲",url:"https://prayer168.github.io/knoc-brick/",icon:"🧱"},
   {cat:"休閒（動動腦）",name:"撞球遊戲",url:"https://prayer168.github.io/snock/",icon:"🎱"},
-  {cat:"休閒（動動腦）",name:"QR Code 生成器",url:"https://prayer168.github.io/luxury-qr-studio/",icon:"📱"},
+  {cat:"休閒（動動腦）",name:"QR Code 生成器",url:"https://prayer168.github.io/luxury-qr-studio/",icon:"🔳"},
   {cat:"休閒（動動腦）",name:"教室互動儀表板",url:"https://prayer168.github.io/classroom_tools/",icon:"📊"},
 ];
 
@@ -616,6 +616,11 @@ let manageOpen = false;
 
 // ── Firestore 回調：收到雲端資料後更新頁面 ──
 window._firestoreDataCallback = function(materials, customCats) {
+  // icon 修正對照表：教材名稱 → 正確 icon
+  const ICON_MAP = {
+    '加特林射擊場': '🎯',
+  };
+  materials.forEach(d => { if (ICON_MAP[d.name]) d.icon = ICON_MAP[d.name]; });
   DATA = materials;
   localStorage.setItem(STORE_KEY, JSON.stringify(DATA));
   if (customCats !== undefined) {
