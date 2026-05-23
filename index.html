@@ -601,7 +601,7 @@ function saveExtraCats(cats) {
 }
 
 function loadDataLocal() {
-  try { const s = localStorage.getItem(STORE_KEY); return s ? JSON.parse(s) : JSON.parse(JSON.stringify(DEFAULT_DATA)); }
+  try { const s = localStorage.getItem(STORE_KEY); return applyIconMap(s ? JSON.parse(s) : JSON.parse(JSON.stringify(DEFAULT_DATA))); }
   catch { return JSON.parse(JSON.stringify(DEFAULT_DATA)); }
 }
 function saveData(d) {
@@ -618,9 +618,34 @@ let manageOpen = false;
 window._firestoreDataCallback = function(materials, customCats) {
   // icon 修正對照表：教材名稱 → 正確 icon
   const ICON_MAP = {
-    '加特林射擊場': '🎯',
+    '加特林射擊場':         '🎯',
+    '月相盈虧互動遊戲':     '🌙',
+    '傅科擺':               '🌍',
+    '深海水母':             '🌊',
+    'Q版俄羅斯方塊':        '🧩',
+    'QR Code 生成器':       '🔳',
+    '雨量筒水位模擬1':      '🧪',
+    '雨量筒水位模擬2':      '🧪',
+    '雨量筒水位模擬3':      '🧪',
+    '植物蒸散作用':         '🌫️',
+    '植物有哪些妙招':       '🪤',
+    '食蟲植物照顧手冊':     '🪤',
+    '台灣外來種植物翻牌':   '🌿',
+    '台灣外來種動物翻牌':   '🐾',
+    '溫度與物質變化':       '⚗️',
+    '溫度改變對物質體積的影響': '📏',
+    '自然知識大冒險':       '🗺️',
+    '巨石陣':               '🪨',
+    '開心農場':             '🌾',
+    '教室互動儀表板':       '📊',
+    '智慧錄音':             '🎙️',
+    '黑熊老師的使用說明書': '📖',
+    '熊學堂':               '🏫',
+    '教師用語播放站':       '🔊',
+    '用 Claude Code Desktop 打造數位互動教材': '🖥️',
+    '使用 Claude Code 編寫數位互動教材':       '⌨️',
   };
-  materials.forEach(d => { if (ICON_MAP[d.name]) d.icon = ICON_MAP[d.name]; });
+  applyIconMap(materials);
   DATA = materials;
   localStorage.setItem(STORE_KEY, JSON.stringify(DATA));
   if (customCats !== undefined) {
