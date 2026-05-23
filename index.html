@@ -167,6 +167,9 @@
   .cat-tag.locked{opacity:0.6;padding-right:12px;}
   .cat-tag-del{background:rgba(0,0,0,0.3);border:none;color:#fff;border-radius:50%;width:16px;height:16px;font-size:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;font-weight:900;transition:background 0.15s;padding:0;}
   .cat-tag-del:hover{background:rgba(0,0,0,0.6);}
+  .cat-tag-rename{background:rgba(0,0,0,0.25);border:none;color:#fff;border-radius:4px;padding:1px 5px;font-size:10px;cursor:pointer;font-family:'Noto Sans TC',sans-serif;font-weight:700;transition:background 0.15s;margin-left:2px;}
+  .cat-tag-rename:hover{background:rgba(255,255,255,0.25);}
+  .cat-rename-input{background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.4);border-radius:4px;color:#fff;font-size:12px;font-weight:700;font-family:'Noto Sans TC',sans-serif;padding:1px 6px;width:80px;outline:none;}
   .cat-lock-hint{font-size:11px;color:#484f58;margin-top:8px;}
 
   /* CONTENT */
@@ -694,11 +697,50 @@ function renderCatList() {
   if (!el) return;
   el.innerHTML = CATS.map(cat => {
     const isDefault = DEFAULT_CATS.find(d => d.key === cat.key);
-    return `<span class="cat-tag${isDefault?' locked':''}" style="background:${cat.color}">
-      ${cat.emoji} ${cat.key}
-      ${!isDefault ? `<button class="cat-tag-del" onclick="deleteCategory('${cat.key.replace(/'/g,"\\'")}')">✕</button>` : ''}
+    const safeKey = cat.key.replace(/'/g,"\'");
+    return `<span class="cat-tag${isDefault?' locked':''}" style="background:${cat.color}" id="cattag-${cat.key}">
+      <span>${cat.emoji} ${cat.key}</span>
+      <button class="cat-tag-rename" onclick="startRenameCategory('${safeKey}')" title="重新命名">✏</button>
+      ${!isDefault ? `<button class="cat-tag-del" onclick="deleteCategory('${safeKey}')">✕</button>` : ''}
     </span>`;
   }).join('');
+}
+
+function startRenameCategory(key) {
+  const cat = CATS.find(c => c.key === key);
+  if (!cat) return;
+  const tag = document.getElementById('cattag-' + key);
+  if (!tag) return;
+  const safeKey = key.replace(/'/g,"\'");
+  tag.innerHTML = `
+    <input class="cat-rename-input" id="rename-input-${key}" value="${cat.key}" maxlength="20" />
+    <button class="cat-tag-rename" onclick="confirmRenameCategory('${safeKey}')" title="確認">✔</button>
+    <button class="cat-tag-rename" onclick="renderCatList()" title="取消">✕</button>
+  `;
+  const inp = document.getElementById('rename-input-' + key);
+  inp.focus(); inp.select();
+  inp.addEventListener('keydown', e => {
+    if (e.key === 'Enter') confirmRenameCategory(key);
+    if (e.key === 'Escape') renderCatList();
+  });
+}
+
+function confirmRenameCategory(key) {
+  const inp = document.getElementById('rename-input-' + key);
+  if (!inp) return;
+  const newName = inp.value.trim();
+  if (!newName) { alert('名稱不可為空白'); return; }
+  if (newName !== key && CATS.find(c => c.key === newName)) { alert('此類別名稱已存在'); return; }
+  const cat = CATS.find(c => c.key === key);
+  if (!cat) return;
+  const oldKey = cat.key;
+  cat.key = newName;
+  cat.desc = newName;
+  DATA.forEach(d => { if (d.cat === oldKey) d.cat = newName; });
+  if (currentTab === oldKey) currentTab = newName;
+  saveExtraCats(CATS);
+  if (window.saveDataToFirestore) window.saveDataToFirestore(DATA);
+  injectCatStyles(); syncCatSelects(); buildPage(); renderCatList();
 }
 
 function syncCatSelects() {
