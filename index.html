@@ -617,6 +617,12 @@ window._firestoreDataCallback = function(materials, customCats) {
   DATA = materials;
   localStorage.setItem(STORE_KEY, JSON.stringify(DATA));
   if (customCats !== undefined) {
+    // emoji 對照表：類別名稱 → 正確 emoji
+    const EMOJI_MAP = {
+      'AI程式設計': '🤖',
+      '教案命題':   '📝',
+    };
+    customCats.forEach(c => { if (EMOJI_MAP[c.key]) c.emoji = EMOJI_MAP[c.key]; });
     CATS = [...DEFAULT_CATS, ...customCats];
     const extra = customCats;
     localStorage.setItem(CAT_STORE, JSON.stringify(extra));
