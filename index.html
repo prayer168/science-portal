@@ -198,16 +198,66 @@
   .empty-state .empty-icon{font-size:36px;margin-bottom:10px;}
 
   footer{text-align:center;padding:20px;color:#484f58;font-size:12px;border-top:1px solid var(--border);}
+  /* ── RWD 760px：側欄改橫向 ── */
   @media(max-width:760px){
-    .page-wrap{grid-template-columns:1fr;}
+    .page-wrap{grid-template-columns:1fr;padding:0 12px;}
     .sidebar{position:static;padding:0;order:-1;}
-    .sidebar-box{border-radius:0;border-left:none;border-right:none;}
-    .tab-bar{flex-direction:row;flex-wrap:wrap;gap:4px;padding:10px 12px;}
-    .tab-btn{border-left:none;border-bottom:3px solid transparent;border-radius:6px;width:auto;padding:6px 12px;}
+    .sidebar-box{border-radius:0;border-left:none;border-right:none;margin-bottom:0;}
+    .tab-bar{flex-direction:row;flex-wrap:wrap;gap:4px;padding:8px 10px;}
+    .tab-btn{border-left:none;border-bottom:3px solid transparent;border-radius:6px;width:auto;padding:5px 10px;font-size:12px;}
     .tab-btn.active{border-bottom-color:var(--accent);background:rgba(255,255,255,0.08);}
+    .content-area{padding:12px 0 36px;}
+    .section-header{padding:10px 12px;}
+    .section-emoji{font-size:22px;}
+    .section-title{font-size:15px;}
+    .card{padding:11px 14px;gap:10px;}
+    .card-icon{width:32px;height:32px;font-size:16px;}
+    .card-name{font-size:13px;}
   }
-  @media(max-width:640px){.add-form{grid-template-columns:1fr 1fr;}}
-  @media(max-width:480px){.add-form{grid-template-columns:1fr;}.manage-toggle{padding:6px 10px;font-size:12px;}}
+  /* ── RWD 640px：管理表單 ── */
+  @media(max-width:640px){
+    .add-form{grid-template-columns:1fr 1fr;}
+    header h1{font-size:14px;}
+    header p{display:none;}
+    .manage-panel{padding:10px 10px 0;}
+    .panel-box{padding:14px;}
+    .manage-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    .td-name{max-width:120px;}
+    .td-url{max-width:140px;}
+  }
+  /* ── RWD 480px：手機版 ── */
+  @media(max-width:480px){
+    .page-wrap{padding:0 8px;}
+    .add-form{grid-template-columns:1fr;}
+    .manage-toggle{padding:5px 8px;font-size:12px;}
+    header{padding:0 12px;height:54px;}
+    header h1{font-size:13px;}
+    .header-btns{gap:5px;}
+    .user-avatar{width:24px;height:24px;}
+    .tab-btn{padding:4px 8px;font-size:11px;}
+    .tab-btn .tab-count{display:none;}
+    .card{padding:10px 12px;gap:8px;}
+    .card-icon{width:28px;height:28px;font-size:14px;border-radius:6px;}
+    .card-name{font-size:12px;}
+    .card-arrow{font-size:11px;}
+    .section-title{font-size:13px;}
+    .section-emoji{font-size:18px;}
+    .section-header{padding:8px 10px;gap:8px;}
+    .manage-list-header{flex-direction:column;align-items:flex-start;}
+    .batch-bar{gap:6px;padding:8px 10px;}
+    .btn-batch-del{padding:4px 10px;font-size:12px;}
+    .td-actions{flex-wrap:wrap;gap:3px;}
+    footer{font-size:11px;padding:14px 12px;}
+    .cat-input.wide{width:110px;}
+    .login-box{padding:24px 18px;}
+  }
+  /* ── RWD 360px：超小螢幕 ── */
+  @media(max-width:360px){
+    header h1{font-size:11px;}
+    .manage-toggle{font-size:11px;padding:4px 6px;}
+    .tab-btn{padding:4px 6px;font-size:10px;}
+    .card-name{font-size:11px;}
+  }
 </style>
 </head>
 <body>
