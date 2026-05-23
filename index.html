@@ -344,7 +344,7 @@
       <div class="sidebar-title">目錄</div>
       <nav class="tab-bar" id="tabBar"></nav>
     </div>
-    <div class="sidebar-box" style="margin-top:10px;">
+    <div class="sidebar-box" id="export-pack-box" style="margin-top:10px;display:none;">
       <div class="sidebar-title">打包匯出</div>
       <div style="font-size:11px;color:var(--text-sub);margin-bottom:10px;">按分類整理全部教材</div>
       <div style="display:flex;flex-direction:column;gap:6px;">
@@ -459,11 +459,13 @@ onAuthStateChanged(auth, (user) => {
     document.getElementById('userAvatar').style.display = 'inline-block';
     document.getElementById('btnSignOut').style.display  = 'inline-block';
     window._isAdmin = true;
+    document.getElementById('export-pack-box').style.display = 'block';
     if (window._pendingManage) { window._pendingManage = false; openManagePanel(); }
   } else {
     document.getElementById('userAvatar').style.display = 'none';
     document.getElementById('btnSignOut').style.display  = 'none';
     window._isAdmin = false;
+    document.getElementById('export-pack-box').style.display = 'none';
     closeManagePanel();
   }
 });
