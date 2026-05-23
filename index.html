@@ -289,6 +289,18 @@
     </div>
     <span class="toast" id="toast">✅ 已新增！</span>
 
+    <!-- 類別管理 -->
+    <div class="cat-manage-box">
+      <div class="cat-manage-title">🗂️ 類別管理</div>
+      <div class="cat-add-row">
+        <input class="cat-input" id="catEmoji" placeholder="圖示" maxlength="2" title="輸入一個 emoji">
+        <input class="cat-input wide" id="catName" placeholder="類別名稱" maxlength="20">
+        <button class="btn-cat-add" onclick="addCategory()">新增類別 ＋</button>
+      </div>
+      <div class="cat-list" id="catList"></div>
+      <div class="cat-lock-hint">🔒 預設類別無法刪除；自訂類別右側有 ✕ 可刪除（需先移除該類別內所有教材）</div>
+    </div>
+
     <div class="manage-list-header">
       <div class="manage-list-title" id="listCount"></div>
       <select class="manage-filter" id="filterCat" onchange="renderManageTable()">
@@ -317,19 +329,6 @@
     <div class="export-row">
       <button class="btn-export" onclick="exportData()">📋 匯出資料（複製）</button>
       <span class="export-hint">可備份教材清單，或傳給 Claude 匯入</span>
-    </div>
-
-
-    <!-- 類別管理 -->
-    <div class="cat-manage-box">
-      <div class="cat-manage-title">🗂️ 類別管理</div>
-      <div class="cat-add-row">
-        <input class="cat-input" id="catEmoji" placeholder="圖示" maxlength="2" title="輸入一個 emoji">
-        <input class="cat-input wide" id="catName" placeholder="類別名稱" maxlength="20">
-        <button class="btn-cat-add" onclick="addCategory()">新增類別 ＋</button>
-      </div>
-      <div class="cat-list" id="catList"></div>
-      <div class="cat-lock-hint">🔒 預設類別無法刪除；自訂類別右側有 ✕ 可刪除（需先移除該類別內所有教材）</div>
     </div>
   </div>
 </div>
