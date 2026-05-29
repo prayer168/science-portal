@@ -1360,9 +1360,9 @@ function getCtx() {
 // 第一次點擊 / 觸摸時初始化 AudioContext
 document.addEventListener('click', () => getCtx(), { once: false });
 document.addEventListener('touchstart', () => getCtx(), { once: false });
-  // ── 隱藏管理員入口：按 Ctrl+Shift+A 開啟登入 ──
+ // ── 隱藏管理員入口：按 Ctrl+Alt+M 開啟登入 ──
 document.addEventListener('keydown', function(e) {
-  if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+  if (e.ctrlKey && e.altKey && (e.key === 'M' || e.key === 'm')) {
     e.preventDefault();
     if (window._isAdmin) {
       toggleManagePanel();
@@ -1372,6 +1372,11 @@ document.addEventListener('keydown', function(e) {
     }
   }
 });
+// ── 備用入口：網址加 #admin 也能開啟登入 ──
+if (location.hash === '#admin') {
+  window._pendingManage = true;
+  document.getElementById('loginOverlay').classList.remove('hidden');
+}
 // ── 點背景關閉登入彈窗 ──
 document.getElementById('loginOverlay').addEventListener('click', function(e) {
   if (e.target === this) this.classList.add('hidden');
