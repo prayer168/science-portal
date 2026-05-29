@@ -273,9 +273,8 @@
     <div class="login-icon">🔐</div>
     <div class="login-title">管理員登入</div>
     <div class="login-sub">此功能僅限授權帳號使用<br>請用指定的 Google 帳號登入</div>
-    <button class="btn-google-login" id="btnGoogleLogin">
-      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
-      使用 Google 帳號登入
+   <button class="btn-google-login" id="btnGoogleLogin">
+      🔑 管理員驗證登入
     </button>
     <div class="login-error" id="loginError"></div>
     <div class="login-loading" id="loginLoading">⏳ 登入中，請稍候...</div>
@@ -317,7 +316,7 @@
       <img class="user-avatar" id="userAvatar" src="" alt="avatar">
       <button class="btn-signout" id="btnSignOut" onclick="signOut()">登出</button>
       <a class="btn-manual" href="https://prayer168.github.io/science-portal-manual/" target="_blank" rel="noopener">📋 使用手冊</a>
-      <button class="manage-toggle" id="manageToggle" onclick="onManageClick()">⚙️ 管理教材</button>
+      <button class="manage-toggle" id="manageToggle" onclick="onManageClick()" style="display:none;">⚙️ 管理教材</button>
     </div>
   </div>
 </header>
@@ -534,12 +533,14 @@ onAuthStateChanged(auth, (user) => {
     document.getElementById('userAvatar').style.display = 'inline-block';
     document.getElementById('btnSignOut').style.display  = 'inline-block';
     window._isAdmin = true;
+    document.getElementById('manageToggle').style.display = 'inline-block';
     document.getElementById('export-pack-box').style.display = 'block';
     if (window._pendingManage) { window._pendingManage = false; openManagePanel(); }
   } else {
     document.getElementById('userAvatar').style.display = 'none';
     document.getElementById('btnSignOut').style.display  = 'none';
     window._isAdmin = false;
+    document.getElementById('manageToggle').style.display = 'none';
     document.getElementById('export-pack-box').style.display = 'none';
     closeManagePanel();
   }
@@ -1359,6 +1360,22 @@ function getCtx() {
 // 第一次點擊 / 觸摸時初始化 AudioContext
 document.addEventListener('click', () => getCtx(), { once: false });
 document.addEventListener('touchstart', () => getCtx(), { once: false });
+  // ── 隱藏管理員入口：按 Ctrl+Shift+A 開啟登入 ──
+document.addEventListener('keydown', function(e) {
+  if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+    e.preventDefault();
+    if (window._isAdmin) {
+      toggleManagePanel();
+    } else {
+      window._pendingManage = true;
+      document.getElementById('loginOverlay').classList.remove('hidden');
+    }
+  }
+});
+// ── 點背景關閉登入彈窗 ──
+document.getElementById('loginOverlay').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.add('hidden');
+});
 
 function playSlide() {
   try {
