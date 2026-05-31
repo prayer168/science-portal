@@ -43,9 +43,9 @@
   .user-avatar{width:28px;height:28px;border-radius:50%;border:2px solid var(--border);display:none;vertical-align:middle;}
 
   /* PAGE LAYOUT - two columns */
-  .page-wrap{display:grid;grid-template-columns:1fr 236px;gap:0;max-width:1200px;margin:0 auto;padding:0 24px;align-items:start;}
+  .page-wrap{display:grid;grid-template-columns:236px 1fr;gap:0;max-width:1200px;margin:0 auto;padding:0 24px;align-items:start;}
   .main-col{min-width:0;}
-  .sidebar{position:sticky;top:70px;padding:20px 0 20px 20px;}
+  .sidebar{position:sticky;top:70px;padding:20px 20px 20px 0;}
   .sidebar-box{background:var(--sidebar-bg);border:1px solid var(--border);border-radius:var(--radius);padding:16px 14px;}
   .sidebar-title{font-size:10px;font-weight:700;color:#6b7280;margin-bottom:10px;letter-spacing:2px;text-transform:uppercase;}
 
@@ -205,7 +205,7 @@
   /* ── RWD 760px：側欄改橫向 ── */
   @media(max-width:760px){
     .page-wrap{grid-template-columns:1fr;padding:0 12px;}
-    .sidebar{position:static;padding:0;order:-1;}
+    .sidebar{position:static;padding:0;order:0;}
     .sidebar-box{border-radius:0;border-left:none;border-right:none;margin-bottom:0;}
     .tab-bar{flex-direction:row;flex-wrap:wrap;gap:4px;padding:8px 10px;}
     .tab-btn{border-left:none;border-bottom:3px solid transparent;border-radius:6px;width:auto;padding:5px 10px;font-size:12px;}
