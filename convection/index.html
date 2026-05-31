@@ -359,6 +359,9 @@
     }
 
     .selector button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       text-align: left;
       min-height: 46px;
       border: 1px solid var(--line);
@@ -369,10 +372,27 @@
       font-weight: 800;
     }
 
+    .life-icon {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: #edf6f8;
+      color: #17323a;
+      font-size: 1.15rem;
+    }
+
     .selector button.active {
       background: #17323a;
       color: #fff;
       border-color: #17323a;
+    }
+
+    .selector button.active .life-icon {
+      background: #f2b84b;
+      color: #17323a;
     }
 
     .quiz-grid {
@@ -503,7 +523,6 @@
           <p class="lead">從三瓶不同溫度的有色水開始，觀察水盆中顏色如何移動，再改變瓶口設計，找出讓對流更明顯的裝置條件。</p>
           <div class="toolbar">
             <button class="primary" data-jump="temp">開始觀察</button>
-            <a class="secondary" href="https://youtube.com/watch?v=HzSuRu7BZKQ" target="_blank" rel="noreferrer">觀看影片</a>
           </div>
           <div class="pill-row" aria-label="學習重點">
             <span class="pill">觀察水流</span>
@@ -641,10 +660,10 @@
       <h2>生活應用：看見看不見的流動</h2>
       <div class="app-layout">
         <aside class="selector" aria-label="生活應用選單">
-          <button class="life-choice active" data-life="air">冷氣與暖氣</button>
-          <button class="life-choice" data-life="sea">海陸風</button>
-          <button class="life-choice" data-life="pot">煮湯翻滾</button>
-          <button class="life-choice" data-life="chimney">煙囪與通風</button>
+          <button class="life-choice active" data-life="air"><span class="life-icon" aria-hidden="true">🌡️</span><span>冷氣與暖氣</span></button>
+          <button class="life-choice" data-life="sea"><span class="life-icon" aria-hidden="true">🏖️</span><span>海陸風</span></button>
+          <button class="life-choice" data-life="pot"><span class="life-icon" aria-hidden="true">🍲</span><span>煮湯翻滾</span></button>
+          <button class="life-choice" data-life="chimney"><span class="life-icon" aria-hidden="true">🪟</span><span>窗戶與通風</span></button>
         </aside>
         <div>
           <canvas id="lifeCanvas" width="880" height="540" aria-label="生活中的對流應用圖"></canvas>
@@ -982,7 +1001,7 @@
         title: "冷空氣下降，熱空氣上升"
       },
       sea: {
-        text: "白天陸地升溫較快，陸地上方空氣上升，海面較涼的空氣補進來，形成海風。",
+        text: "白天陸地升溫較快，陸地上方空氣上升，海面較涼的空氣補進來，形成海風；夜晚風向可能反轉。",
         title: "海陸溫度差推動風"
       },
       pot: {
@@ -990,40 +1009,172 @@
         title: "煮湯時的上下循環"
       },
       chimney: {
-        text: "煙囪中的熱空氣上升，帶動下方空氣進入，讓煙與熱氣排出。",
-        title: "熱空氣帶動通風"
+        text: "窗戶打開時，室內外溫度差與氣壓差會帶動空氣流動，讓熱空氣排出、較涼空氣補入。",
+        title: "窗戶打開形成通風"
       }
     };
+
+    function mixColor(a, b, t) {
+      const ah = parseInt(a.slice(1), 16);
+      const bh = parseInt(b.slice(1), 16);
+      const ar = ah >> 16, ag = (ah >> 8) & 255, ab = ah & 255;
+      const br = bh >> 16, bg = (bh >> 8) & 255, bb = bh & 255;
+      const rr = Math.round(ar + (br - ar) * t);
+      const rg = Math.round(ag + (bg - ag) * t);
+      const rb = Math.round(ab + (bb - ab) * t);
+      return `rgb(${rr}, ${rg}, ${rb})`;
+    }
+
+    function streamPoint(path, t) {
+      const segs = path.length - 1;
+      const p = Math.min(0.999, Math.max(0, t)) * segs;
+      const i = Math.floor(p);
+      const f = p - i;
+      const a = path[i];
+      const b = path[i + 1];
+      return {
+        x: a.x + (b.x - a.x) * f,
+        y: a.y + (b.y - a.y) * f,
+        angle: Math.atan2(b.y - a.y, b.x - a.x)
+      };
+    }
+
+    function drawStreamline(ctx, path, t, hot = true, width = 8) {
+      const head = streamPoint(path, t);
+      const tail1 = streamPoint(path, t - 0.055);
+      const tail2 = streamPoint(path, t - 0.11);
+      const color = hot ? mixColor("#e3422f", "#ffd166", Math.max(0, Math.min(1, 1 - head.y / 420))) : "#58aee8";
+      ctx.save();
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      ctx.strokeStyle = hot ? "rgba(255, 157, 96, 0.24)" : "rgba(86, 174, 232, 0.22)";
+      ctx.lineWidth = width + 7;
+      ctx.beginPath();
+      ctx.moveTo(tail2.x, tail2.y);
+      ctx.quadraticCurveTo(tail1.x, tail1.y, head.x, head.y);
+      ctx.stroke();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.beginPath();
+      ctx.moveTo(tail1.x, tail1.y);
+      ctx.lineTo(head.x, head.y);
+      ctx.stroke();
+      ctx.translate(head.x, head.y);
+      ctx.rotate(head.angle);
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(14, 0);
+      ctx.lineTo(-8, -7);
+      ctx.lineTo(-5, 0);
+      ctx.lineTo(-8, 7);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function drawStreamSet(ctx, paths, phase, hot, baseSpeed, width = 8) {
+      paths.forEach((path, idx) => {
+        for (let j = 0; j < 3; j++) {
+          const offset = (idx * 0.22 + j * 0.31) % 1;
+          const speed = baseSpeed * (hot ? 1.25 : 0.78);
+          drawStreamline(ctx, path, (phase * speed + offset) % 1, hot, width);
+        }
+      });
+    }
+
+    function drawThermalBadge(ctx, x, y, mode) {
+      ctx.save();
+      ctx.translate(x, y);
+      if (mode === "air") {
+        ctx.fillStyle = "#58aee8";
+        ctx.beginPath();
+        ctx.arc(-18, 0, 28, Math.PI / 2, Math.PI * 1.5);
+        ctx.fill();
+        ctx.fillStyle = "#e3422f";
+        ctx.beginPath();
+        ctx.arc(18, 0, 28, -Math.PI / 2, Math.PI / 2);
+        ctx.fill();
+        label(ctx, "冷", -16, 0, "#fff", 18);
+        label(ctx, "熱", 16, 0, "#fff", 18);
+      } else if (mode === "sea") {
+        ctx.fillStyle = "#2b82bd";
+        ctx.fillRect(-38, 8, 38, 22);
+        ctx.fillStyle = "#b87514";
+        ctx.fillRect(0, 4, 42, 26);
+        drawArrow(ctx, -30, -8, 34, -8, "#dff6ff", 4);
+      } else if (mode === "pot") {
+        ctx.strokeStyle = "#d8f7ff";
+        ctx.lineWidth = 5;
+        roundRect(ctx, -38, -16, 76, 44, 8);
+        ctx.stroke();
+        drawArrow(ctx, -18, 12, -18, -10, "#ff977f", 4);
+        drawArrow(ctx, 18, -10, 18, 12, "#8dd7ff", 4);
+      } else {
+        ctx.strokeStyle = "#d8f7ff";
+        ctx.lineWidth = 5;
+        ctx.strokeRect(-36, -24, 72, 48);
+        ctx.beginPath();
+        ctx.moveTo(0, -24);
+        ctx.lineTo(0, 24);
+        ctx.stroke();
+        drawArrow(ctx, -50, 0, -18, 0, "#8dd7ff", 4);
+      }
+      ctx.restore();
+    }
 
     function drawLife() {
       const ctx = setupCanvas(document.getElementById("lifeCanvas"), 880, 540);
       const item = lifeContent[state.life];
       document.getElementById("lifeText").textContent = item.text;
       label(ctx, item.title, 440, 56, "#f6fbff", 26);
-      const phase = state.tick / 90;
+      const phase = state.tick / 120;
+      drawThermalBadge(ctx, 92, 70, state.life);
+
       if (state.life === "air") {
         ctx.fillStyle = "#20394a";
         ctx.fillRect(130, 120, 620, 330);
         ctx.strokeStyle = "#dcecf0";
         ctx.lineWidth = 4;
         ctx.strokeRect(130, 120, 620, 330);
-        label(ctx, "冷氣", 650, 160, "#d9f3ff", 23);
         ctx.fillStyle = "#d9f3ff";
-        ctx.fillRect(595, 132, 110, 48);
-        drawArrow(ctx, 645, 190, 645, 372, "#8dd7ff", 8);
-        drawArrow(ctx, 275, 382, 275, 190, "#ff977f", 8);
-        label(ctx, "下降", 690, 294, "#bcecff", 22);
-        label(ctx, "上升", 230, 274, "#ffd1c7", 22);
+        ctx.fillRect(590, 132, 116, 48);
+        label(ctx, "冷氣", 648, 156, "#17323a", 20);
+        ctx.fillStyle = "#9a4a3a";
+        ctx.fillRect(210, 380, 112, 26);
+        label(ctx, "暖源", 266, 365, "#ffd1c7", 18);
+        drawStreamSet(ctx, [
+          [{x: 250, y: 382}, {x: 250, y: 290}, {x: 292, y: 198}, {x: 428, y: 158}],
+          [{x: 620, y: 190}, {x: 610, y: 262}, {x: 604, y: 360}, {x: 530, y: 408}],
+          [{x: 520, y: 405}, {x: 430, y: 422}, {x: 330, y: 410}, {x: 268, y: 382}]
+        ], phase, true, 0.82, 8);
+        drawStreamSet(ctx, [
+          [{x: 650, y: 188}, {x: 652, y: 285}, {x: 650, y: 382}],
+          [{x: 640, y: 386}, {x: 520, y: 424}, {x: 372, y: 410}]
+        ], phase + 0.18, false, 0.62, 8);
+        label(ctx, "冷空氣慢慢下降", 682, 300, "#bcecff", 20);
+        label(ctx, "熱空氣較快上升", 210, 250, "#ffd1c7", 20);
       } else if (state.life === "sea") {
         ctx.fillStyle = "#2b6c96";
         ctx.fillRect(50, 310, 400, 120);
         ctx.fillStyle = "#b87514";
         ctx.fillRect(450, 286, 380, 144);
+        ctx.fillStyle = "#2a7a48";
+        ctx.fillRect(690, 252, 9, 46);
+        ctx.beginPath();
+        ctx.arc(678, 246, 24, 0, Math.PI * 2);
+        ctx.arc(710, 240, 22, 0, Math.PI * 2);
+        ctx.fill();
         label(ctx, "海洋較涼", 250, 462, "#d9f3ff", 22);
         label(ctx, "陸地較熱", 640, 462, "#ffe0b6", 22);
-        drawArrow(ctx, 250, 250, 612, 250, "#8dd7ff", 8);
-        drawArrow(ctx, 640, 300, 640, 144, "#ff977f", 8);
-        drawArrow(ctx, 620, 136, 300, 136, "#ffd166", 6);
+        drawStreamSet(ctx, [
+          [{x: 210, y: 265}, {x: 350, y: 252}, {x: 520, y: 250}, {x: 662, y: 252}],
+          [{x: 640, y: 300}, {x: 640, y: 218}, {x: 610, y: 145}]
+        ], phase, true, 0.82, 8);
+        drawStreamSet(ctx, [
+          [{x: 638, y: 136}, {x: 520, y: 120}, {x: 360, y: 126}, {x: 260, y: 152}]
+        ], phase + 0.25, false, 0.55, 7);
+        label(ctx, "海風補進來", 420, 222, "#d4f0ff", 20);
+        label(ctx, "熱空氣上升", 680, 190, "#ffd1c7", 20);
       } else if (state.life === "pot") {
         ctx.fillStyle = "#41545f";
         roundRect(ctx, 190, 170, 500, 250, 8);
@@ -1032,31 +1183,60 @@
         ctx.fillRect(210, 205, 460, 188);
         ctx.fillStyle = "#c74335";
         ctx.fillRect(270, 430, 340, 22);
-        for (let i = 0; i < 9; i++) {
-          const x = 290 + i * 36;
-          drawArrow(ctx, x, 360, x + Math.sin(phase + i) * 18, 218, "#ff977f", 5);
+        ctx.strokeStyle = "rgba(255,255,255,0.5)";
+        ctx.lineWidth = 3;
+        ctx.strokeRect(210, 205, 460, 188);
+        drawStreamSet(ctx, [
+          [{x: 365, y: 372}, {x: 382, y: 300}, {x: 392, y: 225}, {x: 332, y: 208}, {x: 270, y: 258}, {x: 294, y: 342}],
+          [{x: 515, y: 372}, {x: 498, y: 300}, {x: 488, y: 225}, {x: 548, y: 208}, {x: 610, y: 258}, {x: 586, y: 342}]
+        ], phase, true, 0.94, 8);
+        drawStreamSet(ctx, [
+          [{x: 300, y: 224}, {x: 268, y: 300}, {x: 308, y: 372}],
+          [{x: 580, y: 224}, {x: 612, y: 300}, {x: 572, y: 372}]
+        ], phase + 0.22, false, 0.58, 7);
+        for (let i = 0; i < 4; i++) {
+          label(ctx, "~", 356 + i * 45 + Math.sin(phase * 6 + i) * 5, 160 - i % 2 * 8, "#ffe9c7", 28);
         }
-        drawArrow(ctx, 225, 230, 225, 360, "#8dd7ff", 6);
-        drawArrow(ctx, 655, 230, 655, 360, "#8dd7ff", 6);
+        label(ctx, "鍋底受熱，中心快升", 440, 468, "#ffd1c7", 20);
       } else {
-        ctx.fillStyle = "#61564c";
-        ctx.fillRect(380, 150, 120, 300);
-        ctx.fillStyle = "#2f3538";
-        ctx.fillRect(330, 410, 220, 45);
-        drawArrow(ctx, 440, 410, 440, 122, "#ff977f", 9);
-        drawArrow(ctx, 230, 410, 356, 410, "#8dd7ff", 7);
-        drawArrow(ctx, 650, 410, 524, 410, "#8dd7ff", 7);
-        label(ctx, "熱空氣排出", 520, 190, "#ffd1c7", 22, "left");
-        label(ctx, "新空氣補入", 440, 482, "#d4f0ff", 22);
+        ctx.fillStyle = "#233846";
+        ctx.fillRect(110, 128, 660, 320);
+        ctx.strokeStyle = "#dcecf0";
+        ctx.lineWidth = 4;
+        ctx.strokeRect(110, 128, 660, 320);
+        ctx.strokeStyle = "#d8f7ff";
+        ctx.lineWidth = 7;
+        ctx.strokeRect(335, 195, 210, 155);
+        ctx.beginPath();
+        ctx.moveTo(440, 195);
+        ctx.lineTo(440, 350);
+        ctx.moveTo(335, 272);
+        ctx.lineTo(545, 272);
+        ctx.stroke();
+        ctx.save();
+        ctx.translate(440, 272);
+        ctx.rotate(-0.24);
+        ctx.strokeStyle = "#f6fbff";
+        ctx.strokeRect(-8, -82, 118, 164);
+        ctx.restore();
+        drawStreamSet(ctx, [
+          [{x: 110, y: 382}, {x: 238, y: 356}, {x: 342, y: 315}, {x: 452, y: 272}],
+          [{x: 456, y: 270}, {x: 562, y: 220}, {x: 686, y: 178}, {x: 772, y: 150}]
+        ], phase, false, 0.68, 8);
+        drawStreamSet(ctx, [
+          [{x: 310, y: 408}, {x: 380, y: 330}, {x: 450, y: 252}, {x: 530, y: 170}]
+        ], phase + 0.28, true, 0.82, 7);
+        label(ctx, "較涼空氣補入", 204, 396, "#d4f0ff", 20);
+        label(ctx, "熱空氣排出", 595, 180, "#ffd1c7", 20);
       }
     }
 
     const quiz = [
       {
-        q: "影片中，熱水錐形瓶加入的是哪一種顏色色素？",
-        a: ["紅色", "綠色", "藍色"],
+        q: "在對流實驗中，哪一個觀察最能代表熱水正在形成上升流？",
+        a: ["紅色色素往上移動", "藍色色素完全靜止", "所有顏色立刻消失"],
         correct: 0,
-        exp: "熱水瓶中滴入紅色色素，用來觀察熱水的上升流。"
+        exp: "熱水密度較小，會帶著紅色色素往上移動，這是上升流的明顯證據。"
       },
       {
         q: "水位高過瓶口後，過一段時間最明顯持續流動的是哪一瓶？",
@@ -1093,6 +1273,24 @@
         a: ["冷氣房中冷空氣下降", "鏡子反射影像", "橡皮擦擦掉鉛筆字"],
         correct: 0,
         exp: "冷空氣密度較大會下降，熱空氣上升，室內空氣形成循環。"
+      },
+      {
+        q: "在三瓶不同溫度的水實驗中，為什麼要加入不同顏色的色素？",
+        a: ["讓水變得比較甜", "方便觀察水的流動方向", "讓錐形瓶更容易漂浮"],
+        correct: 1,
+        exp: "色素可以把水流路徑顯示出來，幫助我們觀察上升、下降或擴散。"
+      },
+      {
+        q: "如果水盆水位還沒有高過錐形瓶口，最可能發生什麼情形？",
+        a: ["瓶內外水較難形成明顯交換", "紅色色素立刻大量上升到水面", "三瓶水一定會同時劇烈翻滾"],
+        correct: 0,
+        exp: "水位高過瓶口後，瓶內外的水才較容易接觸並觀察到流動。"
+      },
+      {
+        q: "比較單開口和雙開口裝置時，哪一個說法最合理？",
+        a: ["開口越多一定完全沒有流動", "入口與出口越清楚，循環越容易形成", "吸管高度不會影響水流"],
+        correct: 1,
+        exp: "雙開口，特別是一高一低時，較容易形成進水與出水路徑，讓對流更明顯。"
       }
     ];
 
