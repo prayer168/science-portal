@@ -206,7 +206,7 @@
   .footer-counter{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:4px;}
   .vc-label{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;}
   .vc-digits{display:flex;gap:3px;}
-  .vc-digit{background:#000;border:1px solid rgba(255,255,255,0.12);border-radius:4px;width:20px;height:28px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:700;color:#3dffa0;text-shadow:0 0 8px rgba(61,255,160,0.8);}
+  .vc-digit{background:#000;border:1px solid rgba(255,255,255,0.15);border-radius:4px;width:26px;height:36px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;color:#ffffff;text-shadow:0 0 6px rgba(255,255,255,0.5);}
   .vc-digit.flip{animation:digitFlip 0.35s ease;}
   @keyframes digitFlip{0%{transform:translateY(0);opacity:1;}40%{transform:translateY(-6px);opacity:0;}60%{transform:translateY(6px);opacity:0;}100%{transform:translateY(0);opacity:1;}}
   .vc-today{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:1px;}
@@ -453,7 +453,24 @@
 
 <script>
 (function() {
-  const API = 'https://api.countapi.xyz/hit/prayer168-science-portal/total-visitors';
+  const API_HIT  = 'https://api.countapi.xyz/hit/prayer168-science-portal/total-visitors';
+  const API_GET  = 'https://api.countapi.xyz/get/prayer168-science-portal/total-visitors';
+  const TODAY    = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+  const COOKIE_KEY = 'vc_visited';
+
+  // Cookie 工具
+  function getCookie(name) {
+    const m = document.cookie.match('(?:^|;)\s*' + name + '=([^;]*)');
+    return m ? decodeURIComponent(m[1]) : null;
+  }
+  function setCookie(name, value, days) {
+    const exp = new Date();
+    exp.setDate(exp.getDate() + days);
+    document.cookie = name + '=' + encodeURIComponent(value) +
+      ';expires=' + exp.toUTCString() + ';path=/;SameSite=Lax';
+  }
+
+  // 數字顯示
   function setDigits(num) {
     const str = String(num).padStart(6, '0');
     document.querySelectorAll('.vc-digit').forEach((d, i) => {
@@ -468,23 +485,51 @@
   function animateCount(target) {
     const start = Math.max(0, target - 60);
     let cur = start;
-    const step = Math.ceil((target - start) / 25);
+    const step = Math.max(1, Math.ceil((target - start) / 25));
     const t = setInterval(() => {
       cur = Math.min(cur + step, target);
       setDigits(cur);
       if (cur >= target) clearInterval(t);
     }, 40);
   }
-  const today = new Date().toLocaleDateString('zh-TW', {month:'numeric', day:'numeric'});
-  fetch(API)
-    .then(r => r.json())
-    .then(d => { animateCount(d.value || 0); document.getElementById('vcToday').textContent = '更新於 ' + today; })
-    .catch(() => {
-      const n = parseInt(localStorage.getItem('_vc') || '0') + 1;
-      localStorage.setItem('_vc', n);
-      animateCount(n);
-      document.getElementById('vcToday').textContent = '本地計數';
-    });
+
+  const todayLabel = new Date().toLocaleDateString('zh-TW', {month:'numeric', day:'numeric'});
+  const lastVisit  = getCookie(COOKIE_KEY);
+  const isNewVisit = lastVisit !== TODAY;
+
+  if (isNewVisit) {
+    // 今天尚未訪問：計數 +1，設定 Cookie 到今日午夜
+    const midnight = new Date();
+    midnight.setHours(23, 59, 59, 999);
+    const msLeft = (midnight - new Date()) / 86400000;
+    setCookie(COOKIE_KEY, TODAY, msLeft);
+
+    fetch(API_HIT)
+      .then(r => r.json())
+      .then(d => {
+        animateCount(d.value || 0);
+        document.getElementById('vcToday').textContent = '更新於 ' + todayLabel;
+      })
+      .catch(() => {
+        const n = parseInt(localStorage.getItem('_vc') || '0') + 1;
+        localStorage.setItem('_vc', n);
+        animateCount(n);
+        document.getElementById('vcToday').textContent = '本地計數';
+      });
+  } else {
+    // 今天已訪問過：只取數值，不 +1
+    fetch(API_GET)
+      .then(r => r.json())
+      .then(d => {
+        animateCount(d.value || 0);
+        document.getElementById('vcToday').textContent = '更新於 ' + todayLabel;
+      })
+      .catch(() => {
+        const n = parseInt(localStorage.getItem('_vc') || '0');
+        setDigits(n);
+        document.getElementById('vcToday').textContent = '本地計數';
+      });
+  }
 })();
 </script>
 
