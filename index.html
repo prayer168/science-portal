@@ -446,6 +446,8 @@
       <div class="vc-digit">0</div><div class="vc-digit">0</div>
       <div class="vc-digit">0</div><div class="vc-digit">0</div>
       <div class="vc-digit">0</div><div class="vc-digit">0</div>
+      <div class="vc-digit">3</div><div class="vc-digit">0</div>
+      <div class="vc-digit">8</div><div class="vc-digit">2</div>
     </div>
     <div class="vc-today" id="vcToday">載入中…</div>
   </div>
@@ -472,7 +474,7 @@
 
   // 數字顯示
   function setDigits(num) {
-    const str = String(num).padStart(6, '0');
+    const str = String(num).padStart(10, '0');
     document.querySelectorAll('.vc-digit').forEach((d, i) => {
       if (d.textContent !== str[i]) {
         d.classList.remove('flip');
@@ -483,7 +485,7 @@
     });
   }
   function animateCount(target) {
-    const start = Math.max(0, target - 60);
+    const start = Math.max(3060, target - 60);
     let cur = start;
     const step = Math.max(1, Math.ceil((target - start) / 25));
     const t = setInterval(() => {
@@ -511,7 +513,7 @@
         document.getElementById('vcToday').textContent = '更新於 ' + todayLabel;
       })
       .catch(() => {
-        const n = parseInt(localStorage.getItem('_vc') || '0') + 1;
+        const n = parseInt(localStorage.getItem('_vc') || '3082') + 1;
         localStorage.setItem('_vc', n);
         animateCount(n);
         document.getElementById('vcToday').textContent = '本地計數';
@@ -525,7 +527,7 @@
         document.getElementById('vcToday').textContent = '更新於 ' + todayLabel;
       })
       .catch(() => {
-        const n = parseInt(localStorage.getItem('_vc') || '0');
+        const n = parseInt(localStorage.getItem('_vc') || '3082');
         setDigits(n);
         document.getElementById('vcToday').textContent = '本地計數';
       });
@@ -1508,18 +1510,6 @@ document.addEventListener('mouseover', function(e) {
   }
 });
 </script>
-
-
-  <div class="vc-digits" id="vcDigits">
-    <div class="vc-digit">0</div>
-    <div class="vc-digit">0</div>
-    <div class="vc-digit">0</div>
-    <div class="vc-digit">0</div>
-    <div class="vc-digit">0</div>
-    <div class="vc-digit">0</div>
-  </div>
-  <div class="vc-today" id="vcToday">載入中…</div>
-</div>
 
 
 </body>
