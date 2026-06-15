@@ -439,219 +439,177 @@
   </div>
   <div class="footer-counter">
     <div class="vc-label">👁 訪客人數</div>
-    <canvas id="vcCanvas" width="320" height="56"></canvas>
+    <canvas id="vcCanvas" width="320" height="48"></canvas>
     <div class="vc-today" id="vcToday">載入中…</div>
   </div>
 </footer>
 
 <script>
 (function() {
-  const API_HIT   = 'https://api.countapi.xyz/hit/prayer168-science-portal/total-visitors';
-  const API_GET   = 'https://api.countapi.xyz/get/prayer168-science-portal/total-visitors';
-  const TODAY     = new Date().toISOString().slice(0, 10);
-  const COOKIE_KEY= 'vc_visited';
-  const DIGITS    = 10;
-  const CW = 28, CH = 56, GAP = 4;  // 格寬、格高、間距
-  const canvas    = document.getElementById('vcCanvas');
-  canvas.width    = DIGITS * CW + (DIGITS - 1) * GAP;
-  canvas.height   = CH;
-  const ctx       = canvas.getContext('2d');
+  const API_HIT    = 'https://api.countapi.xyz/hit/prayer168-science-portal/total-visitors';
+  const API_GET    = 'https://api.countapi.xyz/get/prayer168-science-portal/total-visitors';
+  const TODAY      = new Date().toISOString().slice(0,10);
+  const COOKIE_KEY = 'vc_visited';
+  const DIGITS = 10, CW = 28, CH = 48, GAP = 4;
 
-  // 目前每格顯示的數字（字串）
-  const cur = Array(DIGITS).fill('0');
-  // 翻牌動畫狀態
-  const anim = Array(DIGITS).fill(null); // {from, to, progress}
+  const canvas = document.getElementById('vcCanvas');
+  canvas.width  = DIGITS * CW + (DIGITS-1) * GAP;
+  canvas.height = CH;
+  const ctx = canvas.getContext('2d');
 
-  function drawCell(i, topChar, botChar, flip) {
+  const cur  = Array(DIGITS).fill('0');    // 目前顯示字元
+  const next = Array(DIGITS).fill(null);   // 待翻目標字元
+  const prog = Array(DIGITS).fill(0);      // 翻牌進度 0~1
+
+  function rr(x, y, w, h, r) {            // roundRect helper
+    ctx.beginPath();
+    ctx.moveTo(x+r, y);
+    ctx.arcTo(x+w, y, x+w, y+h, r);
+    ctx.arcTo(x+w, y+h, x, y+h, r);
+    ctx.arcTo(x, y+h, x, y, r);
+    ctx.arcTo(x, y, x+w, y, r);
+    ctx.closePath();
+  }
+
+  function drawDigit(i, ch, flipProg, nextCh) {
     const x = i * (CW + GAP);
-    const mid = CH / 2;
+    const cx = x + CW/2, cy = CH/2;
 
-    // 背景
+    // 背景格
     ctx.fillStyle = '#0a0a0a';
-    roundRect(ctx, x, 0, CW, CH, 5);
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(255,255,255,0.13)';
+    rr(x, 0, CW, CH, 5); ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,0.14)';
     ctx.lineWidth = 1;
-    roundRect(ctx, x, 0, CW, CH, 5);
-    ctx.stroke();
+    rr(x, 0, CW, CH, 5); ctx.stroke();
 
-    // 中線
-    ctx.fillStyle = 'rgba(0,0,0,0.6)';
-    ctx.fillRect(x, mid - 1, CW, 2);
+    // 中線分隔
+    ctx.fillStyle = 'rgba(0,0,0,0.7)';
+    ctx.fillRect(x+1, cy-1, CW-2, 2);
 
-    ctx.font = 'bold 26px "IBM Plex Mono", monospace';
+    ctx.font = 'bold 26px "IBM Plex Mono",monospace';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
+    ctx.shadowColor = 'rgba(255,255,255,0.3)';
+    ctx.shadowBlur = 4;
 
-    if (!flip || flip <= 0) {
-      // 靜態：上下同一字
-      ctx.fillStyle = '#ffffff';
-      ctx.shadowColor = 'rgba(255,255,255,0.4)';
-      ctx.shadowBlur = 6;
-      ctx.fillText(topChar, x + CW / 2, mid - 1);
-      ctx.shadowBlur = 0;
-      ctx.fillStyle = '#cccccc';
-      ctx.fillText(botChar, x + CW / 2, mid + CH / 4);
+    if (!flipProg) {
+      // 靜態顯示
+      ctx.fillStyle = '#fff';
+      ctx.fillText(ch, cx, cy);
     } else {
-      // 翻牌中：flip 0→1
-      // 下半：新數字（固定）
-      ctx.save();
-      ctx.beginPath();
-      ctx.rect(x, mid, CW, CH / 2);
-      ctx.clip();
-      ctx.fillStyle = '#cccccc';
-      ctx.fillText(botChar, x + CW / 2, mid + CH / 4);
-      ctx.restore();
+      const p = flipProg; // 0→1
 
-      // 上半：舊數字（固定）
+      // 下半：固定顯示 nextCh（翻牌後的字）
       ctx.save();
-      ctx.beginPath();
-      ctx.rect(x, 0, CW, mid);
-      ctx.clip();
-      ctx.fillStyle = '#ffffff';
-      ctx.shadowColor = 'rgba(255,255,255,0.4)';
-      ctx.shadowBlur = 6;
-      ctx.fillText(topChar, x + CW / 2, mid - 1);
+      ctx.beginPath(); ctx.rect(x, cy, CW, CH/2); ctx.clip();
+      ctx.fillStyle = '#ccc';
       ctx.shadowBlur = 0;
+      ctx.fillText(nextCh, cx, cy + CH/4);
       ctx.restore();
 
-      // 翻牌片：從 scaleY=1 → 0（第一半），0 → -1 不顯示（已換）
-      const p = flip; // 0→1
+      // 上半：固定顯示 ch（舊字）
+      ctx.save();
+      ctx.beginPath(); ctx.rect(x, 0, CW, cy); ctx.clip();
+      ctx.fillStyle = '#fff';
+      ctx.shadowBlur = 4;
+      ctx.fillText(ch, cx, cy - CH/4 + 2);
+      ctx.restore();
+
+      // 翻牌片（只畫上半區域）
       if (p < 0.5) {
-        // 上半翻下：顯示舊字，高度從 mid 縮到 0
-        const fh = mid * (1 - p * 2);
+        // 舊字上半向下收縮
+        const scale = 1 - p * 2;
+        const fh = (CH/2) * scale;
         ctx.save();
-        ctx.beginPath();
-        ctx.rect(x, mid - fh, CW, fh);
-        ctx.clip();
-        ctx.fillStyle = '#1a1a1a';
-        roundRect(ctx, x, mid - fh, CW, fh, 3);
-        ctx.fill();
-        ctx.fillStyle = 'rgba(255,255,255,0.85)';
-        ctx.font = 'bold 26px "IBM Plex Mono", monospace';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(topChar, x + CW / 2, mid - fh / 2);
+        ctx.beginPath(); ctx.rect(x, cy - fh, CW, fh); ctx.clip();
+        ctx.fillStyle = '#161616';
+        rr(x, cy - fh, CW, fh, 3); ctx.fill();
+        ctx.fillStyle = 'rgba(255,255,255,0.9)';
+        ctx.font = 'bold 26px "IBM Plex Mono",monospace';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.shadowBlur = 0;
+        ctx.fillText(ch, cx, cy - fh/2);
         ctx.restore();
       } else {
-        // 下半展開：顯示新字，高度從 0 到 mid
-        const fh = mid * ((p - 0.5) * 2);
+        // 新字下半向下展開
+        const scale = (p - 0.5) * 2;
+        const fh = (CH/2) * scale;
         ctx.save();
-        ctx.beginPath();
-        ctx.rect(x, mid, CW, fh);
-        ctx.clip();
-        ctx.fillStyle = '#1a1a1a';
-        roundRect(ctx, x, mid, CW, fh, 3);
-        ctx.fill();
-        ctx.fillStyle = 'rgba(200,200,200,0.9)';
-        ctx.font = 'bold 26px "IBM Plex Mono", monospace';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(botChar, x + CW / 2, mid + fh / 2);
+        ctx.beginPath(); ctx.rect(x, cy, CW, fh); ctx.clip();
+        ctx.fillStyle = '#161616';
+        rr(x, cy, CW, fh, 3); ctx.fill();
+        ctx.fillStyle = 'rgba(200,200,200,0.95)';
+        ctx.font = 'bold 26px "IBM Plex Mono",monospace';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.shadowBlur = 0;
+        ctx.fillText(nextCh, cx, cy + fh/2);
         ctx.restore();
       }
     }
-  }
-
-  function roundRect(ctx, x, y, w, h, r) {
-    ctx.beginPath();
-    ctx.moveTo(x + r, y);
-    ctx.lineTo(x + w - r, y);
-    ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-    ctx.lineTo(x + w, y + h - r);
-    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-    ctx.lineTo(x + r, y + h);
-    ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-    ctx.lineTo(x, y + r);
-    ctx.quadraticCurveTo(x, y, x + r, y);
-    ctx.closePath();
+    ctx.shadowBlur = 0;
   }
 
   function render() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (let i = 0; i < DIGITS; i++) {
-      const a = anim[i];
-      if (a) {
-        drawCell(i, a.from, a.to, a.progress);
-      } else {
-        drawCell(i, cur[i], cur[i], 0);
-      }
+      drawDigit(i, cur[i], next[i] ? prog[i] : 0, next[i] || cur[i]);
     }
   }
 
   let rafId = null;
-  function startRender() {
-    if (rafId) return;
-    function loop() {
-      let anyActive = false;
-      for (let i = 0; i < DIGITS; i++) {
-        if (anim[i]) {
-          anim[i].progress += 0.06;
-          if (anim[i].progress >= 1) {
-            cur[i] = anim[i].to;
-            anim[i] = null;
-          } else {
-            anyActive = true;
-          }
-        }
+  function tick() {
+    let any = false;
+    for (let i = 0; i < DIGITS; i++) {
+      if (next[i]) {
+        prog[i] = Math.min(prog[i] + 0.07, 1);
+        if (prog[i] >= 1) { cur[i] = next[i]; next[i] = null; prog[i] = 0; }
+        else any = true;
       }
-      render();
-      if (anyActive) rafId = requestAnimationFrame(loop);
-      else rafId = null;
     }
-    rafId = requestAnimationFrame(loop);
+    render();
+    rafId = any ? requestAnimationFrame(tick) : null;
   }
 
   function setDigits(num) {
     const str = String(num).padStart(DIGITS, '0');
+    let changed = false;
     for (let i = 0; i < DIGITS; i++) {
-      const ch = str[i];
-      if (cur[i] !== ch && !anim[i]) {
-        anim[i] = { from: cur[i], to: ch, progress: 0 };
+      if (str[i] !== cur[i] && !next[i]) {
+        next[i] = str[i]; prog[i] = 0; changed = true;
       }
     }
-    startRender();
+    if (changed && !rafId) rafId = requestAnimationFrame(tick);
   }
 
   function animateCount(target) {
-    const start = Math.max(3060, target - 60);
-    let c = start;
-    setDigits(c);
-    const step = Math.max(1, Math.ceil((target - start) / 30));
+    const s = Math.max(3060, target - 60);
+    let c = s; setDigits(c);
+    const step = Math.max(1, Math.ceil((target-s)/30));
     const t = setInterval(() => {
-      c = Math.min(c + step, target);
-      setDigits(c);
+      c = Math.min(c+step, target); setDigits(c);
       if (c >= target) clearInterval(t);
-    }, 60);
+    }, 70);
   }
 
-  // 初始渲染
-  render();
+  render(); // 初始畫面
 
   // Cookie
-  function getCookie(n) {
-    const m = document.cookie.match('(?:^|;)\s*' + n + '=([^;]*)');
-    return m ? decodeURIComponent(m[1]) : null;
-  }
-  function setCookie(n, v, days) {
-    const e = new Date();
-    e.setDate(e.getDate() + days);
-    document.cookie = n + '=' + encodeURIComponent(v) + ';expires=' + e.toUTCString() + ';path=/;SameSite=Lax';
-  }
+  function getCookie(n){const m=document.cookie.match('(?:^|;)\s*'+n+'=([^;]*)');return m?decodeURIComponent(m[1]):null;}
+  function setCookie(n,v,d){const e=new Date();e.setDate(e.getDate()+d);document.cookie=n+'='+encodeURIComponent(v)+';expires='+e.toUTCString()+';path=/;SameSite=Lax';}
 
-  const todayLabel = new Date().toLocaleDateString('zh-TW', {month:'numeric', day:'numeric'});
-  const isNewVisit = getCookie(COOKIE_KEY) !== TODAY;
+  const label = new Date().toLocaleDateString('zh-TW',{month:'numeric',day:'numeric'});
+  const isNew = getCookie(COOKIE_KEY) !== TODAY;
 
-  if (isNewVisit) {
-    const midnight = new Date(); midnight.setHours(23,59,59,999);
-    setCookie(COOKIE_KEY, TODAY, (midnight - new Date()) / 86400000);
+  if (isNew) {
+    const mid = new Date(); mid.setHours(23,59,59,999);
+    setCookie(COOKIE_KEY, TODAY, (mid-new Date())/86400000);
     fetch(API_HIT).then(r=>r.json())
-      .then(d => { animateCount(d.value||3082); document.getElementById('vcToday').textContent='更新於 '+todayLabel; })
-      .catch(() => { const n=parseInt(localStorage.getItem('_vc')||'3082')+1; localStorage.setItem('_vc',n); animateCount(n); document.getElementById('vcToday').textContent='本地計數'; });
+      .then(d=>{animateCount(d.value||3082);document.getElementById('vcToday').textContent='更新於 '+label;})
+      .catch(()=>{const n=parseInt(localStorage.getItem('_vc')||'3082')+1;localStorage.setItem('_vc',n);animateCount(n);document.getElementById('vcToday').textContent='本地計數';});
   } else {
     fetch(API_GET).then(r=>r.json())
-      .then(d => { animateCount(d.value||3082); document.getElementById('vcToday').textContent='更新於 '+todayLabel; })
-      .catch(() => { const n=parseInt(localStorage.getItem('_vc')||'3082'); setDigits(n); document.getElementById('vcToday').textContent='本地計數'; });
+      .then(d=>{animateCount(d.value||3082);document.getElementById('vcToday').textContent='更新於 '+label;})
+      .catch(()=>{const n=parseInt(localStorage.getItem('_vc')||'3082');setDigits(n);document.getElementById('vcToday').textContent='本地計數';});
   }
 })();
 </script>
