@@ -1407,5 +1407,147 @@ document.addEventListener('mouseover', function(e) {
   }
 });
 </script>
+
+<!-- ── 訪客人數計數器 ── -->
+<style>
+#visitor-counter {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #000;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  padding: 10px 16px;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6), 0 0 12px rgba(61,255,160,0.08);
+  min-width: 110px;
+}
+#visitor-counter .vc-label {
+  font-family: 'IBM Plex Mono', 'Noto Sans TC', monospace;
+  font-size: 9px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+#visitor-counter .vc-digits {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+.vc-digit {
+  background: #0a0a0a;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  width: 22px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 16px;
+  font-weight: 700;
+  color: #3dffa0;
+  text-shadow: 0 0 8px rgba(61,255,160,0.8);
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s;
+}
+.vc-digit::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0; right: 0;
+  height: 1px;
+  background: rgba(255,255,255,0.04);
+}
+.vc-digit.flip {
+  animation: digitFlip 0.4s ease;
+}
+@keyframes digitFlip {
+  0%   { transform: translateY(0); opacity: 1; }
+  40%  { transform: translateY(-8px); opacity: 0; }
+  60%  { transform: translateY(8px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+#visitor-counter .vc-today {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 1px;
+}
+@media(max-width:480px){
+  #visitor-counter { bottom: 12px; right: 12px; padding: 8px 12px; min-width: 90px; }
+  .vc-digit { width: 18px; height: 26px; font-size: 13px; }
+}
+</style>
+
+<div id="visitor-counter">
+  <div class="vc-label">👁 訪客人數</div>
+  <div class="vc-digits" id="vcDigits">
+    <div class="vc-digit">0</div>
+    <div class="vc-digit">0</div>
+    <div class="vc-digit">0</div>
+    <div class="vc-digit">0</div>
+    <div class="vc-digit">0</div>
+    <div class="vc-digit">0</div>
+  </div>
+  <div class="vc-today" id="vcToday">載入中…</div>
+</div>
+
+<script>
+(function() {
+  // 使用 countapi.xyz 免費計數服務（namespace: science-portal, key: visitors）
+  const NAMESPACE = 'prayer168-science-portal';
+  const KEY = 'total-visitors';
+  const API = `https://api.countapi.xyz/hit/${NAMESPACE}/${KEY}`;
+
+  function setDigits(num) {
+    const str = String(num).padStart(6, '0');
+    const digits = document.querySelectorAll('.vc-digit');
+    digits.forEach((d, i) => {
+      if (d.textContent !== str[i]) {
+        d.classList.remove('flip');
+        void d.offsetWidth; // reflow
+        d.classList.add('flip');
+        d.textContent = str[i];
+      }
+    });
+  }
+
+  function animateCount(target) {
+    const start = Math.max(0, target - 80);
+    let current = start;
+    const step = Math.ceil((target - start) / 30);
+    const timer = setInterval(() => {
+      current = Math.min(current + step, target);
+      setDigits(current);
+      if (current >= target) clearInterval(timer);
+    }, 40);
+  }
+
+  // 今日日期
+  const today = new Date().toLocaleDateString('zh-TW', {month:'numeric', day:'numeric'});
+
+  fetch(API)
+    .then(r => r.json())
+    .then(data => {
+      const count = data.value || 0;
+      animateCount(count);
+      document.getElementById('vcToday').textContent = `更新於 ${today}`;
+    })
+    .catch(() => {
+      // countapi 失敗時改用 localStorage 本地計數
+      const stored = parseInt(localStorage.getItem('_vc') || '0') + 1;
+      localStorage.setItem('_vc', stored);
+      animateCount(stored);
+      document.getElementById('vcToday').textContent = '本地計數';
+    });
+})();
+</script>
+
 </body>
 </html>
