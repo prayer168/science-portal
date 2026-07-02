@@ -837,6 +837,15 @@ const DEFAULT_CATS = [
 ];
 window.DEFAULT_CATS = DEFAULT_CATS;
 
+// ── 類別固定排序：列在此清單的類別依序排列，未列出的自訂類別依原順序排在最後 ──
+const CAT_ORDER = ['三年級','四年級','五年級','六年級','七年級','八年級','九年級','教學應用','休閒（動動腦）'];
+function orderCats(cats) {
+  return cats.slice().sort((a, b) => {
+    const ia = CAT_ORDER.indexOf(a.key), ib = CAT_ORDER.indexOf(b.key);
+    return (ia === -1 ? CAT_ORDER.length : ia) - (ib === -1 ? CAT_ORDER.length : ib);
+  });
+}
+
 const EXTRA_COLORS = ["#e17055","#6c5ce7","#fd79a8","#00cec9","#fdcb6e","#74b9ff","#55efc4","#fab1a0"];
 let colorIdx = 0;
 
@@ -847,7 +856,7 @@ function loadCats() {
   try {
     const s = localStorage.getItem(CAT_STORE);
     const extra = s ? JSON.parse(s) : [];
-    return [...DEFAULT_CATS, ...extra];
+    return orderCats([...DEFAULT_CATS, ...extra]);
   } catch { return [...DEFAULT_CATS]; }
 }
 function saveExtraCats(cats) {
@@ -951,7 +960,7 @@ window._firestoreDataCallback = function(materials, customCats) {
       '教案命題':   '📝',
     };
     customCats.forEach(c => { if (EMOJI_MAP[c.key]) c.emoji = EMOJI_MAP[c.key]; });
-    CATS = [...DEFAULT_CATS, ...customCats];
+    CATS = orderCats([...DEFAULT_CATS, ...customCats]);
     const extra = customCats;
     localStorage.setItem(CAT_STORE, JSON.stringify(extra));
     injectCatStyles();
