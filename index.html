@@ -212,6 +212,17 @@
 
   footer{padding:20px 28px;color:#484f58;font-size:12px;border-top:1px solid var(--border);text-align:center;}
   .footer-text{text-align:center;}
+  /* 「黑熊老師」連結：平時淡綠底線提示，hover 反白（綠底深字） */
+  .bear-link{
+    color:#b3c3bd;font-weight:700;white-space:nowrap;cursor:pointer;
+    text-decoration:underline;text-decoration-color:rgba(29,209,161,0.5);
+    text-underline-offset:3px;text-decoration-thickness:1px;
+    border-radius:5px;padding:0 4px;
+    transition:background .18s ease,color .18s ease;
+  }
+  .bear-link:hover,.bear-link:focus-visible{
+    background:var(--g5);color:#0c0e13;text-decoration:none;outline:none;
+  }
   .footer-counter{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:18px;}
   .vc-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:2.5px;text-transform:uppercase;}
   .vc-today{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:1px;margin-top:2px;}
@@ -440,13 +451,13 @@
 </div><!-- /.page-wrap -->
 <footer>
   <div class="footer-text">
-    🐻 黑熊老師的自然科學數位教材 · 持續更新中 🐾<br>
+    🐻 <a class="bear-link" href="https://prayer168.github.io/about_blackbear_teacher/" target="_blank" rel="noopener">黑熊老師</a>的自然科學數位教材 · 持續更新中 🐾<br>
     <span style="margin-top:6px;display:inline-block;color:#6b7280;font-size:11px;">
-      設計者：陳賢宗（黑熊老師）&nbsp;·&nbsp;
+      設計者：陳賢宗（<a class="bear-link" href="https://prayer168.github.io/about_blackbear_teacher/" target="_blank" rel="noopener">黑熊老師</a>）&nbsp;·&nbsp;
       Email：<a href="mailto:prayer168@gmail.com" style="color:#6b7280;text-decoration:none;">prayer168@gmail.com</a>
     </span><br>
     <span style="margin-top:4px;display:inline-block;color:#6b7280;font-size:11px;line-height:1.8;">
-      © 2026 陳賢宗（黑熊老師）版權所有&nbsp;·&nbsp;
+      © 2026 陳賢宗（<a class="bear-link" href="https://prayer168.github.io/about_blackbear_teacher/" target="_blank" rel="noopener">黑熊老師</a>）版權所有&nbsp;·&nbsp;
       本網站教材供教育用途免費使用，請勿用於商業目的或未經授權之轉載、改作。
     </span>
   </div>
