@@ -121,8 +121,17 @@
   .toast.show{opacity:1;}
   .manage-list-header{display:flex;align-items:center;justify-content:space-between;margin-top:18px;margin-bottom:8px;gap:10px;flex-wrap:wrap;}
   .manage-list-title{font-size:13px;font-weight:700;color:var(--text-sub);}
+  .manage-list-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .manage-search{position:relative;display:flex;align-items:center;width:min(280px,70vw);}
+  .manage-search svg{position:absolute;left:10px;width:15px;height:15px;color:#8b949e;pointer-events:none;}
+  .manage-search input{width:100%;border:1px solid var(--border);border-radius:6px;padding:6px 32px;font-size:13px;font-family:'Noto Sans TC',sans-serif;outline:none;color:var(--text);background:#21262d;}
+  .manage-search input:focus{border-color:#58a6ff;box-shadow:0 0 0 2px rgba(88,166,255,.15);}
+  .manage-search input::placeholder{color:#8b949e;}
+  .manage-search-clear{position:absolute;right:5px;border:0;background:transparent;color:#8b949e;font-size:18px;line-height:1;width:26px;height:26px;border-radius:4px;cursor:pointer;}
+  .manage-search-clear:hover,.manage-search-clear:focus-visible{background:#30363d;color:#f0f6fc;outline:none;}
   .manage-filter{border:1px solid var(--border);border-radius:6px;padding:5px 10px;font-size:13px;font-family:'Noto Sans TC',sans-serif;outline:none;color:var(--text);background:#21262d;}
   .manage-filter:focus{border-color:#58a6ff;}
+  .drag-handle.disabled{cursor:not-allowed;opacity:.35;}
   .manage-table{width:100%;border-collapse:collapse;}
   .manage-table th{text-align:left;font-size:11px;font-weight:700;color:var(--text-sub);padding:8px 10px;border-bottom:1px solid var(--border);letter-spacing:0.5px;text-transform:uppercase;}
   .manage-table td{padding:8px 10px;border-bottom:1px solid var(--border);font-size:13px;vertical-align:middle;color:var(--text);}
@@ -302,7 +311,10 @@
     .section-title{font-size:13px;}
     .section-emoji{font-size:18px;}
     .section-header{padding:8px 10px;gap:8px;}
-    .manage-list-header{flex-direction:column;align-items:flex-start;}
+    .manage-list-header{flex-direction:column;align-items:stretch;}
+    .manage-list-controls{width:100%;}
+    .manage-search{width:100%;flex:1 1 100%;}
+    .manage-filter{flex:1 1 100%;}
     .batch-bar{gap:6px;padding:8px 10px;}
     .btn-batch-del{padding:4px 10px;font-size:12px;}
     .td-actions{flex-wrap:wrap;gap:3px;}
@@ -437,10 +449,17 @@
     <span class="toast" id="toast">✅ 已新增！</span>
 
     <div class="manage-list-header">
-      <div class="manage-list-title" id="listCount"></div>
-      <select class="manage-filter" id="filterCat" onchange="renderManageTable()">
-        <option value="">全部類別</option>
-      </select>
+      <div class="manage-list-title" id="listCount" aria-live="polite"></div>
+      <div class="manage-list-controls">
+        <div class="manage-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+          <input type="search" id="manageSearch" placeholder="搜尋教材名稱、網址或類別…" autocomplete="off" spellcheck="false" aria-label="搜尋管理列表" oninput="renderManageTable()">
+          <button type="button" class="manage-search-clear" id="manageSearchClear" onclick="clearManageSearch()" aria-label="清除管理列表搜尋" title="清除搜尋" hidden>×</button>
+        </div>
+        <select class="manage-filter" id="filterCat" onchange="renderManageTable()" aria-label="篩選教材類別">
+          <option value="">全部類別</option>
+        </select>
+      </div>
     </div>
 
     <!-- 批次工具列 -->
@@ -1577,8 +1596,21 @@ function toggleManagePanel() { manageOpen ? closeManagePanel() : openManagePanel
 // ── 管理表格 ──
 let filteredIndices = [];
 
+function clearManageSearch() {
+  const input = document.getElementById('manageSearch');
+  if (!input) return;
+  input.value = '';
+  renderManageTable();
+  input.focus();
+}
+
 function renderManageTable() {
   const filter = document.getElementById('filterCat').value;
+  const searchInput = document.getElementById('manageSearch');
+  const query = normalizeSearch(searchInput?.value || '');
+  const queryTerms = query.split(/\s+/).filter(Boolean);
+  const clearButton = document.getElementById('manageSearchClear');
+  if (clearButton) clearButton.hidden = !query;
   // 按類別排序（依照 CATS 順序），再依原本 DATA 順序
   const catOrder = CATS.map(c => c.key);
   const sorted = DATA.map((item, i) => ({item, i}))
@@ -1587,19 +1619,35 @@ function renderManageTable() {
       const bi = catOrder.indexOf(b.item.cat);
       return ai !== bi ? ai - bi : a.i - b.i;
     });
-  const filtered = sorted.filter(({item}) => !filter || item.cat === filter);
+  const filtered = sorted.filter(({item}) => {
+    if (filter && item.cat !== filter) return false;
+    if (!queryTerms.length) return true;
+    const haystack = normalizeSearch(`${item.name} ${item.url} ${item.cat}`);
+    return queryTerms.every(term => haystack.includes(term));
+  });
   filteredIndices = filtered.map(f => f.i);
-  document.getElementById('listCount').textContent = `共 ${filtered.length} 筆（全部 ${DATA.length} 筆）`;
+  const hasConditions = !!filter || !!query;
+  document.getElementById('listCount').textContent = `${hasConditions ? '找到' : '共'} ${filtered.length} 筆（全部 ${DATA.length} 筆）`;
   const tbody = document.getElementById('manageTableBody');
   if (filtered.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:24px;color:#999;">此類別尚無教材</td></tr>`;
-    updateBatchBar(); return;
+    const emptyMessage = query
+      ? `找不到符合「${searchInput.value.trim()}」的教材`
+      : '此類別尚無教材';
+    const row = document.createElement('tr');
+    const cell = document.createElement('td');
+    cell.colSpan = 6;
+    cell.style.cssText = 'text-align:center;padding:24px;color:#999;';
+    cell.textContent = emptyMessage;
+    row.appendChild(cell);
+    tbody.replaceChildren(row);
+    updateBatchBar(); syncCheckAll(); return;
   }
+  const dragDisabled = !!query;
   tbody.innerHTML = filtered.map(({item, i}) => {
     const color    = catColor(item.cat);
     const moveOpts = CATS.filter(c => c.key !== item.cat).map(c => `<option value="${c.key}">${c.emoji} ${c.key}</option>`).join('');
     return `<tr data-idx="${i}">
-      <td style="cursor:grab;color:#555;font-size:16px;text-align:center;user-select:none;" class="drag-handle" title="拖曳排序">⠿</td>
+      <td style="cursor:${dragDisabled ? 'not-allowed' : 'grab'};color:#555;font-size:16px;text-align:center;user-select:none;" class="drag-handle${dragDisabled ? ' disabled' : ''}" title="${dragDisabled ? '清除搜尋後可拖曳排序' : '拖曳排序'}">⠿</td>
       <td><input type="checkbox" class="row-cb" data-idx="${i}" onchange="onRowCheck(event)"></td>
       <td><span class="cat-badge" style="background:${color}">${item.cat}</span></td>
       <td class="td-name" id="namecell-${i}">${item.icon} ${item.name}</td>
@@ -1614,7 +1662,7 @@ function renderManageTable() {
     </tr>`;
   }).join('');
   updateBatchBar(); syncCheckAll();
-  initDragSort(tbody, filtered);
+  if (!dragDisabled) initDragSort(tbody, filtered);
 }
 
 // ── 拖曳排序 ──
