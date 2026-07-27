@@ -51,6 +51,30 @@
   .btn-signout:hover{background:rgba(154,160,166,0.2);color:#e8eaed;}
   .user-avatar{width:28px;height:28px;border-radius:50%;border:2px solid var(--border);display:none;vertical-align:middle;}
 
+  /* SITE SEARCH - 全站教材即時檢索 */
+  .site-search{position:relative;width:clamp(220px,25vw,310px);flex:0 1 310px;z-index:110;}
+  .search-box{height:36px;display:flex;align-items:center;gap:8px;padding:0 9px 0 11px;background:rgba(26,29,36,0.92);border:1px solid var(--border);border-radius:8px;transition:border-color .18s,box-shadow .18s,background .18s;}
+  .site-search:focus-within .search-box{background:#161b22;border-color:rgba(77,184,255,.72);box-shadow:0 0 0 3px rgba(77,184,255,.12);}
+  .search-icon{width:17px;height:17px;color:#6b7280;flex:none;}
+  .search-input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:var(--text);font:500 13px/1.4 'Noto Sans TC',sans-serif;}
+  .search-input::placeholder{color:#6b7280;}
+  .search-input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;}
+  .search-shortcut{flex:none;padding:1px 5px;border:1px solid #343946;border-radius:4px;background:#20242d;color:#737b89;font:600 10px/1.5 'Nunito',sans-serif;}
+  .search-clear{width:24px;height:24px;display:grid;place-items:center;flex:none;border:0;border-radius:5px;background:transparent;color:#8b949e;font-size:17px;line-height:1;cursor:pointer;}
+  .search-clear:hover,.search-clear:focus-visible{background:rgba(255,255,255,.08);color:#e8eaed;outline:none;}
+  .search-clear[hidden]{display:none;}
+  .search-results{position:absolute;top:calc(100% + 7px);right:0;width:min(430px,calc(100vw - 24px));max-height:min(68vh,520px);overflow-y:auto;padding:6px;background:rgba(22,27,34,.98);border:1px solid #343946;border-radius:10px;box-shadow:0 18px 46px rgba(0,0,0,.5);overscroll-behavior:contain;}
+  .search-results[hidden]{display:none;}
+  .search-summary{padding:7px 9px 8px;color:#7d8590;font-size:11px;border-bottom:1px solid var(--border);}
+  .search-result{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:7px;color:var(--text);text-decoration:none;outline:none;}
+  .search-result:hover,.search-result.is-active{background:#243044;}
+  .search-result-icon{width:32px;height:32px;display:grid;place-items:center;flex:none;border-radius:7px;background:rgba(77,184,255,.1);font-size:17px;}
+  .search-result-copy{min-width:0;flex:1;}
+  .search-result-name{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px;font-weight:700;}
+  .search-result-cat{display:block;margin-top:2px;color:#8b949e;font-size:10px;}
+  .search-result-arrow{color:#6b7280;font-size:12px;}
+  .search-empty{padding:28px 16px;text-align:center;color:#8b949e;font-size:13px;line-height:1.8;}
+
   /* PAGE LAYOUT - two columns */
   .page-wrap{display:grid;grid-template-columns:236px 1fr;gap:0;max-width:1200px;margin:0 auto;padding:0 24px;align-items:start;}
   .main-col{min-width:0;}
@@ -229,6 +253,10 @@
   #vcCanvas{display:block;}
   /* ── RWD 760px：側欄改橫向 ── */
   @media(max-width:760px){
+    header{height:auto;min-height:62px;padding-top:8px;padding-bottom:8px;}
+    .header-inner{flex-wrap:wrap;gap:8px;}
+    .site-search{order:3;flex-basis:100%;width:100%;}
+    .search-results{left:0;right:auto;width:100%;max-height:min(56vh,420px);}
     .page-wrap{grid-template-columns:1fr;padding:0 12px;}
     .sidebar{position:static;padding:0;order:0;}
     .sidebar-box{border-radius:0;border-left:none;border-right:none;margin-bottom:0;}
@@ -259,9 +287,11 @@
     .page-wrap{padding:0 8px;}
     .add-form{grid-template-columns:1fr;}
     .manage-toggle{padding:5px 8px;font-size:12px;}
-    header{padding:0 12px;height:54px;}
+    header{padding:7px 12px 8px;height:auto;min-height:54px;}
     header h1{font-size:13px;}
     .header-btns{gap:5px;}
+    .search-box{height:34px;}
+    .search-shortcut{display:none;}
     .user-avatar{width:24px;height:24px;}
     .tab-btn{padding:4px 8px;font-size:11px;}
     .tab-btn .tab-count{display:none;}
@@ -341,6 +371,21 @@
       <h1>黑熊老師自然科學數位教材中心</h1>
       <p>🐾 台灣黑熊自然科 · 互動數位教材</p>
     </div>
+    <form class="site-search" id="siteSearch" role="search" onsubmit="return false;">
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"></circle>
+          <path d="m16.5 16.5 4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+        <input class="search-input" id="searchInput" type="search" inputmode="search"
+               placeholder="搜尋全部教材…" autocomplete="off" spellcheck="false"
+               aria-label="搜尋教材" aria-controls="searchResults" aria-expanded="false"
+               aria-autocomplete="list" role="combobox">
+        <span class="search-shortcut" aria-hidden="true">Ctrl K</span>
+        <button class="search-clear" id="searchClear" type="button" title="清除搜尋" aria-label="清除搜尋" hidden>×</button>
+      </div>
+      <div class="search-results" id="searchResults" role="listbox" aria-label="教材搜尋結果" aria-live="polite" hidden></div>
+    </form>
     <div class="header-btns">
       <img class="user-avatar" id="userAvatar" src="" alt="avatar">
       <button class="btn-signout" id="btnSignOut" onclick="signOut()">登出</button>
@@ -1287,6 +1332,171 @@ const ICON_MAP = {
   '老鼠迷宮大冒險': `<svg viewBox="0 0 24 24" width="30" height="30" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="6.5" r="4" fill="#A29BFE"/><circle cx="16" cy="6.5" r="4" fill="#A29BFE"/><circle cx="8" cy="6.5" r="2.4" fill="#c4b5fd" opacity="0.8"/><circle cx="16" cy="6.5" r="2.4" fill="#c4b5fd" opacity="0.8"/><circle cx="12" cy="14.5" r="7.5" fill="#A29BFE"/><circle cx="9.5" cy="13" r="1.8" fill="white"/><circle cx="14.5" cy="13" r="1.8" fill="white"/><circle cx="10" cy="13.2" r="1" fill="#4c3d9e"/><circle cx="15" cy="13.2" r="1" fill="#4c3d9e"/><circle cx="10.4" cy="12.8" r="0.4" fill="white"/><circle cx="15.4" cy="12.8" r="0.4" fill="white"/><ellipse cx="12" cy="16.5" rx="1.8" ry="1.2" fill="#d8b4fe"/><line x1="4.5" y1="15.5" x2="9.2" y2="16" stroke="#6c5ce7" stroke-width="1" stroke-linecap="round"/><line x1="4.5" y1="17" x2="9.2" y2="17" stroke="#6c5ce7" stroke-width="1" stroke-linecap="round"/><line x1="14.8" y1="16" x2="19.5" y2="15.5" stroke="#6c5ce7" stroke-width="1" stroke-linecap="round"/><line x1="14.8" y1="17" x2="19.5" y2="17" stroke="#6c5ce7" stroke-width="1" stroke-linecap="round"/></svg>`,
 };
 
+// ── 全站教材檢索 ──
+const siteSearch    = document.getElementById('siteSearch');
+const searchInput   = document.getElementById('searchInput');
+const searchClear   = document.getElementById('searchClear');
+const searchResults = document.getElementById('searchResults');
+const SEARCH_LIMIT  = 12;
+let visibleSearchResults = [];
+let activeSearchIndex = -1;
+
+function normalizeSearch(value) {
+  return String(value || '').normalize('NFKC').toLocaleLowerCase('zh-TW').trim();
+}
+
+function closeSearchResults() {
+  searchResults.hidden = true;
+  searchInput.setAttribute('aria-expanded', 'false');
+  searchInput.removeAttribute('aria-activedescendant');
+  activeSearchIndex = -1;
+}
+
+function setActiveSearchResult(index) {
+  const links = [...searchResults.querySelectorAll('.search-result')];
+  if (!links.length) return;
+  activeSearchIndex = (index + links.length) % links.length;
+  links.forEach((link, i) => {
+    const isActive = i === activeSearchIndex;
+    link.classList.toggle('is-active', isActive);
+    link.setAttribute('aria-selected', String(isActive));
+  });
+  const active = links[activeSearchIndex];
+  searchInput.setAttribute('aria-activedescendant', active.id);
+  active.scrollIntoView({ block:'nearest' });
+}
+
+function renderSearchResults() {
+  const query = normalizeSearch(searchInput.value);
+  searchClear.hidden = !query;
+  searchResults.replaceChildren();
+  activeSearchIndex = -1;
+
+  if (!query) {
+    visibleSearchResults = [];
+    closeSearchResults();
+    return;
+  }
+
+  const terms = query.split(/\s+/).filter(Boolean);
+  const matches = DATA.map((item, dataIndex) => {
+    const name = normalizeSearch(item.name);
+    const cat  = normalizeSearch(item.cat);
+    const url  = normalizeSearch(item.url);
+    const haystack = `${name} ${cat} ${url}`;
+    if (!terms.every(term => haystack.includes(term))) return null;
+    const score = name === query ? 0
+      : name.startsWith(query) ? 1
+      : cat === query ? 2
+      : terms.every(term => name.includes(term)) ? 3
+      : cat.startsWith(query) ? 4 : 5;
+    return { item, dataIndex, score };
+  }).filter(Boolean).sort((a, b) =>
+    a.score - b.score || String(a.item.name).localeCompare(String(b.item.name), 'zh-Hant')
+  );
+
+  visibleSearchResults = matches.slice(0, SEARCH_LIMIT);
+  const summary = document.createElement('div');
+  summary.className = 'search-summary';
+  summary.textContent = matches.length > SEARCH_LIMIT
+    ? `找到 ${matches.length} 筆，顯示前 ${SEARCH_LIMIT} 筆`
+    : `找到 ${matches.length} 筆教材`;
+  searchResults.appendChild(summary);
+
+  if (!matches.length) {
+    const empty = document.createElement('div');
+    empty.className = 'search-empty';
+    empty.innerHTML = '找不到符合的教材<br><small>試試較短的關鍵字或類別名稱</small>';
+    searchResults.appendChild(empty);
+  } else {
+    visibleSearchResults.forEach(({ item }, index) => {
+      const link = document.createElement('a');
+      link.className = 'search-result';
+      link.id = `search-result-${index}`;
+      link.href = item.url;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.setAttribute('role', 'option');
+
+      const icon = document.createElement('span');
+      icon.className = 'search-result-icon';
+      const itemIcon = String(item.icon || '');
+      icon.textContent = itemIcon && !itemIcon.includes('<') ? itemIcon : catEmoji(item.cat);
+
+      const copy = document.createElement('span');
+      copy.className = 'search-result-copy';
+      const name = document.createElement('span');
+      name.className = 'search-result-name';
+      name.textContent = item.name;
+      const cat = document.createElement('span');
+      cat.className = 'search-result-cat';
+      cat.textContent = `${catEmoji(item.cat)} ${item.cat}`;
+      copy.append(name, cat);
+
+      const arrow = document.createElement('span');
+      arrow.className = 'search-result-arrow';
+      arrow.textContent = '↗';
+      link.append(icon, copy, arrow);
+      link.addEventListener('mouseenter', () => setActiveSearchResult(index));
+      link.addEventListener('click', closeSearchResults);
+      searchResults.appendChild(link);
+    });
+  }
+
+  searchResults.hidden = false;
+  searchInput.setAttribute('aria-expanded', 'true');
+}
+
+function updateSearchPlaceholder() {
+  searchInput.placeholder = `搜尋 ${DATA.length} 個教材…`;
+  if (searchInput.value.trim()) renderSearchResults();
+}
+
+searchInput.addEventListener('input', renderSearchResults);
+searchInput.addEventListener('focus', () => {
+  if (searchInput.value.trim()) renderSearchResults();
+});
+searchInput.addEventListener('keydown', event => {
+  const links = searchResults.querySelectorAll('.search-result');
+  if (event.key === 'ArrowDown' && links.length) {
+    event.preventDefault();
+    setActiveSearchResult(activeSearchIndex + 1);
+  } else if (event.key === 'ArrowUp' && links.length) {
+    event.preventDefault();
+    setActiveSearchResult(activeSearchIndex - 1);
+  } else if (event.key === 'Enter' && links.length) {
+    event.preventDefault();
+    links[activeSearchIndex >= 0 ? activeSearchIndex : 0].click();
+  } else if (event.key === 'Escape') {
+    closeSearchResults();
+    searchInput.blur();
+  }
+});
+
+searchClear.addEventListener('click', () => {
+  searchInput.value = '';
+  searchClear.hidden = true;
+  closeSearchResults();
+  searchInput.focus();
+});
+
+document.addEventListener('click', event => {
+  if (!siteSearch.contains(event.target)) closeSearchResults();
+});
+
+document.addEventListener('keydown', event => {
+  const target = event.target;
+  const isTyping = target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target instanceof HTMLSelectElement || target.isContentEditable;
+  if ((event.ctrlKey || event.metaKey) && event.key.toLocaleLowerCase() === 'k') {
+    event.preventDefault();
+    searchInput.focus();
+    searchInput.select();
+  } else if (event.key === '/' && !isTyping && !event.ctrlKey && !event.metaKey && !event.altKey) {
+    event.preventDefault();
+    searchInput.focus();
+  }
+});
+
 // ── 建立頁面 ──
 function buildPage() {
   tabBar.innerHTML = '';
@@ -1323,6 +1533,7 @@ function buildPage() {
       <div class="card-grid">${cardsHtml}</div>`;
     contentArea.appendChild(section);
   });
+  updateSearchPlaceholder();
 }
 
 function switchTab(catKey) {
