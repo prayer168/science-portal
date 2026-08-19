@@ -164,6 +164,15 @@
   .btn-export{background:transparent;color:#58a6ff;border:1px solid #1a3a5c;border-radius:8px;padding:6px 14px;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.18s;font-family:'Noto Sans TC',sans-serif;}
   .btn-export:hover{background:#1a3a5c;border-color:#58a6ff;}
   .export-hint{font-size:11px;color:var(--text-sub);}
+  .import-box{margin-top:12px;border:1px solid var(--border);border-radius:10px;background:#0d1117;overflow:hidden;}
+  .import-box summary{cursor:pointer;padding:10px 14px;color:#c9d1d9;font-size:13px;font-weight:800;user-select:none;}
+  .import-box[open] summary{border-bottom:1px solid var(--border);}
+  .import-body{padding:12px 14px;display:grid;gap:9px;}
+  .import-desc{margin:0;color:var(--text-sub);font-size:12px;line-height:1.6;}
+  .import-textarea{width:100%;min-height:150px;resize:vertical;background:#010409;color:#e6edf3;border:1px solid #30363d;border-radius:8px;padding:10px;font:12px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;box-sizing:border-box;}
+  .import-textarea:focus{outline:2px solid #1f6feb;border-color:transparent;}
+  .btn-import{justify-self:start;background:#238636;color:#fff;border:0;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:800;cursor:pointer;font-family:'Noto Sans TC',sans-serif;}
+  .btn-import:hover{background:#2ea043;}
 
   /* EXPORT PACK */
   .export-pack-box{margin-top:16px;padding:16px 18px;background:#0d1117;border:1px solid var(--border);border-radius:var(--radius-sm);}
@@ -485,6 +494,14 @@
       <button class="btn-export" onclick="exportData()">📋 匯出資料（複製）</button>
       <span class="export-hint">可備份教材清單，或傳給 Claude 匯入</span>
     </div>
+    <details class="import-box">
+      <summary>📥 匯入單一分類 JSON</summary>
+      <div class="import-body">
+        <p class="import-desc">貼上含有 <code>category</code> 與 <code>items</code> 的 JSON；確認後只會取代指定分類，其他教材不受影響。</p>
+        <textarea class="import-textarea" id="importData" aria-label="分類 JSON 資料" placeholder='{"category":"教學網站","items":[{"name":"網站名稱","url":"https://example.org/","icon":"🌐"}]}'></textarea>
+        <button class="btn-import" type="button" onclick="importCategoryData()">驗證並匯入分類</button>
+      </div>
+    </details>
   </div>
 </div>
 
@@ -1880,6 +1897,62 @@ function exportData() {
   navigator.clipboard.writeText(text).then(() => {
     alert('✅ 已複製到剪貼板！共 ' + DATA.length + ' 筆教材資料。');
   }).catch(() => { prompt('請手動複製以下資料：', text); });
+}
+
+// ── 匯入單一分類（管理員限定）──
+function importCategoryData() {
+  if (!window._isAdmin) { alert('請先以管理員身分登入'); return; }
+  const input = document.getElementById('importData');
+  const raw = input?.value.trim();
+  if (!raw) { alert('請先貼上分類 JSON 資料'); return; }
+
+  let payload;
+  try { payload = JSON.parse(raw); }
+  catch (error) { alert(`JSON 格式錯誤：${error.message}`); return; }
+
+  const category = typeof payload?.category === 'string' ? payload.category.trim() : '';
+  const items = Array.isArray(payload?.items) ? payload.items : null;
+  if (!category || !CATS.some(cat => cat.key === category)) {
+    alert('category 必須是目前已存在的教材分類'); return;
+  }
+  if (!items || items.length === 0 || items.length > 500) {
+    alert('items 必須包含 1–500 筆教材'); return;
+  }
+
+  const seenPairs = new Set();
+  const normalized = [];
+  for (let i = 0; i < items.length; i++) {
+    const name = typeof items[i]?.name === 'string' ? items[i].name.trim() : '';
+    const url = typeof items[i]?.url === 'string' ? items[i].url.trim() : '';
+    let parsedUrl;
+    try { parsedUrl = new URL(url); } catch { parsedUrl = null; }
+    if (!name || name.length > 100 || /[<>]/.test(name)) {
+      alert(`第 ${i + 1} 筆的名稱無效`); return;
+    }
+    if (!parsedUrl || !['http:', 'https:'].includes(parsedUrl.protocol)) {
+      alert(`第 ${i + 1} 筆的網址必須是有效的 http 或 https 網址`); return;
+    }
+    const pairKey = `${name}\n${url}`.toLocaleLowerCase('zh-TW');
+    if (seenPairs.has(pairKey)) {
+      alert(`第 ${i + 1} 筆與前面的教材完全重複：${name}`); return;
+    }
+    seenPairs.add(pairKey);
+    const rawIcon = typeof items[i]?.icon === 'string' ? items[i].icon.trim() : '';
+    const icon = rawIcon && rawIcon.length <= 12 && !/[<>]/.test(rawIcon) ? rawIcon : catEmoji(category);
+    normalized.push({ cat: category, name, url, icon });
+  }
+
+  const oldItems = DATA.filter(item => item.cat === category);
+  const firstIndex = DATA.findIndex(item => item.cat === category);
+  const nextData = DATA.filter(item => item.cat !== category);
+  nextData.splice(firstIndex < 0 ? nextData.length : firstIndex, 0, ...normalized);
+  if (!confirm(`確定將「${category}」由 ${oldItems.length} 筆更新為 ${normalized.length} 筆？\n\n其他分類不會變動。`)) return;
+
+  DATA = nextData;
+  saveData(DATA);
+  input.value = '';
+  buildPage(); renderManageTable(); switchTab(category);
+  showToast(`✅ 「${category}」已匯入 ${normalized.length} 筆`);
 }
 
 // ── 一鍵打包匯出 ──
