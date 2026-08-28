@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>每個學生都有 AI 家教，就真的會學得更好嗎？最新大型實驗給老師一個重要提醒：關鍵不是「有沒有 AI」，而是學生犯錯後拿它做什麼｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>每個學生都有 AI 家教，就真的會學得更好嗎？最新大型實驗給老師一個重要提醒：關鍵不是「有沒有 AI」，而是學生犯錯後拿它做什麼</h1>
+      <div class="date">2026 年 08 月 27 日</div>
+    </div>
+    <article>
+<p>想像一堂國小六年級自然課。</p>
+<p>老師在桌上放了一塊黏土，問：</p>
+<p>「放進水裡會沉還是會浮？」</p>
+<p>學生很快回答：</p>
+<p>「沉！」</p>
+<p>接著老師把同一塊黏土捏成小船，再問一次。</p>
+<p>這次有人開始猶豫。</p>
+<p>如果每個學生手上都有一個 AI 家教，他可以立刻問：</p>
+<p>「為什麼同樣重量的黏土，變成船就可能浮起來？」</p>
+<p>AI 幾秒鐘就能談到浮力、排水量、平均密度。</p>
+<p>答案很完整。</p>
+<p>問題也出現了：</p>
+<p>學生究竟是在<strong>和 AI 一起推理</strong>，還是只是利用 AI 跳過自己卡住的地方？</p>
+<p>2026 年 8 月公布的兩項大型隨機實驗，正好讓這個問題變得非常具體。</p>
+<p>其中一項 NBER 工作論文〈One Click Away: AI Tutoring with Khanmigo in a Two-Year School Experiment〉追蹤美國田納西州 18 所中學、橫跨兩個學年的數學補救教學。研究中的 Khanmigo 被設定成「引導學生思考，而不是直接給答案」。結果顯示，被分配使用這套系統的學生數學表現每學期約提高 1.3 個全國百分位，折算一學年大約為 0.06～0.08 個標準差；若以完整一年積極參與來估計，效果約 0.14 個標準差。</p>
+<p>這聽起來是不錯的消息。</p>
+<p>但真正值得教師注意的，是接下來的數字。</p>
+<p><strong>96% 的學生至少試用過一次 Khanmigo，可是中位數學生只有大約三分之一的練習日會傳訊息給 AI；更重要的是，在他們答錯題目的練習情境中，只有約 17% 真正使用 AI 家教。</strong>許多訊息也只是簡短答案或點擊系統提供的提示，而不是深入的數學對話。</p>
+<p>研究者因此指出一個非常值得教育現場記住的結論：</p>
+<blockquote><strong>AI 家教最大的限制，可能不是學生拿不到，而是學生沒有在真正需要思考的時候使用它。</strong></blockquote>
+<p>「有帳號」和「有學習」之間，距離其實非常遠。</p>
+<h3>第二項大型實驗更有意思：AI 最有價值的地方，可能就在「答錯之後」</h3>
+<p>同一批研究團隊 8 月公布的另一篇 NBER 工作論文〈Making AI Tutoring Productive〉，研究超過 <strong>6,000 名中學生</strong>。</p>
+<p>研究比較一般電腦輔助學習與加入 LLM AI 家教的情況。</p>
+<p>結果並不是「用了 AI 就做更多題」。</p>
+<p>反而相反。</p>
+<p>AI 組學生進展比較慢，完成的題目也比較少；可是當他們真的做到某一題時，正確率較高。</p>
+<p>最值得注意的差異出現在：</p>
+<p><strong>學生答錯之後。</strong></p>
+<p>AI 支援能提高下一次作答正確的機率，也能減少學生重新回到正確答案所需要的嘗試次數；學生在接受結構化 AI 支援的題目上，也會花更多時間。研究者因此認為，LLM 家教是否產生學習價值，很大程度取決於系統能不能把「錯誤」轉化成有意義的學習時刻。</p>
+<p>這件事，其實比「AI 可以一對一教學」更值得自然科老師注意。</p>
+<p>因為自然探究裡最珍貴的時刻，往往也是：</p>
+<p><strong>事情沒有按照學生預期發生的時候。</strong></p>
+<h3>具體自然科案例：把 AI 家教設計成「只在預測失敗後出現」</h3>
+<p>教學對象可以設定為國小六年級至國中七年級。</p>
+<p>主題是：</p>
+<p><strong>物體浮沉、排水量與平均密度。</strong></p>
+<p>準備相同的一塊黏土、透明水槽、電子秤、量杯，以及可以量測排水量的容器。</p>
+<p>AI 不從第一分鐘開放。</p>
+<p>課程規則反而非常簡單：</p>
+<blockquote><strong>學生的預測與實際現象一致時，先由學生自己解釋；只有當預測和實驗結果衝突時，才取得一次 AI 提示。</strong></blockquote>
+<p>第一關：</p>
+<p>將球狀黏土放入水中。</p>
+<p>大多數學生預測會沉。</p>
+<p>實驗結果也是沉。</p>
+<p>這時不用 AI。</p>
+<p>學生自己紀錄。</p>
+<p>第二關：</p>
+<p>使用<strong>同一塊黏土</strong>，重量不變，只改成碗狀或船形。</p>
+<p>教師再問：</p>
+<p>「會浮還是會沉？」</p>
+<p>如果學生仍然預測：</p>
+<p>「重量沒有變，所以一定還是沉。」</p>
+<p>結果卻浮起來了。</p>
+<p>這就是 AI 第一次可以出場的時間。</p>
+<p>但提示詞不是：</p>
+<p>「為什麼船會浮？」</p>
+<p>而是：</p>
+<blockquote>我預測同樣重量的黏土改變形狀後仍然會沉，但實驗結果浮起來了。請不要直接告訴我答案，只問我兩個能從水槽裡繼續量測的問題。</blockquote>
+<p>AI 可以問：</p>
+<p>「兩種形狀排開的水量相同嗎？」</p>
+<p>「物體的重量沒有改變，但整體占據的體積有沒有改變？」</p>
+<p>學生再量。</p>
+<p>這樣 AI 做的不是「公布浮力原理」。</p>
+<p>它讓<strong>錯誤預測變成下一輪實驗。</strong></p>
+<h3>第二輪：AI 只能給「下一個檢查方向」</h3>
+<p>學生可以比較：</p>
+<p>黏土球質量：80 g。</p>
+<p>黏土船質量：仍約 80 g。</p>
+<p>但排開水量與浸入方式不同。</p>
+<p>學生這時可能提出：</p>
+<p>「因為船裡面有空氣，所以被空氣托住。」</p>
+<p>不要急著糾正。</p>
+<p>AI 第二次介入可以改成：</p>
+<blockquote>我現在認為船浮起來是因為裡面的空氣把它往上推。請不要說這個想法對不對，請設計一個可以讓我檢查這個說法的簡單實驗。</blockquote>
+<p>學生可能進一步設計：</p>
+<p>逐漸在黏土船中加入砝碼；</p>
+<p>改變船形但保持黏土質量；</p>
+<p>比較船能承載多少重量；</p>
+<p>觀察船愈壓入水中時排開的水量如何變化。</p>
+<p>學生開始從一句生活直覺，走向真正可檢驗的模型。</p>
+<p>這才是一對一 AI 家教非常有潛力的地方：</p>
+<p><strong>不是學生不會時立刻代答，而是在學生的錯誤模型曝光之後，協助找到下一個可驗證的問題。</strong></p>
+<h3>AI 家教最重要的設計，也許不是「永遠可以問」</h3>
+<p>這兩項最新大型實驗帶來一個很反直覺的提醒。</p>
+<p>我們經常想像 AI 教育的理想畫面是：</p>
+<p>「每個孩子旁邊永遠坐著一個家教。」</p>
+<p>但如果學生只有在想偷懶時問；</p>
+<p>做錯之後直接點答案；</p>
+<p>遇到真正困難反而不願意花時間和 AI 對話，</p>
+<p>那麼「永遠可以問」本身並不等於有效教學。</p>
+<p>第二項 NBER 實驗甚至顯示，加入 AI 後學生完成題目的速度可能變慢。</p>
+<p>這未必是壞事。</p>
+<p>如果多花的時間是在：</p>
+<p>重新檢查錯誤；</p>
+<p>回答提示問題；</p>
+<p>修改原來的推理；</p>
+<p>理解為什麼錯，</p>
+<p>那個「慢」可能正是學習正在發生。</p>
+<p>自然課尤其如此。</p>
+<p>一個實驗最快完成的小組，不一定學得最多。</p>
+<p>相反地，那一組如果遇到：</p>
+<p>數據怪怪的；</p>
+<p>結果和預測不同；</p>
+<p>同樣材料卻出現不同結果，</p>
+<p>而願意停下來研究「為什麼」，往往才真正進入科學探究。</p>
+<h3>不要只記錄「學生有沒有用 AI」，還要記錄「什麼時候用」</h3>
+<p>因此教師進行 AI 教學活動時，可以增加一個非常簡單的紀錄。</p>
+<p>學生每次使用 AI，只標註原因：</p>
+<p><strong>A：我不知道知識。</strong></p>
+<p><strong>B：我的預測和結果不同。</strong></p>
+<p><strong>C：我的數據很奇怪。</strong></p>
+<p><strong>D：我不知道下一步怎麼驗證。</strong></p>
+<p><strong>E：我想叫 AI 直接完成答案。</strong></p>
+<p>一段時間後，教師得到的可能比「AI 使用次數」有價值得多。</p>
+<p>如果全班大部分都是 E，就代表 AI 正在取代學習。</p>
+<p>如果逐漸出現更多 B、C、D，則表示學生正在學會把 AI 當作探究鷹架。</p>
+<p>這也呼應 8 月 24 日 National Girls Collaborative Project 公布的美國 K–12 AI literacy landscape study。研究蒐集 <strong>552 名教育工作者問卷及 47 名教育工作者焦點團體資料</strong>，發現 AI 在教育工作者中已相當常見，但使用仍以實務、任務導向為主；教育者現在更需要的是<strong>實際、動手操作的 AI 教學支援</strong>，而不是只有一般性的 AI 入門介紹。</p>
+<h3>AI literacy 也不是「Prompt 寫得愈長愈好」</h3>
+<p>8 月 3 日《Journal of Computer Assisted Learning》發表的最新 K–12 AI 教育統合分析，整理 16 篇來源研究、57 個效果量，得到 AI 教育對 AI literacy 的整體平均效果量 <strong>g = 0.892</strong>。不過作者同時指出，各研究的介入方式與結果仍存在相當差異，因此不能把這個平均效果理解為「只要教 AI，每個孩子都會提高 0.892 個標準差」。</p>
+<p>更重要的是，AI literacy 不應只剩：</p>
+<p>登入；</p>
+<p>輸入 Prompt；</p>
+<p>生成圖片；</p>
+<p>叫聊天機器人回答問題。</p>
+<p>在自然科裡，我反而會把 AI literacy 定義得更接近：</p>
+<p><strong>我知道什麼時候值得問 AI。</strong></p>
+<p><strong>我能分辨 AI 給的是答案、假設還是證據。</strong></p>
+<p><strong>我可以用真實實驗驗證 AI。</strong></p>
+<p><strong>即使 AI 很肯定，我仍會保留自己的判斷。</strong></p>
+<p>這些能力才真正可以跨工具、跨版本持續存在。</p>
+<h3>學生可能學到什麼？</h3>
+<p>在上述黏土浮沉活動中，學生首先會理解「重量」不是判斷浮沉的唯一條件。</p>
+<p>他還會經歷一個完整的模型修正過程：</p>
+<p>原始想法；</p>
+<p>做出預測；</p>
+<p>看到反例；</p>
+<p>提出新解釋；</p>
+<p>利用 AI 產生可檢驗問題；</p>
+<p>重新實驗；</p>
+<p>最後修正模型。</p>
+<p>AI 不但沒有拿走探究，反而在最容易卡住的地方提供鷹架。</p>
+<p>學生還會學到另一件很重要的事情：</p>
+<p><strong>做錯，不等於需要立刻拿到答案。</strong></p>
+<p>錯誤有時候只是告訴我們：</p>
+<p>「這裡有一個值得研究的地方。」</p>
+<h3>教師需要注意的風險與限制</h3>
+<p>第一，兩項 NBER 最新研究都是數學教育研究，不能直接宣稱相同效果一定會出現在自然科。本文將「錯誤後的結構化支援」轉化為自然探究設計，是基於研究機制的教學應用，而不是已有自然科隨機實驗證明。</p>
+<p>第二，〈One Click Away〉的效果來自「Khan Academy＋Khanmigo」整體介入，控制組的教學情況也不同，因此不能把全部學習增益單獨歸因給 AI 對話功能。研究者自己也指出，其效果與過往單純 Khan Academy 練習的實驗結果相近。</p>
+<p>第三，AI 家教不應處理自然實驗的安全決策。涉及電、火、化學品、高溫或戶外風險時，由教師直接介入。</p>
+<p>第四，不要要求學生把每一次困難都問 AI。部分困難本身就是 productive struggle，應該先留給學生與同儕。</p>
+<p>第五，AI 提出的下一步實驗仍可能不合理，因此教師必須把關材料、安全與科學邏輯。</p>
+<p>第六，也不要因為「使用愈多」就認為「學得愈好」。最新大型研究恰好提醒我們，使用頻率、互動品質與真正學習並不是同一個指標。</p>
+<p>這幾年我們一直聽到一句話：</p>
+<p>「AI 可以讓每個學生都有一位私人家教。」</p>
+<p>技術上，這件事可能愈來愈接近現實。</p>
+<p>但 2026 年最新的大型實驗開始讓我們看到另一個更重要的問題：</p>
+<p><strong>學生拿到家教之後，到底會不會真正和它學？</strong></p>
+<p>自然科教師反而有一個非常好的優勢。</p>
+<p>因為我們手上還有一件 AI 沒有的東西——</p>
+<p><strong>真實世界。</strong></p>
+<p>一塊真的黏土。</p>
+<p>一盆真的水。</p>
+<p>一個真的錯誤預測。</p>
+<p>一組不符合預期的數據。</p>
+<p>AI 可以告訴孩子下一步可能怎麼想。</p>
+<p>可是決定那個解釋對不對的，最後仍然可以回到實驗。</p>
+<p>所以，未來自然課最值得發展的 AI 家教，也許不是那個每一題都立刻出聲的助手。</p>
+<p>而是一個懂得等到學生先猜、先試、先犯錯之後，才出現問一句：</p>
+<p><strong>「你剛才預測錯了。現在，你想先檢查哪一件事？」</strong></p>
+<p>那一刻，AI 才不只是答案機。</p>
+<p>它開始真正成為學習的鷹架。</p>
+<h3>參考資料與延伸閱讀：</h3>
+<ol><li>Oreopoulos, P., &amp; Low, N.，<strong>One Click Away: AI Tutoring with Khanmigo in a Two-Year School Experiment</strong>，NBER Working Paper 35620，2026 年 8 月。研究為田納西州 18 所中學、兩學年的叢集隨機實驗；指出 AI 家教取得容易，但真正深入使用仍有限。</li></ol>
+<p><a href="https://www.nber.org/papers/w35620" target="_blank" rel="noopener">https://www.nber.org/papers/w35620</a></p>
+<ol><li>Oreopoulos, P., Liut, M., Sungu, A., &amp; Low, N.，<strong>Making AI Tutoring Productive: Evidence from a Mastery-Based Math Practice Experiment</strong>，NBER Working Paper 35621，2026 年 8 月。超過 6,000 名中學生的隨機實驗顯示，AI 最明顯的作用之一出現在學生答錯後的結構化支援。</li></ol>
+<p><a href="https://www.nber.org/papers/w35621" target="_blank" rel="noopener">https://www.nber.org/papers/w35621</a></p>
+<ol><li>National Girls Collaborative Project，<strong>Shaping an Inclusive AI Future: Insights &amp; Recommendations from A National Landscape Study</strong>，2026 年 8 月 24 日。研究包含 552 名 K–12 教育工作者問卷及 47 名焦點團體參與者，顯示教育者現在特別需要實作型、可直接落地的 AI 專業發展。</li></ol>
+<p><a href="https://ngcproject.org/resources/shaping-inclusive-ai-future" target="_blank" rel="noopener">https://ngcproject.org/resources/shaping-inclusive-ai-future</a></p>
+<ol><li>Yu, W., Kim, N., Chang, A., &amp; Huang, W.，<strong>The Effects of K-12 Artificial Intelligence Education in Enhancing AI Literacy: A Meta-Analysis</strong>，《Journal of Computer Assisted Learning》，2026 年 8 月 3 日。納入 16 篇來源研究及 57 個效果量，整體平均效果為 g = 0.892，但研究間仍具有顯著異質性。</li></ol>
+<p><a href="https://onlinelibrary.wiley.com/doi/10.1002/jcal.70308" target="_blank" rel="noopener">https://onlinelibrary.wiley.com/doi/10.1002/jcal.70308</a></p>
+<ol><li>Lee, H.，<strong>Teacher intervention in K-12 AI-based instruction: a systematic review of processes, strategies, and effects</strong>，《Smart Learning Environments》，2026 年 8 月 12 日。回顧指出 AI 產生的資訊必須經過教師監看、判斷、介入與課堂協調，才能真正轉化為情境化的教學支援。</li></ol>
+<p><a href="https://link.springer.com/article/10.1186/s40561-026-00461-1" target="_blank" rel="noopener">https://link.springer.com/article/10.1186/s40561-026-00461-1</a></p>
+<p><strong>2026 年 08 月 27 日</strong><br><strong>作者：陳賢宗</strong></p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>不要只讓學生「問 AI」，讓他們親手把 AI 教錯一次：從校園葉片分類，看懂人工智慧如何做科學｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>不要只讓學生「問 AI」，讓他們親手把 AI 教錯一次：從校園葉片分類，看懂人工智慧如何做科學</h1>
+      <div class="date">2026 年 08 月 15 日</div>
+    </div>
+    <article>
+<p>自然課帶學生走到校園裡，老師請大家拍攝不同植物的葉片。</p>
+<p>樟樹、榕樹、九重葛、朱槿、黃金葛……照片很快累積到上百張。</p>
+<p>一名學生拿出具備影像辨識能力的 AI，拍了一片葉子。</p>
+<p>「老師，它說這是樟樹！」</p>
+<p>旁邊同學馬上反駁：</p>
+<p>「可是這明明是桂花！」</p>
+<p>大家開始爭論，到底是 AI 對，還是同學對。</p>
+<p>如果老師只是公布答案，這會是一段很普通的植物辨識活動。</p>
+<p>但如果多問一句：</p>
+<p><strong>「AI 為什麼會認錯？」</strong></p>
+<p>整堂課立刻變成另一種科學探究。</p>
+<p>孩子開始注意照片：是不是背景太亂？葉片是不是太小？葉子背面和正面有差別嗎？是不是因為兩種植物葉形很像？如果把校園磁磚、手指或尺一起拍進去，AI 會不會偷看這些「不是葉片的線索」？</p>
+<p>這正是自然科教育與 AI 結合後非常值得發展的一種課程——不是把 AI 當答案機，而是把它當成一件<strong>可以被測試、校正，甚至被故意弄錯的科學儀器</strong>。</p>
+<p>2026 年 7 月 23 日，University of Georgia AI4STEM Education Center 團隊發表〈AI-Integrated Scientific Inquiry: A Practice-Centered Vision for Science Education〉，提出一個很有意思的觀點：AI 不應只是額外加在自然課上的「新科技單元」，更可以像顯微鏡、感測器或統計工具一樣，被視為新一代科學儀器。研究者把 AI 在探究中的功能分為觀察、資料分析與模型建構，例如用電腦視覺辨認影像、用分群方法尋找資料規律、用生成模型協助建立模型；但他們強調，每一件 AI 儀器都應附帶一個「reflection point」，也就是要求學生思考：<strong>它可能在哪裡出錯？</strong></p>
+<p>這個概念，非常適合直接搬進國中小自然教室。</p>
+<h3>具體教學案例：我們能不能把 AI 訓練成「校園植物小助教」？</h3>
+<p>教學對象可以設定為國小五、六年級至國中七年級。</p>
+<p>主題包含植物外部形態、分類、科學觀察、資料品質與人工智慧影像分類。</p>
+<p>使用的 AI 功能不是一般聊天，而以<strong>影像辨識／分類模型</strong>為核心；若學校沒有可以自行訓練模型的平台，也可以使用具圖片理解能力的 AI 做「模型測試」，重點仍放在學生如何設計證據。</p>
+<p>核心問題是：</p>
+<blockquote>AI 到底是「認得植物」，還是只是在照片中找到某些統計規律？</blockquote>
+<h4>第一階段：先由人類分類，不讓 AI 進場</h4>
+<p>教師先挑選三種校園常見、容易取得的植物，例如榕樹、朱槿與樟樹。</p>
+<p>每組收集或拍攝至少 15～20 張葉片照片，但不是隨便拍。</p>
+<p>學生必須先討論：什麼特徵可以辨識植物？葉形？葉緣？葉脈？葉片排列？質地？氣味？</p>
+<p>先由人眼建立判準。</p>
+<p>例如學生可能寫：「朱槿的葉緣有明顯鋸齒。」「榕樹葉片通常較厚且全緣。」「樟樹葉片可以看到明顯的三出脈特徵。」</p>
+<p>教師此時要提醒：單一葉片未必足以鑑定到物種，植物辨識通常還需要枝條、葉序、花果等資訊。</p>
+<p>這句話非常重要。</p>
+<p>因為學生接下來要發現：</p>
+<p><strong>AI 和人一樣，輸入資訊不足時也可能做出過度肯定的判斷。</strong></p>
+<h4>第二階段：故意建立一個「有偏見」的資料集</h4>
+<p>這一步是整堂課最好玩的地方。</p>
+<p>假設拍榕樹時全部放在白紙上；朱槿全部在紅色桌墊上；樟樹全部直接在草地上拍。</p>
+<p>學生再用這批照片建立或測試分類模型。</p>
+<p>模型可能得到非常漂亮的準確率。</p>
+<p>大家很開心：「我們的 AI 好厲害！」</p>
+<p>這時老師拿出三片新的葉子。</p>
+<p>全部改放在同一張灰色桌面拍攝。</p>
+<p>結果 AI 突然大量判錯。</p>
+<p>為什麼？</p>
+<p>學生可能慢慢發現：模型學到的不一定是「葉片特徵」。</p>
+<p>它可能學到：白色背景＝榕樹。紅色背景＝朱槿。綠色背景＝樟樹。</p>
+<p>這就是非常具體的 AI 素養。</p>
+<p>不需要講複雜神經網路，也不需要解釋梯度下降。</p>
+<p>孩子親手製造了一個<strong>資料偏差（data bias）</strong>。</p>
+<p>而且看到了偏差造成的結果。</p>
+<h4>第三階段：重新設計資料，像科學家一樣「校正 AI」</h4>
+<p>教師接著問：「如果 AI 是一台科學儀器，要怎麼校正？」</p>
+<p>學生可能提出：所有植物都使用不同背景；每種植物都拍正面與背面；改變拍攝角度；不同距離；晴天與陰天；完整葉片與局部葉片；不同大小；不同植株。</p>
+<p>重新收集資料後，再測試一次。</p>
+<p>這時學生會發現一個非常重要的概念：</p>
+<p><strong>AI 的表現不只取決於模型，也取決於資料。</strong></p>
+<p>這和自然實驗其實非常相似。</p>
+<p>如果量溫度時感測器位置不一致，再精密的溫度計也救不了實驗設計。</p>
+<p>如果顯微鏡玻片製作不佳，再高倍數的鏡頭也可能看到假象。</p>
+<p>AI 也是如此。</p>
+<p>2026 年這篇 AI-integrated inquiry 研究甚至直接用類似的比喻說明：顯微鏡進入生物學後，我們沒有因此把生物課變成「鏡片課」；重要的是學會透過它觀察，同時理解可能產生的人工假象。研究者認為，電腦視覺、分群與生成模型也應該用相同方式進入科學教育。</p>
+<h4>第四階段：建立一組 AI「從來沒看過」的測試照片</h4>
+<p>接下來才是真正的公平測試。</p>
+<p>學生不能拿訓練過的照片重新測驗。</p>
+<p>另外拍攝一批完全沒有出現在原始資料中的照片。</p>
+<p>例如每種植物各 10 張。</p>
+<p>教師問：「50 張裡面答對 45 張，代表什麼？」</p>
+<p>學生算出 90%。</p>
+<p>可是不要停在準確率。</p>
+<p>繼續問：AI 最容易把哪兩種植物搞混？錯誤是否集中在嫩葉？背面照片比較容易錯嗎？光線很暗時錯誤增加嗎？局部葉片是否比完整葉片難？</p>
+<p>這時 AI 不再是「神奇的辨識器」。</p>
+<p>它變成真正的研究對象。</p>
+<h4>第五階段：研究「信心很高但答案錯」的案例</h4>
+<p>這個部分甚至比準確率更值得教。</p>
+<p>如果工具能顯示信心分數，可以特別找：「AI 很有信心，但是答錯的圖片。」</p>
+<p>例如：模型以 98% 信心判斷某片葉子是榕樹，實際卻不是。</p>
+<p>教師問：「98% 是不是代表有 98% 機率一定正確？」</p>
+<p>學生通常很容易把「信心高」理解成「可信度高」。</p>
+<p>這時正好討論：AI 的信心通常建立在模型自己的分類機制上，它不等於外部世界的真實保證。</p>
+<p>這和生成式 AI 說話時的語氣非常類似。</p>
+<p>AI 可以非常肯定。</p>
+<p>但肯定不是證據。</p>
+<h4>第六階段：最後才讓生成式 AI 協助解釋</h4>
+<p>完成實驗後，再把錯誤模式交給生成式 AI：</p>
+<blockquote>我們的植物分類模型在正常正面葉片表現較好，但在葉片背面、陰影與局部照片錯誤較多。請提出三種可能原因。請把「資料能直接支持的現象」和「尚需進一步實驗的解釋」分開。</blockquote>
+<p>AI 可能提出：訓練資料中的背面照片不足；陰影改變影像特徵；局部照片缺少葉形資訊。</p>
+<p>但是學生仍然不能直接接受。</p>
+<p>他們可以設計下一輪實驗：「如果增加背面葉片照片，辨識是否改善？」</p>
+<p>於是 AI 的錯誤又產生新的研究問題。</p>
+<p>這才是完整的科學探究循環。</p>
+<h3>這種課程和一般「用 AI 查答案」最大的差別</h3>
+<p>學生不是 AI 的消費者。</p>
+<p>而是 AI 的實驗者。</p>
+<p>這件事正好呼應近期 AI 教育研究的另一項提醒。</p>
+<p>美國教育科學研究院（IES）於 2026 年 8 月 10 日發布的 K–12 AI 研究整理指出，目前具有嚴格因果證據的研究仍相當有限；其整理出的早期訊號顯示，由教師介入、AI 作為輔助工具的模式較具潛力，而直接讓學生使用一般型 AI 的成效則較混合。IES 特別提醒，如果 AI 接手原本應由學生完成的資訊處理與問題解決，降低必要的認知投入，反而可能妨礙學習。</p>
+<p>換到這堂植物課，就很清楚了。</p>
+<p>如果學生只是拍葉子問：「這是什麼植物？」</p>
+<p>認知工作大部分由 AI 完成。</p>
+<p>但如果學生要研究：「AI 為什麼把它認錯？」</p>
+<p>學生必須重新觀察葉片、比較照片、分析變因、檢查資料與建立假設。</p>
+<p>同樣使用 AI，學習深度完全不同。</p>
+<h3>學生可能學到什麼？</h3>
+<p>第一，他們會理解 AI 不是「知道答案」，而是依據資料找到模式。</p>
+<p>第二，他們會親自體驗資料品質會影響模型表現。</p>
+<p>第三，他們會理解訓練資料和測試資料必須分開。</p>
+<p>第四，他們會發現高準確率可能具有欺騙性。如果測試環境與訓練資料太相似，數字很好看，不代表模型真正學到了我們以為它學到的東西。</p>
+<p>第五，他們會認識 AI 偏差並不一定來自「AI 有偏見」，也可能源自人類如何蒐集資料。</p>
+<p>第六，學生會重新學習植物分類。為了找出 AI 為什麼判錯，他們反而必須觀察葉脈、葉緣、葉形與排列，比單純背植物名稱更深入。</p>
+<p>第七，他們會建立一種非常重要的 AI 態度：</p>
+<p><strong>不是只問「它答對了嗎？」，而要問「它是靠什麼答對的？」</strong></p>
+<h3>教師需要注意的風險與限制</h3>
+<p>第一，不要讓 AI 植物辨識取代真正的物種鑑定。尤其涉及有毒植物、食用植物或醫療用途時，不能只依賴一般 AI 結果。</p>
+<p>第二，學生拍攝校園植物時應避免把同學臉孔、名牌、教室位置等不必要個人資訊上傳到外部平台。</p>
+<p>第三，模型表現不能只比較準確率。各類別照片數量若差很多，也可能造成結果偏差。</p>
+<p>第四，不要把模型錯誤當成「失敗」。在這堂課裡，錯誤案例本身就是最重要的教材。</p>
+<p>第五，國小階段不必急著深入神經網路數學，可以先建立「輸入資料—尋找模式—做出分類—檢查錯誤」的概念。</p>
+<p>第六，AI-integrated scientific inquiry 目前是一篇提出教學願景與架構的研究，而不是證明此模式在所有年級都能提升學習成效的大型隨機實驗，因此適合當作課程設計方向，而不是宣稱已經證實的最佳教法。</p>
+<p>2026 年 8 月 3 日提出的 RAIL-Ed 教師生成式 AI 素養架構，也把批判評估、人機協作、情境覺察與自主行動視為重要能力，提醒教師：相同的 AI 功能可能深化學習，也可能取代學習，差異取決於我們如何安排學生與工具之間的責任。該架構建立於 67 篇 2023～2025 年相關文獻的整合，目前同樣仍需要更多實證檢驗。</p>
+<p>UNESCO 7 月更新的亞太科學教育培訓也朝相似方向前進：57 名來自 13 個國家的教育工作者參與實作型 STEM、Maker Education、AI 科學教學與永續專題活動，強調科技應該進入實際操作與問題解決，而不是只停留在螢幕上的知識問答。</p>
+<p>所以，AI 進入自然課，也許最有價值的第一步並不是：「以後植物都讓 AI 認就好了。」</p>
+<p>反而可以是：</p>
+<p><strong>「今天我們來想辦法把 AI 教錯。」</strong></p>
+<p>因為當孩子真的把它教錯一次，他才會開始問：資料哪裡出了問題？它到底看到了什麼？如何證明我的推測？重新收集資料後會不會改善？</p>
+<p>這些問題，已經不是 AI 操作問題。</p>
+<p>它們就是科學。</p>
+<p>未來的自然科教育，不只是教孩子使用新的科學工具。</p>
+<p>更重要的是讓孩子知道：</p>
+<p><strong>任何工具——包括人工智慧——都必須接受證據的檢驗。</strong></p>
+<h3>參考資料與延伸閱讀</h3>
+<ol><li>Bewersdorff, A., Rojas, M., &amp; Zhai, X.，<strong>AI-Integrated Scientific Inquiry: A Practice-Centered Vision for Science Education</strong>，2026 年 7 月 23 日。</li></ol>
+<p><a href="https://arxiv.org/abs/2607.21777" target="_blank" rel="noopener">https://arxiv.org/abs/2607.21777</a></p>
+<ol><li>Institute of Education Sciences / REL Northeast &amp; Islands，<strong>AI in K–12 Education: The Good, the Bad, and the Guardrails to Consider</strong>，2026 年 8 月 10 日。</li></ol>
+<p><a href="https://ies.ed.gov/learn/blog/ai-k-12-education-good-bad-and-guardrails-consider" target="_blank" rel="noopener">https://ies.ed.gov/learn/blog/ai-k-12-education-good-bad-and-guardrails-consider</a></p>
+<ol><li>Hossain, S. 等，<strong>Rethinking Generative AI Literacy: An Integrative, Developmental, and Dialectical Framework for K–12 Teacher Education</strong>，2026 年 8 月 3 日。</li></ol>
+<p><a href="https://arxiv.org/abs/2608.01705" target="_blank" rel="noopener">https://arxiv.org/abs/2608.01705</a></p>
+<ol><li>UNESCO，<strong>UNESCO unites science educators to transform STEM teaching across Asia-Pacific</strong>，2026 年 7 月 20 日更新。</li></ol>
+<p><a href="https://www.unesco.org/en/articles/unesco-unites-science-educators-transform-stem-teaching-across-asia-pacific" target="_blank" rel="noopener">https://www.unesco.org/en/articles/unesco-unites-science-educators-transform-stem-teaching-across-asia-pacific</a></p>
+<ol><li>UNESCO，<strong>Artificial Intelligence in Education</strong>。</li></ol>
+<p><a href="https://www.unesco.org/en/digital-education/artificial-intelligence" target="_blank" rel="noopener">https://www.unesco.org/en/digital-education/artificial-intelligence</a></p>
+<p><strong>2026 年 08 月 15 日</strong><br><strong>作者：陳賢宗</strong></p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

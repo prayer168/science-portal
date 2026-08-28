@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 一看到學生卡住就出手，真的比較好嗎？從「紙橋承重挑戰」培養科學探究中的堅持、合作與自主判斷｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>AI 一看到學生卡住就出手，真的比較好嗎？從「紙橋承重挑戰」培養科學探究中的堅持、合作與自主判斷</h1>
+      <div class="date">2026 年 08 月 07 日</div>
+    </div>
+    <article>
+<p>自然教室裡，兩張桌子相隔二十公分，學生要用一張 A4 紙搭出一座能承載最多硬幣的橋。</p>
+<p>第一組把紙平放在桌面之間，才放上一枚硬幣，橋面就立刻下垂。第二組把紙折成波浪狀，成功承載十多枚。第三組嘗試把紙捲成圓筒，卻因左右高度不同，硬幣一放上去便全部滑落。</p>
+<p>一名學生打開 AI 問：</p>
+<p>「怎樣折一定最堅固？」</p>
+<p>幾秒後，AI 給出瓦楞結構、三角桁架、增加慣性矩等完整建議，還附上一套清楚步驟。學生照著做，橋果然比原先堅固。</p>
+<p>可是，老師看著前後兩座橋，反而產生疑問：這組學生究竟理解了結構為什麼改變，還是只是成功複製了 AI 的答案？他們剛才面對失敗時，原本準備提出什麼改法？AI 的即時協助，究竟是在搭建學習鷹架，還是在學生開始思考前，就把困難搬走？</p>
+<p>2026 年 8 月 5 日上線的一篇生成式 AI 素養研究指出，生成式 AI 進入教室的速度，已經超過許多教師在概念、教學與倫理上的準備速度，形成所謂的「生成式 AI 素養落差」。研究者提出 RAIL-Ed 架構，將教師需要的能力整理為技術運用、批判評估、人機協作、情境理解、倫理推理與自主行動六個面向。這項研究仍屬概念架構，尚待更多實證檢驗，但它提出一個重要提醒：相同的 AI 功能，可能深化學習，也可能排擠學習，關鍵在於教師如何安排它介入的時機與責任。</p>
+<p>美國教育科學研究院於 2026 年 7 月更新的 INVITE 計畫，也把焦點從「AI 能否讓學生答對更多題」擴大到三項經常被傳統教育科技忽略的能力：堅持、學業韌性與合作。該計畫預計在三至九年級的 STEM 情境中，研究學生如何面對具有挑戰性的工作、如何與同伴溝通，以及教師如何支持這些歷程；AI 的角色是協助教師理解學習行為，而不是只追蹤最後答案。</p>
+<p>這些新方向很適合轉化成自然科課堂的一項原則：</p>
+<blockquote><strong>AI 不應只在學生卡住時立刻給答案，也應幫助教師判斷：這是值得保留的困難，還是需要適度支援的障礙？</strong></blockquote>
+<h3>具體教學案例：紙橋承重的「延遲救援」探究</h3>
+<p>教學對象可設定為國小五、六年級或國中七年級，主題涉及力的作用、材料形狀、結構穩定性及工程設計。使用的 AI 功能包括對話追問、圖片分析、實驗紀錄整理與小組反思。</p>
+<p>核心問題是：</p>
+<blockquote>在紙張材質與跨距固定時，紙橋的形狀如何影響承重能力？</blockquote>
+<p>每組取得相同大小與磅數的紙張、硬幣、直尺及紀錄表。桌距、硬幣種類與放置方式都應統一，避免不同組之間失去比較基準。</p>
+<h4>第一階段：先保留一次完整失敗</h4>
+<p>第一輪設計不使用 AI。</p>
+<p>學生先畫草圖、寫出預測，再用一張紙完成橋面。測試時，硬幣必須逐枚放在指定位置，直到橋面碰到桌面、紙張破裂或硬幣滑落。</p>
+<p>紀錄表除了「承載幾枚」之外，還要寫下失敗型態：橋中央向下彎曲；紙張左右扭轉；支撐端滑動；硬幣集中造成局部凹陷；結構尚未破壞，硬幣卻先滑落。</p>
+<p>這些失敗型態比單一的承重數字更有價值，因為它們指出下一輪應修改的位置。</p>
+<p>如果 AI 一開始就提供最佳折法，學生很可能錯過從失敗現象反推結構問題的機會。</p>
+<h4>第二階段：AI 只能問問題，不能提供造型</h4>
+<p>完成第一輪後，學生把草圖、測量結果與失敗現象輸入 AI：</p>
+<blockquote>我們用一張 A4 紙搭橋，跨距二十公分，最多承載四枚硬幣。橋中央先向下彎曲，兩端沒有滑動。請不要告訴我們最佳折法，也不要提供完整製作步驟。請先提出三個問題，幫助我們思考哪些形狀特徵可能影響橋面的抗彎能力。</blockquote>
+<p>AI 可以詢問：紙張目前是平面還是具有折痕？能不能讓橋面在垂直方向上增加高度？折疊後的結構是否左右對稱？</p>
+<p>這種回答仍提供鷹架，卻不奪走學生的設計決定。</p>
+<p>教師可以設定「延遲救援規則」：學生至少完成一次預測、一次實測及一次小組討論後，才能使用 AI。遇到器材危險或操作安全問題時，則不必等待，應立即由教師介入。</p>
+<h4>第三階段：比較人類與 AI 的建議</h4>
+<p>學生先由組員提出兩個改良方案，再請 AI 提出一個方向。三種方案不能直接全部製作，而要先用證據評估：哪一個方案最能處理第一輪觀察到的問題？哪一項只是看起來複雜，卻沒有直接證據支持？哪些條件在改造後仍能保持公平？</p>
+<p>例如，第一輪的主要問題是中央向下彎曲，增加橋面的垂直高度可能比單純把紙張折得更厚更值得測試。但學生不能立刻宣稱「波浪形一定最好」，而應把它寫成待驗證的假設。</p>
+<h4>第四階段：讓 AI 看見歷程，而不是替學生評分</h4>
+<p>每組至少製作三種結構，每種重複測試三次，記錄最大承載量、平均值及失敗型態。</p>
+<p>AI 可以協助整理：</p>
+<blockquote>請根據三種紙橋的重複測試資料，整理平均承載量與結果差異。不要直接選出冠軍，也不要刪除較低的測量值。請指出哪些結果可能需要回到操作紀錄查證，並提出兩個可繼續研究的問題。</blockquote>
+<p>如果同一種橋分別承載十八、十九及七枚硬幣，AI 可以提醒差異明顯，但無法知道第三次測試時紙張已受潮、折痕鬆開，或學生把硬幣放偏。這些現場訊息仍須由學生與教師補充。</p>
+<h4>第五階段：評量「怎麼撐過困難」</h4>
+<p>活動結束後，不只評分承重最多的橋，也讓學生回答：第一次失敗後，我們原本想放棄什麼？哪一項觀察使我們改變設計？組員意見不同時，我們如何選擇方案？AI 的哪一項建議被採用？為什麼？哪一項建議被拒絕？證據是什麼？若再做一次，我們會保留哪個設計條件？</p>
+<p>這些問題把堅持與合作轉化為可描述、可反思的學習歷程，而不是只稱讚「很有毅力」。</p>
+<p>INVITE 計畫特別指出，未來 AI 教育系統需要理解學生如何持續投入困難工作、如何溝通 STEM 內容，以及教師如何支持非認知能力的發展；同時也必須關注模型是否公平、是否能在不同背景的學生之間可靠運作。</p>
+<h3>學生可能學到什麼？</h3>
+<p>首先，他們會發現，同一張紙沒有增加材料，光是改變形狀，承重能力就可能明顯不同。折痕、垂直高度、對稱性與載重分布都會影響結果。</p>
+<p>其次，他們會理解工程設計不是一次找到標準答案，而是「設計—測試—分析失敗—修改」的循環。</p>
+<p>第三，他們會學習區分協助與代做。AI 可以提出問題、整理資料與檢查推論，但結構選擇、現場觀察和證據判斷仍由學生負責。</p>
+<p>第四，他們會認識「卡住」不必然表示能力不足。有些困難正是促使學生比較方案、尋找證據與練習合作的必要條件。</p>
+<p>第五，他們也會建立拒絕 AI 建議的能力。人機協作並不是每次都接受輸出，而是根據任務、證據與限制決定是否採用。</p>
+<h3>教師需要注意的風險與限制</h3>
+<p>第一，不能把學生停頓時間直接解讀為缺乏毅力。有些學生可能因閱讀困難、手部操作限制、語言障礙或不理解規則而停下來，需要的不是更多挫折，而是不同形式的支援。</p>
+<p>第二，AI 無法只靠文字判斷學生情緒與合作品質。它可能把沉默誤認為不參與，也可能忽略學生正在觀察或思考。</p>
+<p>第三，不應上傳含有姓名、人臉、聲音及可辨識學習紀錄的資料到未經學校核准的平台。</p>
+<p>第四，AI 可能偏好語句完整、善於表達的學生。教師不能把模型整理出的「參與度」或「堅持程度」直接當成正式評分。</p>
+<p>第五，延遲支援不等於故意讓學生一直失敗。若多次測試完全沒有新資訊，教師應提供材料示範、縮小問題或降低變因數量。</p>
+<p>第六，涉及剪刀、熱熔膠、重物或較高結構時，安全仍由教師判斷，不能交給 AI。</p>
+<p>第七，RAIL-Ed 是一項新提出的概念架構，作者也明確指出仍需後續實證驗證，因此不能把六個面向當成已證實能提升所有學習成果的固定處方。</p>
+<p>2026 年 8 月 4 日，美國國家科學基金會宣布新的州級與區域 AI 基礎建設中心計畫，預計擴大研究人員、學生與教育者取得運算、資料與 AI 資源的機會，也包含師資培訓與教材發展。官方同時承認，先進 AI 基礎設施的取得仍高度不平均。</p>
+<p>但教育公平不能只停在「每間學校都有帳號和算力」。UNESCO 近期的區域對話也強調，設備與連線只是起點；AI 若要促進教育公平，還需要教師培訓、證據、監測、倫理能力與教育社群參與。</p>
+<p>對自然科教師來說，真正需要保護的不只是學生使用 AI 的權利，也包括他們親自面對問題、犯錯、重做與形成判斷的機會。</p>
+<p>下一次，當學生的紙橋再次塌下來，AI 或許已經準備好提供最強結構。</p>
+<p>教師可以先停一下，問學生：「你剛才看到橋從哪裡開始變形？」「這次失敗告訴了我們什麼？」「你希望 AI 幫你回答，還是幫你提出下一個問題？」</p>
+<p>一個好的 AI 助手，不是永遠比學生更快完成任務。</p>
+<p>它應該知道，什麼時候可以扶一把，什麼時候只要站在旁邊，讓學生再試一次。</p>
+<h3>參考資料與延伸閱讀</h3>
+<ol><li>Awoyemi, I. D. 等，〈Responsible AI Literacy in Education: A Framework for Teacher Preparation and Practice〉，2026 年 8 月 5 日。</li></ol>
+<p><a href="https://arxiv.org/abs/2608.01705" target="_blank" rel="noopener">https://arxiv.org/abs/2608.01705</a></p>
+<ol><li>Institute of Education Sciences，〈INVITE: Inclusive and Innovative Intelligent Technologies for Education〉，2026 年 7 月 1 日更新。</li></ol>
+<p><a href="https://ies.ed.gov/use-work/awards/invite-inclusive-and-innovative-intelligent-technologies-education" target="_blank" rel="noopener">https://ies.ed.gov/use-work/awards/invite-inclusive-and-innovative-intelligent-technologies-education</a></p>
+<ol><li>U.S. National Science Foundation，〈New NSF State and Regional AI Infrastructure Hubs will power AI-enabled scientific research across the country〉，2026 年 8 月 4 日。</li></ol>
+<p><a href="https://www.nsf.gov/news/new-nsf-state-regional-ai-infrastructure-hubs-will-power-ai" target="_blank" rel="noopener">https://www.nsf.gov/news/new-nsf-state-regional-ai-infrastructure-hubs-will-power-ai</a></p>
+<ol><li>UNESCO、UNESCO IIEP，〈Regional Dialogue on Inclusive Digital Transformation in Education〉，2026 年 7 月 22 日發布、7 月 24 日更新。</li></ol>
+<p><a href="https://www.unesco.org/en/articles/unesco-and-unesco-iiep-promote-regional-dialogue-inclusive-digital-transformation-education" target="_blank" rel="noopener">https://www.unesco.org/en/articles/unesco-and-unesco-iiep-promote-regional-dialogue-inclusive-digital-transformation-education</a></p>
+<ol><li>UNESCO，〈AI Competency Framework for Teachers〉。</li></ol>
+<p><a href="https://www.unesco.org/en/articles/ai-competency-framework-teachers" target="_blank" rel="noopener">https://www.unesco.org/en/articles/ai-competency-framework-teachers</a></p>
+<p><strong>2026 年 08 月 07 日</strong><br><strong>作者：陳賢宗</strong></p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

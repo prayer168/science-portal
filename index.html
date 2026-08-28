@@ -719,6 +719,8 @@
 })();
 </script>
 
+<script src="data/ai-teaching-articles.js"></script>
+
 <!-- Firebase SDK -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -943,7 +945,7 @@ const DEFAULT_CATS = [
 window.DEFAULT_CATS = DEFAULT_CATS;
 
 // ── 類別固定排序：列在此清單的類別依序排列，未列出的自訂類別依原順序排在最後 ──
-const CAT_ORDER = ['三年級','四年級','五年級','六年級','七年級','八年級','九年級','教學應用','休閒（動動腦）'];
+const CAT_ORDER = ['三年級','四年級','五年級','六年級','七年級','八年級','九年級','教學應用','教學文章','休閒（動動腦）'];
 function orderCats(cats) {
   return cats.slice().sort((a, b) => {
     const ia = CAT_ORDER.indexOf(a.key), ib = CAT_ORDER.indexOf(b.key);
@@ -957,12 +959,59 @@ let colorIdx = 0;
 const STORE_KEY = 'science_portal_v1';
 const CAT_STORE = 'science_portal_cats_v1';
 
+const STATIC_TEACHING_ARTICLE_CATEGORY = {
+  key: "教學文章",
+  emoji: "📄",
+  desc: "AI 與自然科學教育教學文章",
+  color: "#8B5CF6",
+  custom: true
+};
+
+function staticTeachingArticles() {
+  return Array.isArray(window.AI_TEACHING_ARTICLES) ? window.AI_TEACHING_ARTICLES : [];
+}
+
+function ensureStaticTeachingArticleCategory(cats) {
+  const merged = cats.some(c => c.key === STATIC_TEACHING_ARTICLE_CATEGORY.key)
+    ? cats
+    : [...cats, STATIC_TEACHING_ARTICLE_CATEGORY];
+  return orderCats(applyCatEmoji(merged));
+}
+
+function isStaticTeachingArticle(item) {
+  return item && item.cat === STATIC_TEACHING_ARTICLE_CATEGORY.key
+    && staticTeachingArticles().some(article => article.url === item.url);
+}
+
+function stripStaticTeachingArticles(items) {
+  return items.filter(item => !isStaticTeachingArticle(item));
+}
+
+function mergeStaticTeachingArticles(items) {
+  const dynamicItems = stripStaticTeachingArticles(items);
+  const urls = new Set(dynamicItems.map(item => item.url));
+  const articles = staticTeachingArticles().filter(article => !urls.has(article.url));
+  return applyIconMap([...dynamicItems, ...articles]);
+}
+
+function tabFromHash() {
+  const raw = decodeURIComponent((location.hash || '').replace(/^#/, '')).trim();
+  return raw || '';
+}
+
+function resolveCurrentTab(cats) {
+  const hashTab = tabFromHash();
+  if (hashTab && cats.some(c => c.key === hashTab)) return hashTab;
+  if (cats.some(c => c.key === currentTab)) return currentTab;
+  return cats[0]?.key || '';
+}
+
 function loadCats() {
   try {
     const s = localStorage.getItem(CAT_STORE);
     const extra = s ? JSON.parse(s) : [];
-    return orderCats(applyCatEmoji([...DEFAULT_CATS, ...extra]));
-  } catch { return [...DEFAULT_CATS]; }
+    return ensureStaticTeachingArticleCategory([...DEFAULT_CATS, ...extra]);
+  } catch { return ensureStaticTeachingArticleCategory([...DEFAULT_CATS]); }
 }
 function saveExtraCats(cats) {
   const extra = cats.filter(c => !DEFAULT_CATS.find(d => d.key === c.key));
@@ -971,12 +1020,17 @@ function saveExtraCats(cats) {
 }
 
 function loadDataLocal() {
-  try { const s = localStorage.getItem(STORE_KEY); return applyIconMap(s ? JSON.parse(s) : JSON.parse(JSON.stringify(DEFAULT_DATA))); }
-  catch { return JSON.parse(JSON.stringify(DEFAULT_DATA)); }
+  try {
+    const s = localStorage.getItem(STORE_KEY);
+    return mergeStaticTeachingArticles(s ? JSON.parse(s) : JSON.parse(JSON.stringify(DEFAULT_DATA)));
+  }
+  catch { return mergeStaticTeachingArticles(JSON.parse(JSON.stringify(DEFAULT_DATA))); }
 }
 function saveData(d) {
-  localStorage.setItem(STORE_KEY, JSON.stringify(d));
-  if (window.saveDataToFirestore) window.saveDataToFirestore(d);
+  const persisted = stripStaticTeachingArticles(d);
+  localStorage.setItem(STORE_KEY, JSON.stringify(persisted));
+  DATA = mergeStaticTeachingArticles(persisted);
+  if (window.saveDataToFirestore) window.saveDataToFirestore(persisted);
 }
 
 // ── 教材 icon / 類別 emoji 強制對照表（蓋過 Firestore/localStorage 舊資料）──
@@ -1204,7 +1258,7 @@ function applyCatEmoji(cats) {
 
 let CATS = loadCats();
 let DATA = loadDataLocal();
-let currentTab = CATS[0].key;
+let currentTab = tabFromHash() || CATS[0].key;
 let manageOpen = false;
 
 // ── 教材 icon 強制對照表（蓋過 Firestore/localStorage 舊資料）──
@@ -1217,11 +1271,11 @@ function applyIconMap(arr) {
 // ── Firestore 回調：收到雲端資料後更新頁面 ──
 window._firestoreDataCallback = function(materials, customCats) {
   // icon 修正統一由全域 applyIconMap / MATERIAL_ICON_MAP 處理
-  applyIconMap(materials);
-  DATA = materials;
-  localStorage.setItem(STORE_KEY, JSON.stringify(DATA));
+  DATA = mergeStaticTeachingArticles(materials);
+  localStorage.setItem(STORE_KEY, JSON.stringify(stripStaticTeachingArticles(DATA)));
   if (customCats !== undefined) {
-    CATS = orderCats(applyCatEmoji([...DEFAULT_CATS, ...customCats]));
+    CATS = ensureStaticTeachingArticleCategory([...DEFAULT_CATS, ...customCats]);
+    currentTab = resolveCurrentTab(CATS);
     const extra = customCats;
     localStorage.setItem(CAT_STORE, JSON.stringify(extra));
     injectCatStyles();
@@ -1535,6 +1589,7 @@ document.addEventListener('keydown', event => {
 
 // ── 建立頁面 ──
 function buildPage() {
+  currentTab = resolveCurrentTab(CATS);
   tabBar.innerHTML = '';
   contentArea.innerHTML = '';
   injectCatStyles();
@@ -1574,6 +1629,7 @@ function buildPage() {
 
 function switchTab(catKey) {
   currentTab = catKey;
+  if (history.replaceState) history.replaceState(null, '', '#' + encodeURIComponent(catKey));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === catKey));
   // 同步管理列表篩選
   const filterEl = document.getElementById('filterCat');

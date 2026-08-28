@@ -3,6 +3,14 @@
 
 ---
 
+## 2026-08-28 更新：教學文章靜態頁
+
+- 從 `AI教學文章_2026-07-05起_可完整取回原文合集.md` 依 `日期：YYYY 年 MM 月 DD 日` 拆出每日文章頁，輸出到 `articles/ai-teaching/YYYY-MM-DD.html`。
+- 文章入口清單由 `tools/build_ai_teaching_articles.py` 產生到 `data/ai-teaching-articles.js`，首頁載入後以 `window.AI_TEACHING_ARTICLES` 合併到「教學文章」分類。
+- 因 Firestore 會覆蓋教材資料，首頁用 `mergeStaticTeachingArticles()` 在 localStorage 與 Firestore 兩條載入路徑後追加靜態文章；`saveData()` 會先排除這批靜態文章，避免管理後台存檔時把它們寫回 Firestore。
+
+---
+
 ## 1. 專案基本資訊
 
 | 項目 | 內容 |

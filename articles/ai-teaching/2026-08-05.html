@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 畫出的科學圖，看起來很專業就是真的嗎？用「水循環偵錯課」培養學生的圖像判讀力｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>AI 畫出的科學圖，看起來很專業就是真的嗎？用「水循環偵錯課」培養學生的圖像判讀力</h1>
+      <div class="date">2026 年 08 月 05 日</div>
+    </div>
+    <article>
+<p>自然課進行水循環單元時，老師請生成式 AI 製作一張「適合國小五年級的水循環示意圖」。</p>
+<p>幾秒後，畫面出現藍天、白雲、山脈、河川與海洋，箭頭整齊，配色漂亮，還標上蒸發、凝結、降水與地下水等名詞。</p>
+<p>學生第一眼都說：「這張比課本還清楚！」</p>
+<p>老師卻沒有立刻採用，而是把圖放大後問：「海水蒸發的箭頭為什麼指向地面？」「雲裡的水直接流進地下，合理嗎？」「植物明明畫在旁邊，為什麼沒有蒸散作用？」「山頂積雪融化後，水真的會一路往上流嗎？」</p>
+<p>原本看起來很專業的圖片，仔細檢查後竟出現箭頭方向錯誤、概念遺漏及不合理的因果關係。</p>
+<p>這正是多模態生成式 AI 進入自然科教室後，教師需要特別注意的新問題：<strong>AI 不只會寫出錯誤文字，也可能把錯誤概念畫得非常漂亮。</strong></p>
+<p>2026 年 7 月 23 日發表的〈AI-Integrated Scientific Inquiry〉指出，AI 可以成為科學探究中的觀察、分析與建模工具，但學生同時需要了解這些工具在哪些情況下會誤導。研究者以電腦視覺、分群及生成式模型為例，主張每一項 AI 工具都應搭配反思與驗證，而不是讓演算法直接接管整個探究歷程。</p>
+<p>UNESCO 於 2026 年 7 月報導的亞太科學教育培訓，也把 AI 應用與實作型 STEM、創客活動及永續發展議題放在同一個學習架構中。這說明 AI 的價值不只是幫教師快速生產教材，而是讓學生在真實問題中學習如何使用、檢查與修正科技工具。</p>
+<p>因此，與其把 AI 生成的科學圖直接當教材，不如把它變成一項更有價值的任務：<strong>請學生擔任科學插圖審查員。</strong></p>
+<h3>具體教學案例：AI 水循環圖的科學偵錯</h3>
+<p>教學對象可設定為國小五年級至國中七年級，主題是水循環、物態變化與水在環境中的移動。使用的 AI 功能包括文字生成圖像、多模態圖片分析及對話式修正建議。</p>
+<p>課程的核心問題是：</p>
+<blockquote>一張水循環圖需要具備哪些證據與關係，才能稱為可信的科學模型？</blockquote>
+<h4>第一階段：先建立「正確圖像」的檢核標準</h4>
+<p>在使用 AI 前，學生先根據課本、教師提供的官方氣象或水資源資料，整理水循環的必要元素，例如：海洋、河川與湖泊中的水受到太陽能量影響而蒸發；植物能透過蒸散作用將水分送入大氣；水蒸氣冷卻後凝結成小水滴或冰晶；水以雨、雪或冰雹等形式降下；部分水形成地表逕流，部分滲入土壤；地下水與河川最終可能再回到海洋。</p>
+<p>學生還要討論箭頭代表什麼。它可能表示水移動的方向，也可能表示物態改變；若圖中沒有說明，觀看者便容易誤解。</p>
+<p>這個步驟很重要。學生若沒有先建立判準，只憑「看起來合理」評圖，很容易被精美畫面與專業名詞說服。</p>
+<h4>第二階段：讓 AI 生成三種版本</h4>
+<p>教師可以使用相同提示詞，請 AI 分別生成三張水循環圖，或由不同工具各產生一張：</p>
+<blockquote>請製作一張適合國小五年級的水循環科學示意圖，包含太陽、海洋、陸地、植物、雲、河流、地下水、蒸發、蒸散、凝結、降水、滲透與地表逕流。請使用清楚箭頭呈現水移動方向，文字使用繁體中文。</blockquote>
+<p>即使提示詞相同，生成結果也可能不同。有些圖漏掉地下水，有些會把蒸發畫成海洋冒出白色煙霧，有些則可能產生錯字、重複箭頭，甚至把「凝結」標在降雨的位置。</p>
+<p>學生不能只選最漂亮的一張，而要逐項檢查：箭頭方向是否合理？各階段是否前後連接？文字標示是否放在正確位置？有沒有缺少重要過程？圖中是否混入不符合主題的元素？</p>
+<h4>第三階段：進行「圖像—文字—現象」三方查證</h4>
+<p>每組選出一項可疑內容，回到真實現象或簡易實驗查證。</p>
+<p>例如，若 AI 把凝結畫成「雲把水蒸氣往外噴」，學生可以進行冰杯實驗：在透明杯中加入冰水，觀察杯外逐漸出現水珠。</p>
+<p>教師接著追問：杯外的水是從杯內滲出來的嗎？水珠原本存在於哪裡？為什麼冷的杯壁附近較容易出現水珠？</p>
+<p>學生可以根據觀察，將凝結改寫為：「空氣中的水蒸氣遇冷後形成液態小水滴。」再檢查 AI 圖是否真正呈現這個過程。</p>
+<p>若圖中缺少植物蒸散，學生可以在葉片外套上透明袋，經過一段時間觀察袋內水珠。活動不必直接把所有水珠都簡化為單一來源，但可以讓學生理解植物與周圍水分循環確實存在關係。</p>
+<p>AI 產生的是模型草稿；實驗和資料才是修正模型的依據。</p>
+<h4>第四階段：要求 AI 說明，而不是只要求重畫</h4>
+<p>找到問題後，學生可輸入：</p>
+<blockquote>這張水循環圖將「凝結」標在雨滴下降的位置，並把蒸發箭頭畫成由天空指向海面。請先說明這兩處為何可能造成科學誤解，再提出具體修正方式。不要新增未經我們確認的程序。</blockquote>
+<p>學生再判斷 AI 的修正理由是否合理。</p>
+<p>如果 AI 只是把箭頭換方向，卻沒有說明水蒸氣、液態水及能量變化，代表它完成了視覺修補，不一定完成了科學概念修正。</p>
+<p>因此，每次修改後都要附一張「修正紀錄表」：原圖問題是什麼？我們根據什麼資料判定有問題？AI 建議如何修正？我們接受或拒絕的理由是什麼？最後版本仍有哪些限制？</p>
+<h4>第五階段：由學生重建水循環模型</h4>
+<p>完成偵錯後，每組親自繪製或編排一張修正版水循環圖。學生可以讓 AI 協助調整版面、統一字體或產生背景，但箭頭、標籤及概念關係必須由小組決定。</p>
+<p>最後進行組間互評。每組不得只說「很好看」或「字太小」，而要依三項標準提供證據：科學正確性；因果與方向是否清楚；圖像是否會使讀者產生錯誤理解。</p>
+<p>這堂課真正評量的，不是誰最會下提示詞，而是誰能根據科學知識找出問題、提出修正並說明理由。</p>
+<h3>學生可能學到什麼？</h3>
+<p>首先，學生會理解科學圖不是裝飾，而是一種模型。圖中的位置、比例、箭頭與標籤都在傳遞概念。</p>
+<p>其次，他們會發現「圖像逼真」不等於「科學正確」。AI 可以生成很像教科書的作品，卻可能缺乏一致的空間、時間與因果關係。</p>
+<p>第三，學生能練習交叉查證。同一項內容要比較課本、官方資料、真實觀察與實驗結果，不能只依賴單一 AI 回答。</p>
+<p>第四，他們會學習提出更精確的修正要求，例如「請修正箭頭方向並保留地下水層」，而不是只說「畫得更科學」。</p>
+<p>第五，他們能認識科學模型的限制。水循環圖通常把複雜的時間尺度、地形、氣候與人類用水簡化成一張平面圖，因此即使沒有錯誤，也不可能完整代表真實世界。</p>
+<p>美國國家科學基金會於 2026 年 7 月推出的 AI 科學資料計畫，同樣強調，高品質的 AI 分析仰賴可信資料、清楚紀錄與可追查的處理方式。資料來源與背景沒有整理好，AI 就可能在錯誤基礎上產生更具說服力的輸出。</p>
+<p>這項原則也適用於科學圖像：若輸入概念模糊、缺乏查證標準，生成結果再精美，也不能直接成為教學證據。</p>
+<h3>教師需要注意的風險與限制</h3>
+<p>第一，生成圖像可能出現錯字、假標籤、錯誤比例或不合理箭頭。教師必須在課前測試，不應未經檢查就直接投影。</p>
+<p>第二，AI 圖像不應取代學生親自觀察。雲、露水、蒸發與逕流都可以透過生活現象或簡易實驗建立經驗。</p>
+<p>第三，圖像工具可能受到訓練資料偏差影響，生成固定、單一的自然環境，例如所有水循環都只有高山、森林與藍色河流，忽略城市、農田、乾旱區與人類用水。</p>
+<p>第四，應注意著作權與來源標示。若圖中使用網路素材或參考既有教材，需要確認授權；AI 生成內容也應註明使用工具及人工修改情形。</p>
+<p>第五，不要把 AI 的自我解釋視為可靠證據。模型可能為自己的錯誤產生一段聽起來合理的辯護，仍須回到科學資料查證。</p>
+<p>第六，學生上傳手繪稿或課堂照片時，應移除姓名、座號、人臉及可辨識的校園資訊。</p>
+<p>第七，評量重點不能只放在成品美觀。找出錯誤、引用證據、保留修正歷程及說明模型限制，才是活動最重要的學習成果。</p>
+<p>下一次，當 AI 在十秒內完成一張漂亮的水循環圖，老師不必急著問：「可不可以放進簡報？」</p>
+<p>可以先把它交給學生，問：「哪一支箭頭最值得懷疑？」「這個標籤有什麼證據？」「圖裡沒有畫出的水去了哪裡？」「我們能用什麼觀察或實驗確認？」</p>
+<p>AI 讓製作教材變得更快，但自然科教育不應只追求更快得到圖和答案。</p>
+<p>一張有錯誤的 AI 圖像，只要經過學生觀察、查證與修正，反而可能比一張完全正確、直接交給學生背誦的圖片更有教學價值。</p>
+<p>因為孩子最後學到的，不只是水如何在自然界循環。</p>
+<p>他們也學會了面對 AI 時最重要的一種科學態度：</p>
+<p><strong>先不要被它畫得像真的說服，而要問它憑什麼是真的。</strong></p>
+<h3>參考資料與延伸閱讀</h3>
+<ol><li>Bewersdorff, A., Rojas, M., &amp; Zhai, X.，〈AI-Integrated Scientific Inquiry: A Practice-Centered Vision for Science Education〉，2026 年 7 月 23 日。</li></ol>
+<p><a href="https://arxiv.org/abs/2607.21777" target="_blank" rel="noopener">https://arxiv.org/abs/2607.21777</a></p>
+<ol><li>UNESCO，〈UNESCO unites science educators to transform STEM teaching across Asia-Pacific〉，2026 年 7 月 20 日。</li></ol>
+<p><a href="https://www.unesco.org/en/articles/unesco-unites-science-educators-transform-stem-teaching-across-asia-pacific" target="_blank" rel="noopener">https://www.unesco.org/en/articles/unesco-unites-science-educators-transform-stem-teaching-across-asia-pacific</a></p>
+<ol><li>U.S. National Science Foundation，〈Unlocking Dataset Value for AI-Enabled Scientific Discovery〉，2026 年 7 月 21 日。</li></ol>
+<p><a href="https://www.nsf.gov/funding/opportunities/ai-datasets-unlocking-dataset-value-ai-enabled-scientific-discovery/nsf26-512/solicitation" target="_blank" rel="noopener">https://www.nsf.gov/funding/opportunities/ai-datasets-unlocking-dataset-value-ai-enabled-scientific-discovery/nsf26-512/solicitation</a></p>
+<ol><li>U.S. National Science Foundation，〈New NSF initiative aims to unlock dataset value for AI-enabled scientific discovery〉，2026 年 7 月 22 日。</li></ol>
+<p><a href="https://www.nsf.gov/news/new-nsf-initiative-aims-unlock-dataset-value-ai-enabled" target="_blank" rel="noopener">https://www.nsf.gov/news/new-nsf-initiative-aims-unlock-dataset-value-ai-enabled</a></p>
+<ol><li>UNESCO，〈Artificial Intelligence in Education〉。</li></ol>
+<p><a href="https://www.unesco.org/en/digital-education/artificial-intelligence" target="_blank" rel="noopener">https://www.unesco.org/en/digital-education/artificial-intelligence</a></p>
+<p><strong>2026 年 08 月 05 日</strong><br><strong>作者：陳賢宗</strong></p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

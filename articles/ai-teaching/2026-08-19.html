@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 回答完全正確，為什麼我還是不想讓學生看？自然課真正需要的是「教學上正確」的 AI｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>AI 回答完全正確，為什麼我還是不想讓學生看？自然課真正需要的是「教學上正確」的 AI</h1>
+      <div class="date">2026 年 08 月 19 日</div>
+    </div>
+    <article>
+<p>自然課正在做種子發芽實驗。</p>
+<p>兩組綠豆放在不同環境，一組有光，一組放進紙箱。幾天後，學生興奮地發現：</p>
+<p>「老師，黑暗裡的綠豆怎麼反而長得比較高？」</p>
+<p>以前，老師大概會先問：「除了高度，兩組還有哪些地方不一樣？」</p>
+<p>孩子可能注意到黑暗組莖比較細、顏色偏黃、葉子也沒有完全展開。</p>
+<p>現在學生很自然地拿出 AI：</p>
+<p>「為什麼沒有光的綠豆反而長比較高？」</p>
+<p>AI 很可能立刻端出一份科學上相當完整的回答：黃化現象、光形態發生、植物激素、細胞伸長，甚至談到 phytochrome、auxin、基因表現。</p>
+<p>錯了嗎？</p>
+<p>可能一句都沒有錯。</p>
+<p>但如果這是一名國小五年級學生，我反而可能說：</p>
+<p><strong>「先不要看。」</strong></p>
+<p>因為教育裡存在一種很容易被 AI 時代忽略的差別：</p>
+<blockquote><strong>科學上正確的答案，不一定是教學上適合的答案。</strong></blockquote>
+<p>2026 年 8 月 5 日公開、並已於 IEEE IRI 2026 發表的一項研究，正好聚焦這個問題。研究團隊提出 <strong>Pedagogical Suitability Index（PSI，教學適切性指標）</strong>，主張評估 AI 家教時不能只看答案正不正確，還要看回答是否符合學生目前的基礎、課程進度，以及某個概念是不是在適當時間出現。研究測試四種 LLM、240 個情境，發現不同模型之間的基本「教學適切性」差距其實不算大；更有意思的是，研究者針對 62 個較弱案例加入 PSI 導向的回饋後，其中 51 個、約 82.3% 的案例得到改善。</p>
+<p>這項研究主要是 AI 家教評估，不是國小自然課的大型成效實驗，因此不能直接宣稱「使用 PSI 就會提升學生自然成績」。但它提出的核心問題，幾乎每天都會出現在自然教室：</p>
+<p><strong>這個答案現在該不該告訴學生？</strong></p>
+<h3>一個具體案例：黑暗中的綠豆為什麼比較高？</h3>
+<p>教學對象可設定為國小五、六年級，主題是植物生長與光的關係。</p>
+<p>使用的 AI 功能很普通：任何可以進行對話、閱讀照片或協助整理表格的生成式 AI 都可以。</p>
+<p>但教師先替 AI 設定一條規則：</p>
+<blockquote>不要使用超過學生目前課程所需的機制解釋；優先讓學生回到自己量到的植物證據。</blockquote>
+<p>實驗可設計成相同品種、相近大小的綠豆，在水量、容器、溫度等條件盡量一致的情況下，一組接受正常光照，一組放在黑暗環境，每天測量莖長、葉片狀態與顏色。</p>
+<p>學生可能得到一個很有衝擊感的結果：</p>
+<p>黑暗組竟然「比較高」。</p>
+<p>如果學生原本相信「陽光愈多，植物一定長得愈快」，眼前的結果會直接挑戰他的模型。</p>
+<p>這時正是探究最珍貴的時刻。</p>
+<h3>第一種 AI 回答：科學很完整，教學卻可能失敗</h3>
+<p>如果提示詞只是：</p>
+<p>「請解釋黑暗中的幼苗為什麼比較高。」</p>
+<p>AI 可能一次談完植物激素、光受器與黃化。</p>
+<p>學生得到答案。</p>
+<p>問題也同時被關掉了。</p>
+<p>原本還可以追問的事情——</p>
+<p>黑暗組真的「長得比較好」嗎？</p>
+<p>高度是不是唯一代表生長的指標？</p>
+<p>兩組顏色有什麼不同？</p>
+<p>莖粗呢？</p>
+<p>葉片大小呢？</p>
+<p>如果把黑暗組移回陽光下會怎樣？</p>
+<p>全部被一段正確答案取代。</p>
+<p>這就是「答案正確」和「教學適切」最具體的差異。</p>
+<p>PSI 研究的出發點正是如此：AI 回答除了 correctness，還必須考慮 learner readiness 與 curricular progression，也就是學習者是否準備好了，以及知識出現的順序是否合適。</p>
+<h3>第二種 AI 回答：先問學生「高就是長得好嗎？」</h3>
+<p>教師可以改成這樣：</p>
+<blockquote>我們是國小五年級學生，目前只學過植物生長需要適當的水、空氣、溫度與光。我們發現黑暗中的綠豆苗比較高。請不要使用植物激素、光受器或基因等尚未學過的內容，也不要直接解釋原因。請先問我們三個能從現有植物與紀錄表回答的問題。</blockquote>
+<p>AI 可以問：</p>
+<p>「除了高度之外，兩組葉片顏色一樣嗎？」</p>
+<p>「莖的粗細一樣嗎？」</p>
+<p>「哪一組的葉片比較展開？」</p>
+<p>學生重新拿起尺、照片與紀錄表。</p>
+<p>這時 AI 沒有少教。</p>
+<p>反而讓孩子多做了一次科學。</p>
+<h3>第二階段：把「長得高」和「長得好」拆開</h3>
+<p>學生很容易把單一數字直接等同完整現象。</p>
+<p>例如：</p>
+<p>12 公分 &gt; 8 公分，</p>
+<p>所以黑暗比較適合植物生長。</p>
+<p>教師可以要求 AI：</p>
+<blockquote>請不要判定哪一組長得比較好。幫我們把資料整理成「高度、莖粗、葉片展開程度、顏色」四個觀察面向，並提醒哪些屬於量測、哪些只是描述。</blockquote>
+<p>學生會慢慢發現：</p>
+<p>科學中的「生長」不是只有高度。</p>
+<p>同樣的思維也可以帶到許多自然探究：</p>
+<p>最高不一定最好。</p>
+<p>最重不一定最健康。</p>
+<p>最快不一定效率最高。</p>
+<p>最大也不一定代表最成功。</p>
+<p>AI 真正有價值的工作，是幫孩子把單一指標拆開，而不是替孩子快速選出冠軍。</p>
+<h3>第三階段：允許 AI 多講一點，但一次只多一層</h3>
+<p>等學生已經觀察到：</p>
+<p>黑暗組比較高、比較細、顏色偏黃、葉片較不展開，</p>
+<p>教師才可以逐步提高 AI 解釋權限：</p>
+<blockquote>根據我們的觀察，請用國小高年級可以理解的方式提出一個「可能解釋」。先不要介紹植物激素名稱，只說明植物在沒有光時可能採取什麼生長策略。</blockquote>
+<p>AI 可以用較簡單的方式描述：</p>
+<p>幼苗在黑暗中會優先伸長，像是在努力尋找光源；但缺乏光照時，葉片與綠色特徵不能像正常光照下那樣發展。</p>
+<p>到了國中或高中，再逐步加入更精細的生理與分子機制。</p>
+<p>同一個科學現象沒有被「簡化成錯誤知識」。</p>
+<p>只是依照學習者目前的概念架構，安排不同深度。</p>
+<p>這就是<strong>教學上的正確性</strong>。</p>
+<h3>第四階段：故意讓學生比較三種 AI 答案</h3>
+<p>這甚至可以變成一堂 AI 素養課。</p>
+<p>教師請 AI 針對相同問題分別產生：</p>
+<p>國小五年級版、</p>
+<p>國中七年級版、</p>
+<p>高中生物版。</p>
+<p>然後不要問：</p>
+<p>「哪一篇寫得最好？」</p>
+<p>而問：</p>
+<p>「增加了哪些新概念？」</p>
+<p>「哪些概念如果太早出現，反而可能干擾理解？」</p>
+<p>「三個版本有沒有互相矛盾？」</p>
+<p>學生會第一次理解：</p>
+<p>專業並不是一次把最多知識全部說出來。</p>
+<p>真正好的科學解釋，必須考慮聽的人目前站在哪裡。</p>
+<h3>AI 的「資訊太多」本身也可能是一種障礙</h3>
+<p>8 月 1 日公布的另一項教育研究，從「教材無障礙」切入，提出評估 AI 生成教材的協定，涵蓋文件、簡報、圖片、音訊與影片。作者特別指出，AI 教材的問題不只有是否符合 WCAG 等技術規範，還包括 AI 很容易製造的<strong>視覺與資訊過載</strong>。初步探索中，明確加入無障礙規則的提示，比一般提示得到高得多的 rubric 分數；但作者也很謹慎地指出，這只是單一模型、少量樣本與單一評估者的探索結果，不能當成大型基準測試。</p>
+<p>這個提醒同樣適用於自然科。</p>
+<p>教師常以為：</p>
+<p>「AI 解釋得愈完整愈好。」</p>
+<p>但對學生而言，五個尚未建立的專有名詞同時出現，可能不是更完整，而是更大的認知噪音。</p>
+<p>因此教師可以多下一句提示：</p>
+<blockquote>只使用理解這個現象所必須的新概念，一次最多新增一個尚未學過的術語。</blockquote>
+<p>這往往比「請講得更詳細」更有教育價值。</p>
+<h3>最新 K–12 實證也支持「不要只看 AI 能做多少」</h3>
+<p>美國教育科學研究院 8 月 10 日公布的研究整理指出，目前真正具有強因果證據的 K–12 AI 研究仍非常有限；其引用的 2026 年綜整只找到 20 項符合嚴格條件的研究。現階段較一致的訊號是：教師介入、AI 輔助的模式較具希望；學生直接使用一般型 AI 的效果則較混合，而當 AI 取代原本需要學生完成的資訊處理與問題解決時，甚至可能妨礙學習。</p>
+<p>因此，教師設計 AI 活動時，也許不該只問：</p>
+<p>「這個模型會不會解釋光合作用？」</p>
+<p>而應問：</p>
+<p>「它知道學生現在還不需要知道哪些東西嗎？」</p>
+<p>後者難得多。</p>
+<h3>學生可能學到什麼？</h3>
+<p>學生首先會重新理解植物實驗：較高不一定代表生長狀況較佳，科學結論必須同時考慮不同證據。</p>
+<p>其次，他會學習觀察先於解釋。AI 可以提出機制，但真實植物仍然是第一手資料。</p>
+<p>第三，他會發現同一個科學問題，可以有不同層次的解釋，而「比較簡單」不必等於「比較不科學」。</p>
+<p>第四，他會建立一個非常重要的 AI 使用習慣：</p>
+<p>不是只說：</p>
+<p>「告訴我答案。」</p>
+<p>而開始加上一句：</p>
+<p><strong>「先用我現在學過的概念回答。」</strong></p>
+<h3>教師需要注意的風險與限制</h3>
+<p>第一，不應讓 AI 自行判定學生究竟「準備好了沒有」。年級只是參考，同一年級學生的先備知識可能差距很大。</p>
+<p>第二，控制難度不能變成製造錯誤概念。可以暫時不介紹完整分子機制，但已提供的解釋仍必須科學上成立。</p>
+<p>第三，AI 可能表面遵守「國小程度」，實際仍偷偷塞入大量術語。教師最好課前測試。</p>
+<p>第四，差異化不等於把文字縮短。圖像、實物、數據、模型與提問順序，都可能比單純改寫文字更重要。</p>
+<p>第五，學生照片與觀察紀錄若包含姓名、人臉或可識別資訊，仍應先移除，再使用外部 AI。</p>
+<p>第六，前述 PSI 研究雖已於 IEEE IRI 2026 發表，但仍是特定情境下的 AI 家教評估研究；82.3% 是 62 個被挑出的弱案例中改善的比例，不應誇大成「AI 教學成效提高 82.3%」。</p>
+<p>UNESCO 在近期 AI 教育政策中也持續把 human agency、critical thinking 與教師能力放在核心，而不是只追求模型更自動化。7 月更新的亞太科學教育培訓，更把 AI 與實作 STEM、Maker Education 及真實永續問題結合，強調從動手做與問題解決出發。</p>
+<p>所以，下次學生在植物實驗做到一半，AI 突然給出一份大學程度、科學上完全正確的答案時，老師不必因為它「沒有幻覺」就全部接受。</p>
+<p>可以先問：</p>
+<p>「這句話現在有必要嗎？」</p>
+<p>「學生有證據理解它嗎？」</p>
+<p>「它回答了問題，還是把問題結束了？」</p>
+<p>「如果暫時拿掉這個概念，學生能不能先從自己的觀察多走一步？」</p>
+<p>AI 時代，我們很習慣檢查模型是否<strong>回答正確</strong>。</p>
+<p>教育現場接下來更需要學會檢查的是：</p>
+<p><strong>這個正確答案，是不是在正確的時間，以正確的深度，交給正站在這裡的學生。</strong></p>
+<p>因為會說出答案，是知識。</p>
+<p>知道現在該說多少，才是教學。</p>
+<h3>參考資料與延伸閱讀：</h3>
+<ol><li>Barlog, B., Craig, H., &amp; Peng, Z.，<strong>Evaluating and Improving Pedagogical Fit in LLM-Based AI Tutors with the Pedagogical Suitability Index</strong>，2026 年 8 月 5 日上線；已於 IEEE IRI 2026 發表。研究以 240 個情境評估四種 LLM，並以 PSI 導向方式改善教學適切性較弱的回答。</li></ol>
+<p><a href="https://arxiv.org/abs/2608.05411" target="_blank" rel="noopener">https://arxiv.org/abs/2608.05411</a></p>
+<ol><li>Amado-Salvatierra, H. R.，<strong>A Protocol for Evaluating the Accessibility of AI-Generated Educational Materials: Prompt Configuration, WCAG-Derived Criteria, and Content Overload</strong>，2026 年 8 月 1 日。提出 AI 教材無障礙與資訊過載的評估流程；初步結果規模有限，作者將主要貢獻定位為評估方法。</li></ol>
+<p><a href="https://arxiv.org/abs/2608.00749" target="_blank" rel="noopener">https://arxiv.org/abs/2608.00749</a></p>
+<ol><li>Institute of Education Sciences / REL Northeast &amp; Islands，<strong>AI in K–12 Education: The Good, the Bad, and the Guardrails to Consider</strong>，2026 年 8 月 10 日。IES 指出目前 K–12 AI 的嚴格因果研究仍有限，教師介入式 AI 使用較具正面訊號，而取代學生思考的一般型 AI 可能妨礙學習。</li></ol>
+<p><a href="https://ies.ed.gov/learn/blog/ai-k-12-education-good-bad-and-guardrails-consider" target="_blank" rel="noopener">https://ies.ed.gov/learn/blog/ai-k-12-education-good-bad-and-guardrails-consider</a></p>
+<ol><li>Bewersdorff, A., Rojas, M., &amp; Zhai, X.，<strong>AI-Integrated Scientific Inquiry: A Practice-Centered Vision for Science Education</strong>，2026 年 7 月 23 日。主張將 AI 作為科學探究工具，但保留學生對工具輸出、證據與限制的反思。</li></ol>
+<p><a href="https://arxiv.org/abs/2607.21777" target="_blank" rel="noopener">https://arxiv.org/abs/2607.21777</a></p>
+<ol><li>UNESCO，<strong>UNESCO unites science educators to transform STEM teaching across Asia-Pacific</strong>，2026 年 7 月 20 日更新。培訓內容結合 STEM、Maker Education、AI 科學教育與永續發展實作。</li></ol>
+<p><a href="https://www.unesco.org/en/articles/unesco-unites-science-educators-transform-stem-teaching-across-asia-pacific" target="_blank" rel="noopener">https://www.unesco.org/en/articles/unesco-unites-science-educators-transform-stem-teaching-across-asia-pacific</a></p>
+<ol><li>UNESCO，<strong>Artificial Intelligence in Education</strong>，官方 AI 教育專頁；截至 2026 年 8 月仍持續更新教師 AI 能力、倫理、安全與教育政策相關資源。</li></ol>
+<p><a href="https://www.unesco.org/en/digital-education/artificial-intelligence" target="_blank" rel="noopener">https://www.unesco.org/en/digital-education/artificial-intelligence</a></p>
+<p><strong>2026 年 08 月 19 日</strong><br><strong>作者：陳賢宗</strong></p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

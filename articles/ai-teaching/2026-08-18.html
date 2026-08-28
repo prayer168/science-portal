@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 看得見老師在做什麼，卻不一定看得懂學生正在想什麼：從「單擺探究錄影」重新思考 AI 課堂觀察｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>AI 看得見老師在做什麼，卻不一定看得懂學生正在想什麼：從「單擺探究錄影」重新思考 AI 課堂觀察</h1>
+      <div class="date">2026 年 08 月 18 日</div>
+    </div>
+    <article>
+<p>自然課正在進行單擺實驗。</p>
+<p>一組學生測量不同擺長的擺動週期。第一位學生負責放手，第二位按碼表，第三位紀錄數據，第四位站在旁邊看。</p>
+<p>如果把這段三分鐘影片交給多模態 AI，它可能很快整理出：</p>
+<p>「學生正在進行合作學習。」</p>
+<p>「教師使用探究式教學。」</p>
+<p>「學生進行重複測量。」</p>
+<p>「其中一名學生參與度較低。」</p>
+<p>看起來很厲害。</p>
+<p>但如果老師真的站在旁邊，可能會看到完全不同的故事。</p>
+<p>那個「站著沒動」的孩子，其實正在盯著擺錘，突然說：</p>
+<p>「老師，我覺得我們前面的結果不對，剛才每次放手的角度不一樣。」</p>
+<p>他不是沒有參與。</p>
+<p>反而是全組第一個注意到控制變因出了問題的人。</p>
+<p>這就是 AI 進入課堂觀察後非常值得注意的一件事：</p>
+<blockquote><strong>看見動作，不等於看懂思考；辨識教學行為，也不等於理解那個行為為什麼在此刻有教學價值。</strong></blockquote>
+<p>2026 年 8 月 9 日公開的研究 <strong>TeachUp</strong>，正好把 AI 帶進教師觀看課堂影片與專業成長的情境。研究團隊設計一套由大型語言模型協助的系統，自動從教學影片中辨識九類教學策略，在教師觀看影片時插入反思問題，之後再產生新的教學情境，讓教師練習把看到的策略轉移到另一個任務。研究包含 9 人的形成性研究與 16 名初任或準教師的受試者內比較；使用 TeachUp 的參與者在投入程度及把策略應用到新情境的表現上較佳。</p>
+<p>但是有一個數字非常值得自然教師記住：</p>
+<p><strong>系統辨識教學策略的平均 precision 約為 63.4%。</strong></p>
+<p>換句話說，AI 已經可以幫忙「看課」，卻遠不到我們可以放心把「看懂課堂」全部交給它的程度。</p>
+<p>這反而提供了一個很好的自然科 AI 教學方向。</p>
+<p>不是讓 AI 評學生。</p>
+<p>而是讓師生一起<strong>評 AI 到底看懂了多少。</strong></p>
+<h3>具體自然科案例：AI × 單擺探究「課堂影片偵探」</h3>
+<p>教學對象可以設定為國小六年級至國中八年級。</p>
+<p>主題是：</p>
+<p>「哪些因素會影響單擺擺動快慢？」</p>
+<p>使用的 AI 類型包括多模態影片理解、語音轉文字與對話式生成 AI。</p>
+<p>器材包含棉線、墊圈或小砝碼、支架、直尺與碼表。</p>
+<p>核心研究問題設定為：</p>
+<blockquote>擺長、擺錘重量與擺動角度，哪些因素會影響單擺週期？</blockquote>
+<p>學生仍然照正常方式實驗。</p>
+<p>不同的是，每組選擇其中一次約 2～3 分鐘的實驗過程錄影，作為後續分析材料。</p>
+<p>錄影的目的不是監督誰認真、誰偷懶，而是研究：</p>
+<p><strong>我們的實驗行為與真正的科學思考，AI 能不能分辨？</strong></p>
+<h3>第一階段：學生自己先「看自己的科學」</h3>
+<p>錄影完成後，先不要上傳 AI。</p>
+<p>學生自己重看片段，完成三欄紀錄：</p>
+<p>第一欄：</p>
+<p><strong>我們做了什麼？</strong></p>
+<p>例如：</p>
+<p>改變擺長；</p>
+<p>測量十次擺動時間；</p>
+<p>重做第二次測量。</p>
+<p>第二欄：</p>
+<p><strong>我們當時在想什麼？</strong></p>
+<p>例如：</p>
+<p>第一次和第二次差太多；</p>
+<p>擔心起始角度不同；</p>
+<p>懷疑按碼表反應時間造成誤差。</p>
+<p>第三欄：</p>
+<p><strong>只有看影片的人能知道嗎？</strong></p>
+<p>這個問題很有意思。</p>
+<p>「學生拿尺量線長」看得見。</p>
+<p>但是：</p>
+<p>「學生為什麼重新量一次？」</p>
+<p>不一定看得見。</p>
+<p>除非影片同時錄到討論聲音。</p>
+<p>即使錄到了聲音，AI 也不一定理解真正的科學脈絡。</p>
+<p>這時學生已經開始理解：</p>
+<p><strong>觀察資料本身具有邊界。</strong></p>
+<h3>第二階段：再請 AI 描述，不准先評分</h3>
+<p>接著才將已去除姓名、人臉等識別資訊的適當片段交給學校允許的平台。</p>
+<p>提示詞不要寫：</p>
+<p>「請評估哪個學生表現最好。」</p>
+<p>而可以寫：</p>
+<blockquote>請只描述影片中可直接觀察到的科學實驗行為，例如量測、改變變因、重複實驗、紀錄、討論與檢查器材。</blockquote>
+<blockquote>不要推測學生動機、能力、個性或學習態度。</blockquote>
+<blockquote>如果無法確定，請標示「無法由影片判定」。</blockquote>
+<p>AI 可能整理：</p>
+<p>00:25 學生 A 使用尺量測棉線。</p>
+<p>00:51 學生 B 啟動碼表。</p>
+<p>01:24 小組重新進行一次實驗。</p>
+<p>01:41 學生指向擺錘並與同學討論。</p>
+<p>到這裡都還只是<strong>觀察層次</strong>。</p>
+<p>這與自然課做實驗其實完全相同。</p>
+<p>我們必須先區分：</p>
+<p>看到了什麼？</p>
+<p>和</p>
+<p>認為它代表什麼？</p>
+<h3>第三階段：讓 AI 推論，再讓學生抓它「超過證據」的地方</h3>
+<p>第二輪才問：</p>
+<blockquote>根據影片，你認為哪些片段可能顯示學生正在檢查控制變因？請列出證據，並標示你的信心程度。不要只根據學生是否說話或是否動手來判斷參與度。</blockquote>
+<p>假設 AI 回答：</p>
+<p>「01:41 學生指向擺錘，可能在討論起始角度，因此是在檢查控制變因。」</p>
+<p>學生接著對照自己的真實記憶。</p>
+<p>如果當時其實是在說：</p>
+<p>「擺錘快撞到桌子了。」</p>
+<p>AI 就推論錯了。</p>
+<p>這一刻非常有教學價值。</p>
+<p>孩子會發現：</p>
+<p>AI 並不是從影片「讀到思想」。</p>
+<p>它是在有限資訊上<strong>推測最可能的解釋</strong>。</p>
+<p>多模態 AI 看圖片、影片的回答，也一樣需要證據檢驗。</p>
+<h3>第四階段：研究最容易被 AI 誤判的學生</h3>
+<p>教師可以特別挑幾種情況討論。</p>
+<p>例如一名學生：</p>
+<p>話很少，但一直記錄數據。</p>
+<p>另一名：</p>
+<p>講很多話，但大部分都與實驗無關。</p>
+<p>第三名：</p>
+<p>很少碰器材，卻在最後指出：</p>
+<p>「每一組的擺長沒有量到固定點，所以不能直接比較。」</p>
+<p>再問 AI：</p>
+<blockquote>如果只根據影片中「說話時間」「動手操作時間」來估計學生參與度，可能造成哪些錯誤？</blockquote>
+<p>這是一堂非常好的 AI 公平性教育。</p>
+<p>因為我們很容易把可量化的東西誤認為真正重要的東西。</p>
+<p>說話次數很好算。</p>
+<p>科學推理品質很難算。</p>
+<p>拿器材的時間很好算。</p>
+<p>「哪一句話改變整組實驗設計」卻困難得多。</p>
+<p>如果未來 AI 進入課堂分析，這會成為非常重要的教育問題。</p>
+<h3>AI 看影片最大的限制：教學策略往往藏在「為什麼」</h3>
+<p>TeachUp 研究特別指出，課堂影片雖然能呈現教師做了什麼，但教學策略真正重要的是<strong>什麼時候使用，以及為什麼使用</strong>；這些背後的 pedagogical reasoning 往往不直接出現在畫面上。研究團隊因此不是讓 AI 直接給教師一個分數，而是安排「觀看—反思—練習—比較」的循環。</p>
+<p>這其實很符合自然科。</p>
+<p>例如老師看到學生測出：</p>
+<p>1.42 秒、1.39 秒、1.88 秒。</p>
+<p>老師沒有立刻說：</p>
+<p>「第三筆刪掉。」</p>
+<p>而問：</p>
+<p>「第三次和前面兩次有什麼不同？」</p>
+<p>表面上只是一句問題。</p>
+<p>但好的自然老師知道，他正在保留學生自己辨識異常值與回想操作歷程的機會。</p>
+<p>AI 如果只辨識表面行為，可能標記：</p>
+<p>「教師沒有立即糾正錯誤。」</p>
+<p>真正的人類教學判斷卻可能是：</p>
+<p>「教師刻意延遲回饋，讓學生自己產生證據判斷。」</p>
+<p>兩者差很多。</p>
+<h3>這也是近期 AI 教師專業發展開始關心的方向</h3>
+<p>UNESCO IITE 於 2026 年 8 月更新的 <strong>LIET2026：PD4AI | AI4PD</strong>，把今年討論焦點直接放在兩個方向：一方面教師需要專業發展以學習如何與 AI 共存，也就是 Professional Development for AI；另一方面，AI 本身也可以被用來重新設計教師專業發展，也就是 AI for Professional Development。會議預計於 2026 年 11 月 27～29 日在香港教育大學舉行，涵蓋 K–12、高等教育與教師教育。</p>
+<p>這反映出 AI 教育正在出現一個有趣轉變：</p>
+<p>早期大家都在研究：</p>
+<p>「學生怎麼用 AI？」</p>
+<p>現在愈來愈多問題變成：</p>
+<p>「老師怎麼利用 AI 看見自己的教學？」</p>
+<p>但這裡必須加上一句：</p>
+<p><strong>不是讓 AI 成為教師的裁判，而是成為教師反思時多一雙不完美的眼睛。</strong></p>
+<h3>為什麼不能急著把 AI 課堂分析拿來評鑑老師或學生？</h3>
+<p>美國教育科學研究院（IES）在 2026 年 8 月 10 日公布的最新 K–12 AI 研究整理也提醒，目前 AI 對學生學習影響的高品質因果證據依然非常有限。IES 搜尋 What Works Clearinghouse 時沒有找到符合條件、直接評估當代 AI 與學生學習成果的研究；其引用的一項 2026 年綜整僅找到 20 項具有較嚴格因果證據的 K–12 AI 研究。</p>
+<p>目前較有希望的方向之一，是<strong>教師仍在迴路中的 AI 輔助模式</strong>；相較之下，直接將判斷或認知工作交給一般型 AI，成效更加混合。</p>
+<p>因此，如果今天一套系統宣稱可以：</p>
+<p>自動算學生參與度、</p>
+<p>自動判斷合作品質、</p>
+<p>自動評估探究能力、</p>
+<p>自動產生教師教學分數，</p>
+<p>自然科教師反而應該先問：</p>
+<p>它使用什麼證據？</p>
+<p>準確率是多少？</p>
+<p>錯誤集中在哪些學生？</p>
+<p>它把「安靜思考」看成什麼？</p>
+<p>它知道學生正在做科學推理，還是只辨認外在行為？</p>
+<h3>學生可能學到什麼？</h3>
+<p>這堂課最直接的學習當然還是單擺。</p>
+<p>學生會練習變因控制、重複測量、異常資料判讀與實驗誤差分析。</p>
+<p>但是它會再多出一層 AI 素養。</p>
+<p>學生會理解：</p>
+<p>影片也是資料。</p>
+<p>資料不等於完整現實。</p>
+<p>AI 可以描述行為，卻可能錯誤推論動機。</p>
+<p>容易量化的東西，不一定就是最值得評量的東西。</p>
+<p>最重要的是，他會第一次站在 AI 對面問：</p>
+<p><strong>「你說我正在做這件事，你的證據是什麼？」</strong></p>
+<p>這個問題其實和科學完全相同。</p>
+<h3>教師需要注意的風險與限制</h3>
+<p>第一，學生影像屬於高度敏感的學習資料。未取得適當同意、未確認平台資料政策之前，不應把完整課堂錄影任意上傳公開 AI 服務。實際教學可改用只拍手部、器材與桌面的方式，或由教師預先製作匿名示範影片。</p>
+<p>第二，不要使用 AI 推測學生情緒、人格、努力程度、能力或注意力。影片中可見的外在行為不足以支持這些判斷。</p>
+<p>第三，AI 回答應標示「觀察」與「推論」。這和自然科實驗紀錄區分數據與解釋完全一致。</p>
+<p>第四，TeachUp 的研究規模仍小，而且研究對象主要是初任及準教師，不代表它已經證明 AI 影片分析適合所有 K–12 教室。</p>
+<p>第五，63.4% 的策略辨識 precision 本身就是重要提醒：AI 可以幫忙定位值得看的片段，但仍需要人類確認。</p>
+<p>第六，AI 課堂觀察最好用於低風險的反思與研究，而不是直接作為正式教師考核或學生評分依據。</p>
+<p>UNESCO 目前的 AI 教育政策也持續強調以人為本、包容、公平、教師與學生 AI 能力，以及保留人的自主判斷。</p>
+<p>所以，未來如果 AI 真的可以坐在教室後面，把整堂自然課錄下來，十分鐘後產生一份二十頁的分析報告，我反而希望老師第一個看的不是：</p>
+<p>「AI 給我幾分？」</p>
+<p>而是：</p>
+<p>「哪一段它看錯了？」</p>
+<p>「哪一段它只看到行為，卻不知道我為什麼這樣教？」</p>
+<p>「哪一個孩子被它誤解了？」</p>
+<p>因為一堂真正的自然課裡，最重要的事情往往不是最大聲、最容易辨識的那一刻。</p>
+<p>有時候只是一個孩子盯著晃動的擺錘十秒鐘，突然說：</p>
+<p>「等一下，我覺得我們控制變因做錯了。」</p>
+<p>AI 也許只看到他十秒鐘沒有動。</p>
+<p>老師卻知道——</p>
+<p><strong>那十秒鐘，可能正是科學思考真正發生的地方。</strong></p>
+<h3>參考資料與延伸閱讀：</h3>
+<ol><li>Fan, H. 等，<strong>TeachUp: Facilitating Early-Stage Teachers to Learn Instructional Strategies from Classroom Videos with Reflective Support</strong>，2026 年 8 月 9 日公開。研究利用 LLM 與多模態模型協助教師從教學影片辨識策略、反思並進行微型教學練習；系統九類教學策略辨識平均 precision 為 63.4%。</li></ol>
+<p><a href="https://arxiv.org/abs/2608.08535" target="_blank" rel="noopener">https://arxiv.org/abs/2608.08535</a></p>
+<ol><li>UNESCO Institute for Information Technologies in Education，<strong>Learning Innovations and Emerging Technologies Conference 2026: PD4AI | AI4PD</strong>，2026 年 8 月 6 日發布、8 月 11 日更新。會議聚焦「教師為 AI 做專業發展」及「利用 AI 改造教師專業發展」兩個方向。</li></ol>
+<p><a href="https://iite.unesco.org/announcements/invitation-to-join-the-learning-innovations-and-emerging-technologies-conference-2026-liet2026-pd4ai-ai4pd/" target="_blank" rel="noopener">https://iite.unesco.org/announcements/invitation-to-join-the-learning-innovations-and-emerging-technologies-conference-2026-liet2026-pd4ai-ai4pd/</a></p>
+<ol><li>Institute of Education Sciences / REL Northeast &amp; Islands，<strong>AI in K–12 Education: The Good, the Bad, and the Guardrails to Consider</strong>，2026 年 8 月 10 日。IES 指出目前 K–12 AI 高品質因果證據仍有限，教師介入式 AI 應用是目前較值得關注的方向之一。</li></ol>
+<p><a href="https://ies.ed.gov/learn/blog/ai-k-12-education-good-bad-and-guardrails-consider" target="_blank" rel="noopener">https://ies.ed.gov/learn/blog/ai-k-12-education-good-bad-and-guardrails-consider</a></p>
+<ol><li>UNESCO，<strong>Artificial Intelligence in Education</strong>，官方 AI 教育專頁。UNESCO 強調 AI 教育應以人為本，兼顧包容、公平、人類自主性與教師、學生的 AI 能力。</li></ol>
+<p><a href="https://www.unesco.org/en/digital-education/artificial-intelligence" target="_blank" rel="noopener">https://www.unesco.org/en/digital-education/artificial-intelligence</a></p>
+<ol><li>Shen, Y. 等，<strong>Can Multimodal LLMs See Science Instruction? Benchmarking Pedagogical Reasoning in K-12 Classroom Videos</strong>，2026 年 2 月。本研究建立 K–12 科學課堂影片基準，發現多模態模型仍難以區分相近的科學教學實踐，且增加影片資訊並未在所有模型中帶來穩定改善。此篇列為背景研究，<strong>不屬於近 30 天的新資料</strong>。</li></ol>
+<p><a href="https://arxiv.org/abs/2602.18466" target="_blank" rel="noopener">https://arxiv.org/abs/2602.18466</a></p>
+<p><strong>2026 年 08 月 18 日</strong><br><strong>作者：陳賢宗</strong></p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>每問一次 AI，都有一座「看不見的機房」在運轉：從校園用電調查教孩子理解 AI、能源與永續｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>每問一次 AI，都有一座「看不見的機房」在運轉：從校園用電調查教孩子理解 AI、能源與永續</h1>
+      <div class="date">2026 年 08 月 12 日</div>
+    </div>
+    <article>
+<p>自然課上，老師問學生：</p>
+<p>「你們覺得使用 AI 需要用電嗎？」</p>
+<p>大部分孩子都會回答：「當然，手機和平板要充電。」</p>
+<p>如果再追問：</p>
+<p>「那手機充飽電以後，問 AI 問題還會在哪裡用到電？」</p>
+<p>教室通常會安靜幾秒。</p>
+<p>因為對使用者來說，生成式 AI 看起來只是一個輸入框：打一段文字、上傳一張圖片，幾秒鐘後答案就出現在螢幕上。運算發生在哪裡、使用多少伺服器、需要怎樣的冷卻設備、電從哪裡來，幾乎全部被藏在介面後面。</p>
+<p>但是，AI 並不是「住在雲裡」。</p>
+<p>它住在真實世界的資料中心裡。</p>
+<p>2026 年 8 月 11 日，美國能源資訊署（EIA）最新發布的《Short-Term Energy Outlook》再次把資料中心與電力需求放在聚光燈下。EIA 指出，美國近年的發電量持續增加，以因應資料中心帶來的電力需求；2026 年上半年，美國電力部門總發電量較 2025 年同期增加約 370 億度（kWh），其中太陽能與風力發電分別成長約 21%與 6%。同一份展望也指出，新增太陽能、風力與天然氣發電正共同支撐需求增加。</p>
+<p>更值得教育者注意的是，AI 基礎建設已經不只是科技產業議題。美國國家科學基金會（NSF）在 8 月 4 日宣布新的州與區域 AI Infrastructure Hubs 計畫，目的之一正是擴大研究人員、學生與教育工作者取得 AI 運算資源的機會，讓更多科學研究能運用大型運算與 AI。</p>
+<p>這兩則消息放在一起看，正好形成一個非常適合自然科教室的問題：</p>
+<blockquote><strong>當我們希望每一位學生都能使用 AI 時，背後需要增加多少能源？而 AI 本身又能不能幫我們更聰明地使用能源？</strong></blockquote>
+<p>這堂課不必討論抽象的「AI 好不好」，而可以讓孩子真正從量測開始。</p>
+<h3>具體教學案例：AI × 校園用電偵探</h3>
+<p>教學對象可設定為國小六年級至國中八年級，主題橫跨電與能源、功率、能源轉換、資料分析及永續發展。</p>
+<p>使用的 AI 功能包括資料整理、圖表判讀、異常值檢查、情境推演與節能方案比較。</p>
+<p>核心問題是：</p>
+<blockquote><strong>我們教室一天的電到底用到哪裡？AI 能不能幫我們找出真正值得節電的地方？</strong></blockquote>
+<p>器材可以使用插座式電力計、智慧插座或學校現有的用電監測設備；若設備不足，也可利用設備銘牌上的額定功率進行估算。</p>
+<p>學生先盤點教室：LED 燈、電風扇、冷氣、投影機、電子白板、桌上型電腦、充電車與飲水設備。</p>
+<p>但第一階段<strong>先不要問 AI</strong>。</p>
+<p>學生必須自己猜：「哪一項設備一天用最多電？」</p>
+<p>通常孩子很容易回答「電腦」或「平板」，因為它們最有科技感。</p>
+<p>實際計算後，卻可能發現冷氣才是主要用電來源。</p>
+<p>這個落差就是探究的起點。</p>
+<h4>第一階段：從「瓦特」走到「度電」</h4>
+<p>假設一台設備功率為 1000 W，每天使用 2 小時。</p>
+<p>學生先計算：1000 W × 2 h = 2000 Wh，也就是 2 kWh，也就是我們生活中常說的約「2 度電」。</p>
+<p>教師可以要求學生至少親自完成三項設備的計算，再讓 AI 介入。</p>
+<p>原因很簡單：如果孩子連 W、kW、Wh、kWh 的關係都尚未建立，就直接把整張表交給 AI，最後得到的可能是一張完全正確、學生卻看不懂的能源報表。</p>
+<h4>第二階段：讓 AI 當「資料稽核員」</h4>
+<p>完成第一輪計算後，再輸入：</p>
+<blockquote>以下是我們記錄的教室設備功率、使用時間與每日耗電量。請不要直接提出節能方案，先檢查單位、乘法計算與可能不合理的數值。請把「確定錯誤」和「需要回現場確認」分開。</blockquote>
+<p>假設學生記錄：冷氣：2500 W × 6 小時＝15 kWh。投影機：300 W × 2 小時＝600 kWh。</p>
+<p>AI 應該能發現第二筆明顯值得檢查。</p>
+<p>但重點不是讓 AI 自動改成 0.6 kWh。</p>
+<p>教師可以規定：<strong>AI 只能圈問題，學生自己訂正。</strong></p>
+<p>這和科學實驗中的異常值處理完全相同。</p>
+<p>看見奇怪數據，不是立刻刪除，而是回到來源。</p>
+<h4>第三階段：讓 AI 找「最大影響」，不要只找「最容易做」</h4>
+<p>學生接著問：</p>
+<blockquote>請根據一天的估計用電量，把設備依耗電量由高到低排列。不要只告訴我們「隨手關燈」，請計算如果每項設備減少 10%、20% 使用量，可能節省多少 kWh。</blockquote>
+<p>這時學生很可能發現一件非常重要的事。</p>
+<p>假設燈一天使用 3 kWh，冷氣使用 15 kWh。</p>
+<p>燈具節省 20%，是 0.6 kWh；冷氣節省 10%，卻可能是 1.5 kWh。</p>
+<p>這正是資料素養的重要觀念：</p>
+<p><strong>最顯眼的行動，不一定是影響最大的行動。</strong></p>
+<p>AI 真正有價值的地方，不是替大家喊「節約能源」，而是幫學生比較不同策略的量化效果。</p>
+<h4>第四階段：把教室放大成「資料中心」</h4>
+<p>接下來，教師才把 AI 本身放進問題。</p>
+<p>可以先告訴學生：我們使用聊天機器人時，真正執行模型的通常不是手上的平板，而是遠端伺服器。</p>
+<p>再提供 EIA 最新資料。</p>
+<p>EIA 8 月 11 日指出，美國發電量正持續增加，以回應資料中心需求成長；2026 年上半年，美國發電量較去年同期增加 1.8%，而太陽能與風力發電都有成長。</p>
+<p>這時不要立刻丟出一句：「所以 AI 很耗電。」</p>
+<p>因為這樣又落入過度簡化。</p>
+<p>學生應該問：資料中心增加的用電全部都是 AI 嗎？不同 AI 模型的能源需求一樣嗎？訓練模型與日常使用模型是否相同？資料中心所在位置的電力來源是否一樣？冷卻方式會不會影響能源與用水？</p>
+<p>這些問題讓孩子看到：科學與環境問題幾乎永遠不是一句口號可以回答。</p>
+<h4>第五階段：讓學生測試 AI 自己如何談「AI 的環境成本」</h4>
+<p>這一步非常有趣。</p>
+<p>各組詢問 AI：</p>
+<blockquote>使用生成式 AI 是否一定比傳統搜尋更耗能源？請把回答分成「目前可確認」「取決於條件」和「目前無法只用公開資訊精確回答」三部分，並提供資料來源。</blockquote>
+<p>不同模型可能產生不同數字。</p>
+<p>有些甚至會非常肯定地告訴學生：「問一次 AI 等於消耗多少度電。」</p>
+<p>這正是教師最好的切入點。</p>
+<p>請學生檢查：這個數字是哪一年？針對哪一個模型？有沒有包含資料中心冷卻？是平均值、估算值還是官方測量？模型公司有沒有公開足夠資訊？</p>
+<p>如果來源找不到，就不能因為數字精確到小數點後三位，看起來很科學，就直接相信。</p>
+<p>這就是 AI 時代非常重要的<strong>環境資訊素養</strong>。</p>
+<h3>AI 的能源問題並不是「不用 AI」這麼簡單</h3>
+<p>NSF 在 8 月 4 日的新計畫說明中，正面強調擴大 AI 運算基礎建設，可以讓更多研究者、學生與教育工作者利用 AI 從事科學研究。換句話說，增加運算能力也可能帶來新的科學與教育價值。</p>
+<p>另一方面，美國能源部目前的 AI Data Center Resource Hub 也強調，資料中心的能源與用水效率本身正在成為技術創新的對象，包括更有效率的運算、冷卻與能源系統。</p>
+<p>所以比較成熟的自然科問題不是：「AI 到底環保不環保？」</p>
+<p>而是：</p>
+<blockquote><strong>在什麼用途、什麼模型、什麼能源來源、什麼資料中心設計下，AI 的環境代價與產生的價值如何比較？</strong></blockquote>
+<p>這才是真正可以探究的問題。</p>
+<h3>學生可能學到什麼？</h3>
+<p>首先，他們會真正理解功率與電能的差別，不再只把「很耗電」當成感覺。</p>
+<p>其次，他們會練習從設備功率、使用時間與實際數據建立能源模型。</p>
+<p>第三，他們會理解 AI 不是魔法，而是建立在伺服器、電網、冷卻設備與真實土地上的物理系統。</p>
+<p>第四，他們會練習查證 AI 提供的數字。愈精確的數字，反而愈值得問來源。</p>
+<p>第五，他們會理解永續問題沒有簡單的二分答案。AI 會消耗能源，但也可能被用來分析能源、改善系統效率或支持科學研究。</p>
+<p>第六，也是最重要的一點：孩子會開始看到「數位世界」和「自然世界」其實從來沒有分開。</p>
+<p>每一次運算，都必須回到材料、能源與環境。</p>
+<h3>教師需要注意的風險與限制</h3>
+<p>第一，不要讓學生自己估算「一次 AI 問答固定消耗多少電」並把它當成事實。不同模型、硬體、資料中心利用率、提示長度及服務架構差異非常大，公開資料通常不足以精確計算單次請求。</p>
+<p>第二，要清楚區分「資料中心用電增加」與「全部由生成式 AI 造成」。EIA 的最新資料指出資料中心是重要需求來源，但不能把所有資料中心負載直接等同生成式 AI。</p>
+<p>第三，學生若分析學校實際電費或智慧電表資料，應移除帳號、校務資訊與其他不必要的識別資料後再使用外部 AI。</p>
+<p>第四，AI 的節能建議仍須由教師評估。像是縮短冷氣時間、改變通風或關閉設備，都涉及熱舒適、安全、設備壽命與教學需求。</p>
+<p>第五，能源教育不能變成罪惡感教育。學生使用一次 AI 並不是環境問題的全部，更值得理解的是系統規模、能源結構與效率。</p>
+<p>第六，教師應要求學生將「測量值」「估算值」「AI 建議」與「外部資料」分欄記錄，避免四者混在一起。</p>
+<p>2026 年的 AI 教育開始出現一個值得注意的轉折。</p>
+<p>我們過去問的是：「學生會不會用 AI？」</p>
+<p>接下來更值得問的是：「學生知不知道 AI 從哪裡來？」</p>
+<p>它需要晶片。需要機房。需要散熱。需要電力。也需要人類決定這些資源值得被用在哪裡。</p>
+<p>下一次學生在自然課問：「老師，我可以用 AI 嗎？」</p>
+<p>也許答案不只可以是：「可以，但要查證。」</p>
+<p>還可以多問一句：</p>
+<p><strong>「可以。那我們順便研究一下，你現在使用的這個 AI，在真實世界裡需要什麼。」</strong></p>
+<p>當孩子開始從一個聊天視窗，看見後面的能源、設備、環境與科學系統時，他學到的就不只是 AI 操作。</p>
+<p>而是一種更完整的科技素養：</p>
+<p><strong>數位世界看似沒有重量，但它從來沒有脫離自然世界。</strong></p>
+<h3>參考資料與延伸閱讀</h3>
+<ol><li>U.S. Energy Information Administration（EIA），<strong>Short-Term Energy Outlook, August 2026</strong>，2026 年 8 月 11 日。</li></ol>
+<p><a href="https://www.eia.gov/outlooks/steo/" target="_blank" rel="noopener">https://www.eia.gov/outlooks/steo/</a></p>
+<ol><li>U.S. Energy Information Administration，<strong>Electricity, Coal, and Renewables — August 2026 STEO</strong>，2026 年 8 月 11 日。</li></ol>
+<p><a href="https://www.eia.gov/outlooks/steo/report/elec_coal_renew.php" target="_blank" rel="noopener">https://www.eia.gov/outlooks/steo/report/elec_coal_renew.php</a></p>
+<ol><li>U.S. National Science Foundation，<strong>New NSF State and Regional AI Infrastructure Hubs will power AI-enabled scientific research across the country</strong>，2026 年 8 月 4 日。</li></ol>
+<p><a href="https://www.nsf.gov/news/new-nsf-state-regional-ai-infrastructure-hubs-will-power-ai" target="_blank" rel="noopener">https://www.nsf.gov/news/new-nsf-state-regional-ai-infrastructure-hubs-will-power-ai</a></p>
+<ol><li>U.S. Department of Energy，<strong>Powering America’s AI Future — Data Center Resource Hub</strong>，2026 年 7 月更新。</li></ol>
+<p><a href="https://www.energy.gov/powering-americas-ai-future-data-center-resource-hub" target="_blank" rel="noopener">https://www.energy.gov/powering-americas-ai-future-data-center-resource-hub</a></p>
+<ol><li>Bewersdorff, A., Rojas, M., &amp; Zhai, X.，<strong>AI-Integrated Scientific Inquiry: A Practice-Centered Vision for Science Education</strong>，2026 年 7 月 23 日。</li></ol>
+<p><a href="https://arxiv.org/abs/2607.21777" target="_blank" rel="noopener">https://arxiv.org/abs/2607.21777</a></p>
+<p><strong>2026 年 08 月 12 日</strong><br><strong>作者：陳賢宗</strong></p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

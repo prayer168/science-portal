@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>學生畫錯了，AI 應該立刻改正嗎？從「食物網草圖」練習讓模型先說話｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>學生畫錯了，AI 應該立刻改正嗎？從「食物網草圖」練習讓模型先說話</h1>
+      <div class="date">2026 年 08 月 06 日</div>
+    </div>
+    <article>
+<p>自然課進行生態系單元時，老師請學生畫出校園花圃的食物網。</p>
+<p>一名學生在圖上畫了草、蚱蜢、麻雀和貓，接著畫出一支箭頭，由麻雀指向蚱蜢。旁邊同學看了一眼，立刻說：</p>
+<p>「畫反了！應該是蚱蜢被麻雀吃，所以箭頭要指向麻雀。」</p>
+<p>另一名學生則反駁：</p>
+<p>「可是箭頭也可以表示麻雀去吃蚱蜢啊！」</p>
+<p>這個爭論看似只是箭頭方向問題，其實涉及學生如何理解「能量傳遞」、如何使用科學符號，以及能不能把腦中的想法轉化成外人看得懂的模型。</p>
+<p>現在，具備圖片理解能力的生成式 AI 已能閱讀學生草圖、辨認標籤、指出缺漏，甚至直接產生一張更漂亮的食物網。教師很容易要求它：「請把這張圖改正。」</p>
+<p>但如果 AI 一看到錯誤就立刻重畫，學生可能只得到正確成品，卻失去說明原來想法、比較不同模型及修改理由的機會。</p>
+<p>近期科學教育研究開始強調，AI 不應只被視為答案機，而可被設計成不同功能的科學工具。2026 年 7 月 23 日發布的〈AI-Integrated Scientific Inquiry〉提出，電腦視覺可以協助觀察，演算法可以協助分析，生成式模型則可協助建模；然而，每一項工具都必須搭配反思與驗證，避免學生把 AI 輸出直接等同科學事實。</p>
+<p>美國教育科學研究院目前支持的「Science Sketch」計畫，也把學生繪製、分享、測試與修正科學模型視為概念學習的核心。該計畫正在發展可運用 AI 分析草圖、提供鷹架的學習環境，目標是協助國小高年級學生建立概念理解，而不是只判斷圖畫對不對。</p>
+<p>這提供自然科教師一個重要方向：</p>
+<blockquote><strong>AI 看見學生畫錯時，不必急著改圖；它更應先幫助教師看懂學生為什麼這樣畫。</strong></blockquote>
+<h3>具體教學案例：校園花圃食物網的 AI 草圖診斷</h3>
+<p>教學對象可設定為國小五、六年級或國中七年級，主題是生產者、消費者、食物鏈、食物網與能量傳遞。使用的 AI 功能包括圖片理解、草圖辨識、對話追問及模型比較。</p>
+<p>課程問題可以設定為：</p>
+<blockquote>校園花圃中的生物如何透過攝食關係互相連結？一張科學模型怎樣才算表達清楚？</blockquote>
+<h4>第一階段：先觀察真實環境，不讓 AI 產生生物名單</h4>
+<p>學生先到花圃進行定時觀察，記錄植物、昆蟲、蜘蛛、鳥類及其他可見生物。除了名稱，也要記下行為證據，例如：蚱蜢正在啃食葉片；蜘蛛網上黏著小飛蟲；麻雀在草地上啄食；瓢蟲幼蟲出現在有蚜蟲的嫩芽旁。</p>
+<p>如果只記錄「看見什麼」，學生容易把所有生物任意連成食物網；若記錄「看見牠做了什麼」，模型便有較明確的證據基礎。</p>
+<p>AI 可以協助辨識照片中的可能類群，但不能因為兩種生物出現在同一張照片中，就宣稱兩者具有捕食關係。沒有觀察到的關係，只能標示為待查證。</p>
+<h4>第二階段：每位學生先畫自己的模型</h4>
+<p>學生使用紙張畫出至少五種生物，再用箭頭表示食物或能量的傳遞。</p>
+<p>教師暫時不公布統一答案，只提出基本要求：每個生物要清楚標示；箭頭必須有一致意義；至少寫出一項觀察證據；不確定的關係可用虛線表示。</p>
+<p>這時通常會出現不同模型。有些學生讓箭頭由捕食者指向獵物，表示「誰吃誰」；有些則由食物指向攝食者，表示能量流動；也有人把太陽直接連到所有動物。</p>
+<p>這些差異並不是立刻消除的麻煩，而是理解學生想法的入口。</p>
+<h4>第三階段：讓 AI 先描述，不准它直接修改</h4>
+<p>教師可將移除姓名與座號的草圖交給圖片理解工具，使用以下提示：</p>
+<blockquote>請先客觀描述這張食物網草圖中有哪些生物、箭頭及文字。不要重畫，也不要直接宣布正確答案。請指出你無法辨認的部分，並提出三個問題，幫助學生說明每一支箭頭代表什麼。</blockquote>
+<p>AI 可能詢問：「草指向蚱蜢的箭頭表示誰吃誰，還是能量往哪裡移動？」「麻雀和蚱蜢之間的關係來自實際觀察，還是查閱資料？」「太陽指向麻雀的箭頭想表達陽光直接被麻雀利用嗎？」</p>
+<p>學生必須回答這些問題。如此一來，AI 的第一個任務不是改錯，而是幫助學生把隱藏在草圖裡的想法說清楚。</p>
+<h4>第四階段：比較不同模型的表達方式</h4>
+<p>教師選出兩至三張具有代表性的匿名草圖，全班共同討論。</p>
+<p>例如，甲圖的箭頭由麻雀指向蚱蜢，意思是「麻雀吃蚱蜢」；乙圖則由蚱蜢指向麻雀，意思是「蚱蜢體內的能量傳給麻雀」。</p>
+<p>兩張圖未必都毫無道理，但科學模型必須讓讀者清楚知道符號代表什麼。若課程目標是呈現能量傳遞，就應統一採用「被吃的生物指向攝食者」，並在圖例中明確註明。</p>
+<p>學生因此會理解，科學圖不只是畫得像不像，而是一種需要共同約定的表達語言。</p>
+<h4>第五階段：請 AI 找出模型缺口，不替學生補答案</h4>
+<p>學生完成初步說明後，可使用第二段提示：</p>
+<blockquote>請根據這張草圖與我們提供的觀察紀錄，找出模型中可能缺少的角色、沒有證據的連線及箭頭方向不一致的地方。請用問題呈現，不要直接新增生物或重畫完整食物網。</blockquote>
+<p>AI 可能提醒：「圖中有落葉和昆蟲，但沒有呈現分解者，這是否影響模型完整性？」「三條箭頭的方向與其他箭頭不同，是否使用了兩種不同規則？」「貓捕食麻雀的關係是否在本次觀察中實際出現？」</p>
+<p>學生再決定要修改、保留或改成虛線，並寫下理由。</p>
+<p>真正重要的不是最後每一組畫出完全相同的圖，而是每一條線都有明確意思與合理證據。</p>
+<h4>第六階段：用情境變化測試模型</h4>
+<p>教師可以提出新的問題：如果花圃大量使用殺蟲劑，使昆蟲數量減少，哪些生物可能受到影響？如果拔除所有開花植物，訪花昆蟲與捕食牠們的蜘蛛可能如何改變？如果加入堆肥區，分解者與土壤動物可能出現哪些變化？</p>
+<p>學生先用自己的模型預測，再請 AI 協助檢查推論是否漏掉間接影響。</p>
+<p>提示詞可以寫成：</p>
+<blockquote>請檢查我們對「昆蟲數量減少」的預測是否與食物網連線一致。請區分模型直接支持的結果與仍需觀察的推測，不要把可能影響寫成必然結果。</blockquote>
+<p>這能讓學生理解，食物網不是生物名稱的集合，而是可以用來預測系統變化的模型。</p>
+<h3>學生可能學到什麼？</h3>
+<p>首先，學生會理解科學模型不是現實世界的縮小複製，而是為了回答問題而選擇、簡化與連結資訊。</p>
+<p>其次，他們會認識符號的一致性。箭頭、虛線、顏色與圖例若沒有明確定義，即使內容豐富，也可能讓讀者誤解。</p>
+<p>第三，學生能練習區分觀察、資料來源與推論。「我看到麻雀在草地上」是觀察；「麻雀正在吃蚱蜢」若沒有看清楚，就仍是推論。</p>
+<p>第四，他們會發現 AI 可以辨識線條與文字，卻未必知道學生真正想表達什麼。模型仍需由作者親自解釋。</p>
+<p>第五，他們能保留修正歷程。第一版草圖、AI 提問、同儕意見與最後版本都應保存，讓學習成果不只剩一張漂亮的完成圖。</p>
+<p>這種「先畫、再說明、接受追問、根據證據修改」的流程，也呼應近期教育 AI 的發展方向。美國教育科學研究院另一項於 2026 年 7 月公布的計畫，正在發展以真實地方生態系為課堂的 STEM 學習平台，讓教師利用環境資料設計實驗活動；AI 的角色包括協助產生背景內容、測驗和形成性評量，但仍須透過教師回饋、課堂試用與可用性測試檢驗。</p>
+<p>這些研究共同顯示，教育 AI 的價值不只在於快速生成教材，而在於能否支持學生建立、檢查與修正自己的理解。</p>
+<h3>教師需要注意的風險與限制</h3>
+<p>第一，圖片理解可能辨識錯誤。學生字跡、箭頭交叉、照片陰影及模糊線條都可能讓 AI 誤讀，教師應保留原始草圖並讓學生確認。</p>
+<p>第二，AI 可能過度追求唯一答案。真實生態關係會因季節、地點與生物生命階段而改變，食物網通常只是特定時空下的簡化模型。</p>
+<p>第三，不能讓 AI 補造觀察證據。模型知道麻雀可能吃昆蟲，不代表學生已在校園觀察到這件事。</p>
+<p>第四，草圖上傳前應移除姓名、座號、人臉及可辨識校園資訊，並使用學校允許的平台。</p>
+<p>第五，工具可能偏好清楚、標準化的圖畫，對書寫困難、動作控制較弱或使用不同表達方式的學生較不公平。教師不能把 AI 辨識能力當成學生科學能力。</p>
+<p>第六，AI 提供的生態關係仍需查證，可參考官方自然資源、學術單位及可信圖鑑。</p>
+<p>第七，評量不應只看最後版本是否正確。學生能不能解釋箭頭、引用證據、承認不確定性並說明修改理由，更值得被評量。</p>
+<p>UNESCO 的教師 AI 能力架構強調，教師需要同時具備以人為本的思維、倫理判斷、AI 基礎知識、教學設計及專業學習能力。工具的使用不應削弱人的自主性，而應幫助教師與學生做出更有根據的判斷。</p>
+<p>下一次，當學生畫出箭頭方向錯誤的食物網，老師不必立刻叫 AI 產生標準版本。</p>
+<p>可以先讓 AI 問一句：「你希望這支箭頭表示什麼？」</p>
+<p>學生也許會因此發現，自己不是不知道麻雀會吃蚱蜢，而是沒有想過圖上的符號能不能讓別人理解。</p>
+<p>這一刻，錯誤草圖的價值便出現了。</p>
+<p>AI 可以幫忙看見線條、整理差異、提出追問，卻不應奪走學生解釋模型的責任。真正的科學學習，不是把第一張不完整的圖換成一張毫無瑕疵的圖，而是讓學生知道：我原本怎麼想？哪一項證據讓我改變？修改後的模型能解釋什麼？它仍然漏掉了什麼？</p>
+<p>當 AI 願意先聽模型說話，而不是急著替模型說話，它才真正成為自然科教室中的學習助手。</p>
+<h3>參考資料與延伸閱讀</h3>
+<ol><li>Bewersdorff, A., Rojas, M., &amp; Zhai, X.，〈AI-Integrated Scientific Inquiry: A Practice-Centered Vision for Science Education〉，2026 年 7 月 23 日。</li></ol>
+<p><a href="https://arxiv.org/abs/2607.21777" target="_blank" rel="noopener">https://arxiv.org/abs/2607.21777</a></p>
+<ol><li>Institute of Education Sciences，〈Improving Conceptual Knowledge in Upper Elementary Science Through Scaffolded Sketch-Based Modeling〉。</li></ol>
+<p><a href="https://ies.ed.gov/use-work/awards/improving-conceptual-knowledge-upper-elementary-science-scaffolded-sketch-based-modeling" target="_blank" rel="noopener">https://ies.ed.gov/use-work/awards/improving-conceptual-knowledge-upper-elementary-science-scaffolded-sketch-based-modeling</a></p>
+<ol><li>Institute of Education Sciences，〈Transforming STEM Learning: Local Ecosystems as Classrooms〉。</li></ol>
+<p><a href="https://ies.ed.gov/use-work/awards/transforming-stem-learning-local-ecosystems-classrooms" target="_blank" rel="noopener">https://ies.ed.gov/use-work/awards/transforming-stem-learning-local-ecosystems-classrooms</a></p>
+<ol><li>Institute of Education Sciences，〈Sci-Quest: An Interactive Guided Hero’s Journey Through the Scientific Method〉，2026 年 7 月 1 日。</li></ol>
+<p><a href="https://ies.ed.gov/use-work/awards/sci-quest-interactive-guided-heros-journey-through-scientific-method" target="_blank" rel="noopener">https://ies.ed.gov/use-work/awards/sci-quest-interactive-guided-heros-journey-through-scientific-method</a></p>
+<ol><li>UNESCO，〈AI Competency Framework for Teachers〉。</li></ol>
+<p><a href="https://www.unesco.org/en/articles/ai-competency-framework-teachers" target="_blank" rel="noopener">https://www.unesco.org/en/articles/ai-competency-framework-teachers</a></p>
+<ol><li>UNESCO，〈Artificial Intelligence in Education〉。</li></ol>
+<p><a href="https://www.unesco.org/en/digital-education/artificial-intelligence" target="_blank" rel="noopener">https://www.unesco.org/en/digital-education/artificial-intelligence</a></p>
+<p><strong>2026 年 08 月 06 日</strong><br><strong>作者：陳賢宗</strong></p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

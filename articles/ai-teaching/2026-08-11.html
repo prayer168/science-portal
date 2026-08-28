@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 家教懂得比學生多，卻不代表學生真的學會：自然課需要的是「會慢慢退場的 AI」｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>AI 家教懂得比學生多，卻不代表學生真的學會：自然課需要的是「會慢慢退場的 AI」</h1>
+      <div class="date">2026 年 08 月 11 日</div>
+    </div>
+    <article>
+<p>自然課進行「月相變化」時，老師請學生判斷：為什麼同一個月裡，我們會看到新月、眉月、上弦月、滿月，再逐漸變回下弦月與殘月？</p>
+<p>一名學生拿起平板問 AI：</p>
+<p>「為什麼月亮每天形狀不一樣？」</p>
+<p>AI 很快回答：「因為月球繞地球公轉時，太陽照亮月球的一半，而我們從地球看到亮面比例不同，因此產生月相變化。」</p>
+<p>答案完全可以抄進學習單。</p>
+<p>老師接著換一題：「如果今天看到滿月，太陽、地球和月球大約位在哪些位置？」</p>
+<p>學生又轉頭問 AI。</p>
+<p>再換一題：「那為什麼滿月不一定發生月食？」</p>
+<p>學生第三次問 AI。</p>
+<p>這時就出現了一個非常有意思的現象：</p>
+<p><strong>AI 每一題都會，但我們開始不知道學生到底會不會。</strong></p>
+<p>AI 家教正逐漸成為教育科技最受關注的應用之一。美國教育科學研究院近期整理 AI 與教育相關研究時指出，目前較強的實證確實多集中於「學生直接使用的 AI 工具」，包含智慧家教與聊天系統；綜整超過 80 項因果研究後，可以看到學生參與、練習行為與部分認知結果有所改善，但不同評量的進步並不一致。IES 因而特別提醒，AI 最有效的情況仍然需要高品質教學與人類專業判斷配合，而不能被視為教師的替代品。</p>
+<p>2026 年 8 月 5 日，Tom’s Guide 訪問 K–12 數學與科學 AI 家教平台 StarSpark 的創辦人 Ashish Bansal。這篇報導不是獨立的成效實驗，因此不能把其中產品方的說法當成已證實研究結果，但它提出的設計問題很值得教師參考：好的 AI 家教不應在學生一卡住時立刻公布答案，而應從最小提示開始，逐步增加協助，讓學生保留最大的思考責任；創辦人自己也明確表示，該平台的長期成效研究仍在進行中。</p>
+<p>這其實指出 AI 家教下一個更重要的問題：</p>
+<p>不是「AI 能不能個人化教學」，而是——</p>
+<blockquote><strong>AI 什麼時候應該停止個人化，開始把控制權還給學生？</strong></blockquote>
+<p>如果孩子每一道題都有一位永遠耐心、永遠即時提示的 AI 陪伴，我們可能得到一位「有 AI 時表現很好」的學生，卻無法確定當工具消失後，他是不是仍然能獨立思考。</p>
+<p>因此，自然科課堂可以加入一個非常重要的設計：</p>
+<p><strong>鷹架遞減（fading scaffolds）。</strong></p>
+<p>也就是 AI 可以幫忙，但它必須一輪比一輪少幫一點。</p>
+<h3>具體教學案例：月相探究的「AI 逐步退場實驗」</h3>
+<p>教學對象可設定為國小六年級至國中七年級。</p>
+<p>教學主題是月球運動、月相成因與空間推理。使用的 AI 類型包括對話式生成 AI、圖片理解工具及蘇格拉底式提問助手。</p>
+<p>核心問題是：</p>
+<blockquote>月相變化究竟是月亮本身改變形狀，還是觀察位置造成我們看到的亮面不同？</blockquote>
+<p>準備材料可以很簡單：一顆保麗龍球代表月球，一盞固定位置的燈代表太陽，學生自己的頭部代表地球上的觀察者。</p>
+<p>真正重要的不是讓 AI 模擬月相，而是讓學生先用身體在空間中建立模型。</p>
+<h4>第一輪：AI 可以提示，但不能給答案</h4>
+<p>學生手持白球，站在固定燈光旁，讓球繞著自己移動。</p>
+<p>老師先問：「什麼位置最接近滿月？」</p>
+<p>若學生卡住，可以詢問 AI：</p>
+<blockquote>我正在用燈、白球和自己的頭模擬太陽、月球與地球。請不要告訴我滿月在哪個位置，只問我一個問題，讓我根據球被照亮的方向自己找出答案。</blockquote>
+<p>AI 可以問：「要讓你看到的球面幾乎全部被照亮，光源應該在你的前方、後方，還是側面？」</p>
+<p>學生必須移動球來驗證。</p>
+<p>這時 AI 的任務是<strong>製造下一個思考步驟</strong>，不是完成推理。</p>
+<h4>第二輪：AI 只能指出矛盾</h4>
+<p>學生畫出太陽、地球與月球位置，再寫下理由。</p>
+<p>假設學生畫成：太陽—月球—地球，卻標示「滿月」。</p>
+<p>此時可以把圖交給具備圖片理解能力的 AI：</p>
+<blockquote>請不要直接修正圖。請指出圖中的月球被太陽照亮哪一面，再問我：站在地球位置時可能看到多少亮面？</blockquote>
+<p>學生必須重新回到實體模型。</p>
+<p>這個步驟非常重要，因為 AI 提供的文字解釋也可能讓學生產生「看懂了」的錯覺。真正移動模型，才能檢驗他是否形成空間概念。</p>
+<h4>第三輪：AI 只能問「證據在哪裡？」</h4>
+<p>接著教師提出：「為什麼每個月都有滿月，卻不是每個月都有月食？」</p>
+<p>學生可能回答：「因為月球沒有排得很直。」</p>
+<p>AI 此時不再提供概念提示，只能追問：</p>
+<blockquote>你的模型中，哪一項觀察或空間關係支持「沒有排得很直」？你還需要知道月球軌道的什麼特徵？</blockquote>
+<p>學生接著查課本、可靠天文資料或教師提供的軌道示意圖，發現月球公轉軌道面與地球公轉軌道面並非完全重合，因此大多數滿月時，月球會從地球影子的上方或下方通過。</p>
+<p>AI 的角色從「概念老師」下降為「證據檢查員」。</p>
+<h4>第四輪：AI 不能回答，只能記錄學生思考</h4>
+<p>教師再提出新的轉移題：「如果你站到月球上看地球，當地球上的人看見滿月時，你可能看到什麼樣的地球？」</p>
+<p>這題比背誦月相名稱困難得多，需要真正理解光照與觀察位置。</p>
+<p>這一輪規定學生不能問 AI 答案。</p>
+<p>AI 只能記錄：</p>
+<blockquote>以下是我的推理。請不要告訴我正確答案，也不要暗示結果。請把我的推理拆成三個步驟，標示我在哪一步用了假設，等我完成實體模型後再讓我檢查。</blockquote>
+<p>學生再次用燈、球和位置關係驗證。</p>
+<p>如果答案錯了，仍然先回到模型。</p>
+<p>AI 已經逐漸退出核心推理。</p>
+<h4>第五輪：完全沒有 AI</h4>
+<p>最後每位學生獨立完成一題：</p>
+<p>「畫出上弦月時太陽、地球、月球的位置，並說明為什麼地球上的我們只看到月球亮面的一半。」</p>
+<p>這次平板關閉。</p>
+<p>沒有提示。</p>
+<p>沒有重新問問題。</p>
+<p>沒有自動產生文字。</p>
+<p>這一題不一定要計入高風險成績，但它非常重要，因為教師終於能看見：</p>
+<p><strong>AI 離開以後，留下了什麼？</strong></p>
+<p>這才是判斷 AI 家教是否真的促進學習的重要證據。</p>
+<h3>「有 AI 會做」和「真的會做」是不一樣的</h3>
+<p>2026 年的一項中學生科學任務研究提供了一個很有啟發性的線索。研究招募 116 名八、九年級學生完成六項使用生成式 AI 的科學探究任務，其中部分學生事前接受兩小時 AI 素養訓練。研究發現，接受訓練的學生更常重新改寫問題、追問 AI，也更準確判斷 AI 回答是否正確，最終作答表現也較佳。值得注意的是，學生「自認為自己很會 AI」的程度並不能預測實際表現。</p>
+<p>雖然這篇研究於 2026 年 4 月發布，不屬於今天搜尋的最新 30 天資料，因此這裡只把它作為既有實證背景，而不是今天的最新消息；但它和近期 AI 家教的發展放在一起看，得到一個很重要的教學提醒：</p>
+<p>AI 素養不是「提示詞寫得很漂亮」。</p>
+<p>真正重要的是學生會不會：發現回答不完整；要求補充證據；重新問問題；拒絕不合理答案；以及最後不靠 AI 繼續完成任務。</p>
+<h3>個人化教學有一個容易被忽略的問題：全班可能愈來愈不同步</h3>
+<p>AI 家教最大的吸引力，就是每個孩子可以按照自己的速度前進。</p>
+<p>但放進真實教室後，這也會帶來新的班級經營問題。</p>
+<p>假設三十名學生都使用個人 AI 家教：有人還在理解「月亮不會自己發光」；有人已經研究月食；有人開始問潮汐；還有人被 AI 帶去閱讀月球同步自轉。</p>
+<p>如果完全讓系統自行個人化，教師可能面對三十條不同的學習路徑。</p>
+<p>StarSpark 創辦人在 8 月 5 日的訪談中也直接提出這項問題：如果每位學生都走到課程中的不同位置，學校與教室結構是否真的準備好進行如此高度個人化的學習？這是產品設計以外、更深層的教育問題。</p>
+<p>因此自然科教師可以採用一種「共同核心＋個人鷹架」模式：全班的現象相同；實驗器材相同；核心問題相同；最後需要理解的科學模型相同；但是每個學生取得 AI 提示的數量和程度可以不同。</p>
+<p>如此既保留個人化，也不會讓全班失去共同討論的科學現象。</p>
+<h3>教師可以建立「四級 AI 提示」</h3>
+<p>實際操作時，可以把 AI 協助分成四層。</p>
+<p><strong>第 1 級：重述問題</strong></p>
+<p>「請用更簡單的話告訴我這題在問什麼，不要提供解法。」</p>
+<p><strong>第 2 級：提出觀察方向</strong></p>
+<p>「請提醒我應該觀察模型中的哪兩個位置關係，不要告訴我答案。」</p>
+<p><strong>第 3 級：提供部分概念鷹架</strong></p>
+<p>「我已嘗試兩次仍然無法理解，請解釋一個必要概念，再讓我自己回答。」</p>
+<p><strong>第 4 級：完整解釋</strong></p>
+<p>只在學習活動結束、教師確認需要補救時使用。</p>
+<p>同一題如果學生一開始就跳到第四級，他得到的其實不是「個人化學習」，而是「個人化答案」。</p>
+<p>這兩者差異非常大。</p>
+<h3>學生可能學到什麼？</h3>
+<p>首先，他會理解 AI 可以協助學習，但「需要多少提示」本身就是需要管理的能力。</p>
+<p>其次，他會開始辨認自己究竟卡在哪裡：是不懂題目？不懂科學概念？還是不知道如何把概念應用到新的情境？</p>
+<p>第三，他會理解「看懂 AI 解釋」不能等同於「自己會解」。</p>
+<p>第四，他會建立轉移能力。真正理解月相後，即使問題換成「站在月球看地球」，仍然能使用相同的光照與觀察位置模型思考。</p>
+<p>第五，他會逐漸形成新的學習習慣：不是問「AI 可以幫我多少？」而是問——</p>
+<p><strong>「這一步我其實能不能自己完成？」</strong></p>
+<h3>教師需要注意的風險與限制</h3>
+<p>第一，AI 家教提供「個人化」不代表一定提供「正確診斷」。模型可能根據學生一句模糊回答，就誤判他的迷思概念。</p>
+<p>第二，不要用學生向 AI 求助的次數直接代表能力。閱讀障礙、語言程度、注意力與操作熟悉度都可能影響互動方式。</p>
+<p>第三，教師應設計「無 AI 的轉移題」。否則我們只測到人機共同表現，而不是學生真正留下的能力。</p>
+<p>第四，學生與 AI 的完整對話可能包含個人學習資料，不應任意上傳、保存或拿來替學生貼上能力標籤。</p>
+<p>第五，AI 不應取代實體模型。月相尤其需要空間推理，只閱讀 AI 產生的文字或圖片很容易形成新的錯誤概念。</p>
+<p>第六，個人化不能犧牲同儕討論。自然科中「你為什麼這樣想？」往往是學生發現自己模型問題的重要來源。</p>
+<p>第七，近期產品報導中的成功案例多半屬於開發者提供的個案敘述，不等於經過控制研究證實的學習效果。報導中的 StarSpark 創辦人也表示長期成效仍在研究中，因此教師評估 AI 家教時，應區分產品設計理念、使用者案例和實證研究。</p>
+<p>2026 年 8 月 3 日發布的 RAIL-Ed 教師生成式 AI 素養架構，同樣把「人機協作」「批判評估」與「自主行動」列為相互依賴的能力。作者的核心觀點之一，就是同一項 AI 功能可能深化學習，也可能把學習排擠掉，差異取決於教師如何設計使用方式。該架構目前仍屬概念性成果，作者也明確指出需要後續實證驗證。</p>
+<p>UNESCO 於 2026 年 7 月 20 日更新的亞太科學教育培訓內容，也把 AI 與 Maker Education、動手實作、跨領域 STEM 專題和永續問題一起設計，而不是讓 AI 取代學生與真實材料互動。</p>
+<p>這也許正是 AI 家教進入自然科最適合的方向。</p>
+<p>它可以陪學生走一段路。</p>
+<p>可以在學生迷路時提醒一次。</p>
+<p>可以在模型出現矛盾時多問一句。</p>
+<p>但是它不能永遠走在學生前面，把下一步全部畫好。</p>
+<p>一位真正好的老師，並不是因為永遠站在學生旁邊才成功。</p>
+<p>而是有一天，他站遠了一點，學生仍然知道下一步怎麼走。</p>
+<p>AI 家教也應該如此。</p>
+<p><strong>最好的個人化學習，不是讓 AI 愈來愈了解學生，而是讓學生愈來愈不需要 AI。</strong></p>
+<h3>參考資料與延伸閱讀</h3>
+<ol><li>Institute of Education Sciences（IES），〈Big Questions, Early Signals: AI and School Turnaround〉，2026 年 8 月更新。</li></ol>
+<p><a href="https://ies.ed.gov/learn/blog/big-questions-early-signals-ai-and-school-turnaround" target="_blank" rel="noopener">https://ies.ed.gov/learn/blog/big-questions-early-signals-ai-and-school-turnaround</a></p>
+<ol><li>Jones, E.，Tom’s Guide，〈Used right, AI is a patient tutor. Used wrong, it's a shortcut around the learning〉，2026 年 8 月 5 日。</li></ol>
+<p><a href="https://www.tomsguide.com/ai/used-right-ai-is-a-patient-tutor-used-wrong-its-a-shortcut-around-the-learning-we-spoke-to-the-creator-behind-an-ai-tool-thats-changing-the-way-students-learn" target="_blank" rel="noopener">https://www.tomsguide.com/ai/used-right-ai-is-a-patient-tutor-used-wrong-its-a-shortcut-around-the-learning-we-spoke-to-the-creator-behind-an-ai-tool-thats-changing-the-way-students-learn</a></p>
+<ol><li>Hossain, S. 等，〈Rethinking Generative AI Literacy: An Integrative, Developmental, and Dialectical Framework for K–12 Teacher Education〉，2026 年 8 月 3 日。</li></ol>
+<p><a href="https://arxiv.org/abs/2608.01705" target="_blank" rel="noopener">https://arxiv.org/abs/2608.01705</a></p>
+<ol><li>UNESCO，〈UNESCO unites science educators to transform STEM teaching across Asia-Pacific〉，2026 年 7 月 20 日更新。</li></ol>
+<p><a href="https://www.unesco.org/en/articles/unesco-unites-science-educators-transform-stem-teaching-across-asia-pacific" target="_blank" rel="noopener">https://www.unesco.org/en/articles/unesco-unites-science-educators-transform-stem-teaching-across-asia-pacific</a></p>
+<ol><li>Clerc, O. 等，〈Teaching Students to Question the Machine: An AI Literacy Intervention Improves Students Regulation of LLM Use in a Science Task〉，2026 年 4 月 2 日。</li></ol>
+<p><a href="https://arxiv.org/abs/2604.01955" target="_blank" rel="noopener">https://arxiv.org/abs/2604.01955</a></p>
+<p><strong>2026 年 08 月 11 日</strong><br><strong>作者：陳賢宗</strong></p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

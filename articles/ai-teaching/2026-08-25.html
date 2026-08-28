@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>不要只叫 AI「幫我寫結論」：最新科學教育研究提醒，真正高階的 AI 使用，是讓它來反駁你｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>不要只叫 AI「幫我寫結論」：最新科學教育研究提醒，真正高階的 AI 使用，是讓它來反駁你</h1>
+      <div class="date">2026 年 08 月 25 日</div>
+    </div>
+    <article>
+<p>自然課做完「哪一種土壤保水能力較好」的實驗，學生得到三組數據。</p>
+<p>砂土流出的水最多，黏土最少。</p>
+<p>一名學生把結果貼給 AI：</p>
+<p>「幫我寫一段實驗結論。」</p>
+<p>不到十秒，AI 就完成了一段文句流暢、概念完整的答案。</p>
+<p>另一名學生卻換了一種問法：</p>
+<p>「我們認為黏土在這次實驗中保留的水較多。請不要幫我寫結論，請站在反方，想三個可能讓我們這個結論不夠可靠的理由。」</p>
+<p>AI 回答：</p>
+<p>不同土樣原本的含水量是否一致？</p>
+<p>裝入容器時的壓實程度是否相同？</p>
+<p>三組土壤的質量與體積是否控制一致？</p>
+<p>同樣使用 AI，兩名學生進行的認知工作完全不同。</p>
+<p>第一位學生把「寫出論證」交給 AI。</p>
+<p>第二位學生卻把 AI 變成一名會找麻煩的對手，逼自己重新檢查證據。</p>
+<p>而 2026 年 8 月最新幾篇科學教育研究，正在把這個差異說得愈來愈清楚：</p>
+<blockquote><strong>AI 真正值得放進自然課的地方，可能不是替學生回答問題，而是成為一個會追問、會質疑、會提出反例的「對話夥伴」。</strong></blockquote>
+<p>8 月 10 日，《Research in Science Education》正式刊出一項日本研究，提出「四階段對話夥伴模型」（Four-Stage Dialogic Partnership Model, 4S-DPM）。研究追蹤 31 名大一學生，在科學論證課程中分析他們與 ChatGPT 的互動方式。研究者將使用 AI 的方式分為四個層次：找資料、整理表達、批判論證，以及主動與 AI 重建論證。經過加入論證架構、同儕討論以及 AI 限制教育後，較高階的第三、第四階段提示從 12.5% 增加至 47.0%，其中最高階的「認識論自主性」提示由 8.3% 增加至 30.0%。</p>
+<p>這項研究樣本只有 31 名大學生，而且是兩年度的設計型研究，因此不能直接宣稱國中小使用相同方法就一定會得到相同比例的改善。</p>
+<p>但它提出了一個極具教學價值的問題：</p>
+<p><strong>我們能不能不只檢查學生「有沒有使用 AI」，而是檢查他把 AI 拿來做哪一層思考？</strong></p>
+<h3>第一層：AI 是「答案資料庫」</h3>
+<p>例如學生問：</p>
+<p>「什麼叫保水能力？」</p>
+<p>「黏土有哪些特徵？」</p>
+<p>「為什麼土壤可以保存水分？」</p>
+<p>這些都屬於取得資訊。</p>
+<p>研究將這類互動稱為 <strong>Epistemic Retrieval</strong>。</p>
+<p>它並沒有錯。</p>
+<p>學生本來就需要查資料。</p>
+<p>但是如果整堂 AI 課都停在這一層，我們其實只是把搜尋引擎換成更會說話的搜尋工具。</p>
+<h3>第二層：AI 是「文字整理員」</h3>
+<p>學生可能輸入：</p>
+<p>「幫我把這段結論寫得比較通順。」</p>
+<p>「幫我整理成 CER 格式。」</p>
+<p>「幫我把這句話改得像科學報告。」</p>
+<p>這是研究中的 <strong>Epistemic Scaffolding</strong>。</p>
+<p>AI 開始幫忙整理學生已經有的想法。</p>
+<p>這仍然有價值，尤其對文字組織能力較弱的學生。</p>
+<p>但要小心一件事：</p>
+<p><strong>文字變漂亮，不代表論證變合理。</strong></p>
+<p>一句錯誤推論，被 AI 寫得非常順，反而可能更難被發現。</p>
+<h3>第三層：AI 變成「論證審查員」</h3>
+<p>真正開始有意思的是第三層 <strong>Epistemic Critique</strong>。</p>
+<p>學生不再問：</p>
+<p>「可以幫我寫嗎？」</p>
+<p>而開始問：</p>
+<p>「我的證據真的支持這個主張嗎？」</p>
+<p>「這個結果可以證明因果關係嗎？」</p>
+<p>「這個反例會不會推翻我的結論？」</p>
+<p>「我的控制變因還少了什麼？」</p>
+<p>這時 AI 不負責替學生寫答案，而是幫助學生檢查<strong>主張、證據與推理之間的關係</strong>。</p>
+<p>這正是自然科非常需要的能力。</p>
+<h3>具體自然科教學案例：讓 AI 當「反方辯手」</h3>
+<p>教學對象可設定為國小六年級至國中八年級。</p>
+<p>主題可以使用「不同包覆材料是否影響保溫效果」。</p>
+<p>學生準備相同容器、相同體積與起始溫度的溫水，再分別以棉布、氣泡布、紙材等包覆，每隔固定時間測量溫度。</p>
+<p>第一階段完全不使用 AI。</p>
+<p>學生先提出自己的主張，例如：</p>
+<p>「我們認為氣泡布的保溫效果最好。」</p>
+<p>再列出證據：</p>
+<p>20 分鐘後，氣泡布組平均降溫 6°C，棉布組 9°C，紙組 12°C。</p>
+<p>接著才開 AI。</p>
+<p>但提示詞不能寫：</p>
+<p>「幫我完成實驗報告。」</p>
+<p>而寫：</p>
+<blockquote>這是我們目前的主張與實驗數據。你現在扮演反方科學家，不要幫我們重寫結論。請提出三個可能削弱這項結論的問題。每一個問題都必須可以透過檢查原始紀錄或新增實驗來驗證。</blockquote>
+<p>AI 可能問：</p>
+<p>三組包覆材料的厚度相同嗎？</p>
+<p>倒入熱水到開始計時之間是否有時間差？</p>
+<p>每組只有一次測量嗎？</p>
+<p>學生接著必須回答。</p>
+<p>如果答不出來，就不能怪 AI。</p>
+<p>那代表實驗本身真的存在證據缺口。</p>
+<p>這時 AI 產生的不是答案，而是<strong>第二輪實驗的研究問題</strong>。</p>
+<h3>第四層：學生反過來指揮 AI 重建論證</h3>
+<p>4S-DPM 的最高階段叫 <strong>Epistemic Agency</strong>。</p>
+<p>學生不只是請 AI 評分，而是主動要求：</p>
+<p>「請提出一個比我目前更強的反對意見。」</p>
+<p>「如果我們接受這個反例，要怎麼修改原來的主張？」</p>
+<p>「我們不能說『氣泡布最好』，那什麼程度的結論才符合現有證據？」</p>
+<p>「請想兩種可能解釋，我來決定哪一個比較值得做下一次實驗。」</p>
+<p>研究中，這一類互動代表學生不再把 AI 當知識權威，而是在掌控整個知識建構流程。</p>
+<p>這正是 AI 時代很值得培養的一種能力：</p>
+<p><strong>不是 AI 告訴我怎麼想，而是我知道自己現在需要 AI 幫我想哪一個部分。</strong></p>
+<h3>8 月 18 日的新研究，把 AI 直接命名為「蘇格拉底挑戰者」</h3>
+<p>這個方向並不只出現在一篇研究。</p>
+<p>8 月 18 日，《Frontiers in Education》發表 North Carolina State University 團隊的研究 <strong>The Socratic Challenger</strong>。</p>
+<p>研究者設計了一個八階段的研究問題形成流程，讓 45 名生態學課程學生交替使用「AI 開啟」和「AI 關閉」階段。</p>
+<p>流程不是一路讓 AI 幫忙，而是：</p>
+<p>學生自己選題；</p>
+<p>AI 協助展開子題與關鍵字；</p>
+<p>學生自行搜尋與閱讀正式文獻；</p>
+<p>AI 再扮演挑戰者，質疑研究缺口、可行性與方法；</p>
+<p>學生重新回到文獻查證；</p>
+<p>最後仍由人類教師提供回饋並定稿。</p>
+<p>研究最值得注意的不是哪一句神奇 Prompt。</p>
+<p>而是它刻意讓：</p>
+<p><strong>AI 探索 → 人類查證 → AI 挑戰 → 人類修正</strong></p>
+<p>反覆交替。</p>
+<p>作者甚至明確表示，AI 不應直接提供完成版研究問題，而是被設計成「challenger」，讓學生保留證據查證與最後判斷責任。</p>
+<p>雖然這項研究同樣是大學課程，且學生對各階段「有沒有幫助」主要屬於知覺性評量，因此不能直接當成 K–12 學習成效證據，但這個流程非常適合改造成中小學探究課。</p>
+<h3>科學教育最新理論也開始主張：不要把 AI 設計成「權威老師」</h3>
+<p>8 月 11 日，《International Journal of Science and Mathematics Education》刊登 Kok-Sing Tang 的文章，提出將生成式 AI 重新理解為 <strong>dialogic partner——對話夥伴</strong>。</p>
+<p>文章區分兩種 AI 教學互動。</p>
+<p>一種是「權威式」：</p>
+<p>學生問，AI 答。</p>
+<p>AI 再判斷學生對錯。</p>
+<p>另一種是「對話式」：</p>
+<p>學生必須先提出立場；</p>
+<p>AI 追問「為什麼」；</p>
+<p>提出另一種觀點；</p>
+<p>挑戰假設；</p>
+<p>再把問題丟回學生。</p>
+<p>Tang 特別指出，一般聊天 AI 預設很容易給出像權威一樣的資訊，因此教師若希望它促進科學思考，可以明確設定：不要接受只有 yes/no 的答案、學生提出主張時必須追問理由、學生要求直接答案時先把問題還給學生，甚至可以刻意扮演 devil’s advocate，提出相反立場。</p>
+<p>這其實非常接近一位好的自然老師平常會做的事。</p>
+<h3>一個可以直接帶進課堂的 AI 提示</h3>
+<p>學生完成自己的第一版科學論證後，可以使用：</p>
+<blockquote>你現在不是答案提供者，而是我的科學論證對手。</blockquote>
+<blockquote>我會提供「主張、證據、推理」。</blockquote>
+<blockquote>請依序做三件事：</blockquote>
+<blockquote>第一，指出目前最薄弱的證據；</blockquote>
+<blockquote>第二，提出一個合理反例或另一種解釋；</blockquote>
+<blockquote>第三，只問我一個問題，讓我決定要修改主張、補充證據，還是維持原結論。</blockquote>
+<blockquote>不要替我寫最後答案，也不要虛構實驗資料。</blockquote>
+<p>真正重要的是最後一句：</p>
+<p><strong>不要替我完成。</strong></p>
+<p>因為 AI 愈會說，學生愈需要保留「最後判斷」這個位置。</p>
+<h3>學生可能學到什麼？</h3>
+<p>第一，他會理解科學結論不是把數據重新描述一次，而是要建立主張與證據的關係。</p>
+<p>第二，他開始習慣主動找反例，而不是只找支持自己的資料。</p>
+<p>第三，他會發現修改結論不是「原本做錯了」，而是科學論證正常的一部分。</p>
+<p>第四，他會學會將 AI 從「權威答案來源」降級成「可以被利用、也需要被檢查的論證夥伴」。</p>
+<p>第五，他的 Prompt 也會產生質變。</p>
+<p>從：</p>
+<p>「答案是什麼？」</p>
+<p>逐漸變成：</p>
+<p><strong>「我的理由哪裡最可能有問題？」</strong></p>
+<p>這可能比學會十種提示工程技巧更接近真正的 AI 素養。</p>
+<h3>教師需要注意的風險與限制</h3>
+<p>第一，AI 扮演反方時一樣可能捏造科學理由。因此提出的反例仍需用課本、正式資料或實驗驗證。</p>
+<p>第二，不要在學生還沒有自己的初步主張以前就開放 AI 反駁。沒有自己的立場，就很容易直接被 AI 帶走。</p>
+<p>第三，對國小學生而言，不必使用「認識論自主性」等抽象術語。可以簡化成四句：查資料、整理想法、挑毛病、一起改進。</p>
+<p>第四，AI 不應取代同儕辯論。4S-DPM 研究特別指出，論證架構外化、同儕對話，以及理解 AI 的限制，是促進高階互動的重要設計元素。</p>
+<p>第五，這些最新研究多集中於大學生，因此應視為值得轉化與驗證的課程設計原則，而不是已證實適用所有中小學學生的固定教法。</p>
+<p>8 月 17 日，Washington State University 也公布一項獲美國 NSF 支持、為期三年、金額 132 萬美元的研究計畫，將由科學教育、生物學、學習科學與 AI 團隊共同研究學生如何與生成式 AI Agent 一起建構科學論證。這也顯示，「AI × 科學論證」正在從概念討論快速成為正式研究方向。</p>
+<p>所以，下一次學生完成自然實驗後說：</p>
+<p>「老師，我可以用 AI 寫結論嗎？」</p>
+<p>我們也許不用直接回答「可以」或「不可以」。</p>
+<p>可以換成：</p>
+<p><strong>「先把你的結論寫給它，叫它想辦法反駁你。」</strong></p>
+<p>如果學生能守住自己的數據，聽懂 AI 的反對理由，再決定哪些接受、哪些拒絕、哪些需要下一次實驗驗證，他學到的已經遠超過一段漂亮的實驗報告。</p>
+<p>因為科學真正厲害的地方，從來不是替自己的答案找到更多支持。</p>
+<p>而是願意主動問：</p>
+<p><strong>「如果我是錯的，證據會長什麼樣子？」</strong></p>
+<p>而 AI，也許正好可以成為那個永遠有空、願意跟學生唱反調的科學對手。</p>
+<h3>參考資料與延伸閱讀：</h3>
+<ol><li>Deguchi, A., Tsuji, H., &amp; Kitazawa, T.，<strong>Designing Epistemic Partnerships with Generative AI: A Four-Stage Model of Student Engagement in Scientific Argumentation</strong>，《Research in Science Education》，2026 年 8 月 10 日。31 名大一學生的兩年度設計型研究提出 4S-DPM；較高階 Stage 3–4 Prompt 由 12.5% 增至 47.0%。</li></ol>
+<p><a href="https://link.springer.com/article/10.1007/s11165-026-10370-5" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s11165-026-10370-5</a></p>
+<ol><li>Mikaelyan, A., McKenney, E. A., Mathieson, O. L., &amp; Toprani, D.，<strong>The Socratic Challenger: a structured GenAI-assisted workflow for undergraduate research inquiry</strong>，《Frontiers in Education》，2026 年 8 月 18 日。研究以 45 名生態學課程學生測試八階段 AI／人類交替研究問題發展流程。</li></ol>
+<p><a href="https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2026.1913451/full" target="_blank" rel="noopener">https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2026.1913451/full</a></p>
+<ol><li>Tang, K.-S.，<strong>Reconceptualizing Generative AI as Dialogic Partner: Pedagogical and Methodological Implications for Science Education</strong>，《International Journal of Science and Mathematics Education》，2026 年 8 月 11 日。文章提出從「AI 作為權威資訊來源」轉向「AI 作為對話夥伴」的科學教育觀點。</li></ol>
+<p><a href="https://link.springer.com/article/10.1007/s10763-026-10710-x" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s10763-026-10710-x</a></p>
+<ol><li>Washington State University CAIRE Research Lab，<strong>CAIRE Researchers Tingting Li and Peng He Join $1.32 Million NSF Project on Collaborative Argumentation with AI Agents</strong>，2026 年 8 月 17 日。三年期 NSF 計畫將研究學生與生成式 AI Agent 如何共同建構科學知識與論證。</li></ol>
+<p><a href="https://labs.wsu.edu/caire/2026/08/17/1-32-million-nsf-project/" target="_blank" rel="noopener">https://labs.wsu.edu/caire/2026/08/17/1-32-million-nsf-project/</a></p>
+<ol><li>University of Ljubljana，<strong>Increasingly Capable AI, Increasingly Demanding Evaluation</strong>，2026 年 8 月 17 日。大學官方研究整理特別介紹上述 4S-DPM 研究，強調 AI 不會自動成為高品質學習夥伴，關鍵仍在活動設計。</li></ol>
+<p><a href="https://www.uni-lj.si/en/news/2026-08-17-increasingly-capable-ai-increasingly-demanding-evaluation" target="_blank" rel="noopener">https://www.uni-lj.si/en/news/2026-08-17-increasingly-capable-ai-increasingly-demanding-evaluation</a></p>
+<p><strong>2026 年 08 月 25 日</strong><br><strong>作者：陳賢宗</strong></p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>別再只教學生「用 AI 寫化學報告」：最新研究提醒，真正的 AI 科學教育，是讓孩子知道 AI 已經怎麼改變科學｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>別再只教學生「用 AI 寫化學報告」：最新研究提醒，真正的 AI 科學教育，是讓孩子知道 AI 已經怎麼改變科學</h1>
+      <div class="date">2026 年 08 月 23 日</div>
+    </div>
+    <article>
+<p>化學課做完酸鹼實驗，學生把紫高麗菜指示劑加入不同液體，看見紅、紫、藍、綠等不同顏色。</p>
+<p>實驗結束後，一名學生打開 AI：</p>
+<p>「請幫我寫酸鹼指示劑實驗結論。」</p>
+<p>幾秒鐘後，一段漂亮的報告完成了。</p>
+<p>這大概是目前最常見的「AI × 自然科」模式：</p>
+<p>先做科學，再請 AI 幫忙整理、解釋或寫報告。</p>
+<p>可是，2026 年 8 月 11 日《Journal of Chemical Education》刊登的一篇最新研究，提出了另一個值得自然科教師注意的方向：</p>
+<p><strong>我們是不是太常教學生「用 AI 學化學」，卻很少教他們「AI 正在怎麼做化學」？</strong></p>
+<p>這項由德國 University of Konstanz 與 Thurgau University of Education 研究者進行的研究，設計了一套給化學教師的 3 小時專業發展課程，以及兩堂各 90 分鐘、供 10～13 年級學生使用的「AI in chemistry」課程。課程不只教學生操作生成式 AI，而是介紹 AI 如何進入現代化學研究，以及它可能帶來的利益、限制與風險。研究發現，教師與學生原先對「AI 在化學中的實際應用」了解都不高，但教學後有所提升；教師也高度肯定這個主題的課程重要性，而學生對「學校是否應該教 AI 與化學」的重視程度及興趣均有所增加。</p>
+<p>這個結果提醒我們：</p>
+<p>AI 素養可能不應該永遠被放在資訊課。</p>
+<p>因為今天真正的科學研究，早就開始大量使用 AI。</p>
+<p>材料科學利用機器學習尋找新材料；</p>
+<p>生物化學使用 AI 預測蛋白質結構與功能；</p>
+<p>化學研究可以利用模型預測分子性質、分析光譜資料、搜尋候選分子。</p>
+<p>美國國家科學基金會（NSF）8 月 4 日宣布新的州與區域 AI Infrastructure Hubs 計畫，也直接把「AI-enabled scientific discovery」列為核心目標，希望擴大研究者、學生與教育者取得運算、資料與 AI 科學資源的機會。</p>
+<p>換句話說，未來孩子如果只知道：</p>
+<p>「ChatGPT 可以幫我回答化學題目。」</p>
+<p>他其實只看到 AI 和科學關係非常小的一部分。</p>
+<h3>具體自然科案例：把 AI 變成「酸鹼分類器」</h3>
+<p>這堂課可以設定給國小六年級延伸活動、國中自然科，或高中化學入門使用。</p>
+<p>主題是：</p>
+<p><strong>酸鹼指示劑 × 資料分類 × AI 模型限制。</strong></p>
+<p>不需要學生碰危險化學品。</p>
+<p>教師可以準備教師核可的安全液體，例如不同濃度的檸檬酸或醋酸溶液、小蘇打溶液與中性水，再加入紫高麗菜指示劑，產生不同顏色。</p>
+<p>使用的 AI 不一定是聊天機器人。</p>
+<p>可以是簡單的影像分類工具、具圖片理解能力的多模態 AI，甚至是由教師事先準備好的影像分類模型。</p>
+<p>核心問題改成：</p>
+<blockquote><strong>AI 能不能只看指示劑顏色，判斷一杯液體屬於酸性、中性或鹼性？</strong></blockquote>
+<p>光是這一句，就同時產生了化學問題和 AI 問題。</p>
+<h3>第一階段：人類先分類</h3>
+<p>教師先不開 AI。</p>
+<p>學生觀察不同樣品，記錄：</p>
+<p>顏色、</p>
+<p>已知 pH 或酸鹼類別、</p>
+<p>拍攝距離、</p>
+<p>光線條件。</p>
+<p>接著自己建立分類規則：</p>
+<p>偏紅可能是哪一類？</p>
+<p>紫色接近哪一類？</p>
+<p>綠藍色又可能代表什麼？</p>
+<p>學生首先要知道，AI 等一下要學的東西，其實也是人類正在做的工作：</p>
+<p><strong>從資料特徵中找規律。</strong></p>
+<h3>第二階段：把照片交給 AI</h3>
+<p>每種酸鹼類別準備多張照片，再讓影像 AI 嘗試分類。</p>
+<p>假設模型得到：</p>
+<p>紅色 → 酸性；</p>
+<p>紫色 → 接近中性；</p>
+<p>藍綠色 → 鹼性。</p>
+<p>學生很可能說：</p>
+<p>「成功了！」</p>
+<p>老師這時不要停。</p>
+<p>真正有意思的實驗現在才開始。</p>
+<h3>第三階段：故意改變「跟酸鹼無關」的條件</h3>
+<p>把同一杯樣品：</p>
+<p>拿到窗邊拍；</p>
+<p>關掉部分燈光；</p>
+<p>換白色背景；</p>
+<p>換黑色背景；</p>
+<p>改變拍攝角度。</p>
+<p>再交給 AI。</p>
+<p>如果原本判斷「酸性」的照片，換了光線後突然被判成中性，學生會遇到一個非常重要的問題：</p>
+<p><strong>液體的酸鹼性沒有改變，為什麼 AI 的答案改了？</strong></p>
+<p>因為 AI 看到的不是「pH」。</p>
+<p>它看到的是影像中的像素、顏色、亮度以及各種模式。</p>
+<p>這一刻，孩子真正開始理解人工智慧。</p>
+<h3>第四階段：建立「訓練資料偏差」</h3>
+<p>教師還可以故意設下一個陷阱。</p>
+<p>例如：</p>
+<p>所有酸性樣品都用白色桌面拍；</p>
+<p>中性都在木桌上；</p>
+<p>鹼性全部使用黑色背景。</p>
+<p>讓模型學習後，再換背景測試。</p>
+<p>AI 很可能表現變差。</p>
+<p>這時學生會發現：</p>
+<p>AI 可能根本沒有學會我們以為它學到的科學規律。</p>
+<p>它甚至可能偷偷利用：</p>
+<p>「白背景＝酸性」</p>
+<p>「黑背景＝鹼性」</p>
+<p>來猜答案。</p>
+<p>這就是<strong>資料偏差</strong>。</p>
+<p>而且不必先教神經網路公式，國中小學生就能親手看懂。</p>
+<h3>第五階段：問一個更重要的問題——AI 到底可以拿來做什麼？</h3>
+<p>接下來可以問：</p>
+<p>「既然 AI 有可能判錯，那科學家為什麼還要用？」</p>
+<p>因為科學 AI 並不是「一次問答就相信答案」。</p>
+<p>而是建立在：</p>
+<p>大量資料、</p>
+<p>訓練與測試分離、</p>
+<p>獨立驗證、</p>
+<p>誤差評估、</p>
+<p>適用範圍，</p>
+<p>以及人類專業判斷之上。</p>
+<p>這正是最新化學教育研究值得注意的地方。</p>
+<p>Maurer 與 Huwer 的研究不是只叫學生學習一個 AI 工具，而是把 AI 放回<strong>真正的化學研究情境</strong>，同時討論應用、利益、限制與風險。研究結果也顯示，教師特別重視「可以直接帶入課堂的具體案例」，而不只是抽象談 AI。</p>
+<h3>AI 素養真正的下一階段：從「工具使用」走向「理解 AI 如何產生知識」</h3>
+<p>就在 8 月 22 日，美聯社也報導，美國愈來愈多學校正在從禁止 AI，轉向正式教授 AI literacy。</p>
+<p>其中一個非常有意思的教師培訓案例，是直接要求 AI 生成世界地圖。</p>
+<p>結果地圖錯得離譜：</p>
+<p>國家名稱拼錯、位置混亂，甚至出現不存在的標示。</p>
+<p>教育者故意把這個失敗展示給教師看。</p>
+<p>目的不是證明：</p>
+<p>「AI 很爛。」</p>
+<p>而是讓使用者理解：</p>
+<p><strong>不要因為 AI 說得很像答案，就停止查證。</strong></p>
+<p>報導指出，目前美國已有 37 個州發布學校使用 AI 的相關指引；部分州及學區也開始正式培訓教師與學生理解 hallucination、bias、data privacy，以及「什麼時候不應該使用 AI」。</p>
+<p>這與自然科的精神其實非常接近。</p>
+<p>科學從來沒有教孩子：</p>
+<p>「這台儀器很先進，所以相信它。」</p>
+<p>我們教的是：</p>
+<p>溫度計要校正。</p>
+<p>電子秤有誤差。</p>
+<p>顯微鏡可能產生假影。</p>
+<p>感測器有量測範圍。</p>
+<p>實驗需要對照組。</p>
+<p>那麼 AI 當然也不應例外。</p>
+<h3>學生可能學到什麼？</h3>
+<p>第一，他會重新理解酸鹼指示劑——顏色是一種可觀察的化學資訊，但顏色受到環境與拍攝條件影響。</p>
+<p>第二，他開始理解 AI 並不是「看懂酸鹼」，而是在資料中尋找可以用來分類的模式。</p>
+<p>第三，他會理解模型表現取決於資料品質。</p>
+<p>第四，他會第一次真正接觸：</p>
+<p>訓練資料、</p>
+<p>測試資料、</p>
+<p>偏差、</p>
+<p>錯誤分類、</p>
+<p>模型適用範圍。</p>
+<p>第五，也是最重要的一點，他會知道：</p>
+<p><strong>AI 在科學中的角色不是取代科學方法，而是成為需要被科學方法檢驗的新工具。</strong></p>
+<h3>教師需要注意的風險與限制</h3>
+<p>第一，不要讓學生把 AI 影像分類結果當成真正的 pH 測量。正式判斷仍應回到適當的指示劑、pH 試紙或合宜的量測工具。</p>
+<p>第二，實驗液體必須由教師事先確認安全；不能因為 AI 建議某種化學品就自行加入課堂實驗。</p>
+<p>第三，模型如果顯示「95% 信心」，也不能直接說有 95% 機率正確。模型信心是否經過良好校準，需要另外驗證。</p>
+<p>第四，不要只展示 AI 成功案例。<strong>故意研究 AI 什麼情況會失敗，往往更有教育價值。</strong></p>
+<p>第五，前述《Journal of Chemical Education》研究雖然最新且已正式刊登，但主要對象為德國中學 10～13 年級及教師專業發展，因此不能直接把結果推論到臺灣所有國小或國中學生。</p>
+<p>第六，學生若使用照片型 AI，仍應避免把姓名、人臉或其他可識別資料上傳到未經學校核可的平台。</p>
+<p>UNESCO目前對 AI 教育的方向也相當一致：AI 教育不能只追求工具操作，而要保留 human agency、critical thinking 與倫理判斷。UNESCO 官方數位教育政策目前仍將「以人為本、倫理與公平」列為 AI 教育的重要原則。</p>
+<p>所以，未來自然科老師談 AI，也許可以少問一句：</p>
+<p>「今天要不要讓學生用 ChatGPT？」</p>
+<p>改成多問一句：</p>
+<p><strong>「今天這個科學主題裡，AI 到底正在改變什麼？」</strong></p>
+<p>化學如此。</p>
+<p>生物如此。</p>
+<p>天文、氣象、材料科學與環境科學也都是如此。</p>
+<p>當孩子知道 AI 可以預測、分類、找規律，又知道它可能受到錯誤資料、偏差與情境影響時，他才不只是「AI 使用者」。</p>
+<p>他開始理解 AI 作為一種新的科學工具。</p>
+<p>而這可能正是自然科教育在 AI 時代最值得往前走的一步：</p>
+<p><strong>不要只教孩子如何利用 AI 找到科學答案，也要讓他理解，今天的科學家究竟如何利用 AI，產生新的科學問題與新的證據。</strong></p>
+<h3>參考資料與延伸閱讀：</h3>
+<ol><li>Maurer, N., &amp; Huwer, J.，<strong>Teaching and Learning about Artificial Intelligence (AI) in Secondary Education Chemistry Classes</strong>，《Journal of Chemical Education》，2026 年 8 月 11 日線上出版。研究設計教師 3 小時專業發展以及兩堂各 90 分鐘的學生課程，探討 AI 在現代化學研究中的應用、效益、限制與風險。</li></ol>
+<p><a href="https://pubs.acs.org/doi/10.1021/acs.jchemed.6c00128" target="_blank" rel="noopener">https://pubs.acs.org/doi/10.1021/acs.jchemed.6c00128</a></p>
+<ol><li>Gecker, J., &amp; Bynum, R.，Associated Press，<strong>Schools are starting to teach AI literacy. For many, that means helping kids see chatbots’ flaws</strong>，2026 年 8 月 22 日。報導美國學校由禁用 AI 逐步轉向正式 AI 素養教育，內容涵蓋幻覺、偏差、個資、查證與「何時不應使用 AI」。</li></ol>
+<p><a href="https://apnews.com/article/ai-literacy-schools-education-4fb9f2c0240993499870f4f204bf41c1" target="_blank" rel="noopener">https://apnews.com/article/ai-literacy-schools-education-4fb9f2c0240993499870f4f204bf41c1</a></p>
+<ol><li>U.S. National Science Foundation，<strong>New NSF State and Regional AI Infrastructure Hubs will power AI-enabled scientific research across the country</strong>，2026 年 8 月 4 日。NSF 宣布 1 億美元 AI 基礎建設計畫，目標包括擴大研究者、學生與教育者取得 AI 科學運算與資料資源。</li></ol>
+<p><a href="https://www.nsf.gov/news/new-nsf-state-regional-ai-infrastructure-hubs-will-power-ai" target="_blank" rel="noopener">https://www.nsf.gov/news/new-nsf-state-regional-ai-infrastructure-hubs-will-power-ai</a></p>
+<ol><li>U.S. National Science Foundation，<strong>Artificial Intelligence – Workforce Development</strong>。NSF 目前將 Discovery Research PreK–12、ITEST、AI 教育資源擴展與 hands-on STEM learning 納入 AI 人才培育體系。</li></ol>
+<p><a href="https://www.nsf.gov/focus-areas/ai/workforce" target="_blank" rel="noopener">https://www.nsf.gov/focus-areas/ai/workforce</a></p>
+<ol><li>UNESCO，<strong>AI and technologies in education</strong>。UNESCO 持續以 human agency、critical thinking、ethics、inclusion 與 equity 作為生成式 AI 教育的重要原則。</li></ol>
+<p><a href="https://www.unesco.org/en/digital-education" target="_blank" rel="noopener">https://www.unesco.org/en/digital-education</a></p>
+<p><strong>2026 年 08 月 23 日</strong><br><strong>作者：陳賢宗</strong></p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 十分鐘做完一整套自然課教材，老師真正該檢查的卻不是錯字：從「教材生成」走向「教材工程」｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>AI 十分鐘做完一整套自然課教材，老師真正該檢查的卻不是錯字：從「教材生成」走向「教材工程」</h1>
+      <div class="date">2026 年 08 月 14 日</div>
+    </div>
+    <article>
+<p>一位自然老師準備「影響蒸發快慢的因素」課程。</p>
+<p>過去可能需要花一個晚上：找圖片、寫學習單、設計實驗表格、製作簡報，再想幾道形成性評量題。</p>
+<p>現在只要告訴生成式 AI：</p>
+<p>「請幫國小五年級設計兩節蒸發實驗課，包含教案、簡報、學習單、實驗紀錄表與十題評量。」</p>
+<p>不到十分鐘，一整套教材就可能出現在眼前。</p>
+<p>標題漂亮、表格完整、學習目標也寫得像模像樣。</p>
+<p>乍看之下，教師備課效率似乎突然提升了十倍。</p>
+<p>可是自然科教師真正應該問的，反而不是：「AI 有沒有幫我省時間？」</p>
+<p>而是：</p>
+<blockquote><strong>它生成的這一整套教材，前後真的在教同一個科學概念嗎？</strong></blockquote>
+<p>例如教案寫著要探究「溫度與蒸發速率的關係」，學習單卻同時改變水量、容器大小與照光位置；簡報說「風吹得愈強，蒸發一定愈快」，評量題又把「蒸發」和「沸騰」混在一起。</p>
+<p>每一張單獨看都很像教材。</p>
+<p>整套放在一起，卻可能沒有一致的教學邏輯。</p>
+<p>這正是最近 AI 教材設計研究開始面對的新問題。</p>
+<p>2026 年 8 月 7 日提交的研究 <strong>Curriculum as Code: An AI-Assisted Architecture for Instructional Design in STEM Education</strong>，提出一種比「一直下提示詞」更系統化的方法：把課程目標、教學規則、版面需求、技術限制與審查程序明文化，再讓 AI、LaTeX 與 Python 共同產生教材。研究團隊表示，這套流程已在八個模組與二十八個專題情境中使用，並由六位教師採用；超過六百份自願學生評價對教材給出較高品質評分。值得注意的是，這是高等教育 Project-Based Learning 情境，而且論文仍在投稿階段，因此不能直接宣稱它已證明適用所有中小學課堂。</p>
+<p>但它提出了一個對中小學教師非常實用的概念：</p>
+<p><strong>與其做「提示詞工程」，更值得做的是「教材工程」。</strong></p>
+<p>也就是先決定一套教材必須遵守什麼規則，再讓 AI 在規則裡工作。</p>
+<h3>具體自然科案例：AI × 蒸發探究教材工程</h3>
+<p>教學對象設定為國小五年級，主題是「影響水蒸發快慢的因素」。</p>
+<p>使用的 AI 類型包括生成式文字 AI、圖片生成或理解工具，以及試算表／程式輔助資料檢查。</p>
+<p>但第一步不是問 AI：「請幫我做一份蒸發教案。」</p>
+<p>而是由教師先寫出一張只有半頁的「教材規格」。</p>
+<p>例如：</p>
+<p><strong>核心概念：</strong>液態水可以在未達沸點時由表面進入空氣中。</p>
+<p><strong>學生常見迷思：</strong></p>
+<ol><li>水一定要加熱到沸騰才會變成水蒸氣。</li><li>消失的水就是「不見了」。</li><li>太陽把水「吸走」。</li></ol>
+<p><strong>探究能力：</strong>一次只改變一項主要變因，並以重複測量比較結果。</p>
+<p><strong>禁止 AI 自行加入：</strong>學生尚未學過的分子運動理論、過度精確的物理公式，以及沒有實驗證據支持的因果結論。</p>
+<p>這張規格才是真正控制整套教材品質的核心。</p>
+<h4>第一階段：先讓 AI 生成「實驗設計」，暫時不要生成整套教材</h4>
+<p>可以輸入：</p>
+<blockquote>教學對象為國小五年級。研究問題是「風吹是否影響水蒸發的快慢？」請設計一個只改變風速條件的比較實驗。請列出自變因、應變因與控制變因，並主動找出三項可能使實驗失去公平性的地方。</blockquote>
+<p>假設 AI 建議：A 組放在電風扇前，B 組放在教室另一端。</p>
+<p>乍看合理，卻可能同時改變位置、溫度、日照與空氣流動環境。</p>
+<p>教師可以要求第二輪：</p>
+<blockquote>A、B 組應盡量位於相同環境，只改變主要風速條件。請重新檢查。</blockquote>
+<p>這就是教師專業開始發揮的地方。</p>
+<p>AI 可以大量產生方案，教師負責守住<strong>變因控制的邏輯</strong>。</p>
+<h4>第二階段：再生成實驗紀錄表，但要求它與研究問題對齊</h4>
+<p>很多 AI 學習單最大的問題並不是錯，而是「什麼都想放」。</p>
+<p>明明研究風速，表格卻叫學生記錄：水溫、室溫、濕度、風向、杯子重量、時間、光照度、杯口直徑……</p>
+<p>學生最後忙著抄數據，反而不知道哪一個變因才是問題核心。</p>
+<p>教師可以限制：</p>
+<blockquote>紀錄表只保留本研究真正需要判斷的欄位。每組至少重複三次測量，保留原始數據，不自動刪除異常值。</blockquote>
+<p>然後再問 AI：</p>
+<p>「每一欄資料最後將用來回答哪一個問題？」</p>
+<p>如果 AI 說不出用途，這一欄可能就不需要存在。</p>
+<p>這是非常值得教師養成的教材審核習慣：</p>
+<blockquote><strong>不是資訊愈多愈科學，而是每一筆資料都必須有研究目的。</strong></blockquote>
+<h4>第三階段：要求 AI「故意挑錯」自己的教材</h4>
+<p>教材完成後，不要馬上印。</p>
+<p>開另一輪對話，甚至使用另一個模型，把教材當成待審稿件：</p>
+<blockquote>你現在不是教材作者，而是自然科課程審查者。請檢查以下教材是否有：</blockquote>
+<blockquote>1. 同時改變兩個以上變因；</blockquote>
+<blockquote>2. 把相關寫成因果；</blockquote>
+<blockquote>3. 提前洩漏實驗答案；</blockquote>
+<blockquote>4. 問題與紀錄表無法互相對應；</blockquote>
+<blockquote>5. 超出五年級認知程度的內容；</blockquote>
+<blockquote>6. 科學名詞或圖片可能造成迷思之處。</blockquote>
+<blockquote>請只指出問題，不直接重寫。</blockquote>
+<p>這一步非常重要。</p>
+<p>因為生成 AI 最大的誘惑之一，就是讓老師一路按「繼續」「更完整」「再漂亮一點」，最後變成 AI 同時當作者、編輯和審稿人。</p>
+<p>好的教材流程反而應該刻意設計<strong>反對者角色</strong>。</p>
+<h4>第四階段：讓學生來做最後一層驗證</h4>
+<p>教師覺得合理，不代表學生真的看得懂。</p>
+<p>可以先找一小組學生試讀：</p>
+<p>「你覺得這個實驗要比較什麼？」</p>
+<p>「哪些條件必須一樣？」</p>
+<p>「如果結果跟預測不同，要記下來還是重做？」</p>
+<p>如果學生讀完學習單，仍回答不出研究問題，那份教材即使排版再精美，都還沒有完成。</p>
+<p>AI 教材最容易造成一種錯覺：</p>
+<p><strong>完成度看起來非常高，理解度卻沒有被驗證。</strong></p>
+<h3>AI 教材不只是要「正確」，還要保留認知工作</h3>
+<p>8 月 10 日，美國教育科學研究院（IES）最新整理 K–12 人工智慧研究時，給出的訊號其實非常謹慎。IES 搜尋 What Works Clearinghouse，沒有找到符合該資料庫標準、直接評估當代 AI 對學生學習成效的研究；引用的一項 2026 年大型回顧則只找到約 20 項具有較嚴格因果證據的 K–12 AI 研究。IES 指出，教師介入的 AI 輔助模式目前較具正向訊號，而學生直接使用一般型 AI 的結果較為混合；當 AI 把本應由學生進行的認知工作直接完成時，也可能削弱學習。</p>
+<p>這個提醒對教材生成尤其重要。</p>
+<p>假設原本學習單問：</p>
+<p>「根據三次測量資料，你認為風速是否影響蒸發？請引用兩筆數據。」</p>
+<p>AI 生成後卻變成：</p>
+<p>「由實驗可知風吹會加速蒸發，請說明原因。」</p>
+<p>前一題要求學生<strong>從資料形成結論</strong>。</p>
+<p>後一題則已經把結論送給學生，只剩下填理由。</p>
+<p>看起來只是句子不同，真正被拿掉的卻是最重要的科學思考。</p>
+<h3>AI 最適合生成「材料」，不宜直接決定「學習」</h3>
+<p>2026 年 7 月 23 日發布的 <strong>AI-Integrated Scientific Inquiry</strong> 提出另一個值得自然教師採用的觀點：AI 應被視為科學探究中的一組工具，而不是替學生執行整套探究的代理人。研究者以電腦視覺、分群與生成模型為例，主張每一種 AI 工具都應設定一個明確的「反思點」，讓學生知道工具在哪裡可能誤導。作者更提醒，在學生尚未建立科學探究與個別 AI 工具的基本理解之前，不宜過早讓 agentic AI 接手整個研究流程。</p>
+<p>換成教師備課語言，就是：AI 可以幫我畫圖。可以幫我出題。可以幫我產生表格。可以幫我寫三種不同閱讀難度的文本。</p>
+<p>但「學生這堂課究竟必須自己完成哪一次思考」，不能交給 AI 順手決定。</p>
+<h3>一套 AI 自然教材，可以用五個問題快速檢查</h3>
+<p>第一個問題：<strong>學習目標、實驗活動和最後評量是否在測同一件事？</strong></p>
+<p>第二個：<strong>AI 有沒有不小心把學生應該自己發現的結論提前說出來？</strong></p>
+<p>第三個：<strong>每一個紀錄欄位、圖片、提示與問題真的有用途嗎？</strong></p>
+<p>第四個：<strong>教材是否保留預測、測量、比較、解釋、懷疑與修正？</strong></p>
+<p>第五個：<strong>學生不用 AI 時，最後還能做什麼？</strong></p>
+<p>如果第五題的答案是「幾乎什麼都不用做」，那份教材即使非常精緻，也可能已經把學習本身自動化掉了。</p>
+<h3>教師需要注意的風險與限制</h3>
+<p>第一，最新的 Curriculum as Code 研究很有啟發性，但主要證據來自高等教育 PBL 場域，而且目前仍是預印本／投稿階段，不應把其中學生評分直接解讀成「已證實 AI 教材提升學習成效」。</p>
+<p>第二，AI 可以降低教材製作時間，不代表一定降低備課時間。高品質流程反而需要教師把原本存在腦中的教學判準明文化。</p>
+<p>第三，AI 生成圖片尤其需要科學檢查。蒸發、熱傳、光路、電路、月相與地球科學圖像，只要一個箭頭方向錯誤，就可能製造新的迷思概念。</p>
+<p>第四，不要讓 AI 自動「改善」學生的實驗數據。原始紀錄與修改後資料必須分開。</p>
+<p>第五，差異化教材不能只等同「簡化文字」。真正的差異化還包括不同表徵、操作材料、提示程度與作答方式。</p>
+<p>第六，若教師把學生作品、學習困難、成績或個別化資料輸入外部 AI，仍應遵守學校的個資與平台規範。</p>
+<p>UNESCO 近期對亞太科學教育者的培訓，也把 AI 放在 STEM、Maker Education、跨領域專題與實際動手活動中，而不是把「會生成內容」當成 AI 教育的終點。</p>
+<p>這也許正是下一階段 AI 備課最值得發展的方向。</p>
+<p>我們不再只追求一句更厲害的提示詞：「幫我做一份最完整、最好看的自然科教案。」</p>
+<p>而是開始建立自己的規則：這個年級最容易錯在哪裡？哪一個概念一定要親自操作？哪些問題不能先透露答案？什麼證據才足以支持結論？學生最後一定要自己完成哪一次判斷？</p>
+<p>當這些規則愈清楚，AI 才愈有可能真正替教師省下機械性的工作，而不是把教學專業一起自動化。</p>
+<p><strong>未來真正厲害的老師，可能不是最會叫 AI 生教材的人，而是最知道哪些東西可以讓 AI 生、哪些學習歷程絕對不能讓它代替的人。</strong></p>
+<h3>參考資料與延伸閱讀</h3>
+<ol><li>Paiva, H. M.，<strong>Curriculum as Code: An AI-Assisted Architecture for Instructional Design in STEM Education</strong>，2026 年 8 月 7 日提交。</li></ol>
+<p><a href="https://arxiv.org/abs/2608.07364" target="_blank" rel="noopener">https://arxiv.org/abs/2608.07364</a></p>
+<ol><li>Institute of Education Sciences，<strong>AI in K–12 Education: The Good, the Bad, and the Guardrails to Consider</strong>，2026 年 8 月 10 日。</li></ol>
+<p><a href="https://ies.ed.gov/learn/blog/ai-k-12-education-good-bad-and-guardrails-consider" target="_blank" rel="noopener">https://ies.ed.gov/learn/blog/ai-k-12-education-good-bad-and-guardrails-consider</a></p>
+<ol><li>Bewersdorff, A., Rojas, M., &amp; Zhai, X.，<strong>AI-Integrated Scientific Inquiry: A Practice-Centered Vision for Science Education</strong>，2026 年 7 月 23 日。</li></ol>
+<p><a href="https://arxiv.org/abs/2607.21777" target="_blank" rel="noopener">https://arxiv.org/abs/2607.21777</a></p>
+<ol><li>Hossain, S. 等，<strong>Rethinking Generative AI Literacy: An Integrative, Developmental, and Dialectical Framework for K–12 Teacher Education</strong>，2026 年 8 月 3 日。</li></ol>
+<p><a href="https://arxiv.org/abs/2608.01705" target="_blank" rel="noopener">https://arxiv.org/abs/2608.01705</a></p>
+<ol><li>UNESCO，<strong>UNESCO unites science educators to transform STEM teaching across Asia-Pacific</strong>，2026 年 7 月 20 日更新。</li></ol>
+<p><a href="https://www.unesco.org/en/articles/unesco-unites-science-educators-transform-stem-teaching-across-asia-pacific" target="_blank" rel="noopener">https://www.unesco.org/en/articles/unesco-unites-science-educators-transform-stem-teaching-across-asia-pacific</a></p>
+<ol><li>UNESCO，<strong>Artificial Intelligence in Education</strong>。</li></ol>
+<p><a href="https://www.unesco.org/en/digital-education/artificial-intelligence" target="_blank" rel="noopener">https://www.unesco.org/en/digital-education/artificial-intelligence</a></p>
+<p><strong>2026 年 08 月 14 日</strong><br><strong>作者：陳賢宗</strong></p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

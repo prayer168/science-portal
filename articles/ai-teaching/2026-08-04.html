@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 三分鐘做完實驗報告，學生卻少學了一次：自然課如何設計「不能直接外包」的任務？｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>AI 三分鐘做完實驗報告，學生卻少學了一次：自然課如何設計「不能直接外包」的任務？</h1>
+      <div class="date">2026 年 08 月 04 日</div>
+    </div>
+    <article>
+<p>自然課進行「哪些材料比較能保溫」的探究時，學生把熱水分別裝進紙杯，再包上鋁箔、氣泡紙、棉布和瓦楞紙，每隔兩分鐘測量一次水溫。</p>
+<p>實驗才進行一半，一組學生已經打開生成式 AI，輸入：</p>
+<p>「請幫我寫一篇不同保溫材料效果的實驗報告，包含研究動機、假設、結果和結論。」</p>
+<p>不到三分鐘，一份結構完整、語句流暢的報告出現在螢幕上。內容甚至寫著：「氣泡紙的保溫效果最佳，因為其中的空氣層能降低熱傳導。」</p>
+<p>問題是，這組學生的實驗尚未結束；他們目前測到的數據，也不一定支持氣泡紙最好。</p>
+<p>AI 讓學生更快完成「作品」，卻可能讓他們跳過真正建立能力的過程：觀察數值變化、檢查異常、解釋證據，以及面對結果和原先假設不一致的挫折。</p>
+<p>2026 年 7 月 22 日發布的一篇課程設計研究，以「從做中學」分析 AI 對學習的影響。研究模型區分兩種情況：學生親自投入努力完成任務，會在過程中累積技能；把任務直接交給 AI，雖然能迅速取得成果，卻不一定形成相應能力。作者也提醒，若 AI 對原本能力較強的學生具有輔助效果，卻讓基礎尚未建立的學生更容易跳過練習，學習差距可能進一步擴大。這是一篇理論模型研究，不能直接證明所有課堂都會如此，但它提出了一個值得教師正視的問題：<strong>當學生隨時可以外包作業時，課程要如何保留真正需要親自經歷的學習？</strong></p>
+<p>自然科特別需要回答這個問題，因為科學能力不只表現在最後那篇報告裡，更存在於量水、讀溫度計、控制變因、辨認錯誤和修改解釋的過程中。</p>
+<h3>具體教學案例：保溫材料的「AI 分段開放」探究</h3>
+<p>教學對象可設定為國小五、六年級或國中七年級，主題是熱的傳播、保溫材料與實驗設計。使用的 AI 功能包括提問引導、表格檢查、資料視覺化及文字修訂，但學生不能從課程一開始就把整項任務交給 AI。</p>
+<p>教師可以把活動分成四道關卡，每完成一段真實工作，才開放一種 AI 功能。</p>
+<h4>第一關：沒有原始觀察，不能問 AI 結論</h4>
+<p>每組使用相同紙杯、相同水量與相近起始溫度，分別包覆不同材料。學生先記錄材料厚度、包覆方式、環境溫度和測量時間，再預測哪一種材料降溫較慢。</p>
+<p>此階段暫不使用 AI。學生必須自己畫裝置草圖、列出控制變因，並說明為什麼各組水量和起始溫度要盡量相同。</p>
+<p>這些看似繁瑣的工作正是科學能力的基礎。若 AI 直接替學生列出「控制變因」，孩子可能抄得正確，卻不知道哪一項條件不一致會破壞比較。</p>
+<h4>第二關：AI 可以找漏洞，不能重寫計畫</h4>
+<p>學生完成實驗設計後，才請 AI 擔任「方法審查員」：</p>
+<blockquote>以下是我們的保溫材料實驗計畫。請不要替我們重寫完整步驟，也不要判定哪種材料最好。請指出三個可能造成比較不公平的地方，並用問題引導我們自行修改。</blockquote>
+<p>AI 可能詢問：「每個杯子的包覆層數相同嗎？」「杯口是否都有加蓋？」「量溫時，溫度計插入深度是否一致？」</p>
+<p>學生要決定哪些提醒合理，並在紀錄表留下修改前後的差異。AI 在這裡是檢查工具，而不是計畫的真正作者。</p>
+<h4>第三關：先由學生畫圖，再讓 AI 協助檢查</h4>
+<p>完成至少三次重複測量後，學生先用方格紙或試算表繪製時間—溫度折線圖，再請 AI 檢查計算與圖表。</p>
+<p>提示詞可以寫成：</p>
+<blockquote>請檢查我們的時間、溫度、平均值與折線圖是否一致。不要刪除任何異常數據。若某筆資料和其他測量差異很大，請提出需要回到實驗紀錄確認的問題。</blockquote>
+<p>假設棉布組在第六分鐘的溫度突然上升，AI 可以標示異常，卻不能自行把它刪掉。學生要回想當時是否拿錯溫度計、讀值延遲、杯子被移動，或紀錄時寫錯欄位。</p>
+<p>近期科學教育研究主張，AI 適合被視為一組需要校正和反思的科學儀器：電腦視覺協助觀察、分群方法協助分析、生成模型協助建模，但每項工具都應搭配一個「它可能在哪裡出錯」的反思點。AI 不應包辦整個探究，更不應替學生決定何時證據已經足夠。</p>
+<h4>第四關：AI 可以潤稿，但不能補造證據</h4>
+<p>學生先用自己的話寫出三部分：我們觀察到了什麼？哪些數據支持這個說法？目前還有哪些限制？</p>
+<p>完成後才請 AI 協助修正文句：</p>
+<blockquote>請保留我們的數據、判斷與不確定性，只改善語句和段落順序。不得新增未做過的實驗、未測量的數字、材料原理或不存在的參考資料。請把你修改的地方逐項列出。</blockquote>
+<p>若實驗結果顯示氣泡紙平均降溫較慢，學生可以說它「在本次條件下保溫表現較佳」，卻不能直接寫成「氣泡紙是世界上最好的保溫材料」。材料厚度、杯口散熱、包覆密合度和環境風速，都可能影響結果。</p>
+<h3>學生可能學到什麼？</h3>
+<p>第一，他們會分辨「完成任務」和「形成能力」並不相同。AI 可以快速產生文字，但不會替學生累積讀取儀器、處理失敗和判讀證據的經驗。</p>
+<p>第二，他們會學習把大型任務拆成不同責任：哪些步驟必須由人觀察、決定與承擔，哪些工作可交給 AI 協助整理。</p>
+<p>第三，他們會理解科學報告不是把標準詞語填入固定格式，而是讓讀者看見資料如何支持結論。</p>
+<p>第四，他們會練習保留不確定性。結果與假設不同時，不必請 AI 把故事改得更漂亮，而應重新檢查方法並說明限制。</p>
+<p>第五，他們會建立較成熟的提示方式，不再只問「幫我做完」，而能要求 AI「先找漏洞」「不要補資料」「只檢查公式」或「用問題引導我」。</p>
+<h3>為什麼不同學生需要不同的 AI 開放程度？</h3>
+<p>同一個 AI 功能，對不同學生可能產生不同效果。</p>
+<p>已經會畫折線圖的學生，可以利用 AI 快速檢查格式，把時間投入更深入的解釋；還不理解橫軸、縱軸的學生若直接生成圖表，可能得到漂亮成果，卻不知道圖中的線代表什麼。</p>
+<p>因此，教師不必只制定「可以用」或「禁止用」兩種規則，而可依能力和任務階段分層：基礎尚未建立時，先親自操作；已有初步能力時，讓 AI 提醒與檢查；能夠獨立判斷後，再讓 AI 協助提高效率。</p>
+<p>這不是刻意讓學生做低效率的工作，而是保留必要的學習負荷。就像學生必須親自讀過幾次溫度計，才有能力判斷感測器自動上傳的數據是否合理。</p>
+<p>美國教育科學研究院近期介紹的 INVITE 計畫，也把 AI 教育系統放在真實的三至九年級學習環境中研究，特別關注學習者互動、成長歷程、情境因素與過去容易被 AI 忽略的非認知能力，而非只比較誰更快完成答案。該計畫預計透過學校合作、教師共同設計及開放工具，研究 AI 如何服務不同背景的學習者。</p>
+<h3>教師需要注意的風險與限制</h3>
+<p>首先，AI 可能產生一篇與真實數據完全無關、卻語氣十分肯定的報告。教師應要求學生附上原始紀錄、修改歷程和提示詞摘要。</p>
+<p>其次，不能因為禁止學生「整份代做」，就完全不教 AI。學生若只在課外自行摸索，更可能不知道什麼是合理協助、什麼是認知外包。</p>
+<p>第三，評量應增加過程證據，例如草圖、失敗紀錄、操作照片、口頭說明及現場修改，而不只評分最後的文章。</p>
+<p>第四，學生資料應匿名化。實驗照片、語音、姓名與個別學習紀錄，不應任意上傳至未經學校核准的平台。</p>
+<p>第五，AI 的科學解釋仍需查證。它可能把熱傳導、對流與輻射混在一起，或對某種材料提出沒有證據的說法。</p>
+<p>第六，要留意公平性。不是每位學生都具備相同設備、帳號、網路環境與提示能力，課程不能把使用高階工具變成隱性的得分門檻。</p>
+<p>下一次，當學生說：「老師，AI 已經幫我把報告做完了。」</p>
+<p>教師可以不急著問報告寫得漂不漂亮，而是問：「哪一筆資料是你親自量到的？」「哪一個錯誤是你發現並修正的？」「如果拿走 AI，你還能說明圖表代表什麼嗎？」</p>
+<p>AI 時代的課程設計，並不是把所有舊作業都加上一條「禁止使用 AI」，而是重新確認每項任務真正要培養的能力。</p>
+<p>能交給 AI 的工作，可以適度交給它；但那些需要學生親自觀察、失敗、比較、推理與形成判斷的歷程，不能因為機器做得更快，就被誤認為已經沒有價值。</p>
+<p>因為自然課真正要留下的，不只是一份完成的報告。</p>
+<p>而是下一次沒有 AI 立即告訴答案時，學生仍知道如何面對一個尚未解決的問題。</p>
+<h3>參考資料與延伸閱讀</h3>
+<ol><li>Davies, B.，〈Curriculum Design in the Age of AI〉，草稿日期：2026 年 7 月 22 日。</li></ol>
+<p><a href="https://arxiv.org/abs/2607.18735" target="_blank" rel="noopener">https://arxiv.org/abs/2607.18735</a></p>
+<ol><li>Bewersdorff, A., Rojas, M., &amp; Zhai, X.，〈AI-Integrated Scientific Inquiry: A Practice-Centered Vision for Science Education〉，2026 年 7 月 23 日。</li></ol>
+<p><a href="https://arxiv.org/abs/2607.21777" target="_blank" rel="noopener">https://arxiv.org/abs/2607.21777</a></p>
+<ol><li>Institute of Education Sciences，〈INVITE: Inclusive and Innovative Intelligent Technologies for Education〉，頁面於 2026 年 7 月更新。</li></ol>
+<p><a href="https://ies.ed.gov/use-work/awards/invite-inclusive-and-innovative-intelligent-technologies-education" target="_blank" rel="noopener">https://ies.ed.gov/use-work/awards/invite-inclusive-and-innovative-intelligent-technologies-education</a></p>
+<ol><li>UNESCO，〈Artificial Intelligence in Education〉，2026 年 7 月 21 日更新。</li></ol>
+<p><a href="https://www.unesco.org/en/digital-education/artificial-intelligence" target="_blank" rel="noopener">https://www.unesco.org/en/digital-education/artificial-intelligence</a></p>
+<ol><li>Zhai, X., &amp; Crippen, K.，〈Charting the Future of AI-supported Science Education: A Human-Centered Vision〉，2026 年。</li></ol>
+<p><a href="https://arxiv.org/abs/2602.18471" target="_blank" rel="noopener">https://arxiv.org/abs/2602.18471</a></p>
+<p><strong>2026 年 08 月 04 日</strong><br><strong>作者：陳賢宗</strong></p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>拍了一千張照片，就能訓練出可靠的 AI 嗎？從校園昆蟲調查教學生建立「有證據的資料集」｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>拍了一千張照片，就能訓練出可靠的 AI 嗎？從校園昆蟲調查教學生建立「有證據的資料集」</h1>
+      <div class="date">2026 年 08 月 03 日</div>
+    </div>
+    <article>
+<p>自然課進行校園生物調查時，學生在花圃旁拍到一隻黑黃相間的小昆蟲。</p>
+<p>第一組說是蜜蜂，第二組認為是食蚜蠅，第三組把照片上傳給 AI，得到「虎頭蜂，可信度百分之九十六」的答案。正當大家準備在紀錄表上寫下虎頭蜂時，一名學生放大照片問：</p>
+<p>「可是牠好像只有一對翅膀，而且觸角也不像虎頭蜂。」</p>
+<p>這個問題，比 AI 給出的物種名稱更接近真正的科學探究。</p>
+<p>現在的多模態 AI 可以辨識照片、描述特徵、整理觀察紀錄，也能協助把大量影像分組。學生很容易產生一種印象：只要拍得夠多、丟進 AI，就能自動完成校園生物多樣性調查。</p>
+<p>但科學資料集不是照片的堆積。</p>
+<p>照片拍攝角度是否清楚、物種名稱由誰確認、同一隻昆蟲是否被重複計算、背景是否造成模型誤判，以及錯誤標籤是否被保留下來，都會影響最後的分析。</p>
+<p>2026 年 7 月 22 日，美國國家科學基金會宣布新的科學資料計畫，目的之一正是提升既有資料集的品質、紀錄方式與可使用性，使人工智慧能更可靠地協助科學發現。官方特別指出，許多珍貴資料並非不能使用，而是缺少一致格式、清楚的背景說明、品質控管或適當的整理方式，導致 AI 難以從中取得可信結果。</p>
+<p>這項大型研究計畫背後的觀念，很適合轉化成中小學自然課：</p>
+<blockquote><strong>AI 分析得好不好，往往先取決於學生蒐集和標記資料的方式。</strong></blockquote>
+<h3>具體教學案例：建立校園昆蟲影像資料集</h3>
+<p>教學對象可設定為國小五、六年級或國中七年級，主題是昆蟲外形特徵、生物多樣性與棲地調查。使用的 AI 功能包括圖片理解、影像分類、相似照片分組與表格整理，不限定特定平台。</p>
+<p>探究問題可以設定為：</p>
+<blockquote>校園不同環境中，最常被觀察到的昆蟲類群是否不同？AI 能協助辨認到什麼程度？</blockquote>
+<p>調查地點可選擇花圃、草地、樹下、落葉區與水池周邊。每組負責固定區域，在相同時間長度內進行觀察，並盡可能保持相近的拍攝距離與調查方法。</p>
+<h4>第一步：拍照以前，先建立資料規則</h4>
+<p>學生往往急著拿平板到處拍，教師可以先帶全班討論「一筆完整的昆蟲觀察資料」至少需要什麼。</p>
+<p>除了照片，紀錄表還應包含：日期、時間、地點、天氣、棲地類型、觀察者、昆蟲所在位置、外形特徵、是否看見翅膀與觸角，以及照片是否足以辨識。</p>
+<p>這些資料能幫助學生理解，同一張昆蟲照片放在花朵上、積水旁或腐木下，可能具有不同的生態意義。</p>
+<p>同時要先訂定重複計數規則。例如同一地點、同一時間、外形完全相同的昆蟲連拍五張，不能立刻算成五隻；若無法確認是不是同一個體，便應註記「可能重複」，而不是假裝數量完全精確。</p>
+<h4>第二步：先由學生觀察，再讓 AI 初步分類</h4>
+<p>學生拍攝後，不應立刻詢問「這是什麼昆蟲」，而要先描述自己看見的特徵：身體大約分成幾個部分？有幾對腳？是否看得到一對或兩對翅膀？觸角長短如何？身體有沒有明顯細腰？停留在花、葉片、土壤或水面？</p>
+<p>完成觀察後，再把裁切過、沒有學生人臉與校園識別資訊的照片交給 AI，請它提出二至三個可能類群。</p>
+<p>提示詞可以寫成：</p>
+<blockquote>請根據照片中實際可見的外形特徵，提出最多三個可能的昆蟲類群。請列出支持與不支持每項判斷的特徵；看不清楚的地方請說明無法確認。不要只根據身體顏色下結論，也不要把可信度分數寫成已經確定的物種名稱。</blockquote>
+<p>這能減少 AI 因黑黃條紋便直接判斷為蜜蜂或虎頭蜂的情況。</p>
+<h4>第三步：建立三層標籤，不強迫每張照片都有物種名</h4>
+<p>學生資料最常見的問題，是為了讓表格看起來完整，硬替模糊照片填入一個名稱。</p>
+<p>比較合適的做法，是將標籤分成三層：第一層為確定類群，例如昆蟲、蜘蛛或其他節肢動物；第二層為較可能的目或科，例如鞘翅目、鱗翅目、蜂類或食蚜蠅類；第三層才是可能的物種名稱。</p>
+<p>若證據不足，就停在第一層或第二層。科學調查中的「無法確認」，不是失敗，而是對證據範圍的誠實描述。</p>
+<p>學生還可以增加「標籤來源」欄位，分成學生初判、AI 建議、圖鑑比對、教師確認與專家確認。如此一來，即使日後修改名稱，也能保留判定過程。</p>
+<h4>第四步：請 AI 找相似照片，但不能直接當成相同物種</h4>
+<p>當班級累積數百張照片後，人工逐張瀏覽很花時間。AI 或影像工具可以依外形相似度協助分組，把外觀相近的照片放在一起。</p>
+<p>近期科學教育研究提出，AI 可以作為科學探究中的不同「儀器」：電腦視覺協助觀察，分群方法協助分析，生成式工具協助建立模型；但每一種工具都應附帶反思問題，讓學生檢查 AI 在什麼情況下可能誤導。</p>
+<p>昆蟲照片分組時，適合提出的反思問題是：</p>
+<blockquote>外觀相似，就一定是同一種昆蟲嗎？</blockquote>
+<p>蜜蜂、胡蜂和部分食蚜蠅可能具有相似的黑黃警戒色；同一種蝴蝶的幼蟲與成蟲，外觀卻完全不同。AI 依影像相似度分在一起，只代表照片具有某些共同特徵，不等於已完成分類學鑑定。</p>
+<p>學生可以抽查每一組照片，找出「被錯放進來」的案例，再討論 AI 可能根據顏色、背景、身體輪廓或拍攝角度做了什麼判斷。</p>
+<h4>第五步：製作資料集說明卡</h4>
+<p>完成初步整理後，每組要為資料集附上一張說明卡，內容至少包含：調查目的與日期；調查地點及時間長度；照片總數與有效資料數；使用哪些設備；標籤如何產生；多少資料已由人工查證；有哪些常見誤判；資料不能用來回答哪些問題。</p>
+<p>例如，只在上午調查兩天的資料，不能直接代表全年昆蟲多樣性；只拍到停在花朵上的昆蟲，也可能低估夜行性、土棲或藏在落葉中的類群。</p>
+<p>NSF 近期推動的資料系統與 AI 科學計畫，同樣重視中繼資料、標準化、資料處理紀錄和可重複使用性。科學資料必須讓後來使用的人知道它從哪裡來、如何整理及有哪些限制，否則資料量再大，也可能只放大原本的偏差。</p>
+<h4>第六步：從資料集提出新的科學問題</h4>
+<p>AI 完成初步整理後，學生可以比較不同環境中各類昆蟲的出現次數，例如花圃較常出現訪花昆蟲，落葉區可能觀察到較多甲蟲或其他分解者。</p>
+<p>但「花圃照片中的昆蟲較多」不代表花圃一定具有最高生物多樣性。可能只是花圃較容易拍照、昆蟲停留時間較長，或學生在那裡調查得更仔細。</p>
+<p>因此，AI 的統計結果應轉化為下一輪可以驗證的問題：相同調查時間下，花圃與草地觀察到的昆蟲類群是否不同？有花與無花植物附近，訪花昆蟲的出現頻率是否有差異？上午和下午的調查結果是否一致？陰天與晴天會不會影響可觀察到的昆蟲數量？</p>
+<p>學生真正學到的，不是讓 AI 替所有照片取名字，而是理解資料如何支持一個有限、可檢驗的結論。</p>
+<h3>學生可能學到什麼？</h3>
+<p>首先，他們會練習以外形特徵分類，而不是只憑顏色或第一印象判斷昆蟲。</p>
+<p>其次，他們會理解 AI 模型依賴訓練資料。如果資料庫中臺灣常見昆蟲不足，或多數照片來自特定地區，辨識表現就可能不平均。</p>
+<p>第三，他們能分辨「照片數量」「觀察次數」「個體數量」與「物種數量」並不相同。這些概念若混用，圖表再漂亮也無法支持正確結論。</p>
+<p>第四，他們會接觸資料品質、標籤錯誤與抽樣偏差，理解人工智慧並不是資料進去、真相出來的黑盒子。</p>
+<p>第五，他們會學習在結果中保留不確定性。寫下「可能是食蚜蠅類，仍需確認翅脈與觸角」比直接寫出一個不可靠的物種名，更符合科學態度。</p>
+<p>UNESCO 近期的亞太科學教育培訓也強調，AI 應與實作型 STEM、創客活動、跨領域設計及永續發展問題結合，讓學生透過真實觀察和問題解決理解科技，而不是只在螢幕上操作功能。</p>
+<h3>教師需要注意的風險與限制</h3>
+<p>第一，AI 辨識不能取代專業鑑定。涉及有毒、螫人或可能危害健康的生物時，不可只依 AI 結果靠近、捕捉或觸摸。</p>
+<p>第二，避免為了取得清楚照片干擾生物。學生不應破壞巢穴、翻動後不復原腐木，也不應長時間捕捉昆蟲只為拍照。</p>
+<p>第三，照片必須移除人臉、名牌、教室位置及其他可辨識資訊，並使用學校核准的數位平台。</p>
+<p>第四，不能把 AI 的信心值當成真實正確率。不同工具的分數定義不同，也可能因照片品質和資料範圍產生誤導。</p>
+<p>第五，保留原始資料。照片、學生初判、AI 建議與後來修正的標籤應分開保存，不能用修正版覆蓋全部紀錄。</p>
+<p>第六，避免只收集「容易被看見」的生物。顏色鮮豔、體型較大或白天活動的昆蟲，通常較容易進入影像資料集；這會影響對校園生態的判斷。</p>
+<p>第七，AI 分組不能證明生態關係。兩種昆蟲經常出現在同一地點，不代表牠們一定具有捕食、競爭或互利關係，仍需進一步觀察。</p>
+<p>當學生再次看到那隻黑黃相間的小昆蟲時，他們也許還是無法立刻說出物種名稱。</p>
+<p>但他們會開始提出更好的問題：照片看得見幾對翅膀？觸角形狀是否清楚？AI 是根據顏色還是身體構造判斷？我們有沒有其他角度的照片？這個標籤由誰確認？目前的證據允許我們說到哪一層？</p>
+<p>這些問題提醒我們，人工智慧時代的自然科學習，不只是更快辨識世界，而是學會負責任地建立世界的資料。</p>
+<p>一千張沒有來源、沒有標準、標籤錯誤的照片，不會因為交給 AI 就突然成為可靠研究。</p>
+<p>相反地，即使只有一百筆資料，只要學生知道如何觀察、紀錄、查證、修正並說明限制，它們就能成為真正具有科學價值的證據。</p>
+<p>AI 可以協助學生看見資料中的相似與差異，但判斷資料是否值得相信，仍然是科學探究最不能外包的一步。</p>
+<h3>參考資料與延伸閱讀</h3>
+<ol><li>U.S. National Science Foundation，〈New NSF initiative aims to unlock dataset value for AI-enabled scientific discovery〉，2026 年 7 月 22 日。</li></ol>
+<p><a href="https://www.nsf.gov/news/new-nsf-initiative-aims-unlock-dataset-value-ai-enabled" target="_blank" rel="noopener">https://www.nsf.gov/news/new-nsf-initiative-aims-unlock-dataset-value-ai-enabled</a></p>
+<ol><li>U.S. National Science Foundation，〈Unlocking Dataset Value for AI-Enabled Scientific Discovery〉，2026 年 7 月 21 日。</li></ol>
+<p><a href="https://www.nsf.gov/funding/opportunities/ai-datasets-unlocking-dataset-value-ai-enabled-scientific-discovery/nsf26-512/solicitation" target="_blank" rel="noopener">https://www.nsf.gov/funding/opportunities/ai-datasets-unlocking-dataset-value-ai-enabled-scientific-discovery/nsf26-512/solicitation</a></p>
+<ol><li>U.S. National Science Foundation，〈NSF announces $83M investment in integrated data systems and services to advance AI-driven science and strengthen U.S. research infrastructure〉，2026 年 7 月 22 日。</li></ol>
+<p><a href="https://www.nsf.gov/news/nsf-announces-83m-investment-integrated-data-systems" target="_blank" rel="noopener">https://www.nsf.gov/news/nsf-announces-83m-investment-integrated-data-systems</a></p>
+<ol><li>Bewersdorff, A., Rojas, M., &amp; Zhai, X.，〈AI-Integrated Scientific Inquiry: A Practice-Centered Vision for Science Education〉，2026 年 7 月 23 日。</li></ol>
+<p><a href="https://arxiv.org/abs/2607.21777" target="_blank" rel="noopener">https://arxiv.org/abs/2607.21777</a></p>
+<ol><li>UNESCO，〈UNESCO unites science educators to transform STEM teaching across Asia-Pacific〉，2026 年 7 月 20 日。</li></ol>
+<p><a href="https://www.unesco.org/en/articles/unesco-unites-science-educators-transform-stem-teaching-across-asia-pacific" target="_blank" rel="noopener">https://www.unesco.org/en/articles/unesco-unites-science-educators-transform-stem-teaching-across-asia-pacific</a></p>
+<ol><li>UNESCO，〈Global Engagement Network for Science〉，2026 年 7 月更新。</li></ol>
+<p><a href="https://www.unesco.org/en/global-engagement-network-science" target="_blank" rel="noopener">https://www.unesco.org/en/global-engagement-network-science</a></p>
+<p><strong>2026 年 08 月 03 日</strong><br><strong>作者：陳賢宗</strong></p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

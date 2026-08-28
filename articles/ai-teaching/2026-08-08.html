@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 素養不應只放在資訊課：從「校園熱島調查」讓自然課成為最好的 AI 實驗室｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>AI 素養不應只放在資訊課：從「校園熱島調查」讓自然課成為最好的 AI 實驗室</h1>
+      <div class="date">2026 年 08 月 08 日</div>
+    </div>
+    <article>
+<p>假設自然課正在進行校園環境調查。</p>
+<p>學生拿著溫度計與數位感測器，分別到操場、樹蔭、草地、走廊與停車棚測量溫度。一組學生回到教室後，看著滿滿的表格問：</p>
+<p>「老師，可以直接叫 AI 幫我們找出哪裡最熱嗎？」</p>
+<p>另一組則已經把數據貼進生成式 AI，幾秒鐘後得到一段看起來相當完整的結論：</p>
+<p>「操場溫度最高，主要原因為水泥吸收大量太陽輻射，因此可證明校園存在熱島效應。」</p>
+<p>問題來了。</p>
+<p>學生真的已經「證明」熱島效應了嗎？</p>
+<p>操場溫度比較高，會不會只是測量時間不同？感測器是不是被陽光直接照射？樹蔭組是不是晚了十五分鐘才測量？「水泥吸收太陽輻射」是這次實驗量到的結果，還是 AI 根據一般知識補出的解釋？</p>
+<p>這些問題說明了一件愈來愈重要的事：</p>
+<blockquote><strong>AI 素養不是學會怎麼問 ChatGPT，而是知道什麼時候能相信 AI、什麼時候必須回到資料與真實世界。</strong></blockquote>
+<p>2026 年 8 月初，美聯社報導，美國愈來愈多大學正把 AI 教育從電腦科學系往外擴散。心理、音樂、生物等非資訊專業學生開始修習 AI 課程；Purdue University 建立 AI 學習要求，Ohio State University 也推動 AI fluency 相關學習。報導引述學者的觀點指出，未來 AI 素養可能會像數學、閱讀與寫作一樣，逐漸成為跨領域的基本能力。</p>
+<p>這個趨勢對中小學教師非常值得注意。</p>
+<p>如果 AI 素養只由資訊老師負責，學生可能學會模型、提示詞、生成圖片與程式操作，卻未必知道如何判斷一項 AI 產生的「科學解釋」究竟有沒有證據。</p>
+<p>反過來說，自然科本身其實就是訓練 AI 素養非常理想的場域。</p>
+<p>因為科學課天天都在做同樣幾件事：觀察、蒐集資料、找規律、提出模型、檢查證據、修正解釋。</p>
+<p>而最新的科學教育研究，也開始明確朝這個方向發展。</p>
+<p>2026 年 7 月 23 日公布的〈AI-Integrated Scientific Inquiry〉提出「學科型 AI 素養」的概念。研究者主張，與其額外開一個單元告訴學生什麼是 AI，不如把 AI 放進真正的科學探究中，讓學生把電腦視覺當成觀察工具、把分群演算法當成分析工具、把生成式 AI 當成模型建構工具，同時在每一次使用時加入一個關鍵反思：「這項 AI 工具在哪裡可能出錯？」</p>
+<p>這就是自然科教師可以立刻實踐的方向。</p>
+<h3>具體教學案例：AI × 校園熱環境調查</h3>
+<p>教學對象可以設定為國小六年級至國中八年級。</p>
+<p>主題是「太陽輻射、地表材質、遮蔭與校園微氣候」，使用的 AI 功能則包含資料整理、異常值檢查、圖表分析與假設生成。</p>
+<p>研究問題可以設定成：</p>
+<blockquote>校園不同地表與遮蔭環境，是否會出現不同的溫度變化？</blockquote>
+<p>學生選擇五個地點，例如：操場水泥地、草地、大樹下、走廊，以及停車棚。</p>
+<p>每個地點必須在相同時段測量，並記錄空氣溫度、地表溫度、是否有遮蔭、天氣、時間與感測器編號。</p>
+<p>如果設備足夠，也可以加入光照度、濕度或紅外線表面溫度。</p>
+<h4>第一階段：AI 不能先提出結論</h4>
+<p>第一次量測後，學生先自己看表格。</p>
+<p>教師可以問：哪一個地點最高？哪一個最低？差多少？同一個地點不同時間是否有變化？有沒有看起來不合理的數字？</p>
+<p>例如某組資料顯示：草地 33.2°C、樹蔭 31.4°C、走廊 32.0°C、操場 61.7°C。</p>
+<p>學生很可能立即說：「操場真的超熱！」</p>
+<p>但如果測的是「空氣溫度」，61.7°C 就值得懷疑。探頭也許貼到水泥地，或者受到陽光直接照射。</p>
+<p>因此學生第一項 AI 任務不應是：「幫我寫結論。」</p>
+<p>而應該是：</p>
+<blockquote>以下是我們的校園溫度資料。請先不要解釋原因，也不要刪除資料。請找出可能需要人工檢查的異常值，並說明為什麼值得檢查。</blockquote>
+<p>AI 變成資料檢查員，而不是答案公布員。</p>
+<h4>第二階段：讓 AI 幫忙找「規律」，不准它直接說「原因」</h4>
+<p>完成資料確認後，再請 AI 比較不同地點。</p>
+<p>提示詞可以寫成：</p>
+<blockquote>請整理五個地點的平均溫度、最高值、最低值與變化幅度。請把「資料直接顯示的現象」和「可能原因」分開，不要把相關性寫成因果關係。</blockquote>
+<p>這句「把現象和解釋分開」非常重要。</p>
+<p>例如：「樹蔭平均比操場低 3.8°C」可以是資料支持的結果。</p>
+<p>但是：「因為樹木蒸散作用，所以降低 3.8°C」就超過目前證據。</p>
+<p>樹蔭降低溫度可能同時涉及遮蔽太陽輻射、地表材質、空氣流動、蒸散作用與測量位置。學生如果沒有量測這些變因，就不應讓 AI 幫忙把故事補完整。</p>
+<h4>第三階段：把 AI 的解釋變成「下一個實驗」</h4>
+<p>這時才進入生成式 AI 最有價值的地方。</p>
+<p>學生可以詢問：</p>
+<blockquote>我們發現樹蔭區溫度較低。請提出三個可能原因，但每一個原因都必須搭配一個國中小學生可以進一步驗證的實驗，不要把假設寫成已證實的結論。</blockquote>
+<p>AI 可能提出：遮蔭減少太陽輻射；植物蒸散造成冷卻；不同地面材料吸收與釋放熱量的能力不同。</p>
+<p>接下來學生挑選一個。</p>
+<p>例如研究：「相同日照條件下，草地與水泥地的表面溫度是否不同？」</p>
+<p>這時 AI 的答案沒有結束探究，反而產生下一輪探究。</p>
+<p>這就是自然科和一般 AI 使用最大的不同。</p>
+<h4>第四階段：讓學生畫圖，再與 AI 圖表比較</h4>
+<p>學生先自己決定哪種圖最適合。</p>
+<p>如果研究的是時間與溫度變化，可能使用折線圖；如果比較五個地點的平均值，則適合長條圖。</p>
+<p>完成後，再讓 AI 根據同一份資料產生建議。</p>
+<p>接著比較：AI 選的圖和我們一樣嗎？縱軸是否從零開始會影響視覺判斷？不同尺度會不會讓差距看起來特別巨大？AI 有沒有把攝氏度寫錯？</p>
+<p>圖表看起來漂亮，不代表表達方式一定合理。</p>
+<p>這也是非常重要的資料素養。</p>
+<h4>第五階段：要求 AI 找出「不能回答的問題」</h4>
+<p>最後可以加入一個很有趣的任務。</p>
+<p>把整份資料交給 AI，要求：</p>
+<blockquote>根據目前資料，請列出三件「我們還不能下結論」的事情，並說明缺少什麼證據。</blockquote>
+<p>AI 可能回答：不能證明樹木一定是最有效降溫方法；不能代表其他季節；不能代表整間學校；不能排除風速與測量時間影響。</p>
+<p>學生會慢慢理解：科學能力不只是知道答案。知道「目前還不能說什麼」，也是能力。</p>
+<h3>AI 素養其實就是科學素養的一部分</h3>
+<p>UNESCO 近期更新的亞太 STEM 教師培訓報導，也把人工智慧、Maker 教育、動手實作與永續發展問題放在同一套培訓架構中，而不是把 AI 孤立成一門純技術課程。相關培訓涵蓋 13 個國家的科學教育者，強調從真實問題與實作活動建立 STEM 能力。</p>
+<p>這種方向非常值得中小學借鏡。</p>
+<p>自然老師未必要教學生神經網路如何計算，也不一定要解釋 Transformer 的數學原理。</p>
+<p>但自然老師非常適合教學生：AI 找到的規律是不是資料真的支持？輸入資料有沒有偏差？異常值為什麼出現？AI 的解釋和證據之間差多遠？還缺少哪一個實驗？什麼情況下應該拒絕 AI 的建議？</p>
+<p>這些能力，既是 AI 素養，也是科學素養。</p>
+<h3>教師需要注意的風險與限制</h3>
+<p>第一，不要把 AI 當成統計軟體的完全替代品。重要的平均值、單位與圖表，學生仍應能使用計算機或試算表自行驗算。</p>
+<p>第二，AI 有可能「過度解釋」。即使只有十筆資料，也可能寫出一篇充滿機制與因果關係的完整文章。文字流暢不代表證據充分。</p>
+<p>第三，學生必須保存原始資料。AI 清理過的表格不能覆蓋第一手紀錄。</p>
+<p>第四，要注意假精確問題。感測器如果只能準確到 0.5°C，就不應因 AI 計算而寫成 31.473°C。</p>
+<p>第五，涉及學生位置、姓名、照片與行動紀錄時，應先移除個人資訊，再使用學校允許的 AI 工具。</p>
+<p>第六，AI 能協助提出假設，但實驗安全與實施可行性仍必須由教師判斷。</p>
+<p>第七，要避免「每次看到資料就問 AI」。學生仍需要親自閱讀表格、畫圖與提出第一個解釋，否則 AI 會逐漸取代原本應建立的基礎能力。</p>
+<p>最近的高等教育發展已經透露出一個非常清楚的訊號：AI 素養正在從「會寫程式的人才需要」走向「每一個領域都需要」。美聯社近期整理的多所大學案例中，心理、音樂、生物等背景的學生都開始接觸 AI；與此同時，教育者也擔心，當 AI 不只替學生寫程式，而連問題理解都一起完成時，領域本身的基礎能力可能受到侵蝕。</p>
+<p>這正是中小學現在最值得準備的事情。</p>
+<p>我們不一定需要另外塞進一門「AI 課」。</p>
+<p>反而可以從每一次自然探究開始。</p>
+<p>量溫度時問：「這筆資料可信嗎？」</p>
+<p>畫圖時問：「尺度有沒有誤導我？」</p>
+<p>AI 解釋時問：「這句話有哪一筆證據？」</p>
+<p>得到答案後再問：「下一個實驗要怎麼證明？」</p>
+<p>當學生習慣這樣思考，AI 就不再只是一個快速提供答案的聊天工具。</p>
+<p>它會真正進入科學探究的流程。</p>
+<p>而自然科教室，也可能成為孩子學習 AI 素養最好的地方之一。</p>
+<p>因為在這裡，他們每天都會被提醒一件人工智慧時代尤其重要的事：</p>
+<p><strong>答案可以由 AI 生成，但證據仍然必須回到真實世界。</strong></p>
+<h3>參考資料與延伸閱讀</h3>
+<ol><li>Bewersdorff, A., Rojas, M., &amp; Zhai, X.，〈AI-Integrated Scientific Inquiry: A Practice-Centered Vision for Science Education〉，2026 年 7 月 23 日。</li></ol>
+<p><a href="https://arxiv.org/abs/2607.21777" target="_blank" rel="noopener">https://arxiv.org/abs/2607.21777</a></p>
+<ol><li>Associated Press，〈At colleges, the AI boom means everyone wants to dabble in computer science〉，2026 年 8 月。</li></ol>
+<p><a href="https://apnews.com/article/college-major-ai-computer-science-coding-f0dca8e4f7e16297ad27c2b02adc2530" target="_blank" rel="noopener">https://apnews.com/article/college-major-ai-computer-science-coding-f0dca8e4f7e16297ad27c2b02adc2530</a></p>
+<ol><li>UNESCO，〈UNESCO unites science educators to transform STEM teaching across Asia-Pacific〉，原發布於 2026 年 5 月 20 日，2026 年 7 月 20 日更新。</li></ol>
+<p><a href="https://www.unesco.org/en/articles/unesco-unites-science-educators-transform-stem-teaching-across-asia-pacific" target="_blank" rel="noopener">https://www.unesco.org/en/articles/unesco-unites-science-educators-transform-stem-teaching-across-asia-pacific</a></p>
+<ol><li>UNESCO，〈Global Engagement Network for Science（GENS）〉。</li></ol>
+<p><a href="https://www.unesco.org/en/global-engagement-network-science" target="_blank" rel="noopener">https://www.unesco.org/en/global-engagement-network-science</a></p>
+<ol><li>UNESCO，〈Science Club Challenge 2026 – Asia-Pacific edition〉。</li></ol>
+<p><a href="https://www.unesco.org/en/articles/call-applications-science-club-challenge-2026-asia-pacific-edition" target="_blank" rel="noopener">https://www.unesco.org/en/articles/call-applications-science-club-challenge-2026-asia-pacific-edition</a></p>
+<p><strong>2026 年 08 月 08 日</strong><br><strong>作者：陳賢宗</strong></p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

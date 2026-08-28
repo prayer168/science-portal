@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>校園植物辨識 AI 大挑戰：當人工智慧遇上真實的校園生態｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>校園植物辨識 AI 大挑戰：當人工智慧遇上真實的校園生態</h1>
+      <div class="date">2026 年 07 月 14 日</div>
+    </div>
+    <article>
+<p>午後的校園剛下過一場雨，葉面還掛著水珠。自然課教師帶著學生走出教室，請每一組選擇一株植物，用平板拍下整株外形、葉片、花朵、果實與樹皮，再交給 AI 植物辨識工具分析。</p>
+<p>不到幾秒，第一組大喊：「老師，AI 說這是榕樹！」另一組立刻反駁：「可是我們拍的是同一棵，AI 說是印度橡膠樹。」第三組換了一張逆光照片，竟然又得到另一個答案。</p>
+<p>如果教師此時直接公布正確名稱，活動很快就會結束；但若教師反問：「AI 為什麼這樣判斷？它看見了哪些特徵？哪一個答案比較有證據？」一堂普通的植物辨識課，就此轉變成結合生物分類、資訊查證、AI 素養與科學推理的探究課。</p>
+<p>AI 的答案不再是終點，而是一個等待驗證的假設。</p>
+<h3>第一張照片，決定 AI 看見什麼</h3>
+<p>學生常以為，只要把鏡頭對準植物，AI 就能認出答案。然而，AI 看見的不是「校園裡的一棵樹」，而是一張由顏色、輪廓、紋理與背景組成的影像。拍攝距離太遠、畫面模糊、逆光、背景混入其他植物，或者只拍到一片缺乏特徵的葉子，都可能讓辨識結果改變。</p>
+<p>因此，活動的第一項任務不是「問 AI」，而是學習如何觀察與拍攝。學生應先拍下整株外形，接著補拍葉片正面與背面、葉緣、葉脈、葉序、莖或樹皮；如果植物正在開花或結果，也要留下花與果實的近照。照片旁可以放入尺、硬幣或方格紙作為比例參考，並記錄植物生長在陽光下、陰影處、花圃、牆角或潮溼地帶。</p>
+<p>這些動作看似只是改善照片品質，實際上卻是在訓練科學觀察：學生必須思考，哪些特徵具有辨識價值？什麼資訊還沒有被記錄？如果只拍一片葉子，就像只看一個人的手掌，往往不足以確認身分。</p>
+<h3>把 AI 的答案當成候選名單</h3>
+<p>取得清楚照片後，學生可以將影像交給一至兩種 AI 或植物辨識工具。此時，教師不急著問「答案是什麼」，而是要求學生完整記錄：AI 提供的中文名稱、學名、科屬分類、候選物種、辨識信心，以及它聲稱採用的判斷特徵。</p>
+<p>如果不同工具得到不同答案，正好可以形成一個有價值的問題。同一棵植物為什麼會被判斷成不同物種？是工具使用的資料不同，還是照片中的特徵不夠清楚？如果重新拍攝花朵、葉序或樹皮，結果是否會改變？</p>
+<p>照片式植物辨識工具的準確程度會因工具、植物部位與辨識層級而不同；辨識到「屬」可能較可靠，精確到「種」則更具挑戰，而且葉片照片通常比樹皮照片容易辨識。因此，AI 給出的名稱比較適合被視為候選答案，而不是已經完成鑑定的結論。</p>
+<h3>從「看起來很像」走向形態證據</h3>
+<p>下一步，學生要進入真正的查證工作。由於沒有單一且涵蓋所有校園植物的「教育部植物資料庫」，教學上可以搭配教育部數位學習資源，以及政府或學術機構建置的植物資料庫。</p>
+<p>例如，農業部生物多樣性研究所建置的「臺灣野生植物資料庫」以臺灣維管束植物為主要內容；「臺灣生命大百科」可查找物種分類與影像；「臺灣生物多樣性網絡」則提供野生生物出現紀錄、資料集及分布查詢。這些來源可以彼此對照，但學生仍要注意資料的適用範圍：野生植物資料庫未必完整收錄所有園藝栽培種，某一地區曾有物種紀錄，也不代表眼前植物必然就是該物種。</p>
+<p>查證時，不能只把 AI 圖片與資料庫照片放在一起，然後說「看起來很像」。學生需要比較可以描述的證據，例如葉子是互生、對生還是輪生，葉緣是全緣或鋸齒，葉脈屬於平行脈或網狀脈，花有幾枚花瓣，果實形態如何，樹皮是否光滑，以及植物通常生長在哪些環境。</p>
+<p>中文俗名有時可能重複或因地區而異，因此學名也很重要。可靠資料通常會說明發布單位、學名、分類階層、形態特徵、分布與生育環境。如果不同可信來源都指出相同的關鍵特徵，證據才會逐漸增強。</p>
+<p>學生可以把資料分成三欄：「我們實際觀察到的」、「AI 推測的」及「資料庫記載的」。例如，現場看到葉片對生、葉緣有鋸齒，AI 卻推薦一種葉片互生且全緣的植物，那麼即使照片外觀相似，也已出現足以反駁 AI 的證據。</p>
+<h3>AI 答錯時，探究才真正開始</h3>
+<p>當 AI 判斷錯誤，教師不必急著把它當成工具失敗，反而可以問：「它為什麼會錯？」</p>
+<p>可能原因很多：照片失焦或光線不足；只拍到葉片，缺少花與果實；兩個物種的葉形相似；幼株與成株外觀不同；同一植物在不同季節呈現不同狀態；園藝品種、雜交種、外來種或臺灣本土物種在訓練資料中不足。AI 也可能受到背景影響，把花盆、草地或附近另一株植物當成判斷線索。</p>
+<p>如果使用的是生成式 AI，還要留意「AI 幻覺」。它可能以流暢而肯定的語氣，說出完整的中文名、學名、分布地點與形態特徵，但內容不一定真實。對學生而言，AI 幻覺不是單純的「機器說錯話」，而是把不確定的猜測包裝成確定知識。教育部的中小學生成式人工智慧使用注意事項也提醒，使用生成內容時必須謹慎檢視、標示來源並避免過度依賴。</p>
+<p>教師可以故意保留答案，請各組提出支持或反對 AI 的證據，再讓學生補拍照片、改變角度、使用另一個工具測試。評量重點也不應只是「最後有沒有答對」，而應包括學生是否留下觀察紀錄、是否引用可信資料、能否指出矛盾，以及是否願意根據新證據修正判斷。</p>
+<h3>一張會留下思考過程的觀察紀錄</h3>
+<p>每組最後完成的植物觀察紀錄，不只寫植物名稱，還應保留整段推理歷程。內容可包括：</p>
+<p>一、基本資料：日期、時間、天氣、校園位置與生長環境。<br>二、現場觀察：整體外形、葉片、葉序、葉緣、葉脈、莖、花與果實。<br>三、AI 結果：第一次辨識結果、候選物種、學名、信心程度與判斷理由。<br>四、交叉測試：不同照片、不同工具或第二次辨識的結果。<br>五、資料查證：查詢來源、資料庫特徵與分布資訊。<br>六、證據比較：AI 結果與現場特徵相符或矛盾之處。<br>七、最後判斷：暫定名稱、支持證據及仍無法確定的部分。<br>八、後續問題：尚待觀察的花果、季節變化或需要請教的專家。</p>
+<p>「暫時無法確定」也是可以接受的科學結論。它代表現有證據不足，而不是學生失敗。學生可以等到開花季節再次觀察，或請教校內外具有植物專長的人員。科學探究並不保證每次都立即得到答案，但要求我們誠實說明證據能支持到什麼程度。</p>
+<h3>從一株植物走向 AI 生態調查助手</h3>
+<p>當各組累積植物紀錄後，活動可以進一步與昆蟲旅館、校園生物多樣性及長期生態調查結合，發展成「AI 生態調查助手」。</p>
+<p>學生每週固定時間觀察昆蟲旅館及周圍植物，記錄哪些植物正在開花、訪花昆蟲出現次數、昆蟲旅館孔洞封閉情形，以及當時的天氣、溫度與濕度。AI 可以協助將文字紀錄整理成表格，繪製物種數量、昆蟲出現頻率和季節變化圖，也能提醒缺漏值、異常資料，或提出下一步可研究的問題。</p>
+<p>但是，AI 和學生的責任必須清楚分開。AI 可以計算「五月開花植物較多時，觀察到的昆蟲次數也較多」，卻無法據此證明前者造成後者。氣溫、降雨、觀察時段、採樣次數及昆蟲生命史，都可能影響結果。「同時增加」只是相關線索，不等於因果關係。學生仍需檢查資料、解釋可能原因、指出限制，並決定是否增加觀察次數或控制變因。</p>
+<p>長期累積後，學生還能探究：昆蟲旅館周圍有哪些開花植物？哪些植物附近較常見獨居蜂？使用率是否隨季節變化？增加原生植物後，物種紀錄是否改變？這些資料甚至可以與臺灣生物多樣性網絡的物種分布資料互相參照，讓校園觀察逐漸接近公民科學的精神。</p>
+<p>這項活動真正培養的，不只是植物辨識能力。學生從葉形、葉序、花果與棲地學習生物分類；從比較發布單位、學名與形態描述建立查證能力；從 AI 答錯的經驗理解模型限制；並且完整經歷觀察、提問、形成假設、蒐集資料、比較證據、修正判斷與提出解釋的科學探究流程。</p>
+<p>真正重要的，不是學生能否在幾秒內叫出一株植物的名字，而是面對一個流暢、快速又看似正確的答案時，能不能停下來多看一眼、多查一筆資料、多提出一項證據。AI 可以成為校園生態調查的助手，但真正走進校園、觸摸葉片、發現矛盾並為科學解釋負責的，仍然是學生的眼睛、雙手、判斷與好奇心。</p>
+<h3>資料來源</h3>
+<ol><li>教育部資訊及科技教育司，臺灣中小學教師與學生 AI 素養框架，2026。<a href="https://pads.moe.edu.tw/download.php" target="_blank" rel="noopener">https://pads.moe.edu.tw/download.php</a></li><li>教育部，中小學使用生成式人工智慧注意事項 2.1，2026。<a href="https://pads.moe.edu.tw/download.php" target="_blank" rel="noopener">https://pads.moe.edu.tw/download.php</a></li><li>教育部，中小學數位教學指引 3.0，2024。<a href="https://pads.moe.edu.tw/download.php" target="_blank" rel="noopener">https://pads.moe.edu.tw/download.php</a></li><li>農業部生物多樣性研究所，臺灣野生植物資料庫。<a href="https://plant.tesri.gov.tw/" target="_blank" rel="noopener">https://plant.tesri.gov.tw/</a></li><li>臺灣生命大百科。<a href="https://taieol.tw/" target="_blank" rel="noopener">https://taieol.tw/</a></li><li>農業部生物多樣性研究所，臺灣生物多樣性網絡。<a href="https://www.tbn.org.tw/" target="_blank" rel="noopener">https://www.tbn.org.tw/</a></li><li>農業部生物多樣性研究所，揭開自然的秘密：用 TBN 和公民科學守護生物多樣性，2024。<a href="https://www.tbri.gov.tw/view.php?id=142&amp;amp;theme=web_structure" target="_blank" rel="noopener">https://www.tbri.gov.tw/view.php?id=142&amp;theme=web_structure</a></li><li>Schmidt, R. J., et al., An Analysis of the Accuracy of Photo-Based Plant Identification Applications on Fifty-Five Tree Species, Arboriculture &amp; Urban Forestry, 2022。<a href="https://auf.isa-arbor.com/content/48/1/27" target="_blank" rel="noopener">https://auf.isa-arbor.com/content/48/1/27</a></li></ol>
+<p>資料查閱日期：2026 年 7 月 14 日。</p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

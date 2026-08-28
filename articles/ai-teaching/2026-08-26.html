@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 十分鐘做出漂亮教案，老師真的因此更會教了嗎？從「電磁鐵實驗」看見 AI 時代的教學能力幻覺｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>AI 十分鐘做出漂亮教案，老師真的因此更會教了嗎？從「電磁鐵實驗」看見 AI 時代的教學能力幻覺</h1>
+      <div class="date">2026 年 08 月 26 日</div>
+    </div>
+    <article>
+<p>想像星期日晚上，老師正在準備下週的「電磁鐵」單元。</p>
+<p>打開生成式 AI，輸入：</p>
+<p>「請設計國小六年級電磁鐵探究課程，包含學習目標、實驗步驟、控制變因、學習單、形成性評量與差異化教學。」</p>
+<p>不到一分鐘，一整套內容出現。</p>
+<p>架構完整、文字流暢，甚至連「培養學生探究能力」都寫得很好。</p>
+<p>如果再要求：</p>
+<p>「改成素養導向。」</p>
+<p>「加入合作學習。」</p>
+<p>「生成評量規準。」</p>
+<p>幾分鐘後，教師手上就可能出現一份過去需要花一、兩個晚上才能整理完成的教案。</p>
+<p>這當然是 AI 很有價值的地方。</p>
+<p>可是，一篇 2026 年 8 月 18 日刊登於《Frontiers in Education》的最新研究，提出了一個非常值得教師警覺的概念：</p>
+<p><strong>illusion of teaching competence——「教學能力幻覺」。</strong></p>
+<p>研究者回顧 2018～2025 年間 15 篇相關研究後發現，AI 教育研究經常把教師能力操作化為「會不會使用工具」「覺得 AI 有沒有用」「工作效率是否增加」等指標；相較之下，真正決定教學品質的情境判斷、反思、關係建立與專業決策，反而比較少被測量。研究並指出，高度的 AI 使用自我效能，不一定等於具有充分的教學理由與專業判斷。</p>
+<p>換句話說：</p>
+<blockquote><strong>AI 可以讓我們更快「做出像教案的東西」，卻不一定讓我們更會判斷「這是不是一堂好課」。</strong></blockquote>
+<p>這個問題在自然科尤其重要。</p>
+<p>因為自然課不是只把知識講對。</p>
+<p>還涉及實驗安全、變因控制、學生迷思、證據品質、材料限制，以及「什麼時候不要告訴學生答案」。</p>
+<h3>具體自然科案例：AI × 電磁鐵探究的「三次壓力測試」</h3>
+<p>教學對象可以設定為國小六年級至國中七年級。</p>
+<p>主題是：</p>
+<p><strong>哪些因素會影響電磁鐵磁力大小？</strong></p>
+<p>材料可以使用漆包線或絕緣導線、鐵釘、低電壓電池、迴紋針等安全器材。</p>
+<p>AI 的角色主要放在教師備課與學生實驗後的分析，而不是直接替學生完成探究。</p>
+<p>教師首先可以請 AI 生成一份教案。</p>
+<p>但不要直接使用。</p>
+<p>先做第一個測試：</p>
+<h3>壓力測試一：它真的懂「公平實驗」嗎？</h3>
+<p>假設 AI 建議：</p>
+<p>「比較線圈 20 圈與 40 圈，看吸起多少迴紋針。」</p>
+<p>看起來完全合理。</p>
+<p>教師應該繼續問：</p>
+<blockquote>如果我要證明線圈圈數會影響磁力，除了圈數之外，哪些條件必須保持相同？請檢查你剛才提出的方法是否真的做到。</blockquote>
+<p>這時可能發現：</p>
+<p>電池數量必須一致；</p>
+<p>鐵釘尺寸與材質要一致；</p>
+<p>導線種類最好相同；</p>
+<p>每次通電時間要控制；</p>
+<p>迴紋針大小與測試方式也要一致。</p>
+<p>更麻煩的是，增加線圈圈數時，導線長度也跟著增加，電阻可能改變。</p>
+<p>到了較高年級，這甚至可以變成很好的延伸問題：</p>
+<p><strong>我們真的只改變了一個變因嗎？</strong></p>
+<p>AI 可以產生一個看起來合理的實驗，教師卻必須有能力看出裡面的科學限制。</p>
+<p>這就是「工具能力」和「學科教學能力」的差別。</p>
+<h3>壓力測試二：AI 有沒有把最值得學的答案提前講掉？</h3>
+<p>AI 很喜歡在教案前面先寫：</p>
+<p>「線圈圈數越多，電磁鐵磁力越強。」</p>
+<p>問題是，如果學生上課第一分鐘就看到這句話，那後面所謂的「探究」，其實只剩下驗證課本答案。</p>
+<p>教師可以改寫課程：</p>
+<p>先給兩支外觀相同、圈數不同的電磁鐵。</p>
+<p>問學生：</p>
+<p>「哪一支可能吸起比較多迴紋針？」</p>
+<p>先預測。</p>
+<p>再說理由。</p>
+<p>最後實測。</p>
+<p>如果結果與預測不同，再追問：</p>
+<p>「是哪一項條件可能造成差異？」</p>
+<p>這時學生真正進行的是：</p>
+<p>預測 → 證據 → 修正模型。</p>
+<p>而不是：</p>
+<p>知道答案 → 做實驗證明老師是對的。</p>
+<p>因此教師可以要求 AI：</p>
+<blockquote>重新檢查整份教材，把所有會提前洩漏探究結果的句子列出來，但不要直接改寫。</blockquote>
+<p>這是一種非常實用的 AI 備課方式。</p>
+<p>不是叫 AI「再生一份」。</p>
+<p>而是叫它協助我們<strong>審自己的教學邏輯</strong>。</p>
+<h3>壓力測試三：如果學生做出反常數據，AI 怎麼處理？</h3>
+<p>假設學生測到：</p>
+<p>20 圈：吸起 8 個迴紋針。</p>
+<p>30 圈：12 個。</p>
+<p>40 圈：9 個。</p>
+<p>學生可能說：</p>
+<p>「老師，實驗失敗了。」</p>
+<p>這時如果問 AI：</p>
+<p>「請幫我整理結果。」</p>
+<p>AI 有時可能直接把 40 圈那筆當成異常值，甚至暗示應該刪除。</p>
+<p>但真正的自然老師反而會問：</p>
+<p>「40 圈那次發生了什麼？」</p>
+<p>電池是不是已經比較沒電？</p>
+<p>線圈有沒有鬆掉？</p>
+<p>通電時間不同？</p>
+<p>測試位置有沒有改變？</p>
+<p>還是這個差異本來就在誤差範圍？</p>
+<p>這一筆「不好看」的資料，反而可能是整堂課最有價值的地方。</p>
+<p>因為學生開始理解：</p>
+<p><strong>科學不是把數據整理成漂亮趨勢，而是解釋為什麼世界沒有完全按照預期運作。</strong></p>
+<p>AI 可以幫忙算平均值。</p>
+<p>但不應該替學生決定哪些真實資料「不好看所以刪掉」。</p>
+<h3>最新研究：教師真正的 AI 素養，會在「修改 AI」時出現</h3>
+<p>8 月 10 日刊登於《Education Sciences》的一項研究，追蹤 8 名韓國國小準教師進行 10 週 ChatGPT 輔助自然科教案設計，課程內容包括季節、天氣、太陽系、星座與月相等地球科學主題。</p>
+<p>研究發現，到了課程後期，多數參與者開始出現更具情境性的反覆提示，以及查證、修改、補充與拒絕 AI 建議的行為。換句話說，AI literacy 不只是「提示詞變厲害」，更重要的是教師逐漸知道：</p>
+<p><strong>什麼時候不能照單全收。</strong></p>
+<p>這和「教學能力幻覺」剛好形成一個非常有意思的對照。</p>
+<p>如果 AI 每次生出的教材都讓老師覺得：</p>
+<p>「好完整。」</p>
+<p>「比我自己寫得漂亮。」</p>
+<p>「我現在備課超有效率。」</p>
+<p>這當然可以增加信心。</p>
+<p>但是教師還必須保持另一種能力：</p>
+<p><strong>有勇氣把一份看起來非常專業的 AI 教案退回去。</strong></p>
+<p>因為它可能：</p>
+<p>科學概念正確，探究順序卻不好；</p>
+<p>活動很有趣，卻沒有回答學習目標；</p>
+<p>問題很多，卻全部是低層次問答；</p>
+<p>實驗漂亮，控制變因卻有漏洞；</p>
+<p>評量題完整，卻只在測記憶；</p>
+<p>甚至完全沒有考慮眼前學生真正的迷思。</p>
+<h3>「我覺得我會用 AI」與「我真的更會教」最好分開評估</h3>
+<p>8 月最新刊出的另一項教師教育研究，也探討生成式 AI 是否能提升準教師的教學設計能力與自我效能。研究結果支持 AI 可以成為提升教學設計信心的重要協作工具。</p>
+<p>這是一個正面訊號。</p>
+<p>老師敢開始嘗試，本來就是重要的第一步。</p>
+<p>但是信心提升之後，更需要一套外部檢驗。</p>
+<p>例如自然老師完成 AI 教案後，可以強迫自己回答五個問題：</p>
+<p><strong>第一，學生這堂課必須親自完成的思考是什麼？</strong></p>
+<p>如果答案全部都被 AI 或教師先完成，就需要修改。</p>
+<p><strong>第二，活動真正產生什麼證據？</strong></p>
+<p>不要把課本知識當成實驗結果。</p>
+<p><strong>第三，最可能出現的三個迷思是什麼？</strong></p>
+<p>如果完全沒有預測學生會想錯什麼，通常還不算真正進入教學設計。</p>
+<p><strong>第四，如果結果和預期不同，我要怎麼教？</strong></p>
+<p>好的自然課不能只設計「成功時怎麼上」。</p>
+<p><strong>第五，如果關掉 AI，這堂課還成立嗎？</strong></p>
+<p>如果沒有 AI，學生就完全無法觀察、比較、測量與推理，那麼 AI 可能已經從鷹架變成主體。</p>
+<h3>AI 時代教師專業發展，也開始從「學工具」轉向「學判斷」</h3>
+<p>UNESCO IITE 於 8 月公布的 LIET2026，直接把主題設定為 <strong>PD4AI | AI4PD</strong>，也就是一方面研究教師需要什麼專業發展來面對 AI，另一方面研究 AI 本身如何支援教師專業成長。其討論範圍橫跨 K–12、高等教育與教師教育。</p>
+<p>而 8 月 22 日美聯社對美國學校 AI literacy 的最新報導也顯示，愈來愈多教育現場已經從「禁止 AI」走向教學生與教師辨識幻覺、偏差、個資風險，以及最重要的一點——<strong>什麼時候不應該使用 AI。</strong></p>
+<p>這個方向非常重要。</p>
+<p>因為真正成熟的 AI 能力不是：</p>
+<p>「任何工作我都可以交給 AI。」</p>
+<p>而是：</p>
+<p><strong>「我知道哪些工作交給 AI 會更好，哪些工作交出去以後反而會失去專業。」</strong></p>
+<h3>學生可能學到什麼？</h3>
+<p>在電磁鐵案例中，學生仍然是探究的主體。</p>
+<p>他要自己預測。</p>
+<p>自己繞線。</p>
+<p>自己測量。</p>
+<p>自己發現異常資料。</p>
+<p>自己決定結論可以寫到什麼程度。</p>
+<p>AI 可以在最後協助：</p>
+<p>找可能遺漏的變因；</p>
+<p>整理三次測量；</p>
+<p>提出另一種解釋；</p>
+<p>檢查結論有沒有超過證據。</p>
+<p>如此一來，學生學到的不只是電磁鐵。</p>
+<p>還會理解：</p>
+<p><strong>AI 可以協助科學思考，但科學判斷不能只因為 AI 說得很有道理就結束。</strong></p>
+<h3>教師需要注意的風險與限制</h3>
+<p>第一，「教學能力幻覺」目前是研究者根據 15 篇文獻提出的理論性概念，而不是一項已經建立標準測驗、可以計算每位教師分數的診斷工具。因此不應把它拿來替教師貼標籤。</p>
+<p>第二，AI 幫助教師提高效率與自信本身不是問題。真正的問題是把效率或自信誤認成學習品質的證明。</p>
+<p>第三，自然科 AI 教案仍需要人工檢查科學正確性、變因控制、實驗安全與年齡適切性。</p>
+<p>第四，使用 AI 生成實驗示意圖時更應查證。電路方向、磁場示意、光路、力的箭頭與粒子模型，只要圖像細節錯誤，就可能比一段錯字更容易造成學生迷思。</p>
+<p>第五，教師把學生作業交給 AI 分析時，必須注意個資、平台政策與資料用途。</p>
+<p>第六，不要把「會下 Prompt」當成 AI 專業發展的終點。真正值得練習的是查證、修改、拒絕、說明理由，以及把 AI 建議放回真實課堂情境判斷。</p>
+<p>2026 年 8 月出版的 Springer 專書《Artificial Intelligence Applications in Science Education》，也正把 AI 科學教育的焦點放得更廣：除了工具與 Prompt，也包含科學本質、資料素養、論證、倫理、教師教育與實際課程設計等 19 個章節。這反映出一個很明顯的方向——AI 與科學教育正在從「使用哪個工具」逐漸走向「如何重新思考教與學」。</p>
+<p>所以，下一次 AI 幫我們在五分鐘內做好一份漂亮的自然科教案時，不需要因為害怕「依賴 AI」就把它丟掉。</p>
+<p>可以留下。</p>
+<p>只是多做一件事：</p>
+<p><strong>找它麻煩。</strong></p>
+<p>問：</p>
+<p>「哪裡不公平？」</p>
+<p>「哪裡太早給答案？」</p>
+<p>「哪個概念可能讓學生誤解？」</p>
+<p>「如果實驗結果不符合預期呢？」</p>
+<p>「為什麼我要採用你這個建議？」</p>
+<p>如果教師可以回答最後這句話，AI 才真正變成專業工具。</p>
+<p>因為未來教師最有價值的能力，恐怕不是比 AI 更快生成教材。</p>
+<p>而是面對一份由 AI 完成、看起來無懈可擊的教材時，仍然知道：</p>
+<p><strong>哪裡該保留，哪裡該刪掉，哪裡必須重新教。</strong></p>
+<p>AI 可以讓備課變快。</p>
+<p>但真正讓教學變好的，仍然是教師的判斷。</p>
+<h3>參考資料與延伸閱讀：</h3>
+<ol><li>Bădoi-Hammami, M. 等，<strong>The illusion of teaching competence in AI-mediated education</strong>，《Frontiers in Education》，2026 年 8 月 18 日。整合 15 篇研究，提出「教學能力幻覺」概念，提醒科技熟練度、自我效能與真正的情境化教學專業不能畫上等號。</li></ol>
+<p><a href="https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2026.1872857/full" target="_blank" rel="noopener">https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2026.1872857/full</a></p>
+<ol><li>Choi, Y.-S., &amp; Kim, M.-C.，<strong>Exploring Elementary Pre-Service Teachers’ AI Literacy in ChatGPT-Assisted Science Lesson Design</strong>，《Education Sciences》，2026 年 8 月 10 日。研究追蹤 8 名國小準教師進行 10 週 ChatGPT 輔助自然科教案設計，特別關注查證、修改與教師判斷。</li></ol>
+<p><a href="https://www.mdpi.com/2227-7102/16/8/1275" target="_blank" rel="noopener">https://www.mdpi.com/2227-7102/16/8/1275</a></p>
+<ol><li><strong>Generative AI as a psychological Empowerer: The central role of self-efficacy in developing pre-service teachers’ instructional design skills</strong>，《Learning and Instruction》，2026 年 8 月。研究探討生成式 AI、教師自我效能與教學設計能力之間的關係。</li></ol>
+<p><a href="https://www.sciencedirect.com/science/article/pii/S0959475226000757" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S0959475226000757</a></p>
+<ol><li>UNESCO Institute for Information Technologies in Education，<strong>LIET2026: PD4AI | AI4PD</strong>，2026 年 8 月 6 日發布。聚焦 AI 時代教師專業發展，以及如何利用 AI 支援教師專業成長。</li></ol>
+<p><a href="https://iite.unesco.org/announcements/invitation-to-join-the-learning-innovations-and-emerging-technologies-conference-2026-liet2026-pd4ai-ai4pd/" target="_blank" rel="noopener">https://iite.unesco.org/announcements/invitation-to-join-the-learning-innovations-and-emerging-technologies-conference-2026-liet2026-pd4ai-ai4pd/</a></p>
+<ol><li>Bektaş, O., Tarkın Çelikkıran, A., Tüysüz, M., &amp; Seferoğlu, S. S.（Eds.），<strong>Artificial Intelligence Applications in Science Education</strong>，Springer，電子版 2026 年 8 月 4 日出版。全書涵蓋 AI 科學教學、資料素養、科學本質、論證、倫理與教師教育。</li></ol>
+<p><a href="https://link.springer.com/book/9783032258236" target="_blank" rel="noopener">https://link.springer.com/book/9783032258236</a></p>
+<ol><li>Associated Press，<strong>Schools are starting to teach AI literacy. For many, that means helping kids see chatbots’ flaws</strong>，2026 年 8 月 22 日。報導美國學校逐漸由禁止 AI 轉向教授幻覺、偏差、個資與「何時不應使用 AI」等素養。</li></ol>
+<p><a href="https://apnews.com/article/4fb9f2c0240993499870f4f204bf41c1" target="_blank" rel="noopener">https://apnews.com/article/4fb9f2c0240993499870f4f204bf41c1</a></p>
+<p><strong>2026 年 08 月 26 日</strong><br><strong>作者：陳賢宗</strong></p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

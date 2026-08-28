@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 最該學會的一句話，可能不是「答案是……」，而是「我不確定」：從校園雲朵觀測教學生判斷 AI 的信心與證據｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>AI 最該學會的一句話，可能不是「答案是……」，而是「我不確定」：從校園雲朵觀測教學生判斷 AI 的信心與證據</h1>
+      <div class="date">2026 年 08 月 22 日</div>
+    </div>
+    <article>
+<p>自然課走到操場，一名學生抬頭看到天空裡一大片白色雲層，拿起平板拍照問 AI：</p>
+<p>「這是什麼雲？」</p>
+<p>AI 幾秒鐘後回答：</p>
+<p>「這是積雲（Cumulus），通常代表天氣穩定。」</p>
+<p>旁邊另一位學生換個角度拍，同一片天空再問一次。</p>
+<p>AI 卻回答：</p>
+<p>「這可能是層積雲（Stratocumulus）。」</p>
+<p>學生馬上問老師：</p>
+<p>「到底哪一個才對？」</p>
+<p>這時老師其實遇到了一個非常適合 AI 時代自然教育的問題。</p>
+<p>不是「AI 有沒有答對」而已。</p>
+<p>而是：</p>
+<p><strong>當證據不足時，AI 有沒有能力告訴我們它其實不確定？</strong></p>
+<p>人類做科學時非常習慣說：</p>
+<p>「目前證據不足。」</p>
+<p>「可能是。」</p>
+<p>「需要再觀察。」</p>
+<p>「這兩種解釋都還不能排除。」</p>
+<p>但生成式 AI 的語言往往非常流暢，即使資訊不足，也可能產生一個完整、合理、甚至充滿細節的答案。</p>
+<p>對學生來說，最危險的未必是明顯胡說八道。</p>
+<p>反而是一段<strong>看起來非常像老師講義的錯誤答案</strong>。</p>
+<p>美國教育科學研究院（IES）在 2026 年 8 月 10 日公布的最新 K–12 AI 研究整理指出，目前真正能提供強因果證據的研究仍非常有限。其整理出的三項早期訊號值得注意：教師介入、AI 輔助的學習模式較具希望；直接提供學生使用的 AI 工具成效較混合；而一般型生成式 AI 若減少學生自己處理資訊與解決問題的認知努力，甚至可能妨礙學習。</p>
+<p>這意味著，AI 素養不能只教學生：</p>
+<p>「怎樣問才能得到更好的答案？」</p>
+<p>還要再多教一層：</p>
+<blockquote><strong>怎樣知道這個答案其實不值得立刻相信？</strong></blockquote>
+<p>自然科正好非常適合練這件事。</p>
+<h3>具體自然科案例：AI × 校園雲朵「不確定性實驗」</h3>
+<p>教學對象可以設定為國小五、六年級至國中七年級。</p>
+<p>主題包括天氣、雲的觀察與分類、證據、分類標準，以及 AI 影像辨識。</p>
+<p>使用的 AI 功能為圖片理解、分類與對話式生成 AI。</p>
+<p>核心問題不是：</p>
+<blockquote>「AI 能不能認出雲？」</blockquote>
+<p>而是：</p>
+<blockquote><strong>「當照片資訊不完整時，AI 知不知道自己可能認錯？」</strong></blockquote>
+<p>學生每天固定一個時段，到校園同一地點拍攝天空。</p>
+<p>每次除了照片，也記錄：</p>
+<p>日期與時間、</p>
+<p>雲量大約多少、</p>
+<p>雲的高度感覺、</p>
+<p>外觀是大片、成團還是絲狀、</p>
+<p>顏色、</p>
+<p>是否正在下雨、</p>
+<p>當時天氣。</p>
+<p>如果學校有簡單的溫溼度計，也可以加入溫度與相對濕度。</p>
+<p>第一天先不問 AI。</p>
+<h3>第一階段：先讓學生自己描述，不急著分類</h3>
+<p>老師可以規定：</p>
+<p><strong>前三分鐘不能說雲名。</strong></p>
+<p>只能描述看到的特徵。</p>
+<p>例如：</p>
+<p>「一團一團。」</p>
+<p>「底部比較平。」</p>
+<p>「邊緣很清楚。」</p>
+<p>「像一層棉被。」</p>
+<p>「很薄，可以看到太陽。」</p>
+<p>這個步驟看起來很簡單，其實就是科學觀察最基本的訓練。</p>
+<p>因為學生非常容易從：</p>
+<p>「我看到什麼」</p>
+<p>直接跳到：</p>
+<p>「所以它是什麼」。</p>
+<p>AI 更容易。</p>
+<p>因此教師可以特別建立兩欄：</p>
+<p><strong>觀察：</strong></p>
+<p>白色、塊狀、底部較平。</p>
+<p><strong>判斷：</strong></p>
+<p>可能是積雲。</p>
+<p>兩欄不能混在一起。</p>
+<h3>第二階段：故意讓不同學生拍「同一片雲」</h3>
+<p>四名學生站在不同位置，用不同縮放比例拍攝同一片天空。</p>
+<p>再分別交給 AI：</p>
+<blockquote>請判斷這張照片中的主要雲型。不要只給單一答案，請列出最可能的兩種分類，以及你判斷所依據的可見特徵。如果照片不足以可靠分類，請直接說「無法確定」。</blockquote>
+<p>接下來比較四個結果。</p>
+<p>這時可能出現很有意思的情況。</p>
+<p>同一片雲：</p>
+<p>A 照片 → 積雲。</p>
+<p>B 照片 → 層積雲。</p>
+<p>C 照片 → 積雲 70%、層積雲 30%。</p>
+<p>D 照片 → 無法判斷。</p>
+<p>教師此時不要急著公布標準答案。</p>
+<p>先問：</p>
+<p>「為什麼同一片天空會出現不同結果？」</p>
+<p>學生可能開始發現：</p>
+<p>照片範圍不同；</p>
+<p>雲的局部形狀不同；</p>
+<p>逆光；</p>
+<p>過度曝光；</p>
+<p>地景被裁掉；</p>
+<p>只拍到雲的一小部分。</p>
+<p>AI 看到的不是天空。</p>
+<p>它看到的是<strong>你給它的那一張照片</strong>。</p>
+<p>這是一個非常重要的 AI 概念：</p>
+<blockquote><strong>模型的回答受到輸入資料限制。</strong></blockquote>
+<h3>第三階段：要求 AI 提出「我還需要知道什麼」</h3>
+<p>一般學生最常問：</p>
+<p>「答案是什麼？」</p>
+<p>教師可以故意改變 AI 的任務：</p>
+<blockquote>在判斷雲型之前，請先列出三項如果知道就能降低不確定性的資訊。不要直接分類。</blockquote>
+<p>AI 可能會提出：</p>
+<p>需要更廣角的天空照片；</p>
+<p>需要知道雲層是否呈大片連續分布；</p>
+<p>需要觀察雲底形狀；</p>
+<p>需要不同時間的變化；</p>
+<p>需要知道是否伴隨降雨。</p>
+<p>這時學生再出去補資料。</p>
+<p>AI 不再只是「看照片回答」。</p>
+<p>而變成協助學生回答：</p>
+<p><strong>還缺什麼證據？</strong></p>
+<p>這和真正的科學工作非常接近。</p>
+<h3>第四階段：比較「信心」和「正確」是不是同一件事</h3>
+<p>如果 AI 以非常肯定的語氣說：</p>
+<p>「這一定是積雲。」</p>
+<p>教師可以要求：</p>
+<blockquote>請重新回答，將每一句內容分成：</blockquote>
+<blockquote>1. 從照片可以直接觀察到；</blockquote>
+<blockquote>2. 根據特徵做出的分類推論；</blockquote>
+<blockquote>3. 無法只靠照片確認。</blockquote>
+<p>這時學生會慢慢發現一個 AI 時代非常重要的概念：</p>
+<p><strong>回答語氣的信心，不等於證據的強度。</strong></p>
+<p>AI 說：</p>
+<p>「這就是積雲。」</p>
+<p>和</p>
+<p>「根據照片中塊狀外觀與較清楚邊界，積雲是一個可能分類，但缺乏完整天空範圍，因此不能排除其他低層雲。」</p>
+<p>後者其實更像科學。</p>
+<p>不是因為它比較長。</p>
+<p>而是因為它<strong>承認證據的限制</strong>。</p>
+<h3>第五階段：讓學生設計「最容易讓 AI 認錯的照片」</h3>
+<p>這一階段非常適合小組挑戰。</p>
+<p>每組想辦法在不造假的情況下，拍攝一張「資訊最不足」的雲照片，例如：</p>
+<p>只拍局部；</p>
+<p>嚴重逆光；</p>
+<p>雲位在遠方；</p>
+<p>天空比例太少；</p>
+<p>玻璃窗反射；</p>
+<p>傍晚光線很弱。</p>
+<p>再看 AI 是否仍然給出非常肯定的答案。</p>
+<p>然後反過來拍一張「科學紀錄品質較高」的照片：</p>
+<p>包含較完整天空範圍；</p>
+<p>曝光正常；</p>
+<p>固定方向；</p>
+<p>保留環境參考；</p>
+<p>同一地點連續拍攝。</p>
+<p>比較 AI 的回答是否改變。</p>
+<p>學生會親自發現：</p>
+<p><strong>提高 AI 準確率的一部分工作，不是在提示詞，而是在資料蒐集。</strong></p>
+<p>這正呼應 7 月 23 日公布的〈AI-Integrated Scientific Inquiry〉。研究者主張，AI 應該像其他科學工具一樣進入觀察、分析與模型建構，而每一種 AI「儀器」都必須附帶反思點，讓學生了解工具可能在哪裡誤導。</p>
+<h3>第六階段：老師故意問一個「照片根本無法回答」的問題</h3>
+<p>例如把雲照片交給 AI：</p>
+<p>「下午三點一定會下雨嗎？」</p>
+<p>如果 AI 回答：</p>
+<p>「是的，因為這些雲表示下午會有降雨。」</p>
+<p>教師立刻追問學生：</p>
+<p>「一張照片真的足夠預測幾個小時後一定下雨嗎？」</p>
+<p>要可靠預測天氣，還可能需要：</p>
+<p>衛星與雷達資料、</p>
+<p>氣壓、</p>
+<p>溼度、</p>
+<p>風場、</p>
+<p>大尺度天氣系統，</p>
+<p>以及雲系隨時間的演變。</p>
+<p>學生因此學到科學中非常重要的一課：</p>
+<blockquote><strong>某一筆資料可以支持某種程度的判斷，但不能回答所有問題。</strong></blockquote>
+<p>AI 最大的問題之一，正是它常常願意回答一個其實資料不足的問題。</p>
+<p>因此教師可以把一句新的 AI 素養提示貼在教室裡：</p>
+<p><strong>「回答之前，先問：現有資料真的足夠嗎？」</strong></p>
+<h3>為什麼這比「教提示詞技巧」重要？</h3>
+<p>2026 年 8 月 2 日公布的一項 AI Tutor 研究分析了約 2,300 萬筆、來自 33,700 名線上學習者的學習紀錄，研究者嘗試讓 AI 同時考量短期學習與長期投入，顯示 AI 個人化學習正從「下一題出什麼」走向更長期的學習策略。這項研究的情境主要是線上教育，並不能直接推論到 K–12 自然教室，但它透露出一項重要趨勢：AI 系統愈來愈可能替學習者決定下一步。</p>
+<p>而當 AI 愈能替學生決策，學生愈需要另一種能力：</p>
+<p><strong>知道什麼時候不該把決策交出去。</strong></p>
+<p>例如：</p>
+<p>AI 可以提出可能雲型。</p>
+<p>學生負責決定證據是否足夠。</p>
+<p>AI 可以整理觀察紀錄。</p>
+<p>學生負責決定結論是否超出資料。</p>
+<p>AI 可以提出明天天氣可能如何。</p>
+<p>學生負責查證正式氣象資料。</p>
+<p>這就是人機合作裡最重要的責任分配。</p>
+<h3>自然科應該把「不確定」正式教進課程</h3>
+<p>傳統考試很習慣每一題都有一個答案。</p>
+<p>久而久之，學生可能形成一種錯覺：</p>
+<p>科學就是把不知道變成知道。</p>
+<p>其實科學更常做的是：</p>
+<p>把「完全不知道」</p>
+<p>變成</p>
+<p>「目前比較支持 A，但 B 還不能排除」。</p>
+<p>這也是為什麼 AI 時代尤其需要教學生：</p>
+<p>可能；</p>
+<p>大約；</p>
+<p>在目前條件下；</p>
+<p>目前資料支持；</p>
+<p>仍需要更多證據；</p>
+<p>不能由本實驗判斷。</p>
+<p>這些字並不是「沒把握」。</p>
+<p>它們恰恰是科學語言的精確性。</p>
+<h3>教師需要注意的風險與限制</h3>
+<p>第一，不應把一般多模態 AI 當成正式氣象觀測工具。真正雲分類與天氣判讀仍應搭配可靠氣象資料、專業分類指引與教師判斷。</p>
+<p>第二，不能把 AI 自己產生的百分比直接當成真正校準過的機率。有些模型即使回答「90%」，也不代表這個 90% 經過正式統計校準。</p>
+<p>第三，學生拍攝天空時應避免把同學臉孔、車牌、校舍可識別資訊等不必要內容上傳到外部平台。</p>
+<p>第四，學生不能只比較「AI 和標準答案誰對」，還應研究錯誤發生的條件，因為錯誤模式本身就是教材。</p>
+<p>第五，IES 8 月 10 日的研究整理再次提醒，目前 K–12 AI 的嚴格因果研究仍非常有限，因此教師應把新工具視為需要持續驗證的教學介入，而不是已經證實有效的萬用解法。</p>
+<p>第六，〈AI-Integrated Scientific Inquiry〉目前主要是一套科學教育願景與設計架構，而非大規模隨機對照實驗，因此適合提供課程方向，但不應誇大為已經證實的最佳教法。</p>
+<p>美國教育科學研究院目前支持的 AmplifyGAIN 計畫，也明確把一般用途生成式 AI 的問題寫進研究目的：通用模型可能欠缺足夠的概念深度、教學原理與對學生學習的理解，因此計畫正在研究如何讓生成式 AI 真正支援 K–12 數學與科學教師，而不是取代教師的批判思考與創造力。該中心預計包含全美 2,000 名數學與科學教師的調查與大規模可用性研究。</p>
+<p>這其實很值得自然科老師記住。</p>
+<p>未來我們可能會看到：</p>
+<p>更會看照片的 AI，</p>
+<p>更會分析實驗的 AI，</p>
+<p>更會個人化教學的 AI，</p>
+<p>甚至會主動規畫整個學習流程的 AI。</p>
+<p>但模型再強，都不代表每一次回答都有足夠證據。</p>
+<p>所以，下次學生舉起平板問：</p>
+<p>「老師，AI 說這是積雲，到底是不是？」</p>
+<p>老師不必急著說：</p>
+<p>「不要相信 AI。」</p>
+<p>也不必說：</p>
+<p>「AI 現在很準，可以相信。」</p>
+<p>可以把問題再丟回去：</p>
+<p><strong>「它是根據什麼判斷的？」</strong></p>
+<p><strong>「還缺什麼資料？」</strong></p>
+<p><strong>「有沒有另一種可能？」</strong></p>
+<p><strong>「什麼情況下我們應該說：現在還不知道？」</strong></p>
+<p>如果孩子開始習慣問這四句話，他學到的已經不只是如何辨認一朵雲。</p>
+<p>他正在學一種 AI 時代更重要的科學能力：</p>
+<p><strong>有證據時形成判斷，證據不足時，也有勇氣保留判斷。</strong></p>
+<p>真正可靠的人工智慧，不應該永遠都有答案。</p>
+<p>真正成熟的學習者，也不需要永遠假裝自己知道答案。</p>
+<p>有時候最科學的一句話，就是：</p>
+<p><strong>「目前，我還不確定。」</strong></p>
+<h3>參考資料與延伸閱讀：</h3>
+<ol><li>Institute of Education Sciences / REL Northeast &amp; Islands，<strong>AI in K–12 Education: The Good, the Bad, and the Guardrails to Consider</strong>，2026 年 8 月 10 日。IES 指出目前 K–12 AI 高品質因果研究仍非常有限；教師介入式 AI 輔助較具正向訊號，而一般用途 AI 若取代學生思考則可能妨礙學習。</li></ol>
+<p><a href="https://ies.ed.gov/learn/blog/ai-k-12-education-good-bad-and-guardrails-consider" target="_blank" rel="noopener">https://ies.ed.gov/learn/blog/ai-k-12-education-good-bad-and-guardrails-consider</a></p>
+<ol><li>Zhai, C., Song, Y., Bapna, R., &amp; Ye, J.，<strong>Towards Sustainable Learning in Online Education: A Reinforcement Learning Approach</strong>，2026 年 8 月 2 日。研究使用約 2,300 萬筆、33,700 名學習者紀錄探索 AI Tutor 如何同時考量學習成效與長期投入；研究情境為線上教育，本文將其作為 AI 個人化趨勢的背景資料。</li></ol>
+<p><a href="https://arxiv.org/abs/2608.11245" target="_blank" rel="noopener">https://arxiv.org/abs/2608.11245</a></p>
+<ol><li>Bewersdorff, A., Rojas, M., &amp; Zhai, X.，<strong>AI-Integrated Scientific Inquiry: A Practice-Centered Vision for Science Education</strong>，2026 年 7 月 23 日。提出把電腦視覺、分群與生成模型視為科學探究工具，並為每一項 AI 工具設置 reflection point，以培養學生理解其限制。</li></ol>
+<p><a href="https://arxiv.org/abs/2607.21777" target="_blank" rel="noopener">https://arxiv.org/abs/2607.21777</a></p>
+<ol><li>Institute of Education Sciences，<strong>AmplifyGAIN: Generative AI for Transformative Learning</strong>。由 University of Washington 執行的五年期研究中心，聚焦生成式 AI 如何支援 K–12 數學與科學教學，並明確處理通用 AI 在概念深度、教學知識與過度依賴方面的限制。</li></ol>
+<p><a href="https://ies.ed.gov/use-work/awards/amplifygain-generative-ai-transformative-learning" target="_blank" rel="noopener">https://ies.ed.gov/use-work/awards/amplifygain-generative-ai-transformative-learning</a></p>
+<ol><li>U.S. National Science Foundation，<strong>NSF STEM K–12</strong>。NSF 的 STEM K–12 計畫明確支持研究 AI 與新興科技如何用於 K–12 STEM 教與學，同時發展教學工具、框架及可轉化至教育現場的研究知識。</li></ol>
+<p><a href="https://www.nsf.gov/funding/opportunities/stem-k-12-nsf-stem-k-12" target="_blank" rel="noopener">https://www.nsf.gov/funding/opportunities/stem-k-12-nsf-stem-k-12</a></p>
+<p><strong>2026 年 08 月 22 日</strong><br><strong>作者：陳賢宗</strong></p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 家教不是「回答愈多愈好」：從二氧化碳探究課，教學生分辨「可以問 AI」與「一定要找老師」｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>AI 家教不是「回答愈多愈好」：從二氧化碳探究課，教學生分辨「可以問 AI」與「一定要找老師」</h1>
+      <div class="date">2026 年 08 月 10 日</div>
+    </div>
+    <article>
+<p>自然課進行氣體探究，一組學生把小蘇打加入醋中，看見大量氣泡冒出來。</p>
+<p>「老師，這是什麼氣體？」</p>
+<p>老師沒有直接公布答案，而是請學生先想辦法找證據。</p>
+<p>有人說：「應該是二氧化碳，因為 AI 說小蘇打加醋會產生二氧化碳。」</p>
+<p>老師接著問：「如果 AI 說對了，我們還需要做實驗嗎？」</p>
+<p>另一名學生忽然問 AI：「那我要怎麼做才能產生更多氣體？」</p>
+<p>AI 開始提出增加反應物、改變容器與操作條件的建議。</p>
+<p>這時候，問題已經不只是「AI 回答得正不正確」。</p>
+<p>真正重要的是：</p>
+<p><strong>AI 知不知道自己什麼時候應該停止回答？</strong></p>
+<p>這個問題正成為 K–12 教育 AI 很重要的新課題。</p>
+<p>2026 年 8 月 3 日提交的研究〈EduZone: A Framework for Evaluating LLM Safety for K-12 Students and Teachers〉，特別針對教育情境測試大型語言模型安全性。研究團隊設計學生與教師可能真正遇到的互動，再以「拒絕」「安全協助」「帶安全提醒的風險協助」以及「完全風險協助」等層級評估十個大型語言模型。研究指出，相較於一般性的安全測試，模型面對<strong>教育特有風險</strong>及<strong>多輪對話逐步改變情境</strong>時，仍可能暴露出安全弱點。這篇論文目前仍在審查階段，因此不能把結果視為所有 AI 平台的最終定論，但它提醒學校：教育 AI 的安全不能只看第一個回答。</p>
+<p>這件事對自然科尤其重要。</p>
+<p>學生問：「為什麼會產生氣泡？」這是一個概念問題。</p>
+<p>學生問：「我們該量什麼？」這是探究設計問題。</p>
+<p>可是當對話一路變成：「怎樣做反應最快？」「能不能把容器密封？」「加熱會不會更快？」AI 的角色就必須改變。</p>
+<p>有些問題可以繼續引導學生思考；有些問題則應該停止提供操作細節，改成請學生尋求教師現場判斷。</p>
+<p>因此，我們除了教孩子「怎麼問 AI」，也應該教一種新的能力：</p>
+<blockquote><strong>知道哪些問題不該只問 AI。</strong></blockquote>
+<h3>具體教學案例：AI × 二氧化碳證據探究</h3>
+<p>教學對象可設定為國小五、六年級至國中七年級，主題涵蓋氣體、化學變化、證據與變因控制。</p>
+<p>AI 使用方式不是請它直接講解「答案」，而是擔任一位有明確權限界線的探究助教。</p>
+<p>教師可以先和學生約定三個區域：</p>
+<p><strong>綠燈區：可以請 AI 協助。</strong></p>
+<p>例如：「我們觀察到哪些現象？」「要怎樣整理三次測量資料？」「我們的結論有沒有超過證據？」「請問我一個問題，讓我自己想想這可能是什麼氣體。」</p>
+<p><strong>黃燈區：AI 可以提供概念提醒，但必須由老師確認。</strong></p>
+<p>例如涉及實驗器材更換、用量調整、容器種類、延長實驗時間或改變實驗條件。</p>
+<p><strong>紅燈區：不要依照 AI 指示自行操作。</strong></p>
+<p>只要涉及加熱、密閉容器、火焰、不熟悉的化學品、電力危險、可能產生壓力或其他安全疑慮，直接停止 AI 操作，交給教師判斷。</p>
+<p>這不是因為 AI 一定會答錯。</p>
+<p>而是因為 AI 看不到教室現場。</p>
+<p>它不知道學生拿的是玻璃瓶還是塑膠杯、不知道容器尺寸、不知道學生是否戴護目鏡，也不知道旁邊是不是還有其他器材。</p>
+<h4>第一階段：不准 AI 直接「認證氣體」</h4>
+<p>學生先觀察小蘇打與食用醋混合後的現象：出現氣泡；有聲音；固體逐漸減少；容器內出現大量氣體。</p>
+<p>這些才是第一手資料。</p>
+<p>接著可以詢問 AI：</p>
+<blockquote>我們混合兩種材料後觀察到大量氣泡。請不要直接告訴我們氣體名稱，請提出三種我們可以進一步蒐集證據的方向；若任何操作需要教師安全評估，請明確標示。</blockquote>
+<p>如此一來，AI 不再是答案公布器，而是協助產生「下一個問題」。</p>
+<h4>第二階段：建立「AI 說法」和「實驗證據」兩欄</h4>
+<p>學生很容易把網路知識和自己測到的結果混在一起。</p>
+<p>因此紀錄表可以刻意分成：「我們實際觀察到的證據」以及「AI／課本／資料來源提供的可能解釋」。</p>
+<p>例如：「產生大量氣泡」屬於觀察。「可能產生二氧化碳」屬於假設或外部知識。「本次實驗已證明所有氣體都是二氧化碳」則明顯超過目前證據。</p>
+<p>接著把學生的結論交給 AI：</p>
+<blockquote>請把以下句子分類成「直接觀察」「根據資料提出的推論」與「目前證據不足」。不要新增實驗結果。</blockquote>
+<p>學生再檢查 AI 分類是否合理。</p>
+<p>如此一來，孩子不只學氣體，也在練習判斷 AI 的認知權限。</p>
+<h4>第三階段：讓 AI 每次只追問一題</h4>
+<p>AI 家教最常出現的問題，是學生一問，它便把整套知識一次講完。</p>
+<p>教師可以限制：</p>
+<blockquote>你是自然科探究助教。每次只能問學生一個問題，不得直接公布結論。學生回答後，再根據回答追問。如果學生詢問可能涉及壓力、火焰、加熱、密閉容器或不明化學品的實驗操作，停止提供操作步驟，請他找老師。</blockquote>
+<p>例如學生說：「有氣泡，所以一定是二氧化碳。」</p>
+<p>AI 可以問：「只有二氧化碳會形成氣泡嗎？」</p>
+<p>學生可能回答：「好像不是。」</p>
+<p>下一題才問：「那麼我們還需要哪一類證據？」</p>
+<p>這就是 AI 家教比較理想的位置：<strong>推動思考，而不是縮短思考。</strong></p>
+<p>美國教育科學研究院近期彙整 AI 教育研究時指出，目前相對較強的證據主要來自學生使用的 AI 工具，包括家教與聊天系統。多項研究與綜整顯示，這類工具可能改善學習投入、練習行為與部分認知成果；然而成效並非在所有評量都一致，而且 IES 同樣強調，AI 最有效的情境仍需要高品質教學與人的專業判斷配合。</p>
+<p>換句話說，不能只問：「AI 家教有沒有用？」</p>
+<p>更應該問：「它在什麼時候介入？介入後學生還剩多少思考責任？」</p>
+<h4>第四階段：故意測試 AI 的界線</h4>
+<p>這是一個很值得做的 AI 素養活動。</p>
+<p>教師事先準備幾張問題卡，請學生判斷 AI 應該怎麼回應。</p>
+<p>例如：「為什麼產生氣泡？」→ 可以協助理解。</p>
+<p>「請幫我比較三次測量數據。」→ 可以協助分析。</p>
+<p>「老師給的實驗方法和 AI 建議不同，我應該聽誰的？」→ 現場實驗應以教師的安全規範與課程設計為準。</p>
+<p>「我想自己改變裝置，這樣會不會更有效？」→ 先提出想法，再由教師確認後才操作。</p>
+<p>學生甚至可以對真正的 AI 進行測試：它有沒有在應該停止的地方停止？如果學生換一種問法，它會不會突然提供更多操作細節？連續追問五次後，安全界線是否改變？</p>
+<p>這正呼應 EduZone 研究值得注意的地方：教育 AI 的安全問題往往不是只有單一問答，而可能出現在多輪對話中，模型逐步被帶到另一個情境。</p>
+<p>學生因此第一次站到「AI 評審」的位置。</p>
+<p>不是 AI 評學生。</p>
+<p>而是學生評 AI。</p>
+<h4>第五階段：最後才請 AI 檢查 CER 科學論證</h4>
+<p>活動最後可以使用 CER：Claim（主張）、Evidence（證據）、Reasoning（推理）。</p>
+<p>例如學生寫：</p>
+<p><strong>主張：</strong>這次反應產生的氣體可能包含二氧化碳。</p>
+<p><strong>證據：</strong>我們觀察到持續氣泡，並完成教師安排的氣體性質驗證。</p>
+<p><strong>推理：</strong>測試結果與二氧化碳的已知性質相符，因此支持這項判斷，但應依實際完成的檢測範圍描述，不超出證據。</p>
+<p>再問 AI：</p>
+<blockquote>請檢查我們的 CER。不要替我們重寫結論，請指出哪一句缺乏證據、哪一句把「可能」寫成「一定」，以及還有哪些限制需要說明。</blockquote>
+<p>這時 AI 才真正協助深化科學論證。</p>
+<h3>學生可能學到什麼？</h3>
+<p>第一，他們會理解「AI 知道答案」與「我們有證據」完全是兩回事。</p>
+<p>第二，他們會開始辨認 AI 使用中的風險不是只有「它會不會亂講」，也包含<strong>它是否在不適合的時機提供過度具體的建議</strong>。</p>
+<p>第三，他們會知道多輪對話可能改變 AI 回答，因此不能因為第一句安全，就認為後面所有回答都安全。</p>
+<p>第四，他們能練習把 AI 當成提出問題、整理資料及檢查論證的工具，而不是實驗指揮者。</p>
+<p>第五，最重要的是建立「升級給人類」的習慣：<strong>遇到真實世界具有安全後果的決策，要知道什麼時候停止和 AI 對話，轉向老師。</strong></p>
+<p>這其實也是教師 AI 素養的一部分。</p>
+<p>2026 年 8 月 3 日提出的 RAIL-Ed 架構，把 K–12 教師的生成式 AI 素養整理為技術流暢度、批判評估、人機協作、情境覺察、倫理推理與自主行動六個相互依賴面向。研究者特別強調，相同的 AI 能力可能深化學習，也可能排擠學習，差異取決於教師如何設計使用情境。該架構目前仍屬概念性研究，需要更多實證驗證，但其中「情境覺察」與「自主行動」對自然科尤其重要。</p>
+<p>UNESCO 近期的亞太 STEM 教師培訓也把 AI 與動手實作、Maker Education、科學探究及永續議題放在一起，而不是把 AI 只當成螢幕上的聊天工具。培訓強調實作、協作與將科技放進真實問題情境。</p>
+<p>自然科正好提供 AI 最缺乏的一件東西：</p>
+<p><strong>真實世界。</strong></p>
+<p>AI 可以說某個反應「應該」發生什麼。</p>
+<p>學生則能真正看到氣泡。</p>
+<p>AI 可以提出可能原因。</p>
+<p>學生則必須量測與查證。</p>
+<p>AI 可以建議下一步。</p>
+<p>但當下一步具有現實世界的安全後果時，決定權必須回到教師與現場。</p>
+<p>所以，未來教學生使用 AI，除了教提示詞，也許還應多教一句：</p>
+<p><strong>「這件事情，我現在應該繼續問 AI，還是應該去問一個真正站在我旁邊的人？」</strong></p>
+<p>能問出這個問題的孩子，才真正開始具備 AI 時代需要的判斷力。</p>
+<h3>參考資料與延伸閱讀</h3>
+<ol><li>Park, J., Han, J., Yoo, H., Ahn, S.-Y., Yoon, J., &amp; Oh, A.，〈EduZone: A Framework for Evaluating LLM Safety for K-12 Students and Teachers〉，2026 年 8 月 3 日提交。</li></ol>
+<p><a href="https://arxiv.org/abs/2608.02024" target="_blank" rel="noopener">https://arxiv.org/abs/2608.02024</a></p>
+<ol><li>Institute of Education Sciences / REL Central，〈Big Questions, Early Signals: AI and School Turnaround〉，2026 年 8 月 6 日。</li></ol>
+<p><a href="https://ies.ed.gov/learn/blog/big-questions-early-signals-ai-and-school-turnaround" target="_blank" rel="noopener">https://ies.ed.gov/learn/blog/big-questions-early-signals-ai-and-school-turnaround</a></p>
+<ol><li>Hossain, S. 等，〈Rethinking Generative AI Literacy: An Integrative, Developmental, and Dialectical Framework for K–12 Teacher Education〉，2026 年 8 月 3 日。</li></ol>
+<p><a href="https://arxiv.org/abs/2608.01705" target="_blank" rel="noopener">https://arxiv.org/abs/2608.01705</a></p>
+<ol><li>UNESCO，〈UNESCO unites science educators to transform STEM teaching across Asia-Pacific〉，2026 年 7 月 20 日更新。</li></ol>
+<p><a href="https://www.unesco.org/en/articles/unesco-unites-science-educators-transform-stem-teaching-across-asia-pacific" target="_blank" rel="noopener">https://www.unesco.org/en/articles/unesco-unites-science-educators-transform-stem-teaching-across-asia-pacific</a></p>
+<ol><li>UNESCO，〈Artificial Intelligence in Education〉。</li></ol>
+<p><a href="https://www.unesco.org/en/digital-education/artificial-intelligence" target="_blank" rel="noopener">https://www.unesco.org/en/digital-education/artificial-intelligence</a></p>
+<p><strong>2026 年 08 月 10 日</strong><br><strong>作者：陳賢宗</strong></p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

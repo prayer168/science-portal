@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 可以幫學生寫出漂亮結論，但「你憑什麼這樣說？」才是自然課最不能外包的能力｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>AI 可以幫學生寫出漂亮結論，但「你憑什麼這樣說？」才是自然課最不能外包的能力</h1>
+      <div class="date">2026 年 08 月 09 日</div>
+    </div>
+    <article>
+<p>自然課進行「不同土壤保水能力」實驗時，學生把相同體積的砂土、壤土與黏土放進漏斗，分別倒入等量的水，再記錄一分鐘後流出的水量。</p>
+<p>第一組測得：砂土流出 82 mL、壤土 55 mL、黏土 31 mL。</p>
+<p>一名學生立刻把數據貼進 AI：</p>
+<p>「請幫我們寫實驗結論。」</p>
+<p>幾秒鐘後，AI 產生：</p>
+<p>「實驗證明黏土保水能力最好，因為黏土顆粒最細、孔隙最小，因此水分不易流失；砂土顆粒較大，孔隙較大，因此保水能力最差。」</p>
+<p>文字流暢、概念聽起來也合理。</p>
+<p>但老師只問了一句：</p>
+<p>「你們這次有量土壤顆粒大小嗎？」</p>
+<p>學生愣了一下。</p>
+<p>沒有。</p>
+<p>「有量孔隙大小嗎？」</p>
+<p>也沒有。</p>
+<p>「那麼『顆粒細、孔隙小』到底是你們實驗得到的證據，還是 AI 幫你補進去的解釋？」</p>
+<p>這正是生成式 AI 進入自然科實驗後，一個比「學生有沒有使用 AI」更值得注意的問題：</p>
+<blockquote><strong>AI 很會幫學生補齊論述，但科學學習真正重要的是，學生知不知道每一句話到底由什麼證據支持。</strong></blockquote>
+<p>2026 年 7 月 13 日發表的一項高等教育實驗室研究，觀察生成式 AI 在進階天文物理實驗中的角色。研究者發現，AI 不只是解釋概念，也會協助整理論證、搭建報告架構，甚至逐漸被學生視為看似權威的評估者。研究特別指出，實驗課若使用 AI，必須明確界定哪些工作可以交給工具、哪些部分必須由學生自行驗證，並保留學生對科學判斷的「知識責任」。不過這是一項小型探索研究，課程只有 7 名學生，其中 5 人實際使用 AI，因此不能直接把結果推論到所有中小學教室。</p>
+<p>這個「知識責任」概念，非常適合帶進中小學自然科。</p>
+<p>學生不能只說：「AI 說這是原因。」</p>
+<p>他必須知道：「我目前量到了什麼？」「哪些是資料直接支持的？」「哪些只是可能的解釋？」「還要做什麼實驗才能進一步確認？」</p>
+<h3>具體教學案例：不同土壤真的有不同保水能力嗎？</h3>
+<p>教學對象可以設定為國小五、六年級或國中七年級。</p>
+<p>主題包括土壤顆粒、滲水與保水、控制變因，以及科學證據與解釋。</p>
+<p>使用的 AI 功能可以是生成式對話、資料整理與論證檢查，不需要指定特定品牌。</p>
+<p>核心研究問題是：</p>
+<blockquote>相同條件下，不同種類土壤的出水量是否不同？</blockquote>
+<h4>第一階段：先把「看到的」和「想到的」分開</h4>
+<p>每組準備三個相同漏斗、濾紙、量筒、固定體積的砂土、壤土與黏土，以及等量的水。</p>
+<p>實驗前先要求學生畫一張兩欄表：左邊叫「我們實際測量的」，右邊叫「我們可能的解釋」。</p>
+<p>例如：「砂土流出的水最多」放在左邊。「因為砂土顆粒較大」放在右邊。</p>
+<p>這個動作看似簡單，卻是在訓練科學論證中非常重要的區別：<strong>結果不是原因，觀察也不是解釋。</strong></p>
+<h4>第二階段：AI 只能幫忙檢查證據，不能補原因</h4>
+<p>完成第一次實驗後，可以請 AI 讀取數據，但提示詞不能只寫「幫我寫結論」。</p>
+<p>比較好的方式是：</p>
+<blockquote>以下是我們三種土壤的出水量資料。請把回答分成三部分：</blockquote>
+<blockquote>1. 資料直接可以支持的現象。</blockquote>
+<blockquote>2. 可能的科學解釋。</blockquote>
+<blockquote>3. 目前資料還不能證明的事情。</blockquote>
+<blockquote>請不要把第二部分寫成已經被實驗證明的事實。</blockquote>
+<p>例如，AI 可以合理整理出：「本次條件下，砂土流出的水量較多，黏土較少。」</p>
+<p>但「因此證明黏土顆粒較小」就不成立，因為學生根本沒有測量顆粒大小。</p>
+<p>如果 AI 仍把推論寫成事實，學生就要標記出來。</p>
+<p>這時 AI 本身便成為一個「科學論證偵錯器」。</p>
+<h4>第三階段：把 AI 補出的原因變成第二個實驗</h4>
+<p>假設 AI 提出：「不同保水表現可能與土壤顆粒大小或孔隙結構有關。」</p>
+<p>老師不要立刻公布這是不是正確答案。</p>
+<p>反而追問：「那要怎麼量？」</p>
+<p>學生可能想到使用篩網粗略比較顆粒大小、使用放大鏡觀察、測量相同體積土壤的質量，或比較相同水量通過土壤所需時間。</p>
+<p>這時提示 AI：</p>
+<blockquote>請針對「土壤顆粒大小可能影響水流速度」提出三個國小高年級可操作的驗證方法。每個方法請列出自變因、應變因與至少三個控制條件，不要直接預測結果。</blockquote>
+<p>學生再選一個真正可行的方法。</p>
+<p>AI 的解釋因此不是「終點」，而成為下一輪研究的「假設來源」。</p>
+<p>這與近期科學教育研究提出的方向一致。2026 年 7 月 23 日公布的〈AI-Integrated Scientific Inquiry〉主張，AI 應被視為科學探究中的一組工具，例如電腦視覺協助觀察、分群演算法協助分析、生成式模型協助建模；但每一種 AI 工具都必須有明確的反思點，讓學生檢查它在什麼地方可能誤導。研究者也特別提醒，在學生尚未建立科學探究與個別 AI 工具的基本理解前，不宜太早把整個探究流程交給 agentic AI。</p>
+<h4>第四階段：建立「證據—推論—限制」三層結論</h4>
+<p>學生最後不能只寫一段結論，而要分成三層。</p>
+<p>第一層是<strong>證據</strong>：「三次測量中，砂土組流出的水量皆高於黏土組。」</p>
+<p>第二層是<strong>推論</strong>：「在本實驗條件下，砂土留住的水較少。」</p>
+<p>第三層是<strong>限制</strong>：「本實驗只能比較目前取得的三份土樣，尚不能代表所有砂土、壤土與黏土；土壤壓實程度、初始含水量和顆粒組成也可能影響結果。」</p>
+<p>教師甚至可以要求學生在每一句旁邊標上：E：Evidence，證據。I：Inference，推論。L：Limitation，限制。</p>
+<p>再請 AI 檢查：</p>
+<blockquote>請判斷以下每一句比較接近 Evidence、Inference 或 Limitation，並說明理由。如果一句話混合了資料與推論，請指出是哪一部分混在一起。</blockquote>
+<p>這比要求 AI 直接「幫我寫漂亮一點」更能深化學習。</p>
+<h4>第五階段：要求 AI 提出反例</h4>
+<p>科學思考很容易只找支持自己假設的證據。</p>
+<p>因此還可以設計一個更進階的 AI 任務：</p>
+<blockquote>根據我們目前的結論，請提出三種可能讓「黏土保水一定最好」不成立的情況。不要否定我們的資料，而是提醒我們目前結論可能受到哪些條件限制。</blockquote>
+<p>AI 可能提出：不同黏土含有不同有機質；土壤壓實程度不同；一開始含水量不同；實驗中使用的土壤體積相同，但質量可能不同。</p>
+<p>學生再選其中一項安排後續實驗。</p>
+<p>AI 這時就不只是幫學生證明自己是對的，而是幫學生尋找「什麼情況下我可能錯」。</p>
+<p>這是非常重要的科學能力。</p>
+<h3>學生可能學到什麼？</h3>
+<p>首先，他們會理解「數據」與「解釋」是不同層次。</p>
+<p>82 mL 是測量值。</p>
+<p>砂土保水較差是根據測量得到的推論。</p>
+<p>顆粒大小造成差異則是需要進一步驗證的機制解釋。</p>
+<p>其次，學生會理解 AI 很容易填補證據之間的空白。這些補充可能符合課本知識，卻不代表已經被「這一次實驗」證明。</p>
+<p>第三，他們會練習建立因果關係需要哪些證據，而不是看到兩個變項一起變化，就直接宣稱一個造成另一個。</p>
+<p>第四，他們會學習如何使用 AI 產生可驗證的假設，而不是讓 AI 直接產生答案。</p>
+<p>第五，他們會開始接受「不知道」也是科學結果之一。當證據不足時，寫下「目前無法判定」並不是能力不足，而是一種成熟的科學態度。</p>
+<h3>為什麼這也是 AI 素養？</h3>
+<p>2026 年 8 月 3 日提交的一篇 K–12 教師 AI 素養研究，透過回顧 2023 至 2025 年共 67 篇研究，提出 RAIL-Ed 架構，將生成式 AI 素養整理成六個彼此關聯的面向：技術流暢度、批判評估、人機協作、情境覺察、倫理推理與自主行動。作者特別強調，同一個生成式 AI 功能可能深化學習，也可能取代學習；關鍵不是工具本身，而是教師具備什麼樣的判斷能力。這套架構仍屬概念性研究，作者也明確表示需要後續實證驗證。</p>
+<p>放到自然科教室裡，其實非常具體。</p>
+<p>學生會輸入提示詞，是技術操作。</p>
+<p>學生能發現 AI 把假設寫成事實，是批判評估。</p>
+<p>學生讓 AI 幫忙找變因，但自己決定實驗，是人機協作。</p>
+<p>學生知道不同土壤、器材與測量條件會改變結果，是情境覺察。</p>
+<p>學生不捏造數據、不假裝自己做過沒做的實驗，是倫理。</p>
+<p>最後能說：「AI 建議這樣解釋，但我們目前的證據還不足，所以不採用。」</p>
+<p>這就是自主行動。</p>
+<h3>教師需要注意的風險與限制</h3>
+<p>第一，不要把 AI 生成的科學原理直接當作學生實驗的證據。課本知識可以協助解釋，但仍要標示來源。</p>
+<p>第二，學生若只把最後數據交給 AI，模型看不到倒水速度不同、濾紙破裂、土壤壓實程度不一等現場問題。</p>
+<p>第三，不要讓 AI 替學生修改原始數據。所有原始測量值都應保留，任何排除都要有理由。</p>
+<p>第四，AI 可能使用過度肯定的詞語，例如「證明」「一定」「完全由……造成」。教師可以要求學生圈出這些字，判斷證據是否真的足夠。</p>
+<p>第五，學生資料、姓名、照片與聲音不應隨意上傳至未經學校核准的平台。</p>
+<p>第六，評量不能只看最後報告寫得多完整。更值得評量的是學生能不能指出哪一句有證據、哪一句只是推論，以及還需要什麼資料。</p>
+<p>第七，不要過度解讀目前的新研究。前述實驗室研究樣本非常小；AI 整合科學探究與 RAIL-Ed 也都包含理論或概念性主張。它們適合提供課程設計方向，但仍不能被宣稱為已證實最有效的中小學教學法。</p>
+<p>UNESCO 於 2026 年 7 月 20 日更新的亞太 STEM 教師培訓報導也呈現類似方向。該活動聚集來自 13 個國家的教育者，內容涵蓋 STEM、Maker Education、AI 在科學教學中的應用與永續議題，並強調透過實作、跨領域設計與真實問題，把科學學習帶出單純的課本知識。</p>
+<p>下一次，當學生把一份實驗數據交給 AI，得到一段完美結論時，老師不必先禁止，也不必立刻接受。</p>
+<p>只要問一句：</p>
+<p><strong>「這一段裡，哪一句是你真的量到的？」</strong></p>
+<p>再問：「哪一句是推論？」「哪一句需要新的實驗？」「如果 AI 拿掉，你還能說明為什麼嗎？」</p>
+<p>AI 時代，自然科真正需要保護的不是「學生一定要全部自己寫」。</p>
+<p>而是學生對自己的每一個科學主張，仍然知道自己<strong>憑什麼這樣說</strong>。</p>
+<p>AI 可以幫忙整理證據。</p>
+<p>可以幫忙找到可能原因。</p>
+<p>可以幫忙把句子寫得更完整。</p>
+<p>但從數據走向結論的那一步，學生不能只是坐在旁邊看 AI 走過去。</p>
+<p>因為那一步，就是科學思考本身。</p>
+<h3>參考資料與延伸閱讀</h3>
+<ol><li>Tuveri, M., &amp; Riggio, A.，〈Generative AI in Higher Education Laboratory Learning: A Qualitative Case Study of Epistemic Scaffolding and Assessment Boundaries〉，2026 年 7 月 13 日。</li></ol>
+<p><a href="https://arxiv.org/abs/2607.11417" target="_blank" rel="noopener">https://arxiv.org/abs/2607.11417</a></p>
+<ol><li>Bewersdorff, A., Rojas, M., &amp; Zhai, X.，〈AI-Integrated Scientific Inquiry: A Practice-Centered Vision for Science Education〉，2026 年 7 月 23 日。</li></ol>
+<p><a href="https://arxiv.org/abs/2607.21777" target="_blank" rel="noopener">https://arxiv.org/abs/2607.21777</a></p>
+<ol><li>Hossain, S. 等，〈Rethinking Generative AI Literacy: An Integrative, Developmental, and Dialectical Framework for K–12 Teacher Education〉，2026 年 8 月 3 日。</li></ol>
+<p><a href="https://arxiv.org/abs/2608.01705" target="_blank" rel="noopener">https://arxiv.org/abs/2608.01705</a></p>
+<ol><li>UNESCO，〈UNESCO unites science educators to transform STEM teaching across Asia-Pacific〉，2026 年 5 月 20 日發布，2026 年 7 月 20 日更新。</li></ol>
+<p><a href="https://www.unesco.org/en/articles/unesco-unites-science-educators-transform-stem-teaching-across-asia-pacific" target="_blank" rel="noopener">https://www.unesco.org/en/articles/unesco-unites-science-educators-transform-stem-teaching-across-asia-pacific</a></p>
+<p><strong>2026 年 08 月 09 日</strong><br><strong>作者：陳賢宗</strong></p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

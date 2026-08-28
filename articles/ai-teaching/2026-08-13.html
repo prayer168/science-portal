@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 很會「講科學」，卻未必真的「會教科學」：從臺大 Teaching Monster 挑戰，看見教師最難被取代的能力｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>AI 很會「講科學」，卻未必真的「會教科學」：從臺大 Teaching Monster 挑戰，看見教師最難被取代的能力</h1>
+      <div class="date">2026 年 08 月 13 日</div>
+    </div>
+    <article>
+<p>如果今天請 AI 解釋「為什麼天空是藍色的」，它通常可以很快說出瑞利散射、短波長光較容易被散射等概念。</p>
+<p>但如果換一個學生呢？</p>
+<p>國小四年級學生問：「天空為什麼不是紫色？」</p>
+<p>國中生問：「既然藍光散射比較強，為什麼夕陽會變紅？」</p>
+<p>高中生則問：「散射強度和波長四次方成反比，要怎麼從物理上理解？」</p>
+<p>三個問題都與同一個科學概念有關，可是好的教學顯然不能只是把同一段答案改成三種長度。</p>
+<p>這正是 2026 年 8 月 9 日由臺灣研究團隊公布的 <strong>Teaching Monster Challenge（教學怪物挑戰賽）</strong> 最值得教師注意的地方。</p>
+<p>這項由國立臺灣大學人工智慧頂尖研究中心（NTU AI-CoRE）主辦的競賽，不再只測 AI「會不會回答問題」，而是要求 AI Agent 根據指定的學習目標與學生背景，在無人工介入的條件下，自動產生完整教學影片。競賽領域包括物理、生物、電腦科學與數學，核心評量則包括內容正確性、教學邏輯、學習者適應性，以及多模態呈現品質。</p>
+<p>研究團隊在 8 月 9 日公布第一屆結果後，得到了一個非常有意思的發現：</p>
+<p><strong>目前的 AI 已經相當擅長「把內容講對」，但在「怎麼讓特定學生真正理解」這件事上，能力明顯比較弱。</strong></p>
+<p>這個差異，其實就是教育學中非常重要的 <strong>Pedagogical Content Knowledge，PCK，學科教學知識</strong>。</p>
+<p>知道浮力公式是一件事。</p>
+<p>知道一名國小五年級學生為什麼會誤以為「重的東西一定沉下去」，並設計一個實驗讓他自己推翻這個想法，則是另一件事。</p>
+<p>而後者，才是真正的教學。</p>
+<h3>具體自然科案例：AI 能不能教懂「重的東西一定會沉下去」？</h3>
+<p>教學對象設定為國小五、六年級，主題是浮力、密度與物體浮沉。</p>
+<p>教師先不要直接講解密度公式，而準備：鐵製迴紋針、大片鋁箔、鋁箔球、黏土、塑膠積木、水槽與電子秤。</p>
+<p>一開始問：</p>
+<blockquote>「比較重的物體是不是一定比較容易沉？」</blockquote>
+<p>不少學生會回答「是」。</p>
+<p>這時可以讓 AI 產生第一版解釋：</p>
+<blockquote>請用國小五年級程度說明，為什麼重的船可以浮在水面上。</blockquote>
+<p>AI 很可能講出「浮力大於重力」「平均密度」等正確內容。</p>
+<p>但教師先不問它講得對不對，而問學生：</p>
+<p>「聽完以後，你真的相信嗎？」</p>
+<p>這個問題非常重要。</p>
+<p>學生可能理解文字，卻仍然在心中保留原來的模型：</p>
+<p><strong>重 → 沉；輕 → 浮。</strong></p>
+<p>這就是「內容正確」和「教學有效」的差異。</p>
+<h4>第一階段：讓 AI 先預測學生會犯什麼錯</h4>
+<p>教師可以輸入：</p>
+<blockquote>我的學生認為「重的物體一定沉，輕的物體一定浮」。請不要直接講答案，先列出三種這個年齡學生可能產生的錯誤推理，並設計可以用簡單材料檢驗的問題。</blockquote>
+<p>AI 可能提出：「同一塊鋁箔，揉成球與折成船，重量沒有改變，結果是否一樣？」</p>
+<p>這就比直接告訴學生「因為平均密度不同」更接近教學。</p>
+<p>學生先預測。</p>
+<p>再把鋁箔揉成緊密小球放入水中。</p>
+<p>接著把同一張鋁箔重新做成小船。</p>
+<p>如果兩者重量幾乎相同，浮沉結果卻不同，原來的「重量模型」就開始動搖。</p>
+<p>這一刻，真正產生學習的不是 AI 那一句解釋。</p>
+<p>而是<strong>預測與真實現象發生衝突</strong>。</p>
+<h4>第二階段：同一個科學概念，要求 AI 設計三種教法</h4>
+<p>接著可以給 AI 一項很有教育意義的測試：</p>
+<blockquote>我要教「物體浮沉不能只看重量」。請分別為以下三種學生設計教學：</blockquote>
+<blockquote>1. 喜歡動手做實驗的學生。</blockquote>
+<blockquote>2. 不容易理解抽象文字、但看圖很快的學生。</blockquote>
+<blockquote>3. 已經會使用密度公式、但仍把浮力和重量混在一起的學生。</blockquote>
+<blockquote>不要只是改變文字難度，請改變教學方法。</blockquote>
+<p>接著由教師評估。</p>
+<p>第一種學生也許應該從操作黏土開始。</p>
+<p>第二種學生可以使用剖面圖、排水量示意與動畫。</p>
+<p>第三種學生則可以進一步比較質量、體積、密度與排開水量。</p>
+<p>如果 AI 只是把同一段內容分成「簡單版、中等版、困難版」，其實並沒有真正做到適性教學。</p>
+<p>這恰好呼應 Teaching Monster Challenge 的研究結果：目前 AI 系統在內容正確與教學結構方面已相當成熟，但對「特定學習者」進行真正可感知的調整，仍然是明顯弱項。</p>
+<h4>第三階段：讓學生自己當 AI 教學評審</h4>
+<p>這甚至可以直接變成一堂 AI 素養課。</p>
+<p>教師用同一個問題，要求 AI 產生三個版本的浮力教學。</p>
+<p>學生不評「哪個最好看」，而使用四項指標：<strong>科學是否正確？我在哪一個地方開始理解？它有沒有發現我原本可能誤解什麼？看完後，我能不能預測一個新的情況？</strong></p>
+<p>最後一項尤其重要。</p>
+<p>例如：「一塊黏土沉下去，把它改成碗狀以後可能如何？」</p>
+<p>如果學生只是背下「平均密度較小所以浮起來」，卻無法預測新的情境，那麼教學影片即使內容全部正確，仍然未必形成真正理解。</p>
+<h3>AI 連「評分 AI」都還有限制</h3>
+<p>Teaching Monster 研究還有另一個很值得教師注意的結果。</p>
+<p>競賽先使用 AI 評審篩選影片，再加入一般觀看者比較與專家評審。結果發現，AI 評審可以有效辨識明顯較差的作品，但當作品都達到較高水準後，AI 對頂尖系統的排序與人類偏好並不一致。</p>
+<p>這件事對學校的意義很大。</p>
+<p>如果未來教師使用 AI：批改科學報告、分析學生概念、評量科展作品、判斷學生是否理解，都不能因為 AI 可以給出一個「87 分」就認為這個數字比教師更客觀。</p>
+<p>AI 可以先篩選、分類、標記疑點。</p>
+<p>但是涉及：「這個孩子真的理解了嗎？」「這句錯誤背後是哪一種迷思？」「要用什麼例子才能讓他跨過去？」目前仍非常需要教師的專業判斷。</p>
+<h3>最新研究也提醒：AI 教育證據仍比技術發展慢很多</h3>
+<p>美國教育科學研究院（IES）在 2026 年 8 月 10 日公布最新 K–12 AI 教育研究整理，得到的結論其實相當謹慎。</p>
+<p>研究團隊搜尋 What Works Clearinghouse 後，沒有找到符合其標準、直接評估當前 AI 與學生學習成果的研究；進一步引用 2026 年的一份大型綜整，也只找到 <strong>20 項具有因果證據的嚴謹 K–12 AI 教育研究</strong>。目前較一致的早期訊號是：教師介入、AI 輔助的家教模式較有希望；直接讓學生使用一般型 AI，效果則較混合；如果 AI 降低學生需要投入的認知努力，甚至可能妨礙學習。</p>
+<p>因此，現在教師最不需要做的，就是急著宣布：「AI 教學一定比較好。」或者：「AI 一定會讓學生退步。」</p>
+<p>目前更合理的態度是：</p>
+<p><strong>小規模使用、保留教師介入、蒐集學習證據，再調整。</strong></p>
+<h3>學生可能真正學到什麼？</h3>
+<p>如果這堂浮力課設計得好，學生不只會學到浮力。</p>
+<p>他還會知道：AI 說得正確，不代表我已經理解。看完動畫，不等於能預測新的現象。好的解釋必須根據學習者原本的想法調整。同一個科學概念，可能需要實驗、圖片、模型、數據或語言等不同入口。</p>
+<p>更重要的是，他會逐漸形成一個新的 AI 使用習慣：不再只問「答案是什麼？」而開始問：</p>
+<p><strong>「你可以用另一種方法讓我真的弄懂嗎？」</strong></p>
+<h3>教師需要注意的風險與限制</h3>
+<p>第一，不要把「降低文字難度」誤認為適性教學。真正的差異化可能需要更換例子、表徵方式、探究順序與認知鷹架。</p>
+<p>第二，AI 不一定能正確判斷學生的迷思概念。教師仍應透過提問、實作與口頭解釋確認。</p>
+<p>第三，AI 教學影片的科學內容即使正確，也可能在圖像、比例、箭頭或動畫上產生錯誤暗示。</p>
+<p>第四，不宜把 AI 自動評分直接作為正式學業成績。Teaching Monster 本身的研究就顯示，AI 評審在高品質作品間的排序仍可能與人類專家不同。</p>
+<p>第五，目前這項競賽主要集中於 12～18 歲、英語、AP 對應的物理、生物、電腦科學與數學內容，因此不能直接把結果推論到臺灣所有國小課堂。研究作者也明確列出這項限制。</p>
+<p>第六，教師仍應控制學生資料，不將姓名、學習障礙、成績與完整學習紀錄任意輸入公開 AI 平台。</p>
+<p>UNESCO 在 2026 年 7 月 21 日公布埃及教師 AI 能力架構時，也再次強調教師在 AI 教育改革中的核心地位。該架構以 UNESCO 全球教師 AI 能力框架為基礎，特別強調倫理、包容、人類自主性與批判思考；AI 應支援教師，而不是取代教師。</p>
+<p>亞太地區的科學教育培訓也呈現類似方向。UNESCO 7 月更新的 STEM 教師培訓，把 AI 放在 Maker Education、實作活動與永續專題中，重點不是讓學生多用一個聊天工具，而是讓科技重新進入真實問題解決。</p>
+<p>這也讓 Teaching Monster 的結果格外有意思。</p>
+<p>AI 正快速變成一個非常厲害的「內容專家」。</p>
+<p>它知道很多。講得很快。能畫圖、做影片，甚至可以一次服務大量學生。</p>
+<p>但是教育最困難的事情，從來不是把正確答案說出來。</p>
+<p>真正困難的是站在一個孩子面前，知道：他現在卡在哪裡？他以為自己懂了什麼？哪一個實驗會讓他開始懷疑原本的想法？要問哪一句問題，才會讓他自己跨過去？</p>
+<p>而這些，正是 PCK——學科教學知識。</p>
+<p>所以 AI 愈會教書，教師反而愈需要把自己的專業重新看清楚。</p>
+<p><strong>教師的價值，不只是比 AI 多知道一個答案，而是知道如何讓眼前這個孩子，真的從不知道走到知道。</strong></p>
+<h3>參考資料與延伸閱讀</h3>
+<ol><li>Lin, Y.-C. 等，<strong>Findings of the First Teaching Monster Challenge: A Benchmark of Pedagogical Content Knowledge in AI Agents</strong>，2026 年 8 月 9 日。</li></ol>
+<p><a href="https://arxiv.org/abs/2608.08852" target="_blank" rel="noopener">https://arxiv.org/abs/2608.08852</a></p>
+<ol><li>National Taiwan University AI Center of Research Excellence，<strong>Teaching Monster Challenge 官方網站</strong>。</li></ol>
+<p><a href="https://teaching.monster/" target="_blank" rel="noopener">https://teaching.monster/</a></p>
+<ol><li>Institute of Education Sciences，<strong>AI in K–12 Education: The Good, the Bad, and the Guardrails to Consider</strong>，2026 年 8 月 10 日。</li></ol>
+<p><a href="https://ies.ed.gov/learn/blog/ai-k-12-education-good-bad-and-guardrails-consider" target="_blank" rel="noopener">https://ies.ed.gov/learn/blog/ai-k-12-education-good-bad-and-guardrails-consider</a></p>
+<ol><li>Bewersdorff, A., Rojas, M., &amp; Zhai, X.，<strong>AI-Integrated Scientific Inquiry: A Practice-Centered Vision for Science Education</strong>，2026 年 7 月 23 日。</li></ol>
+<p><a href="https://arxiv.org/abs/2607.21777" target="_blank" rel="noopener">https://arxiv.org/abs/2607.21777</a></p>
+<ol><li>UNESCO，<strong>National artificial intelligence competency framework for teachers launched in Egypt</strong>，2026 年 7 月 21 日。</li></ol>
+<p><a href="https://www.unesco.org/en/articles/national-artificial-intelligence-competency-framework-teachers-launched-egypt" target="_blank" rel="noopener">https://www.unesco.org/en/articles/national-artificial-intelligence-competency-framework-teachers-launched-egypt</a></p>
+<ol><li>UNESCO，<strong>UNESCO unites science educators to transform STEM teaching across Asia-Pacific</strong>，2026 年 7 月 20 日更新。</li></ol>
+<p><a href="https://www.unesco.org/en/articles/unesco-unites-science-educators-transform-stem-teaching-across-asia-pacific" target="_blank" rel="noopener">https://www.unesco.org/en/articles/unesco-unites-science-educators-transform-stem-teaching-across-asia-pacific</a></p>
+<p><strong>2026 年 08 月 13 日</strong><br><strong>作者：陳賢宗</strong></p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

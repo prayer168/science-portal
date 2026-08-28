@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 最重要的課堂規則，也許不是「能不能用」，而是「什麼時候才能用」：從砂糖溶解實驗談延遲 AI 的學習價值｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>AI 最重要的課堂規則，也許不是「能不能用」，而是「什麼時候才能用」：從砂糖溶解實驗談延遲 AI 的學習價值</h1>
+      <div class="date">2026 年 08 月 20 日</div>
+    </div>
+    <article>
+<p>自然課準備探究「哪些因素會影響砂糖溶解的快慢」。</p>
+<p>老師才剛把燒杯、砂糖、溫度計和攪拌棒放到桌上，就有學生問 AI：</p>
+<p>「怎樣可以讓糖最快溶解？」</p>
+<p>AI 幾秒鐘後回答：提高水溫、攪拌、減小顆粒、增加接觸面積……</p>
+<p>學生抬頭說：</p>
+<p>「老師，我們已經知道答案了。」</p>
+<p>這句話恐怕會愈來愈常出現在未來的自然教室。</p>
+<p>問題是，孩子真的「知道」了嗎？</p>
+<p>他知道哪些因素需要控制嗎？知道如何公平比較熱水與冷水嗎？知道「溶得快」和「溶得多」其實不是同一個問題嗎？如果三次測量結果差很多，他知道該回頭檢查哪些操作嗎？</p>
+<p>AI 可以很快給學生一個科學上合理的答案，卻可能在探究真正開始之前，就把最值得思考的部分一起拿走。</p>
+<p>近期一項研究提出了一個很值得教師注意的新方向：<strong>AI 對學習造成的影響，不只是回答內容的好壞，「開放使用的時間點」本身就可能是一種教學鷹架。</strong></p>
+<p>Rotter、Benazet i Montobbio 與 Hernández-Leo 的研究〈Access Timing as Scaffolding〉最早於 2026 年 5 月提交，並在 <strong>8 月 11 日更新至第三版</strong>。研究以 105 名高等教育學生進行控制實驗，比較「隨時可以使用生成式 AI」、「完全不能使用」以及「由系統依學習狀況決定何時開放 AI」三種條件。結果顯示，策略性安排 AI 使用時間的組別，在客觀後測表現與後設認知準確性方面優於自由使用組；與完全禁止組的探索性比較，也顯示適時開放可能兼顧錯誤減少與學習效率。</p>
+<p>必須說清楚：這是高等教育、控制實驗室情境，而且研究不是 8 月才首次發布，因此不能直接宣稱「國小自然課延遲十分鐘使用 AI 就一定學得更好」。但 8 月 11 日修訂版本提出的核心問題非常值得帶回教室：</p>
+<blockquote><strong>我們是不是太常討論學生「可不可以用 AI」，卻很少討論「哪一刻開始用 AI」？</strong></blockquote>
+<h3>具體自然科案例：砂糖溶解的「三階段 AI 開放制」</h3>
+<p>教學對象可以設定為國小五、六年級至國中七年級。</p>
+<p>主題是溶解、變因控制、資料判讀與科學論證。</p>
+<p>AI 功能不需要特殊平台，一般具對話、資料整理能力的生成式 AI 即可。</p>
+<p>研究問題設定為：</p>
+<blockquote><strong>水溫是否會影響固定量砂糖完全溶解所需的時間？</strong></blockquote>
+<p>材料包含相同燒杯、固定量的水、相同質量與顆粒大小的砂糖、溫度計、攪拌棒與計時工具。</p>
+<p>但是整堂課不採取「AI 全開」或「AI 全禁」。</p>
+<p>而分成三個區域。</p>
+<h3>第一階段：AI 關閉——學生必須先擁有自己的想法</h3>
+<p>教師先問：</p>
+<p>「你預測冷水、常溫水和較溫暖的水，哪一杯糖會比較快溶解？」</p>
+<p>更重要的是追問：</p>
+<p>「為什麼？」</p>
+<p>學生可能說：</p>
+<p>「熱水會把糖融化。」</p>
+<p>「溫度高，糖就會消失比較快。」</p>
+<p>「我泡飲料時熱水比較快。」</p>
+<p>這些說法不一定精確，但非常珍貴。</p>
+<p>因為它們讓教師看到學生原本的模型。</p>
+<p>接著學生自己列出要保持相同的條件：</p>
+<p>水量、</p>
+<p>砂糖質量、</p>
+<p>砂糖顆粒大小、</p>
+<p>容器、</p>
+<p>攪拌方式、</p>
+<p>判斷「完全溶解」的標準。</p>
+<p>如果一開始就問 AI：</p>
+<p>「這個實驗的控制變因有哪些？」</p>
+<p>AI 可以列出一張非常完美的清單。</p>
+<p>但教師也因此失去一次判斷學生到底懂不懂「公平比較」的機會。</p>
+<p>因此第一道 AI 門檻可以很簡單：</p>
+<p><strong>沒有完成預測、變因表與第一版實驗方法，不開 AI。</strong></p>
+<h3>第二階段：AI 半開——只能找漏洞，不能給答案</h3>
+<p>學生完成設計後，才取得第一階段 AI 權限：</p>
+<blockquote>我們想比較不同水溫下砂糖完全溶解所需時間。這是我們的實驗方法。請不要預測結果，也不要替我們重寫完整步驟，只找出三個可能造成比較不公平的地方，用問題提醒我們。</blockquote>
+<p>AI 可能問：</p>
+<p>「三杯水開始時的體積相同嗎？」</p>
+<p>「每杯攪拌的速度與次數如何保持一致？」</p>
+<p>「你們怎樣判斷砂糖已經完全溶解？」</p>
+<p>這時 AI 做的是<strong>方法審查</strong>。</p>
+<p>學生仍然保有研究的決定權。</p>
+<p>如果 AI 建議「使用高速磁力攪拌器」，而教室根本沒有這項設備，學生還必須學會拒絕 AI：</p>
+<p>「這個建議雖然合理，但不適合我們的實驗條件。」</p>
+<p>這也是 AI 素養。</p>
+<h3>第三階段：完成第一輪實驗後，AI 才能分析資料</h3>
+<p>假設學生三次測得：</p>
+<p>40°C：42 秒、39 秒、45 秒。</p>
+<p>25°C：71 秒、76 秒、73 秒。</p>
+<p>15°C：105 秒、98 秒、103 秒。</p>
+<p>這時才允許：</p>
+<blockquote>請整理三組平均時間並比較趨勢。不要把我們沒有測量的因素寫成已證實原因。如果數據有異常，請標出來但不要自行刪除。</blockquote>
+<p>AI 很適合做這件事。</p>
+<p>因為學生已經親手產生資料，也知道每一個數字從哪裡來。</p>
+<p>AI 此時降低的是計算與整理負擔，而不是取代觀察。</p>
+<p>這與美國教育科學研究院（IES）8 月 10 日最新整理出的早期研究訊號相當一致。IES 指出，目前真正具有強因果證據的 K–12 AI 研究仍非常少，其整理引用的 2026 年綜整只找到 20 項嚴格因果研究；現階段較有希望的是<strong>教師仍在迴路中的 AI 輔助模式</strong>，而學生直接使用一般型 AI 的成效較混合。若 AI 取代原本應由學生完成的資訊處理與問題解決，降低必要的認知努力，甚至可能妨礙學習。</p>
+<h3>最後一關：AI 全開，但學生要挑戰 AI</h3>
+<p>完成實驗後，可以解除限制。</p>
+<p>學生問：</p>
+<p>「為什麼較溫暖的水中砂糖通常溶得比較快？」</p>
+<p>讓 AI完整解釋。</p>
+<p>但接下來不是抄答案，而是要求學生把回答分成：</p>
+<p><strong>我們的實驗直接支持的。</strong></p>
+<p><strong>參考科學知識得到的解釋。</strong></p>
+<p><strong>目前這個實驗沒有證明的。</strong></p>
+<p>例如：</p>
+<p>「在本次條件下，40°C 組平均溶解時間較短。」</p>
+<p>這是資料支持。</p>
+<p>但若 AI寫：</p>
+<p>「因此水溫愈高，任何固體都會溶得愈快、也一定溶得更多。」</p>
+<p>學生就應該抓到問題。</p>
+<p>「速率」與「溶解度」不是同一概念，不同物質也不能由一個砂糖實驗全部推論。</p>
+<p>於是 AI 從答案機變成了另一個需要接受科學審查的資料來源。</p>
+<h3>為什麼「晚一點給 AI」可能比「少用 AI」更重要？</h3>
+<p>學生遇到困難時，我們常直覺認為支援愈快愈好。</p>
+<p>但學習中存在一種很重要的經驗：</p>
+<p><strong>productive struggle——有生產力的掙扎。</strong></p>
+<p>不是故意讓孩子挫折，而是在他仍有能力嘗試的範圍內，保留預測、比較、犯錯與修正的機會。</p>
+<p>IES 8 月 10 日的研究整理也明確把這件事列入 AI 使用 guardrail：避免讓 AI 取代學生進行深入思考所需要的 productive struggle。IES 同時強調，AI 較適合提供提示、診斷與支援，而不是完全替代教師與學生思考。</p>
+<p>因此，未來自然老師設計 AI 課程，也許可以不只寫：</p>
+<p>「本活動允許使用 ChatGPT。」</p>
+<p>而是寫成：</p>
+<p><strong>第 0～15 分鐘：不可使用。</strong></p>
+<p><strong>完成預測與實驗設計後：AI 可提問，不可提供結論。</strong></p>
+<p><strong>取得真實數據後：AI 可整理與檢查。</strong></p>
+<p><strong>學生先完成初步結論後：AI 可提供完整解釋，供交叉查證。</strong></p>
+<p>AI 權限跟著學習歷程逐步開放。</p>
+<p>這是一種非常簡單，卻可能比複雜提示詞更有效的課程設計。</p>
+<h3>學生可能學到什麼？</h3>
+<p>第一，他會發現「知道答案」與「會設計證據」完全不同。</p>
+<p>第二，他會真正練習控制變因，而不是把 AI 列出的名詞抄進學習單。</p>
+<p>第三，他會知道 AI 在不同階段具有不同角色：問題提出者、方法審查員、資料整理員、解釋者，而不是從頭到尾都是答案提供者。</p>
+<p>第四，他會建立後設認知：</p>
+<p><strong>我現在真的需要 AI 嗎？</strong></p>
+<p>有時答案是需要。</p>
+<p>有時則只是因為不想再多想三十秒。</p>
+<p>這兩種狀況需要被分辨。</p>
+<p>第五，他會發現「不立刻問 AI」本身也逐漸成為一種學習策略。</p>
+<h3>教師需要注意的風險與限制</h3>
+<p>第一，不能把 105 名高等教育學生的研究直接推論成國小、國中都會有相同效果；最新研究提供的是值得測試的教學原則，而不是中小學已確立的最佳實務。</p>
+<p>第二，「延遲 AI」不等於讓學生無止境卡住。如果孩子缺乏必要先備知識、閱讀困難或已多次嘗試仍無進展，教師應及時提供鷹架。</p>
+<p>第三，安全相關資訊不能延遲。涉及加熱、化學藥品、電力或其他實驗風險時，以教師現場指導為優先。</p>
+<p>第四，不要只用固定分鐘數決定 AI 開放。更好的門檻是完成某項認知工作，例如「已提出預測」「已有第一輪數據」。</p>
+<p>第五，AI 仍可能產生錯誤科學解釋，因此完整開放不代表完整信任。</p>
+<p>UNESCO 於 7 月更新的亞太科學教育培訓，同樣把 AI 放進實作 STEM、Maker Education 與真實問題解決，而不是把 AI 本身當成課程終點；57 名來自 13 個國家的教育者參與相關實作，強調教師與學生共同成為學習者，並把 AI 定位為擴展思考的智能輔助。</p>
+<p>而 UNESCO IESALC 在 <strong>8 月 14 日</strong>公布最新一期《Higher Education and Society》時，也以整個專題收錄 16 篇生成式 AI 教學與研究文章，討論學生學習、教師專業發展、制度政策、倫理與治理，顯示目前教育界的焦點已逐漸從「要不要接受 AI」轉向「如何設計有教育意義的 AI 使用」。</p>
+<p>這正是自然科最有機會發揮的地方。</p>
+<p>因為自然探究本來就不是：</p>
+<p>問題一出現，立刻找答案。</p>
+<p>而是：</p>
+<p>先猜。</p>
+<p>先想怎麼驗證。</p>
+<p>動手測。</p>
+<p>看到奇怪結果。</p>
+<p>回頭檢查。</p>
+<p>重新解釋。</p>
+<p>AI 可以參與這整段歷程。</p>
+<p>但它不一定要從第一秒就坐在學生旁邊。</p>
+<p>下一次學生拿起平板問：</p>
+<p>「老師，我可以問 AI 嗎？」</p>
+<p>也許我們不必只回答「可以」或「不可以」。</p>
+<p>可以多問一句：</p>
+<p><strong>「你現在已經自己做到哪一步了？」</strong></p>
+<p>因為 AI 時代真正重要的數位素養，也許不只是知道如何使用人工智慧。</p>
+<p>而是知道——</p>
+<p><strong>什麼時候，先不要用它。</strong></p>
+<h3>參考資料與延伸閱讀：</h3>
+<ol><li>Rotter, J., Benazet i Montobbio, P., &amp; Hernández-Leo, D.，<strong>Access Timing as Scaffolding: A Reinforcement Learning Approach to GenAI in Education</strong>。初版於 2026 年 5 月 15 日提交，<strong>2026 年 8 月 11 日更新至 v3</strong>；研究包含 105 名高等教育學生，結果支持策略性安排 AI 存取時間值得進一步研究。</li></ol>
+<p><a href="https://arxiv.org/abs/2605.15850" target="_blank" rel="noopener">https://arxiv.org/abs/2605.15850</a></p>
+<ol><li>Institute of Education Sciences / REL Northeast &amp; Islands，<strong>AI in K–12 Education: The Good, the Bad, and the Guardrails to Consider</strong>，2026 年 8 月 10 日。IES 強調現有嚴格 K–12 因果證據仍有限，教師介入式 AI 使用目前較具正面訊號。</li></ol>
+<p><a href="https://ies.ed.gov/learn/blog/ai-k-12-education-good-bad-and-guardrails-consider" target="_blank" rel="noopener">https://ies.ed.gov/learn/blog/ai-k-12-education-good-bad-and-guardrails-consider</a></p>
+<ol><li>UNESCO IESALC，<strong>The latest issue of ESS Journal explores the use of generative AI in teaching and research</strong>，2026 年 8 月 14 日。最新專題收錄 16 篇生成式 AI 教學與研究文章，涵蓋教學潛力、學生學習、教師發展、制度政策與倫理治理。</li></ol>
+<p><a href="https://www.iesalc.unesco.org/en/articles/latest-issue-ess-journal-explores-use-generative-ai-teaching-and-research" target="_blank" rel="noopener">https://www.iesalc.unesco.org/en/articles/latest-issue-ess-journal-explores-use-generative-ai-teaching-and-research</a></p>
+<ol><li>UNESCO，<strong>UNESCO unites science educators to transform STEM teaching across Asia-Pacific</strong>，2026 年 7 月 20 日更新。活動結合 STEM、Maker Education、AI 科學教學與永續問題實作，共有來自 13 國的 57 名教育者參與。</li></ol>
+<p><a href="https://www.unesco.org/en/articles/unesco-unites-science-educators-transform-stem-teaching-across-asia-pacific" target="_blank" rel="noopener">https://www.unesco.org/en/articles/unesco-unites-science-educators-transform-stem-teaching-across-asia-pacific</a></p>
+<ol><li>Bewersdorff, A., Rojas, M., &amp; Zhai, X.，<strong>AI-Integrated Scientific Inquiry: A Practice-Centered Vision for Science Education</strong>，2026 年 7 月 23 日。研究主張把 AI 作為科學探究工具，同時保留學生的查證、反思與科學判斷責任。</li></ol>
+<p><a href="https://arxiv.org/abs/2607.21777" target="_blank" rel="noopener">https://arxiv.org/abs/2607.21777</a></p>
+<p><strong>2026 年 08 月 20 日</strong><br><strong>作者：陳賢宗</strong></p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

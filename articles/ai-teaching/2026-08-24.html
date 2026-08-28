@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 最適合站在教室哪裡？最新 79 篇研究給了一個意外答案：也許是在「老師旁邊」，而不是「學生前面」｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>AI 最適合站在教室哪裡？最新 79 篇研究給了一個意外答案：也許是在「老師旁邊」，而不是「學生前面」</h1>
+      <div class="date">2026 年 08 月 24 日</div>
+    </div>
+    <article>
+<p>自然課要進行「保溫效果」探究。</p>
+<p>老師準備讓學生比較紙杯、塑膠杯、不鏽鋼杯，以及不同包覆材料，觀察哪一種組合能讓熱水降溫得比較慢。</p>
+<p>如果把這個主題交給生成式 AI，幾秒鐘內就可以得到：</p>
+<p>教學目標、實驗步驟、變因表、學習單、評量題，甚至連「素養導向問題」都一起生成。</p>
+<p>看起來，老師好像可以直接把整套教材印出來上課。</p>
+<p>但是更值得思考的問題不是：</p>
+<p>「AI 能幫老師做多少？」</p>
+<p>而是：</p>
+<blockquote><strong>AI 到底應該放在教學流程的哪一個位置，最能發揮價值又不取代學生學習？</strong></blockquote>
+<p>2026 年 8 月 18 日剛獲《Frontiers in Education》接受的一篇最新系統性回顧，提供了一個很有意思的答案。</p>
+<p>研究團隊依 PRISMA 2020 方法整理 <strong>79 篇 K–12 教師使用生成式 AI 的實證研究</strong>。結果發現，目前大型語言模型雖然已經進入備課、評量、回饋、教材生成與課堂支援等多種情境，但最突出的用途之一，仍然集中在<strong>教學設計（instructional design）與共同備課（co-planning）</strong>。換句話說，現有研究裡的 GenAI，更常被定位成協助教師工作的「合作夥伴」，尤其是在課前規畫與準備階段，而不是直接取代教師站到學生面前教課。</p>
+<p>這個結果其實很值得自然科老師重新想一遍。</p>
+<p>我們經常把「AI 教育」想像成：</p>
+<p>每個孩子面前放一個 AI 家教。</p>
+<p>但目前研究呈現出的另一條路可能更實際：</p>
+<p><strong>先讓每位老師多一個 AI 共備夥伴。</strong></p>
+<h3>具體自然科案例：AI ×「誰最保溫？」實驗共備</h3>
+<p>教學對象可以設定為國小五、六年級至國中七年級。</p>
+<p>主題包含熱傳播、保溫、控制變因、資料分析與科學論證。</p>
+<p>AI 使用的主要位置不是學生實驗現場，而是在<strong>教師課前設計與課後反思</strong>。</p>
+<p>核心研究問題可以設定為：</p>
+<blockquote><strong>不同包覆材料會如何影響熱水降溫速度？</strong></blockquote>
+<p>材料可以使用相同紙杯、棉布、鋁箔、氣泡布、厚紙、橡皮筋與溫度計。</p>
+<p>但在正式上課前，教師先讓 AI 擔任第一輪「共備夥伴」。</p>
+<h3>第一階段：不要問 AI「幫我做教案」，先叫它「找漏洞」</h3>
+<p>很多教師第一次使用生成式 AI 備課，最自然的提示詞是：</p>
+<p>「請幫我設計一堂保溫實驗課。」</p>
+<p>AI 很快就會生出一份完整教材。</p>
+<p>問題也從這裡開始。</p>
+<p>完整度太高，反而容易讓教師進入「閱讀與接受」模式。</p>
+<p>更好的做法，可以先自己寫一個粗略版本：</p>
+<p>「三個相同紙杯，各裝 100 mL、60°C 的水，分別包上棉布、鋁箔與氣泡布，每五分鐘量一次溫度，共測 20 分鐘。」</p>
+<p>然後問 AI：</p>
+<blockquote>請不要重新設計實驗。你現在是自然科共備老師，找出這個實驗中可能影響公平比較的地方，並依嚴重程度排序。</blockquote>
+<p>AI 可能提醒：</p>
+<p>起始水溫是否真的一致？</p>
+<p>倒水與開始計時是否有時間差？</p>
+<p>材料厚度是否一致？</p>
+<p>是否都有杯蓋？</p>
+<p>溫度計插入深度是否相同？</p>
+<p>環境風速是否一致？</p>
+<p>這時 AI 沒有取代教師設計。</p>
+<p>而是做一件它很擅長的事：</p>
+<p><strong>幫忙把我們可能忽略的條件找出來。</strong></p>
+<h3>第二階段：讓 AI 一次扮演三種老師</h3>
+<p>自然科共備最容易缺的不是教材，而是「不同觀點」。</p>
+<p>可以要求 AI：</p>
+<blockquote>請分別用三種角色檢查這堂課：</blockquote>
+<blockquote>1. 科學內容審查者；</blockquote>
+<blockquote>2. 國小高年級導師；</blockquote>
+<blockquote>3. 科展指導老師。</blockquote>
+<blockquote>每個角色各提出三個最需要修改的地方。</blockquote>
+<p>科學內容審查者可能提醒：</p>
+<p>「鋁箔並不是單純因為『金屬比較保溫』，它的效果與輻射、空氣層與包覆方式都有關。」</p>
+<p>導師可能提醒：</p>
+<p>「五分鐘量一次溫度，全組很容易有三名學生沒有事情做。」</p>
+<p>科展指導老師則可能問：</p>
+<p>「只有做一次能不能下結論？是否需要重複測量？」</p>
+<p>同一份活動，突然出現不同角度。</p>
+<p>這正是 AI 作為 co-planning 工具最有價值的地方之一。</p>
+<p>不是幫老師「生成答案」。</p>
+<p>而是提供第二、第三雙眼睛。</p>
+<h3>第三階段：要求 AI 主動指出「學生可能會想錯什麼」</h3>
+<p>自然科教材最難的部分，通常不是內容正確。</p>
+<p>而是預測：</p>
+<p>學生會在哪裡誤解？</p>
+<p>例如保溫實驗裡，學生很可能說：</p>
+<p>「溫度降得最少的材料會自己產生熱。」</p>
+<p>或者：</p>
+<p>「鋁箔摸起來很冷，所以一定最不保溫。」</p>
+<p>又或者：</p>
+<p>「比較厚的材料一定最好。」</p>
+<p>教師可以請 AI：</p>
+<blockquote>請列出五個國小五年級學生在保溫實驗中可能出現的合理但錯誤的推論。不要先糾正，並為每個迷思設計一句追問。</blockquote>
+<p>例如對「摸起來冷，所以不保溫」，可以追問：</p>
+<p>「手摸到的冷熱，測的是材料本身的溫度，還是熱傳遞到手的速度？」</p>
+<p>這樣 AI 幫忙的是<strong>預想教學現場</strong>。</p>
+<p>而不是在現場替教師回答學生。</p>
+<h3>第四階段：學生真正實驗時，AI 反而可以退到後台</h3>
+<p>到了上課現場，我反而不建議每一步都讓學生問 AI。</p>
+<p>學生應該自己：</p>
+<p>預測；</p>
+<p>量溫度；</p>
+<p>記錄；</p>
+<p>畫圖；</p>
+<p>找異常值；</p>
+<p>討論為什麼三次結果不同。</p>
+<p>因為這些正是自然科最不可外包的認知工作。</p>
+<p>AI 可以晚一點再進場。</p>
+<p>例如學生完成第一版結論後，再請 AI：</p>
+<blockquote>以下是我們的溫度資料與結論。請不要幫我們重寫，而是指出哪一句超過資料能支持的範圍。</blockquote>
+<p>假設學生寫：</p>
+<p>「氣泡布是全世界最好的保溫材料。」</p>
+<p>AI 如果做得好，應該提醒：</p>
+<p>你的實驗只比較目前三種材料、特定厚度、特定容器與 20 分鐘條件。</p>
+<p>所以比較合理的說法是：</p>
+<p>「在本次實驗條件下，氣泡布組降溫幅度較小。」</p>
+<p>這時 AI 是<strong>論證審查員</strong>。</p>
+<p>而不是答案提供者。</p>
+<h3>最新的國小師資研究也得到類似訊號</h3>
+<p>2026 年 8 月 10 日，《Education Sciences》發表一項韓國研究，追蹤 8 名國小準教師參與為期 10 週的 ChatGPT 輔助自然科教案設計。主題集中在地球科學，包括季節變化、天氣、太陽系、星座與月相。</p>
+<p>研究者並不是只看「教師會不會寫 Prompt」。</p>
+<p>而是觀察他們是否能在實際備課中：</p>
+<p>檢查科學正確性；</p>
+<p>核對課程內容；</p>
+<p>判斷是否符合學生程度；</p>
+<p>修改 AI 產生的活動；</p>
+<p>補充其他資料；</p>
+<p>甚至拒絕 AI 的建議。</p>
+<p>到了課程後期，8 人中有 6 人出現更具情境性的反覆提示策略，7 人展現了與教材成果直接相關的查證、修改、補充或改用其他工具行為。研究者特別強調，這不代表所有人的 AI literacy 都按照同一條路線變高；他們真正看到的，是教師逐漸形成「有條件的接受」，而不是單純提高對 AI 的信任。</p>
+<p>這一句非常重要。</p>
+<p><strong>好的 AI 素養，不一定是愈用愈相信。</strong></p>
+<p>也可能是：</p>
+<p>愈用，愈知道哪裡不能直接相信。</p>
+<h3>科學教師真正需要的 Prompt，往往不是生成，而是判斷</h3>
+<p>8 月 4 日另一項準科學教師研究也得到類似結論。研究訪談 6 名物理與生物領域準教師，發現 AI 可以協助教案規畫、課綱對齊、模擬與視覺素材，以及差異化教學；但參與者同樣強調內容深度、學生情境、過度依賴、批判思考及教師專業判斷的重要性。研究規模很小，是質性現象學研究，因此不能直接推論所有科學教師，但它再次指出：AI 幫忙最多的地方，往往是準備與支援；真正判斷教材是否適合眼前學生，仍然需要教師。</p>
+<p>因此，比起永遠問：</p>
+<p>「幫我做一份更完整的教案。」</p>
+<p>自然老師可以多累積另一類 Prompt：</p>
+<p>「這個設計最可能在哪裡失敗？」</p>
+<p>「學生可能形成哪一種迷思？」</p>
+<p>「這張圖裡哪個地方可能造成錯誤理解？」</p>
+<p>「哪個變因沒有控制？」</p>
+<p>「這個結論超過證據多少？」</p>
+<p>「如果只能刪掉一半內容，什麼是不能刪的？」</p>
+<p>這些問題，其實更接近教師專業。</p>
+<h3>學生可能學到什麼？</h3>
+<p>在這樣的設計裡，學生依然真正做科學。</p>
+<p>他們需要：</p>
+<p>操作；</p>
+<p>測量；</p>
+<p>處理誤差；</p>
+<p>比較；</p>
+<p>討論；</p>
+<p>形成結論。</p>
+<p>AI 沒有把核心探究拿走。</p>
+<p>但學生得到一套經過教師與 AI 共同檢查、變因更清楚、迷思預測更完整的學習活動。</p>
+<p>從學生角度，他不一定需要知道老師在課前問了 AI 十幾次。</p>
+<p>這和教師使用搜尋引擎、參考書或和其他老師共備沒有本質衝突。</p>
+<p>AI 的價值，可以先發生在<strong>教師專業工作背後</strong>。</p>
+<h3>教師需要注意的風險與限制</h3>
+<p>第一，最新的 79 篇系統性回顧顯示「instructional design 與 co-planning 很常見」，並不等於研究已證明這就是 AI 最有效的用途。這是研究分布與功能角色的整理，不是不同 AI 使用方式的隨機對照成效比較。</p>
+<p>第二，該 Frontiers 系統性回顧截至目前已於 8 月 18 日接受，但網站明確標示最終排版版本仍將稍後發布，因此今天引用的是已接受的文章摘要與線上資料。</p>
+<p>第三，AI 生成的自然科活動仍需查證科學原理，特別是熱傳、電路、化學反應、天文尺度等容易被圖像或簡化語言誤導的內容。</p>
+<p>第四，AI 很容易產生「看起來很完整、卻做不完」的教案。教師仍需根據課堂時間、學生數、器材數與安全條件刪減。</p>
+<p>第五，差異化建議不能只靠 AI 推測學生。真正的學生能力、情緒、語言背景與班級互動，教師比模型知道得更多。</p>
+<p>第六，教師若要把學生作業或學習紀錄交給 AI 分析，仍應移除不必要個資，並遵守學校與平台規範。</p>
+<p>最新的 AEFP K–12 AI 證據手冊在 2026 年 8 月更新時，也提醒一個現實：學校採用 AI 的速度已經快過研究評估速度。手冊引用的全美調查顯示，學生與教師使用 AI 已相當普遍，但對哪些工具真正能改善學習、在什麼條件下有效，目前證據仍然持續累積。</p>
+<p>所以，現階段自然科老師或許不需要急著把 AI 放到每一張學生桌上。</p>
+<p>可以先從自己的桌上開始。</p>
+<p>讓 AI 幫忙：</p>
+<p>挑錯；</p>
+<p>找漏洞；</p>
+<p>模擬學生迷思；</p>
+<p>比較活動版本；</p>
+<p>檢查評量與目標是否一致；</p>
+<p>再由教師決定最後留下什麼。</p>
+<p>如果 AI 的加入讓老師少花一些時間整理格式，多花一些時間思考：</p>
+<p><strong>「我的學生到底會在哪裡真正開始理解？」</strong></p>
+<p>那麼這項科技才真的幫到了教學。</p>
+<p>AI 未必要站在黑板前。</p>
+<p>它可能最適合的位置，是站在老師旁邊，小聲提醒：</p>
+<p><strong>「這裡要不要再想一次？」</strong></p>
+<p>而真正決定怎麼教的人，仍然是老師。</p>
+<h3>參考資料與延伸閱讀：</h3>
+<ol><li>Cincioğlu, O., Mutlu Bayraktar, D., &amp; Altan, T.，<strong>Teachers' Use of Generative Artificial Intelligence in K–12 Education: A Systematic Review</strong>，《Frontiers in Education》，2026 年 8 月 18 日接受。依 PRISMA 2020 納入 79 篇實證研究，指出 instructional design 與 co-planning 是教師使用 GenAI 的突出功能角色之一；目前最終排版版本尚待發布。</li></ol>
+<p><a href="https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2026.1935733/abstract" target="_blank" rel="noopener">https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2026.1935733/abstract</a></p>
+<ol><li>Choi, Y.-S., &amp; Kim, M.-C.，<strong>Exploring Elementary Pre-Service Teachers’ AI Literacy in ChatGPT-Assisted Science Lesson Design</strong>，《Education Sciences》，2026 年 8 月 10 日。8 名韓國國小準教師參與 10 週地球科學教案設計，研究重點包括科學正確性、課程對齊、學生適切性、查證與教師專業判斷。</li></ol>
+<p><a href="https://www.mdpi.com/2227-7102/16/8/1275" target="_blank" rel="noopener">https://www.mdpi.com/2227-7102/16/8/1275</a></p>
+<ol><li>Ligsanan, L. S., Batchar, R., &amp; Manguil, C. J.，<strong>Exploring the Influence of Artificial Intelligence Adaptation on Pre-Service Science Teachers’ Pedagogical Content Knowledge</strong>，《Suranaree Journal of Social Science》，2026 年 8 月 4 日。6 名準科學教師的質性研究顯示，AI 可支援教案、評量與差異化策略，但參與者仍強調內容深度、過度依賴及教師專業判斷。</li></ol>
+<p><a href="https://so05.tci-thaijo.org/index.php/sjss/article/view/282481" target="_blank" rel="noopener">https://so05.tci-thaijo.org/index.php/sjss/article/view/282481</a></p>
+<ol><li>Barnard, C., Fesler, L., &amp; Loeb, S.，<strong>Artificial Intelligence in K–12 Schools</strong>，AEFP Live Handbook，2026 年 8 月更新。手冊指出 K–12 採用 AI 的速度快於研究評估速度，目前需要更謹慎區分採用率、產品功能與真正學習成效。</li></ol>
+<p><a href="https://livehandbook.org/k-12-education/miscellaneous/k-12-education/school-resources/artificial-intelligence-in-k%E2%80%9312-schools/" target="_blank" rel="noopener">https://livehandbook.org/k-12-education/miscellaneous/k-12-education/school-resources/artificial-intelligence-in-k%E2%80%9312-schools/</a></p>
+<ol><li>Maurer, N., &amp; Huwer, J.，<strong>Teaching and Learning about Artificial Intelligence (AI) in Secondary Education Chemistry Classes</strong>，《Journal of Chemical Education》，2026 年 8 月 11 日。研究把 AI 應用、限制與風險帶入化學教師專業發展與學生課程，提供「AI 不只用來生成教材，也應成為科學教育內容」的另一個方向。</li></ol>
+<p><a href="https://pubs.acs.org/doi/10.1021/acs.jchemed.6c00128" target="_blank" rel="noopener">https://pubs.acs.org/doi/10.1021/acs.jchemed.6c00128</a></p>
+<p><strong>2026 年 08 月 24 日</strong><br><strong>作者：陳賢宗</strong></p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>
