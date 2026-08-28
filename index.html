@@ -914,6 +914,7 @@ const DEFAULT_DATA = [
   {cat:"教學應用",name:"教師用語播放站",url:"https://prayer168.github.io/Listen_UP/",icon:"🔊"},
   {cat:"教學應用",name:"用 Claude Code Desktop 打造數位互動教材",url:"https://prayer168.github.io/cloude_code_desktop/",icon:"🖥️"},
   {cat:"教學應用",name:"使用 Claude Code 編寫數位互動教材",url:"https://prayer168.github.io/cloude_code_CLI/",icon:"⌨️"},
+  {cat:"skill",name:"AI 評量規準設計師Rubric Builder",url:"https://github.com/prayer168/rubric-builder",icon:"🧩"},
   {cat:"休閒（動動腦）",name:"粒子文字",url:"https://prayer168.github.io/particle-type3/",icon:"✨"},
   {cat:"休閒（動動腦）",name:"星域五子棋",url:"https://prayer168.github.io/chess_5_v2/",icon:"⭐"},
   {cat:"休閒（動動腦）",name:"城堡對決",url:"https://prayer168.github.io/castle_battle/",icon:"🏰"},
@@ -940,12 +941,13 @@ const DEFAULT_CATS = [
   {key:"五年級",  emoji:"🌲", desc:"五年級自然科互動教材", color:"#1DD1A1"},
   {key:"六年級",  emoji:"🌏", desc:"六年級自然科互動教材", color:"#54A0FF"},
   {key:"教學應用",emoji:"💡", desc:"課堂教學輔助工具",     color:"#00B894"},
+  {key:"skill",emoji:"🧩",desc:"Codex 與 AI 教學工作流技能",color:"#6c5ce7"},
   {key:"休閒（動動腦）",emoji:"🎮",desc:"趣味遊戲與創意工具",color:"#A29BFE"},
 ];
 window.DEFAULT_CATS = DEFAULT_CATS;
 
 // ── 類別固定排序：列在此清單的類別依序排列，未列出的自訂類別依原順序排在最後 ──
-const CAT_ORDER = ['三年級','四年級','五年級','六年級','七年級','八年級','九年級','教學應用','教學文章','休閒（動動腦）'];
+const CAT_ORDER = ['三年級','四年級','五年級','六年級','七年級','八年級','九年級','教學應用','教學文章','AI程式設計','skill','休閒（動動腦）'];
 function orderCats(cats) {
   return cats.slice().sort((a, b) => {
     const ia = CAT_ORDER.indexOf(a.key), ib = CAT_ORDER.indexOf(b.key);
@@ -975,7 +977,16 @@ function ensureStaticTeachingArticleCategory(cats) {
   const merged = cats.some(c => c.key === STATIC_TEACHING_ARTICLE_CATEGORY.key)
     ? cats
     : [...cats, STATIC_TEACHING_ARTICLE_CATEGORY];
-  return orderCats(applyCatEmoji(merged));
+  return orderCats(applyCatEmoji(dedupeCatsByKey(merged)));
+}
+
+function dedupeCatsByKey(cats) {
+  const seen = new Set();
+  return cats.filter(cat => {
+    if (!cat || seen.has(cat.key)) return false;
+    seen.add(cat.key);
+    return true;
+  });
 }
 
 function isStaticTeachingArticle(item) {
@@ -1110,6 +1121,7 @@ const MATERIAL_ICON_MAP = {
     '橡實鐘': '⏰',
     'AI 資料搜尋與查證技術文件': '✅',
     '自然AI命題skill': '🧩',
+    'AI 評量規準設計師Rubric Builder': '🧩',
     '自然科學探究網站精選': '🔗',
     '國立科學工藝博物館科教活動課程與12年國教新課綱  自然科學領域、科技領域對應一覽表111.11.02': '🏛️',
     '圖片批次轉 PDF': '🖼️',
@@ -1238,6 +1250,7 @@ const CAT_EMOJI_MAP = {
     '教學應用': '🧰',
     '休閒（動動腦）': '🎮',
     'AI程式設計': '🤖',
+    'skill': '🧩',
     '教案命題': '📝',
     '教學參考網站': '🌐',
     '教學參考影音': '🎬',
