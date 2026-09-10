@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 教師研習如果還停在「教 Prompt」，可能已經不夠了：最新調查只有 14% 教師具完整 AI 素養，自然科更需要練習「判斷 AI 哪裡不能用」｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>AI 教師研習如果還停在「教 Prompt」，可能已經不夠了：最新調查只有 14% 教師具完整 AI 素養，自然科更需要練習「判斷 AI 哪裡不能用」</h1>
+      <div class="date">2026 年 09 月 09 日</div>
+    </div>
+    <article>
+<p>「今天研習要教大家 20 個超好用的 AI Prompt。」</p>
+<p>這大概是這兩年教師 AI 增能最常見的開場。</p>
+<p>老師學會叫 AI 生成教案、學習單、測驗題、簡報，回到學校之後確實馬上可以使用。效率提升非常有感。</p>
+<p>但是到了 2026 年，一個新的問題愈來愈明顯：</p>
+<p><strong>老師會使用 AI，和老師具有 AI literacy，其實不是同一件事。</strong></p>
+<p>英國皇家學會（Royal Society）近期公布的教師 AI literacy 調查提供了一個很值得注意的數字。這項由 Teacher Tapp 執行、涵蓋超過 9,200 名英格蘭中小學教師的調查顯示，只有 <strong>14%</strong> 的教師表示自己在 AI literacy 的三個主要面向都具有信心：理解 AI 如何運作、能安全與負責任地使用，以及能批判思考 AI 帶來的倫理與社會問題。只有 <strong>18%</strong> 接受過正式 AI 專業發展或相關培訓，23% 表示完全沒有得到相關支持。</p>
+<p>更值得注意的是，有正式研習與全校指引的教師，在完整 AI literacy 上具有信心的機率，大約是沒有支援教師的三倍。</p>
+<p>問題顯然已經不是：</p>
+<p>「老師願不願意碰 AI？」</p>
+<p>而是：</p>
+<p><strong>「我們到底在研習裡教老師什麼？」</strong></p>
+<p>2026 年 9 月 9 日，UNESCO Digital Learning Week 的 Teacher Task Force 特別安排兩場教師專場，其中一場直接談「Building, protecting and expanding teachers’ agency」，另一場則是「Teachers at the centre: Agency, competencies and the teacher–student relationship」。</p>
+<p>核心訊息非常清楚：</p>
+<p>AI 時代的教師專業發展，不能只把老師訓練成「工具使用者」，更要讓教師保有判斷、選擇、拒絕與重新設計 AI 建議的能力。</p>
+<p>這件事情在自然科尤其重要。</p>
+<p>因為 AI 可以生成一份看起來非常完整的實驗，但「看起來像實驗」和「真的適合學生探究」之間，差距可能非常大。</p>
+<h3>一個具體案例：AI 幫你設計「哪種材料保溫最好？」</h3>
+<p>教學對象設定為國小五、六年級。</p>
+<p>主題是熱傳播與保溫。</p>
+<p>材料可以準備相同大小的杯子、溫水、溫度計，以及棉布、氣泡紙、鋁箔、毛巾等包覆材料。</p>
+<p>老師先問生成式 AI：</p>
+<p>「請幫我設計一個國小五年級探究不同材料保溫效果的實驗。」</p>
+<p>AI 很可能很快給出研究問題、假設、器材、變因、步驟、記錄表，甚至連結論都給了。</p>
+<p>如果教師研習只教「怎麼下 Prompt」，工作到這裡大概就結束。</p>
+<p>但更好的 AI 教師研習，應該從這裡才正式開始。</p>
+<h3>第一關：科學上正確嗎？</h3>
+<p>老師先不要改 Prompt。</p>
+<p>直接拿紅筆檢查 AI 的實驗。</p>
+<p>例如 AI 可能建議：</p>
+<p>「用相同體積、相同溫度熱水，分別包覆不同材料，每五分鐘測量一次。」</p>
+<p>乍看完全合理。</p>
+<p>但是仔細看：</p>
+<p>杯子材質是否相同？</p>
+<p>包覆厚度是否一致？</p>
+<p>杯口有沒有加蓋？</p>
+<p>溫度計插入深度一不一樣？</p>
+<p>不同材料包覆的面積是否相同？</p>
+<p>室內風速有沒有差異？</p>
+<p>學生如果一組包三層毛巾、一組只有一張鋁箔，最後其實很難說差異來自「材料」。</p>
+<p>這時教師做的就是第一種 AI literacy：</p>
+<p><strong>科學檢核。</strong></p>
+<p>不是問「AI 有沒有回答」，而是問：</p>
+<p><strong>它的研究設計能不能支持最後的結論？</strong></p>
+<h3>第二關：適合這個年齡嗎？</h3>
+<p>AI 很容易提出一份科學上似乎合理，但教學上不適合的方案。</p>
+<p>例如要求學生計算熱傳導係數、使用大量公式、使用難以取得的專業設備、一次安排八種材料，每種重複五次。</p>
+<p>對研究所學生也許沒問題，對 40 分鐘的國小自然課就是災難。</p>
+<p>如果目標只是理解不同材料減緩熱散失的能力不同，且公平實驗需要控制變因，那就沒有必要把實驗複雜到學生只剩下照表操作。</p>
+<p>這是第二種 AI literacy：</p>
+<p><strong>教學適切性判斷。</strong></p>
+<h3>第三關：AI 有沒有把探究做掉？</h3>
+<p>假設 AI 已經幫老師寫好研究問題、假設、變因、控制變因和步驟。</p>
+<p>老師把這張學習單直接發下去。</p>
+<p>學生做得很順。</p>
+<p>可是請問：</p>
+<p><strong>學生到底探究了什麼？</strong></p>
+<p>研究問題不是學生提出的。</p>
+<p>控制變因不是學生討論的。</p>
+<p>方法不是學生設計的。</p>
+<p>最後只剩下量溫度。</p>
+<p>這很容易從「探究活動」變成「照食譜實驗」。</p>
+<p>真正比較好的做法，是把 AI 產生的完整方案拆開。</p>
+<p>例如只給學生情境：</p>
+<blockquote>冬天裝熱飲時，有人包毛巾，有人用鋁箔，有人用氣泡紙。到底哪種材料比較能讓水保持溫度？</blockquote>
+<p>接下來讓學生自己決定：</p>
+<p>要測什麼？</p>
+<p>多久量一次？</p>
+<p>怎樣才公平？</p>
+<p>每組討論完，再讓 AI 進場：</p>
+<blockquote>這是我們設計的實驗。不要替我們重新設計，只指出兩個可能影響公平比較的地方。</blockquote>
+<p>AI 就從「實驗設計者」變成：</p>
+<p><strong>研究設計的批判夥伴。</strong></p>
+<h3>第四關：老師必須敢對 AI 說「不要」</h3>
+<p>這反而可能是未來教師 AI literacy 最重要的一項能力。</p>
+<p>2026 年 7 月刊登於《Research in Science Education》的一項研究，讓 15 名準科學教師先自行完成科學教案，再利用 ChatGPT、Copilot 或 MagicSchool 進行重新設計。</p>
+<p>研究重點不是誰寫出最漂亮的 Prompt，而是要求參與者完整記錄：</p>
+<p>AI 提出了什麼。</p>
+<p>自己接受了什麼。</p>
+<p>修改了什麼。</p>
+<p>拒絕了什麼。</p>
+<p><strong>以及為什麼。</strong></p>
+<p>研究發現，AI literacy 最清楚展現的時刻，往往不是教師接受 AI 建議的時候，而是他能說明「為什麼這個建議不適合我的學生、不符合科學內容、在教室裡做不到，因此我要修改或拒絕它」。</p>
+<p>這是一個非常值得帶進教師研習的方法。</p>
+<p>以後研習作業不要只交「我的 Prompt」。</p>
+<p>可以改成交：</p>
+<p><strong>AI 建議 → 我的判斷 → 接受／修改／拒絕 → 理由。</strong></p>
+<p>這樣真正被訓練的就不是提示詞技巧，而是教師專業。</p>
+<h3>最新科學教育研究也已經證明「完整」不代表「深入」</h3>
+<p>9 月 4 日刊登的另一項研究，要求 ChatGPT 設計一套高中空氣污染與社會性科學議題課程。</p>
+<p>AI 可以快速產生完整的十天課程，包含學習目標、活動、討論與系統模型。</p>
+<p>但是研究者仔細分析後發現，部分模型不精確、學習目標偏模糊，而且多數系統思考仍停留在較基礎層次。即使重新 Prompt，要求加入更高階系統思考，認知深度仍沒有如預期提升。</p>
+<p>這件事情很值得教師記住：</p>
+<p><strong>AI 很擅長把東西「補完整」，不代表它真的知道這堂課哪裡需要「加深」。</strong></p>
+<p>所以自然科教師研習下一階段，也許不應該再只比誰會用最多 AI 工具、誰收藏最多 Prompt、誰最快生出一整份教案。</p>
+<p>真正值得練習的反而是：</p>
+<p>「AI 這段科學解釋有沒有問題？」</p>
+<p>「這個實驗控制變因合理嗎？」</p>
+<p>「這項活動適合五年級嗎？」</p>
+<p>「它是不是把學生原本應該做的思考做掉了？」</p>
+<p>以及最後一句：</p>
+<p><strong>「這個 AI 建議，我為什麼不用？」</strong></p>
+<h3>Royal Society 還提出另一個很重要的方向：AI literacy 不應只放在資訊課</h3>
+<p>皇家學會把 AI 教育區分成三個面向：</p>
+<p><strong>Teaching about AI</strong>：理解、批判與安全使用 AI。</p>
+<p><strong>Teaching for AI</strong>：建立未來開發與運用 AI 所需要的數學、資料與運算能力。</p>
+<p><strong>Teaching with AI</strong>：利用 AI 支援教學與學習。</p>
+<p>皇家學會同時提醒，如果 AI literacy 只依賴少數資訊教師或少數熱衷科技的老師，學生獲得 AI 教育的機會就可能因學校與教師而差異愈來愈大。</p>
+<p>這正是自然科應該加入的原因。</p>
+<p>因為很多 AI literacy，本來就是自然課每天在做的事情：</p>
+<p>確認資料來源。</p>
+<p>檢查證據。</p>
+<p>辨認異常。</p>
+<p>區分相關與因果。</p>
+<p>檢驗模型。</p>
+<p>面對不確定性。</p>
+<p>根據新證據修改解釋。</p>
+<p>AI 增能的目標，不是讓老師愈來愈聽 AI 的話。</p>
+<p>而是讓老師在 AI 愈來愈強的時代，仍然有能力判斷：</p>
+<p>什麼可以交給它。</p>
+<p>什麼只能讓它提供建議。</p>
+<p>什麼必須由學生自己完成。</p>
+<p>以及哪些地方，教師必須站出來說：</p>
+<p><strong>「這個建議看起來很好，但我的學生現在不需要。」</strong></p>
+<p>當老師能說清楚這句話的理由時，那才不是「不會使用 AI」，反而可能正代表：</p>
+<p><strong>真正開始具備了 AI 時代的教師專業。</strong></p>
+<h2>參考資料與延伸閱讀</h2>
+<ol><li>International Task Force on Teachers for Education 2030，<strong>Teacher Task Force at Digital Learning Week 2026</strong>。</li></ol>
+<p><a href="https://www.teachertaskforce.org/events/teacher-task-force-digital-learning-week-2026" target="_blank" rel="noopener">https://www.teachertaskforce.org/events/teacher-task-force-digital-learning-week-2026</a></p>
+<ol><li>The Royal Society，<strong>Artificial Intelligence in Education</strong>。</li></ol>
+<p><a href="https://www.royalsociety.org/news-resources/projects/ai-in-education/" target="_blank" rel="noopener">https://www.royalsociety.org/news-resources/projects/ai-in-education/</a></p>
+<ol><li>EdTech Innovation Hub，<strong>Only 14% of teachers confident across AI literacy, Royal Society finds</strong>，2026 年 9 月 2 日。</li></ol>
+<p><a href="https://www.edtechinnovationhub.com/news/only-14-of-teachers-confident-across-ai-literacy-royal-society-finds" target="_blank" rel="noopener">https://www.edtechinnovationhub.com/news/only-14-of-teachers-confident-across-ai-literacy-royal-society-finds</a></p>
+<ol><li>Katsampoxaki-Hodgetts, K.，<strong>Enacted AI Literacy Towards Epistemic Visibility</strong>，《Research in Science Education》，2026 年 7 月 28 日。</li></ol>
+<p><a href="https://link.springer.com/article/10.1007/s11165-026-10360-7" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s11165-026-10360-7</a></p>
+<ol><li>Courchesne, S., Powell, W., &amp; Zeidler, D. L.，<strong>ChatGPT-generated socioscientific issues in the context of systems thinking</strong>，《Disciplinary and Interdisciplinary Science Education Research》，2026 年 9 月 4 日。</li></ol>
+<p><a href="https://link.springer.com/article/10.1186/s43031-026-00170-2" target="_blank" rel="noopener">https://link.springer.com/article/10.1186/s43031-026-00170-2</a></p>
+<p>2026 年 09 月 09 日<br>作者：陳賢宗</p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

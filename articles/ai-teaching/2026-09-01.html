@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>當 AI 什麼都能幫忙，學生反而可能「從來沒學會」：新學期自然課最該守住的不是禁用 AI，而是第一次思考的機會｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>當 AI 什麼都能幫忙，學生反而可能「從來沒學會」：新學期自然課最該守住的不是禁用 AI，而是第一次思考的機會</h1>
+      <div class="date">2026 年 09 月 01 日</div>
+    </div>
+    <article>
+<p>新學期第一堂自然課，老師拿出一張校園一週的氣溫折線圖。</p>
+<p>星期一 31°C、星期二 32°C、星期三 34°C、星期四 33°C、星期五 35°C。</p>
+<p>老師還沒開口，一名學生已經熟練地把圖表拍下來，丟進 AI：</p>
+<p>「幫我分析這張圖。」</p>
+<p>幾秒後，AI 回答：</p>
+<p>「整體氣溫呈上升趨勢，星期五最高，星期一最低，中間略有波動。」</p>
+<p>答案沒有錯。</p>
+<p>甚至比不少學生自己寫得完整。</p>
+<p>可是這時候值得問的，不是：</p>
+<p><strong>「AI 答對了嗎？」</strong></p>
+<p>而是：</p>
+<p><strong>「這個孩子自己還有沒有讀過那張圖？」</strong></p>
+<p>2026 年 8 月 31 日，美國德拉瓦大學（University of Delaware）公布一篇針對 K–12 AI 教學的最新文章，兩位教育學者 Stephanie Smith Budhai 與 Rachel Karchmer-Klein 提醒教師，當學生太早把原本應該自己完成的認知工作交給 AI，風險不只是已經學會的能力逐漸退化，也可能出現一個更值得警覺的現象——<strong>never-skilling</strong>。</p>
+<p>也就是：</p>
+<blockquote><strong>學生不是「原本會，後來因為 AI 而退步」，而是那項基礎能力從一開始就沒有真正建立。</strong></blockquote>
+<p>這個提醒來得很及時。</p>
+<p>因為 AI 正在快速進入學生原本就使用的學習環境。德拉瓦大學文章特別提到，隨著 AI 功能更直接整合進 K–12 常見平台，學生取得生成式 AI 的門檻正在降低。另一方面，Google 8 月 27 日也宣布與 Khan Academy 合作，把 Gemini 模型進一步整合進 Khanmigo，加入即時視覺輔助與教師可控制的練習內容。</p>
+<p>AI 已經不只是學生偷偷另外開一個網頁。</p>
+<p>它正在逐漸變成學習環境本身的一部分。</p>
+<p>所以未來教師真正需要設計的，也許不是：</p>
+<p>「這堂課可不可以用 AI？」</p>
+<p>而是：</p>
+<p><strong>「這堂課哪一個時間點才能用 AI？」</strong></p>
+<p>這兩句話，看起來只差一點點，教學結果卻可能完全不同。</p>
+<h3>自然科尤其容易發生「還沒學會，就先外包」</h3>
+<p>自然科有很多看似簡單、其實非常重要的基礎能力。</p>
+<p>例如：</p>
+<p>看一張折線圖找出變化；</p>
+<p>觀察葉片特徵；</p>
+<p>從實驗紀錄找異常值；</p>
+<p>比較兩組數據；</p>
+<p>提出假設；</p>
+<p>找控制變因；</p>
+<p>根據證據寫一句結論。</p>
+<p>這些工作 AI 現在大多已經可以快速完成。</p>
+<p>因此問題不是 AI 能不能做。</p>
+<p>而是如果學生每次都在第一次嘗試以前就交出去，久而久之，他可能會變得非常會「取得答案」，卻不熟悉答案是怎麼產生的。</p>
+<p>德拉瓦大學的教育學者因此建議，教師應先確認學生是否已建立完成任務所需的基本知識與能力，再決定 AI 應該介入哪一個環節；他們也強調，使用 AI 時應讓學生持續對輸出保持批判態度，而不是把 AI 當成權威來源。</p>
+<p>這個原則非常適合直接轉成自然科教學方法。</p>
+<p>我會把它叫做：</p>
+<p><strong>AI 延遲介入。</strong></p>
+<p>不是禁止。</p>
+<p>只是晚一點出場。</p>
+<h3>具體自然科案例：AI × 校園溫度資料的「三分鐘延遲」</h3>
+<p>教學對象可以設定為國小五、六年級至國中七年級。</p>
+<p>主題是：</p>
+<p><strong>氣溫變化、數據判讀與校園微氣候。</strong></p>
+<p>學生先到校園進行實際量測。</p>
+<p>例如在上午 9 點、11 點與下午 1 點，分別測量：</p>
+<p>樹蔭下；</p>
+<p>草地；</p>
+<p>水泥地；</p>
+<p>走廊；</p>
+<p>操場。</p>
+<p>可以使用一般溫度計，也可以進一步搭配 Arduino、micro:bit 或 ESP32 感測器。</p>
+<p>最後得到一張真實數據表。</p>
+<p>接著老師宣布一條規則：</p>
+<blockquote><strong>前三分鐘禁止使用 AI。</strong></blockquote>
+<p>學生一定要先自己完成四件事：</p>
+<p>第一，圈出最高值與最低值。</p>
+<p>第二，寫出一個自己看到的規律。</p>
+<p>第三，找出一筆自己覺得奇怪的資料。</p>
+<p>第四，提出一個可能原因。</p>
+<p>不要求一開始就寫得很好。</p>
+<p>真正重要的是：</p>
+<p><strong>先留下學生自己的第一版判斷。</strong></p>
+<p>這就是不能被 AI 拿走的部分。</p>
+<h3>第二階段，AI 才開始工作</h3>
+<p>三分鐘後，可以開放 AI。</p>
+<p>但提示詞不是：</p>
+<p>「幫我分析資料。」</p>
+<p>而是：</p>
+<blockquote>這是我們自己量到的校園溫度資料，以及我的初步分析。請不要重新替我寫答案，先指出一個我可能忽略的數據特徵，再問我一個值得檢查的問題。</blockquote>
+<p>AI 可能說：</p>
+<p>「樹蔭下雖然整體溫度較低，但不同時段的變化幅度似乎也較小。你有沒有比較各地點從上午到下午增加了多少度？」</p>
+<p>這時學生會突然發現：</p>
+<p>原來不只可以比「誰最高」。</p>
+<p>還可以比較：</p>
+<p><strong>變化量。</strong></p>
+<p>這就是非常好的 AI 使用。</p>
+<p>AI 沒有取代第一次讀圖。</p>
+<p>而是把學生從第一層分析帶到第二層。</p>
+<h3>第三階段：故意讓 AI 面對一筆錯誤資料</h3>
+<p>老師可以在另一組練習資料裡故意放一筆：</p>
+<p>樹蔭下上午 9 點：30.2°C</p>
+<p>上午 11 點：31.1°C</p>
+<p>下午 1 點：<strong>81.5°C</strong></p>
+<p>很多 AI 很可能會指出這是一個異常值。</p>
+<p>但教師不要停在：</p>
+<p>「你看，AI 好厲害，找到了。」</p>
+<p>接著問：</p>
+<p><strong>「所以我們可以直接刪掉嗎？」</strong></p>
+<p>答案當然是不一定。</p>
+<p>學生必須回去檢查：</p>
+<p>是不是輸入錯誤？</p>
+<p>感測器故障？</p>
+<p>單位不同？</p>
+<p>紀錄抄錯？</p>
+<p>還是真的發生特殊狀況？</p>
+<p>這一段非常重要。</p>
+<p>因為學生開始理解：</p>
+<p><strong>AI 可以幫忙發現奇怪資料，但不能替我們決定真實世界發生了什麼。</strong></p>
+<p>這正是科學素養與 AI 素養最自然的交會點。</p>
+<h3>第四階段：比較「我第一次看到的」和「AI 後來提醒我的」</h3>
+<p>最後學生不必交一篇 AI 寫好的漂亮報告。</p>
+<p>只要完成一張非常簡單的表格：</p>
+<p>「我一開始看到什麼？」</p>
+<p>「AI 提醒了什麼？」</p>
+<p>「我重新檢查了什麼？」</p>
+<p>「最後我改變哪一個判斷？」</p>
+<p>這四格可能比一篇五百字的生成式報告更有教學價值。</p>
+<p>因為教師看得見：</p>
+<p><strong>思考有沒有真的發生。</strong></p>
+<p>這也呼應 8 月 12 日刊登於《Smart Learning Environments》的最新 K–12 系統性回顧。</p>
+<p>研究依照 PRISMA 流程分析 29 篇 2016～2025 年的同儕審查研究，發現 AI 產生的資訊並不會自動變成教學。教師真正扮演的是一個循環角色：</p>
+<p><strong>監看 → 判斷 → 介入 → 協調。</strong></p>
+<p>AI 提供資訊之後，仍需要教師根據學生程度、課程目標與真實教室情境，把資訊轉化成適當的下一步活動。</p>
+<p>換句話說，未來教師的重要工作之一，很可能就是決定：</p>
+<p><strong>現在應該讓 AI 說話，還是應該再讓學生想三分鐘？</strong></p>
+<h3>AI 在科學教育最好的角色，可能是「第二個聲音」</h3>
+<p>8 月 11 日，《International Journal of Science and Mathematics Education》刊登 Kok-Sing Tang 的研究觀點，也提出非常相近的方向。</p>
+<p>Tang 主張，不應主要把生成式 AI 當成知識提供者，而可以重新設計成 <strong>dialogic partner——對話夥伴</strong>。</p>
+<p>它可以追問理由、提出另一個觀點、挑戰假設、要求補充證據、提供反例、把問題重新丟回學生。</p>
+<p>也就是說，AI 最好的位置不是：</p>
+<p><strong>「學生還沒有想，我先告訴你。」</strong></p>
+<p>而是：</p>
+<p><strong>「你已經想過了，我再提出一個你可能沒有想到的角度。」</strong></p>
+<p>這一點對自然科尤其重要。</p>
+<p>學生看完實驗結果說：「溫度越高，植物長得越快。」AI 不必直接回答對或錯，可以問：「你的實驗中，溫度以外的光照、水分與植物大小是否相同？」</p>
+<p>學生說：「這個材料保溫最好。」AI 可以問：「你做了幾次測量？不同材料厚度相同嗎？」</p>
+<p>AI 開始變成：</p>
+<p><strong>會找麻煩的第二個聲音。</strong></p>
+<p>這比第一時間替學生把答案寫好，更接近科學教育真正需要的功能。</p>
+<h3>新學期最值得建立的，也許是一張「AI 出場時機表」</h3>
+<p>自然課可以先從一條很簡單的原則開始：</p>
+<p><strong>第一次思考，學生做。</strong></p>
+<p><strong>第二次挑戰，可以找 AI。</strong></p>
+<p>第一次觀察植物，學生自己描述。AI 可以協助比較可能忽略的特徵。</p>
+<p>第一次讀圖，學生自己找規律。AI 可以幫忙提出第二種分析方式。</p>
+<p>第一次提出假設，學生自己寫。AI 可以扮演反方。</p>
+<p>第一次設計實驗，學生先決定變因。AI 可以協助找漏洞。</p>
+<p>第一次寫結論，學生先完成自己的版本。AI 可以檢查證據是否足夠。</p>
+<p>這種設計沒有把 AI 排除在課堂之外。</p>
+<p>反而給 AI 一個非常明確的位置。</p>
+<h3>教師需要注意的風險與限制</h3>
+<p>第一，「never-skilling」目前主要是一個教育專業警示概念，而不是已有標準化測驗、可以直接診斷學生的正式心理學分類，因此不應拿來替學生貼標籤。</p>
+<p>第二，並不是所有 AI 介入都會削弱能力。有些學生在適當鷹架下，反而可以因為即時回饋、不同解釋方式與個別化提問，進行更多練習。</p>
+<p>第三，自然科的實驗安全不能由 AI 決定。</p>
+<p>第四，不要把 AI 找到的異常值直接刪除。</p>
+<p>第五，AI 產生的科學解釋仍需要查證。語句流暢不是證據。</p>
+<p>第六，也不要因為擔心學生能力退化，就重新回到全面禁止。</p>
+<p>所以未來真正困難的問題，很可能不再是：</p>
+<p>「學生有沒有使用 AI？」</p>
+<p>而是：</p>
+<p><strong>「剛才那一段思考，是誰完成的？」</strong></p>
+<p>如果每一張圖都讓 AI 先分析、每一份資料都讓 AI 先找趨勢、每一次實驗都讓 AI 先提出變因、每一句結論都讓 AI 先寫，那麼學生最後也許會非常熟悉 AI，卻不一定熟悉自己的思考。</p>
+<p>但是，如果我們願意在 AI 出現以前，多留三分鐘：</p>
+<p>先猜一次。</p>
+<p>先畫一次。</p>
+<p>先判斷一次。</p>
+<p>先犯一次錯。</p>
+<p>再叫 AI 進來挑戰。</p>
+<p>那麼 AI 愈強，學生不一定會變得愈弱。</p>
+<p>所以 2026 年新學期，自然科老師或許不用急著訂下一條「AI 禁止令」。</p>
+<p>可以先在黑板寫一句：</p>
+<p><strong>「先讓我看看你怎麼想，再問 AI。」</strong></p>
+<h2>參考資料與延伸閱讀</h2>
+<ol><li>University of Delaware，<strong>AI in the K-12 classroom</strong>，2026 年 8 月 31 日。</li></ol>
+<p><a href="https://www.udel.edu/udaily/2026/august/artificial-intelligence-classroom-budhai-karchmer-klein/" target="_blank" rel="noopener">https://www.udel.edu/udaily/2026/august/artificial-intelligence-classroom-budhai-karchmer-klein/</a></p>
+<ol><li>Lee, H.，<strong>Teacher intervention in K-12 AI-based instruction: a systematic review of processes, strategies, and effects</strong>，《Smart Learning Environments》，2026 年 8 月 12 日。</li></ol>
+<p><a href="https://link.springer.com/article/10.1186/s40561-026-00461-1" target="_blank" rel="noopener">https://link.springer.com/article/10.1186/s40561-026-00461-1</a></p>
+<ol><li>Tang, K.-S.，<strong>Reconceptualizing Generative AI as Dialogic Partner</strong>，《International Journal of Science and Mathematics Education》，2026 年 8 月 11 日。</li></ol>
+<p><a href="https://link.springer.com/article/10.1007/s10763-026-10710-x" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s10763-026-10710-x</a></p>
+<ol><li>Deguchi, A., Tsuji, H., &amp; Kitazawa, T.，<strong>Designing Epistemic Partnerships with Generative AI</strong>，《Research in Science Education》，2026 年 8 月 10 日。</li></ol>
+<p><a href="https://link.springer.com/article/10.1007/s11165-026-10370-5" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s11165-026-10370-5</a></p>
+<ol><li>Google，<strong>Partnering with Khan Academy on building AI tools for classrooms</strong>，2026 年 8 月 27 日。</li></ol>
+<p><a href="https://blog.google/products-and-platforms/products/education/khan-academy-back-to-school/" target="_blank" rel="noopener">https://blog.google/products-and-platforms/products/education/khan-academy-back-to-school/</a></p>
+<ol><li>UNESCO IITE，<strong>Learning Innovations and Emerging Technologies Conference 2026: PD4AI | AI4PD</strong>，2026 年 8 月 6 日。</li></ol>
+<p><a href="https://iite.unesco.org/announcements/" target="_blank" rel="noopener">https://iite.unesco.org/announcements/</a></p>
+<p>2026 年 09 月 01 日<br>作者：陳賢宗</p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

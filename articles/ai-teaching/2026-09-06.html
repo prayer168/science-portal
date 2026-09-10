@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>國小 AI 研究愈來愈多，但最新盤點反而看到一個缺口：我們太常問「AI 有沒有效」，卻比較少問「孩子用了之後會變成什麼樣的學習者」｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>國小 AI 研究愈來愈多，但最新盤點反而看到一個缺口：我們太常問「AI 有沒有效」，卻比較少問「孩子用了之後會變成什麼樣的學習者」</h1>
+      <div class="date">2026 年 09 月 06 日</div>
+    </div>
+    <article>
+<p>如果今天要設計一堂「AI × 自然科」課程，老師最容易先想到的是：讓 AI 幫學生找資料、辨識植物、分析圖表、出題，或者根據學生程度提供不同的解釋。</p>
+<p>這些當然都是很實際的應用。</p>
+<p>但 2026 年 9 月 1 日刊登於《Discover Education》的一篇新研究，替國小 AI 教育踩了一下煞車。</p>
+<p>研究團隊分析 Scopus 資料庫中 <strong>2018～2025 年共 547 篇與 AI 和國小教育有關的同儕審查期刊論文</strong>，利用文獻計量與關鍵字網絡分析，想回答一個很大的問題：</p>
+<p><strong>這幾年我們到底把研究力氣花在哪裡？</strong></p>
+<p>結果可以分成三大主題：教育科技與教師能力、AI 驅動的教學創新與個人化學習，以及偏向人本、課程與兒童發展的議題。</p>
+<p>但研究者發現，和孩子本身最密切的人本議題，在研究版圖裡反而比較邊緣。</p>
+<p>尤其像是：</p>
+<p>資料隱私。</p>
+<p>兒童保護。</p>
+<p>演算法偏誤。</p>
+<p>心理福祉。</p>
+<p>長期發展。</p>
+<p>這帶出一個很值得自然科老師思考的問題。</p>
+<p>我們現在很常問：</p>
+<p>「學生用了 AI，學習成績有沒有提高？」</p>
+<p>「AI 能不能讓學習更個人化？」</p>
+<p>「老師備課有沒有變快？」</p>
+<p>可是另外一些問題可能更重要：</p>
+<p><strong>孩子是否仍然會觀察？</strong></p>
+<p><strong>還會不會自己提出問題？</strong></p>
+<p><strong>會不會先相信眼前的證據，而不是先相信 AI？</strong></p>
+<p><strong>會不會知道某些資料根本不應該交給 AI？</strong></p>
+<p>這些其實都是自然科最適合教的 AI 素養。</p>
+<h3>國小 AI 研究正在從「數位工具」進入「AI 應用」</h3>
+<p>研究整理出一條很清楚的發展路徑。</p>
+<p>2018～2020 年，研究比較集中在一般數位科技整合。</p>
+<p>2021～2022 年，重點轉到學校如何適應科技，以及教師是否準備好。</p>
+<p>2023～2025 年則明顯進入 AI 核心階段，研究開始高度集中在人工智慧、個人化學習與評量。</p>
+<p>以前的問題是：「平板要怎麼進教室？」</p>
+<p>現在變成：「AI 要進哪一段？」</p>
+<p>但研究者提醒，AI 研究愈成熟、愈應用導向，不代表所有重要問題都已經被處理。</p>
+<p>當技術開始真的進入孩子每天使用的學習流程時：</p>
+<p><strong>年齡適切性、長期影響、隱私與兒童自主性反而變得更重要。</strong></p>
+<p>這也呼應 UNESCO Digital Learning Week 2026 的焦點之一：</p>
+<p><strong>到底什麼年齡才適合在教育中使用 AI？</strong></p>
+<h3>具體自然科案例：AI × 校園植物辨識，但先不要讓學生拍照就問答案</h3>
+<p>教學對象可以設定為國小四至六年級。</p>
+<p>主題是：</p>
+<p><strong>校園植物觀察、分類與特徵辨識。</strong></p>
+<p>AI 工具可以是具有圖片辨識能力的生成式 AI，或植物辨識類型的 AI 系統。</p>
+<p>最常見的做法是學生走到校園，看到一株植物，拍照，問 AI：「這是什麼植物？」</p>
+<p>三秒鐘後答案出來。</p>
+<p>看起來很有效率。</p>
+<p>但這樣一來，學生原本應該練習的葉形、葉序、葉脈、莖、花、果實、生長位置等觀察工作，很容易全部被「拍照辨識」蓋掉。</p>
+<p>所以這堂課可以反過來設計。</p>
+<h3>第一階段：先規定「AI 禁止辨識」</h3>
+<p>每組找到一株校園植物。</p>
+<p>前三十分鐘不准問 AI：「這是什麼？」</p>
+<p>學生必須先完成自己的觀察卡。</p>
+<p>例如記錄：</p>
+<p>葉片是單葉還是複葉？</p>
+<p>對生還是互生？</p>
+<p>葉緣有沒有鋸齒？</p>
+<p>葉面光滑還是有毛？</p>
+<p>莖是草質還是木質？</p>
+<p>有沒有花或果實？</p>
+<p>生長在陽光還是陰影處？</p>
+<p>然後要求學生畫一張簡單的植物圖。</p>
+<p>畫得像不像不是重點。</p>
+<p>真正重要的是：</p>
+<p><strong>你到底看到了什麼？</strong></p>
+<h3>第二階段：再讓 AI 根據學生自己的描述猜</h3>
+<p>這時候學生還不能上傳照片。</p>
+<p>只能輸入自己的觀察：</p>
+<blockquote>我們觀察到一種校園植物，葉子對生、單葉、葉緣略有鋸齒，莖偏木質，目前有紫色小花。請列出三種可能植物，不要直接斷定答案，並告訴我們還應該觀察哪兩個特徵才能進一步排除。</blockquote>
+<p>這時 AI 就從辨識答案機變成：</p>
+<p><strong>鑑定討論夥伴。</strong></p>
+<p>學生可能必須重新走回植物旁邊，補看花冠形狀、果實、葉背或枝條特徵。</p>
+<p>AI 沒有讓觀察消失，反而讓學生需要再觀察一次。</p>
+<h3>第三階段：最後才上傳照片</h3>
+<p>等學生完成自己的推論後，才把圖片交給 AI。</p>
+<p>如果 AI 回答和學生猜的一樣，不代表結束。</p>
+<p>下一題是：</p>
+<p><strong>「它為什麼判斷是這一種？」</strong></p>
+<p>請 AI 列出辨識依據。</p>
+<p>學生逐條檢查：葉序真的符合嗎？花色一樣嗎？葉片大小合理嗎？臺灣真的有分布嗎？</p>
+<p>如果 AI 的理由裡出現學生根本沒有觀察到的特徵，就標記：</p>
+<p>「AI 額外推測。」</p>
+<p>學生開始學會區分：</p>
+<p><strong>我們看到的證據</strong></p>
+<p>和</p>
+<p><strong>AI 說它看到的東西。</strong></p>
+<h3>第四階段：故意問 AI 一個只拍葉子很難判斷的植物</h3>
+<p>老師可以事先準備一張資訊不足的照片，例如只拍到一片普通的綠葉。</p>
+<p>然後問：「這是什麼植物？」</p>
+<p>AI 可能仍然提出一個很具體的答案。</p>
+<p>這時老師不要急著說 AI 錯。</p>
+<p>反而問學生：</p>
+<p>「只有這些證據，你覺得可以確定到種嗎？」</p>
+<p>學生可能開始提出：</p>
+<p>需要花。</p>
+<p>需要果實。</p>
+<p>需要整株型態。</p>
+<p>需要葉背。</p>
+<p>甚至需要知道生長地點。</p>
+<p>這就進入非常重要的科學概念：</p>
+<p><strong>證據解析度決定結論解析度。</strong></p>
+<h3>第五階段：加入「這張照片可以上傳嗎？」的判斷</h3>
+<p>教師可以準備幾張情境卡：</p>
+<p>只有植物特寫。</p>
+<p>植物旁邊拍到同學清楚的臉。</p>
+<p>照片裡有學生姓名牌。</p>
+<p>背景拍到班級座號與學生作品。</p>
+<p>照片含有 GPS 位置資訊。</p>
+<p>然後問：</p>
+<p>「哪一張可以直接上傳 AI？」</p>
+<p>學生會發現：</p>
+<p>AI literacy 不只是會辨識植物。</p>
+<p>還包括：</p>
+<p><strong>知道什麼不能交出去。</strong></p>
+<p>這正是最新研究指出的缺口。</p>
+<h3>國小 AI 最需要的可能不是「更聰明」，而是「更慢一點」</h3>
+<p>孩子愈小，AI 愈不能脫離老師。</p>
+<p>老師需要決定：</p>
+<p>什麼時候開 AI。</p>
+<p>什麼時候關掉。</p>
+<p>什麼要自己觀察。</p>
+<p>什麼可以請 AI 比較。</p>
+<p>什麼資訊不能上傳。</p>
+<p>什麼答案一定要再確認。</p>
+<p>這種「教師介入」不是 AI 不夠厲害，而是兒童學習本來就需要鷹架。</p>
+<h3>自然科教師可以先守住五個邊界</h3>
+<p>第一，第一次觀察不要交給 AI。</p>
+<p>第二，第一次解釋不要交給 AI。</p>
+<p>第三，AI 可以提出可能性，但不負責宣布物種、因果或實驗結論。</p>
+<p>第四，學生照片、姓名、位置與其他個資，不因為「只是做作業」就可以任意上傳。</p>
+<p>第五，AI 使用完一定要留下人類判斷。</p>
+<p>例如：</p>
+<p>「AI 認為這是杜鵑。」</p>
+<p>但學生最後必須寫：</p>
+<p>「我們同意／不同意，因為……」</p>
+<p>這個「因為」才是學習真正發生的地方。</p>
+<h3>這篇最新研究也有重要限制</h3>
+<p>9 月 1 日這篇研究是<strong>文獻計量研究</strong>。</p>
+<p>它能告訴我們 547 篇研究整體偏向哪些主題、哪些關鍵字常一起出現、研究趨勢如何改變。</p>
+<p>但是它不能直接回答「哪一種 AI 教學法最有效？」也不能證明「使用 AI 一定傷害或提升兒童發展」。</p>
+<p>而且研究只納入 Scopus 中 2018～2025 年的英文同儕審查期刊論文，因此描述的是一個有明確範圍的研究版圖。</p>
+<p>不過，這份地圖還是提醒我們一件非常重要的事情。</p>
+<p>下一階段，研究和教室可能要開始補上：</p>
+<p><strong>孩子。</strong></p>
+<p>不是只有「學生使用 AI」。</p>
+<p>而是孩子怎麼理解 AI、會不會過度相信它、有哪些資料不能給它、用了 AI 之後原本應該建立的觀察、分類、推理與表達能力是否還在發展。</p>
+<p>自然科有一個很大的優勢。</p>
+<p>因為自然課每天都在教孩子：</p>
+<p><strong>不要只相信別人說的。</strong></p>
+<p>去看。</p>
+<p>去量。</p>
+<p>去比較。</p>
+<p>去重複。</p>
+<p>去找證據。</p>
+<p>這些問題一旦存在，AI 就不容易變成權威。</p>
+<p>也許這才是國小自然科最值得發展的 AI literacy。</p>
+<p>不是讓孩子更早學會按下 AI 按鈕。</p>
+<p>而是即使 AI 已經出現在他面前，他仍然知道：</p>
+<p><strong>先看一看。</strong></p>
+<p><strong>先想一想。</strong></p>
+<p><strong>再問一句：證據呢？</strong></p>
+<h2>參考資料與延伸閱讀</h2>
+<ol><li>Abroto, A., Maemonah, M., &amp; Machali, I.，<strong>Mapping artificial intelligence research in primary education: a bibliometric study</strong>，《Discover Education》，2026 年 9 月 1 日。</li></ol>
+<p><a href="https://link.springer.com/article/10.1007/s44217-026-02012-9" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s44217-026-02012-9</a></p>
+<ol><li>UNESCO，<strong>Education in the age of AI: Ministerial statement to be adopted at UNESCO's Digital Learning Week</strong>，2026 年 8 月 25 日發布、9 月 2 日更新。</li></ol>
+<p><a href="https://www.unesco.org/en/articles/education-age-ai-ministerial-statement-be-adopted-unescos-digital-learning-week" target="_blank" rel="noopener">https://www.unesco.org/en/articles/education-age-ai-ministerial-statement-be-adopted-unescos-digital-learning-week</a></p>
+<ol><li>Stolpe, K., Larsson, A., &amp; Johansson Falck, M.，<strong>Discipline-Specific AI literacy (DiSAIL)</strong>，《International Journal of Technology and Design Education》，2026。</li></ol>
+<p><a href="https://link.springer.com/article/10.1007/s10798-026-10060-3" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s10798-026-10060-3</a></p>
+<ol><li>UNESCO，<strong>Digital Learning Week 2026</strong>。</li></ol>
+<p><a href="https://dlw.unesco.org/" target="_blank" rel="noopener">https://dlw.unesco.org/</a></p>
+<p>2026 年 09 月 06 日<br>作者：陳賢宗</p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

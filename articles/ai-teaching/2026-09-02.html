@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 不一定要當「答案機」，也可以成為小組裡那個一直追問「你有證據嗎？」的第五位同學｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>AI 不一定要當「答案機」，也可以成為小組裡那個一直追問「你有證據嗎？」的第五位同學</h1>
+      <div class="date">2026 年 09 月 02 日</div>
+    </div>
+    <article>
+<p>新學期自然課開始做探究。</p>
+<p>四名學生圍著桌子，正在討論「哪一種濾材最能改善混濁的水」。</p>
+<p>第一個學生說：「木炭一定最好，因為飲水機裡也有活性碳。」</p>
+<p>第二個學生搖頭：「我覺得細沙比較好，沙子比較細，可以把髒東西卡住。」</p>
+<p>如果這時把生成式 AI 放進小組，最容易出現的使用方式就是直接問：「請告訴我們哪種濾材效果最好。」</p>
+<p>AI 幾秒鐘就可能把沙、礫石、活性碳、棉布的功能解釋得頭頭是道。</p>
+<p>接著真正的問題來了：</p>
+<p><strong>既然 AI 都知道答案，學生還需要做實驗嗎？</strong></p>
+<p>2026 年 9 月 1 日，美國教育科學研究院（IES）一項新的三年期研究計畫正式進入執行期。計畫名稱是 <strong>AI-Supported Project Based Learning</strong>，由 MIT 團隊主持，研究經費為 <strong>3,638,543 美元</strong>，執行時間從 2026 年 9 月 1 日到 2029 年 8 月 31 日。</p>
+<p>這項計畫研究的不是「AI 能不能替學生回答問題」，而是要開發 <strong>Collaborative Artificial Intelligence for Learning（CAIL）</strong>，支援 PBL 教室裡的研究問題形成、小組卡關、教師掌握多組討論、合作歷程與形成性評量。</p>
+<p>MIT 對 CAIL 的定位很明確：AI conversational agent 應該像一個促進深入思考的<strong>同儕</strong>，而不是提高工作效率的工具。</p>
+<h3>具體自然科案例：讓 AI 成為「濾水探究小組的第五位同學」</h3>
+<p>教學對象可以設定在國小六年級至國中八年級。</p>
+<p>主題是：</p>
+<p><strong>不同濾材與濾水器結構，如何影響水的混濁程度？</strong></p>
+<p>學生準備透明寶特瓶、棉布、細沙、粗砂、礫石、活性碳等材料，再以泥土調製固定濃度的模擬混濁水。</p>
+<p>如果學校有設備，可以使用濁度計記錄 NTU；沒有專業設備，也可以利用固定光源與光感測器建立簡單的相對透光度指標。</p>
+<p>AI 先設定一個特殊角色：</p>
+<blockquote>你是自然科探究小組中的第五位成員。你的工作不是告訴學生答案，也不能替學生完成研究設計、數據解釋或結論。你只能透過提問，協助學生檢查研究問題、變因、證據與解釋。每次最多問兩個問題。</blockquote>
+<h3>第一階段：AI 只准聽，不准提供方案</h3>
+<p>學生先討論「我們想比較什麼？」</p>
+<p>例如比較細沙、活性碳與礫石。</p>
+<p>他們把方案交給 AI：</p>
+<p>「這是我們的實驗設計，請不要告訴我們哪種材料比較好，只問兩個可能影響公平比較的問題。」</p>
+<p>AI 可能問：</p>
+<p>「三組濾材的厚度是否相同？」</p>
+<p>「每一次倒入的混濁水體積是否一致？」</p>
+<p>學生突然發現：原來只換材料還不夠。</p>
+<p>AI 沒有替學生做實驗，只是讓學生看見自己原本沒看到的漏洞。</p>
+<h3>第二階段：AI 專門抓「我們以為大家都知道的事」</h3>
+<p>實驗開始後，學生看到細沙組較清、活性碳組有點灰黑、礫石組仍然混濁，可能立刻說：「證明細沙最好。」</p>
+<p>這時 AI 可以追問：</p>
+<blockquote>你們目前的數據可以支持「細沙在這次條件下得到較低混濁度」，但如果要說「細沙最好」，還需要比較哪些指標？</blockquote>
+<p>學生可能開始想到：</p>
+<p>過濾速度。</p>
+<p>可以使用幾次。</p>
+<p>濾材成本。</p>
+<p>是否會掉出粉末。</p>
+<p>能不能處理溶解在水中的物質。</p>
+<p>一個原本只有「誰比較清」的實驗，開始變成真正的工程設計問題。</p>
+<p>學生也會理解：</p>
+<p><strong>「最好」不是一個測量值。</strong></p>
+<p>它取決於我們怎麼定義成功。</p>
+<h3>第三階段：AI 不處理異常值，只問學生「發生什麼事」</h3>
+<p>假設三次細沙組濁度為：</p>
+<p>18 NTU</p>
+<p>20 NTU</p>
+<p><strong>67 NTU</strong></p>
+<p>學生說：「第三次怪怪的，把它刪掉就好了。」</p>
+<p>AI 不回答「可以」，而問：</p>
+<p>「第三次實驗與前兩次有哪些操作不同？」</p>
+<p>「你們有沒有保留足以判斷原因的原始紀錄？」</p>
+<p>學生重新看實驗影片，可能發現第三次倒水太快，濾材被沖出一條通道，水直接沿瓶壁流下去。</p>
+<p>這時 67 NTU 不再是一筆討厭的數據。</p>
+<p>它反而變成另一個研究問題：</p>
+<p><strong>流速會不會影響濾水效果？</strong></p>
+<h3>第四階段：讓 AI 觀察的不是答案，而是「合作」</h3>
+<p>CAIL 計畫另一個方向，是研究如何運用即時互動資料支援教師形成性評量與學生自我反思。</p>
+<p>活動結束後，可以把匿名化後的小組討論紀錄交給 AI：</p>
+<blockquote>請不要評分，也不要判斷哪位學生比較好。請找出這段討論裡：</blockquote>
+<blockquote>1. 一次有人提出證據的地方；</blockquote>
+<blockquote>2. 一次有人提出反對意見的地方；</blockquote>
+<blockquote>3. 一次小組修改原來想法的地方；</blockquote>
+<blockquote>4. 一個大家沒有繼續追問的問題。</blockquote>
+<p>學生可能第一次發現：</p>
+<p>「我們整組一直在講做法，居然沒有人問研究問題。」</p>
+<p>另一組則可能發現：</p>
+<p>「每次都是同一個人決定，其他三個人其實只是在操作。」</p>
+<p>AI 幫助教師看到的，不只是作品，而是<strong>合作歷程</strong>。</p>
+<h3>這和目前科學教育研究正在走的方向非常接近</h3>
+<p>Kok-Sing Tang 提出，生成式 AI 在科學教育中的定位可以從資訊來源轉向 <strong>dialogic partner——對話夥伴</strong>。</p>
+<p>另一篇《Research in Science Education》研究則提出 <strong>epistemic partnership</strong>，探討學生如何逐步從取得 AI 資訊走向質疑、比較、修正，以及最終由學生主導科學論證。</p>
+<p>這些研究與 MIT CAIL 的方向共同指向：</p>
+<p>AI 在科學教育中真正有價值的角色，可能不是「比較聰明的 Google」，而是：</p>
+<p><strong>一個逼學生多說一句「為什麼」的對話者。</strong></p>
+<h3>教師需要注意的風險與限制</h3>
+<p>首先，IES 的 AI-PBL 是剛從 2026 年 9 月 1 日開始執行的新研究計畫，目前不能寫成「MIT 已經證明 CAIL 有效」。</p>
+<p>第二，不要讓 AI 自動錄下所有學生對話後直接進行人格、能力或態度評分。未成年學生的語音、姓名與學習紀錄牽涉隱私與資料治理。</p>
+<p>第三，AI 判斷「誰有合作」「誰沒貢獻」可能產生錯誤，形成性資訊只能作為教師觀察輔助，不能直接變成成績。</p>
+<p>第四，小組不能逐漸變成「四個學生一起問 AI」。學生彼此之間的爭論、說明與說服仍然是協作學習最重要的部分。</p>
+<p>第五，AI 不應直接判斷科學結論是否正確。</p>
+<p>第六，實驗安全仍由教師負責。</p>
+<p>真正厲害的 AI 小組，可能不是完成得最快。</p>
+<p>學生說：「AI 說活性碳最好。」</p>
+<p>老師可以問：「你們的數據呢？」</p>
+<p>學生說：「AI 說這一筆是異常值。」</p>
+<p>老師可以問：「你們找到它異常的原因了嗎？」</p>
+<p>學生說：「AI 幫我們寫好結論了。」</p>
+<p>老師還是可以問：「哪一句是你們的證據支持的？」</p>
+<p>AI 可以問「為什麼？」「證據在哪裡？」「還有其他解釋嗎？」</p>
+<p>但是最後那一句：</p>
+<p><strong>「所以，我們根據這些實驗證據認為……」</strong></p>
+<p>最好還是留給學生自己說。</p>
+<h2>參考資料與延伸閱讀</h2>
+<ol><li>U.S. Institute of Education Sciences，<strong>AI-Supported Project Based Learning</strong>。</li></ol>
+<p><a href="https://ies.ed.gov/use-work/awards/ai-supported-project-based-learning" target="_blank" rel="noopener">https://ies.ed.gov/use-work/awards/ai-supported-project-based-learning</a></p>
+<ol><li>MIT Scheller Teacher Education Program，<strong>Collaborative AI for Learning (CAIL)</strong>。</li></ol>
+<p><a href="https://education.mit.edu/project/collaborative-ai-for-learning-cail/" target="_blank" rel="noopener">https://education.mit.edu/project/collaborative-ai-for-learning-cail/</a></p>
+<ol><li>Tang, K.-S.，<strong>Reconceptualizing Generative AI as Dialogic Partner</strong>，《International Journal of Science and Mathematics Education》，2026 年 8 月 11 日。</li></ol>
+<p><a href="https://link.springer.com/article/10.1007/s10763-026-10710-x" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s10763-026-10710-x</a></p>
+<ol><li>Deguchi, A., Tsuji, H., &amp; Kitazawa, T.，<strong>Designing Epistemic Partnerships with Generative AI</strong>，《Research in Science Education》，2026 年 8 月 10 日。</li></ol>
+<p><a href="https://link.springer.com/article/10.1007/s11165-026-10370-5" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s11165-026-10370-5</a></p>
+<ol><li>Boolzen, C., Kuhn, J., Flegr, S., et al.，<strong>Evidence of impact and interpretational limits of generative AI in STEM education</strong>，《Artificial Intelligence Review》，2026 年 8 月 25 日。</li></ol>
+<p><a href="https://link.springer.com/article/10.1007/s10462-026-11665-9" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s10462-026-11665-9</a></p>
+<ol><li>UNESCO，<strong>Digital Learning Week 2026</strong>。</li></ol>
+<p><a href="https://www.unesco.org/en/weeks/digital-learning" target="_blank" rel="noopener">https://www.unesco.org/en/weeks/digital-learning</a></p>
+<p>2026 年 09 月 02 日<br>作者：陳賢宗</p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

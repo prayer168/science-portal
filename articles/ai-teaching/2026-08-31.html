@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 素養一定要另外開一門課嗎？最新研究給自然科老師另一條路：把 AI 藏進原本就要教的科學問題裡｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>AI 素養一定要另外開一門課嗎？最新研究給自然科老師另一條路：把 AI 藏進原本就要教的科學問題裡</h1>
+      <div class="date">2026 年 08 月 31 日</div>
+    </div>
+    <article>
+<p>談到 AI 教育，學校最容易想到的做法往往是：「是不是要另外排幾節 AI 課？」</p>
+<p>教學生什麼是生成式 AI、Prompt 怎麼寫、AI 會幻覺、資料會有偏差，最後再做一個小作品。</p>
+<p>這當然有價值。</p>
+<p>但對自然科老師來說，其實還有另一條很值得嘗試的路：</p>
+<p><strong>不是先教 AI，再想它可以拿來做什麼；而是在原本的科學課裡，讓學生因為解決一個真實問題，自然而然需要理解 AI。</strong></p>
+<p>2026 年 8 月 3 日，《Journal of Computer Assisted Learning》刊登一項 K–12 AI 教育統合分析，整理 <strong>16 篇來源研究、57 個效果量</strong>。整體結果顯示，AI 教育課程對學生 AI literacy 的平均效果為 <strong>Hedges’ g = 0.892</strong>，95% 信賴區間為 0.548～1.236，呈現顯著正向效果。</p>
+<p>這是一個相當正面的結果。</p>
+<p>但它真正值得自然科老師思考的問題，不只是：</p>
+<p>「那我們是不是應該多教 AI？」</p>
+<p>而是：</p>
+<blockquote><strong>AI literacy 可不可以直接長在自然科裡？</strong></blockquote>
+<p>答案其實很可能是可以的。</p>
+<p>因為自然科本來就在教很多 AI 最核心的能力：</p>
+<p>觀察資料、分類、找規律、建立模型、預測、驗證、處理錯誤，以及根據新證據修改判斷。</p>
+<p>換句話說，AI 並不是離自然科很遠的新東西。</p>
+<p>它和科學探究其實共享很多思考結構。</p>
+<h3>一堂自然課，也可以同時是一堂 AI literacy 課</h3>
+<p>假設教學對象是國中七年級，主題是：</p>
+<p><strong>傳染病如何在群體中傳播？</strong></p>
+<p>傳統自然課可能從病原體、感染途徑、防疫方法切入。</p>
+<p>如果加入 AI 與演算法概念，可以把課堂問題改成：</p>
+<blockquote><strong>如果班上一名學生感染傳染病，我們如何利用「接觸關係」找出可能受到影響的人？</strong></blockquote>
+<p>學生不用先學 Python，也不用先理解大型語言模型。</p>
+<p>老師只需要畫出一張簡單的「班級接觸網絡」。</p>
+<p>例如：</p>
+<p>小明和小華、小美接觸；</p>
+<p>小華又和阿哲接觸；</p>
+<p>小美和小安接觸；</p>
+<p>阿哲再和另外兩名學生接觸。</p>
+<p>學生的任務不是背演算法名稱。</p>
+<p>而是想：</p>
+<p>「如果我要找出從小明開始，第一層接觸者有哪些？第二層又有哪些？」</p>
+<p>這其實已經在做一種圖形搜尋問題。</p>
+<p>2026 年研究團隊曾設計一套符合 AI4K12 架構的中學課程，把 <strong>Breadth-First Search（廣度優先搜尋，BFS）</strong> 放進自然科脈絡，讓學生透過病毒傳播與接觸追蹤理解 AI 問題解決方法。研究顯示，學生能在科學情境中學習搜尋策略，同時保留原本的科學學習目標。</p>
+<p>這種設計特別值得自然老師參考。</p>
+<p>因為它不是：</p>
+<p>「今天不上自然，我們改上 AI。」</p>
+<p>而是：</p>
+<p><strong>「今天利用 AI 的思考方式，更深入理解自然問題。」</strong></p>
+<h3>具體自然科案例：設計一個「校園疫情追蹤演算法」</h3>
+<p>教學對象可以是國小六年級延伸至國中八年級。</p>
+<p>學生四人一組。</p>
+<p>教師先發給每組一張虛構的校園接觸圖，每個圓點代表一名學生，線條表示兩人在某段時間內曾有密切接觸。</p>
+<p>例如感染源是 A。</p>
+<p>第一步，學生只能用紙筆。</p>
+<p>請找出：</p>
+<p>A 直接接觸過哪些人？</p>
+<p>再找：</p>
+<p>這些人又接觸過誰？</p>
+<p>學生很快會發現，如果一條路一路追到底，很容易漏掉其他分支。</p>
+<p>於是教師可以介紹：</p>
+<p><strong>一層一層往外找。</strong></p>
+<p>先找距離感染源一步的人。</p>
+<p>再找兩步。</p>
+<p>再找三步。</p>
+<p>這就是 BFS 的核心想法。</p>
+<p>不需要一開始寫程式。</p>
+<h3>第二階段：讓 AI 變成「演算法教練」</h3>
+<p>學生先自己畫完接觸層級，再把文字版關係交給生成式 AI，例如：</p>
+<blockquote>A 接觸 B、C。</blockquote>
+<blockquote>B 接觸 D。</blockquote>
+<blockquote>C 接觸 E、F。</blockquote>
+<blockquote>D 接觸 G。</blockquote>
+<blockquote></blockquote>
+<blockquote>請使用一層一層搜尋的方法，列出從 A 開始，第 1、2、3 層接觸者。不要跳過步驟。</blockquote>
+<p>學生把 AI 的答案和自己的圖比較。</p>
+<p>如果相同，很好。</p>
+<p>如果不同，更好。</p>
+<p>因為下一個問題就是：</p>
+<p><strong>誰錯了？</strong></p>
+<p>學生必須重新檢查網絡。</p>
+<p>這時 AI literacy 開始發生。</p>
+<p>AI 不再是「答案機」，而是一個需要被驗證的第二個模型。</p>
+<h3>第三階段：故意讓資料出問題</h3>
+<p>老師可以再加一張新版接觸紀錄：</p>
+<p>B 同時也是 F 的朋友。</p>
+<p>C 和 D 其實有接觸。</p>
+<p>有些紀錄重複。</p>
+<p>甚至有一筆缺漏資料。</p>
+<p>這時學生會發現：</p>
+<p>AI 或演算法有一個非常重要的限制。</p>
+<p><strong>輸入資料不好，輸出也不會 magically 變正確。</strong></p>
+<p>這就是 AI 教育中非常核心的資料素養。</p>
+<p>學生可能原本以為：</p>
+<p>「AI 很厲害，所以它會自己知道。」</p>
+<p>實際操作後才理解：</p>
+<p>模型能做什麼，很大程度取決於它拿到什麼資料。</p>
+<p>這和自然科實驗完全一樣。</p>
+<p>溫度計量錯；</p>
+<p>樣本選錯；</p>
+<p>紀錄漏掉；</p>
+<p>控制變因沒有做好，</p>
+<p>最後再厲害的統計分析也救不回來。</p>
+<h3>第四階段：再問一個真正的科學問題</h3>
+<p>學生理解搜尋演算法之後，教師再把問題拉回疾病傳播：</p>
+<p>「接觸兩層的人，一定會被感染嗎？」</p>
+<p>答案當然不是。</p>
+<p>因為真正的疾病傳播還受到：</p>
+<p>接觸時間；</p>
+<p>距離；</p>
+<p>通風；</p>
+<p>病原體特性；</p>
+<p>感染者所處階段；</p>
+<p>個體免疫狀況，</p>
+<p>以及許多其他因素影響。</p>
+<p>於是學生開始理解另一個非常重要的概念：</p>
+<p><strong>演算法整理的是關係，不是直接預測真實世界的結果。</strong></p>
+<p>這就是模型與現實之間的差距。</p>
+<p>其實也是 AI literacy 最重要的內容之一。</p>
+<h3>最新研究提醒：AI 教育不能只有「會操作」</h3>
+<p>8 月 12 日發表於《Smart Learning Environments》的 K–12 AI 教學系統性回顧也指出，教師仍然是 AI 教學中的關鍵調節者。AI 可以提供資訊、回饋與個人化支援，但真正要把這些輸出轉化成適合學生程度、課程內容與教室情境的學習活動，仍需要教師介入、監看與判斷。</p>
+<p>這一點對自然科特別重要。</p>
+<p>因為很多 AI 輸出「語言正確」，不代表：</p>
+<p>變因設計正確；</p>
+<p>科學因果正確；</p>
+<p>數據可以支持那個結論；</p>
+<p>實驗方法安全。</p>
+<p>老師不能只是負責教學生如何下 Prompt。</p>
+<p>更重要的是教：</p>
+<p><strong>什麼時候 AI 的答案還不能算科學證據。</strong></p>
+<h3>教師需要注意的風險與限制</h3>
+<p>首先，前述 BFS 融入自然課的研究屬於特定中學課程案例，不能直接推論所有年齡或所有自然單元都會產生相同效果。</p>
+<p>其次，8 月的 K–12 AI literacy 統合分析雖呈現相當大的整體正效果，但只有 16 篇來源研究，而且 AI 教育仍是一個快速變動的領域。因此 g = 0.892 不能解讀成「任何 AI 課程都會有很大效果」。</p>
+<p>第三，疫情接觸網絡一定要使用<strong>虛構資料</strong>，不要拿真實學生健康紀錄、姓名或疾病資訊進行 AI 活動。</p>
+<p>第四，不要讓 AI 直接告訴學生誰是「感染者」。教學重點是理解資料、網絡與模型，而不是進行真實健康判定。</p>
+<p>第五，教師最好先安排紙筆或實體活動，再使用 AI。學生如果還沒形成自己的搜尋策略就直接問 AI，很容易只看到結果，看不到演算法背後的思考。</p>
+<h3>AI literacy 最好的樣子，可能不是「學過 AI」</h3>
+<p>8 月 24 日 Axios 報導美國 Iowa 學校導入 AI 的現況時，也呈現一個值得注意的現象：部分學區正在逐步試用教師端 AI 工具，而不是一次把所有學生全面推進 AI 課堂；報導同時提到，許多教師仍缺乏正式 AI 使用指引與專業支持。</p>
+<p>這提醒我們：</p>
+<p>AI 教育不一定要從「全校每個學生都有一個 AI 帳號」開始。</p>
+<p>自然老師其實可以從一堂原本就要上的課開始。</p>
+<p>傳染病。</p>
+<p>生態食物網。</p>
+<p>河川污染來源。</p>
+<p>動物遷徙。</p>
+<p>校園植物分類。</p>
+<p>甚至電路故障排查。</p>
+<p>這些問題本來就包含：</p>
+<p>節點；</p>
+<p>關係；</p>
+<p>分類；</p>
+<p>資料；</p>
+<p>預測；</p>
+<p>搜尋；</p>
+<p>決策。</p>
+<p>它們本來就是 AI 可以理解的問題形式。</p>
+<p>如果學生最後不只知道「BFS 是一種搜尋方法」，還能回答：</p>
+<p>「這個模型用了哪些資料？」</p>
+<p>「資料少一筆會怎樣？」</p>
+<p>「AI 的答案是不是證據？」</p>
+<p>「模型和真實世界差在哪裡？」</p>
+<p>那麼我們其實已經在教非常扎實的 AI literacy。</p>
+<p>而且完全不需要犧牲自然科。</p>
+<p>未來 AI 教育最理想的樣子，也許不是課表裡多出一格「人工智慧」。</p>
+<p>而是學生在自然課裡看到一個複雜問題時，慢慢開始知道：</p>
+<p><strong>哪些地方可以交給機器計算，哪些地方需要資料驗證，而最後哪些判斷，仍然必須由人負責。</strong></p>
+<p>這才是 AI 時代真正值得留下來的科學素養。</p>
+<h2>參考資料與延伸閱讀</h2>
+<ol><li>Yu, W., Kim, N., Chang, A., &amp; Huang, W.，<strong>The Effects of K-12 Artificial Intelligence Education in Enhancing AI Literacy: A Meta-Analysis</strong>，《Journal of Computer Assisted Learning》，2026 年 8 月 3 日。</li></ol>
+<p><a href="https://onlinelibrary.wiley.com/doi/10.1002/jcal.70308" target="_blank" rel="noopener">https://onlinelibrary.wiley.com/doi/10.1002/jcal.70308</a></p>
+<ol><li>Tang, K.-S.，<strong>Reconceptualizing Generative AI as Dialogic Partner: Pedagogical and Methodological Implications for Science Education</strong>，《International Journal of Science and Mathematics Education》，2026 年 8 月 11 日。</li></ol>
+<p><a href="https://link.springer.com/article/10.1007/s10763-026-10710-x" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s10763-026-10710-x</a></p>
+<ol><li>Pitts, G., Fazeli, K., Bhatt, T., et al.，<strong>Democratizing Foundations of Problem-Solving with AI: A Breadth-First Search Curriculum for Middle School Students</strong>，2026。</li></ol>
+<p><a href="https://arxiv.org/abs/2604.01396" target="_blank" rel="noopener">https://arxiv.org/abs/2604.01396</a></p>
+<ol><li>Zhao, S., Kang, C., Hu, W., et al.，<strong>Adoption of generative artificial intelligence in instruction: a mixed-methods UTAUT study of K-12 computer science teachers in China</strong>，《Humanities and Social Sciences Communications》，2026 年 7 月 24 日。</li></ol>
+<p><a href="https://www.nature.com/articles/s41599-026-08461-9" target="_blank" rel="noopener">https://www.nature.com/articles/s41599-026-08461-9</a></p>
+<ol><li>Axios，<strong>AI schools expand, but Iowa takes a slower path</strong>，2026 年 8 月 24 日。</li></ol>
+<p><a href="https://www.axios.com/local/des-moines/2026/08/24/iowa-schools-classroom-ai-tools" target="_blank" rel="noopener">https://www.axios.com/local/des-moines/2026/08/24/iowa-schools-classroom-ai-tools</a></p>
+<p>2026 年 08 月 31 日<br>作者：陳賢宗</p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

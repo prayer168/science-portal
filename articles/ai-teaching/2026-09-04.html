@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 教學不該只是「多學一個工具」：9 月最新研究提出 SCALE，自然科其實最適合一次整合科學、運算、AI、反思與工程設計｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>AI 教學不該只是「多學一個工具」：9 月最新研究提出 SCALE，自然科其實最適合一次整合科學、運算、AI、反思與工程設計</h1>
+      <div class="date">2026 年 09 月 04 日</div>
+    </div>
+    <article>
+<p>自然課進行「校園哪裡最熱？」探究。</p>
+<p>第一組拿著溫度計跑去操場；第二組測樹蔭；第三組把感測器架在水泥地旁；還有學生拿出平板，準備問 AI：</p>
+<p>「請幫我預測學校最熱的地方。」</p>
+<p>如果老師只把這堂課當成「AI 融入」，很容易把重點放在用了哪個聊天機器人、Prompt 寫得好不好、AI 有沒有幫忙畫圖。</p>
+<p>但 2026 年 9 月 2 日刊登於 Springer Nature 旗下《AI, Brain and Child》的一篇新研究觀點，提出 <strong>SCALE Habits of Mind</strong>。</p>
+<p>SCALE 把五種未來學習能力放在一起：</p>
+<p><strong>S：Scientific Literacy，科學素養</strong></p>
+<p><strong>C：Computational Thinking，運算思維</strong></p>
+<p><strong>A：AI Literacy，人工智慧素養</strong></p>
+<p><strong>L：Learning to Learn，學會學習與後設認知</strong></p>
+<p><strong>E：Engineering and Design Thinking，工程與設計思維</strong></p>
+<p>研究者認為，AI 時代真正需要培養的不是彼此分開的技能清單，而是學生面對真實問題時，能不能把這五種思考方式交織在一起。</p>
+<p>這個概念對自然科老師特別有意思，因為仔細一看會發現：</p>
+<p><strong>我們原本就在做其中四、五件事。</strong></p>
+<h3>一堂「校園哪裡最熱」就可以同時做五件事</h3>
+<p>假設教學對象是國小六年級至國中八年級。</p>
+<p>主題設定為：</p>
+<p><strong>校園微氣候與熱環境探究。</strong></p>
+<p>任務不是單純回答「操場和樹蔭哪裡比較熱？」而是：</p>
+<blockquote><strong>請利用實際測量、資料分析與 AI，設計一份給低年級學生使用的「校園避暑地圖」。</strong></blockquote>
+<h3>S：Scientific Literacy——先讓學生真的去量，而不是先問 AI</h3>
+<p>學生分組選擇操場、草地、樹蔭、水泥地、走廊、遊具區等地點，在固定時段量測氣溫。</p>
+<p>如果設備允許，可以加入相對溼度、地表溫度、照度，進階版本甚至可以使用 Arduino、ESP32 或 micro:bit 建立連續感測站。</p>
+<p>教師要問：</p>
+<p>「你們所有組的測量時間一樣嗎？」</p>
+<p>「感測器高度一樣嗎？」</p>
+<p>「放在陽光下和握在手上量，結果可能相同嗎？」</p>
+<p>「一次測量能代表這個位置嗎？」</p>
+<p>學生正在學的就是科學素養：</p>
+<p><strong>提問、形成假設、控制條件、蒐集資料、分析證據，再根據結果修正解釋。</strong></p>
+<h3>C：Computational Thinking——不是一定要寫程式，而是把問題拆開</h3>
+<p>學生需要思考「到底怎麼定義比較熱？」</p>
+<p>只看最高溫？還是平均溫度？是否要看中午？不同位置每天都一樣嗎？</p>
+<p>教師可以要求學生把問題拆成時間、位置、遮蔭程度、地面材質、溫度、溼度。</p>
+<p>這就是 decomposition——問題拆解。</p>
+<p>接著再找規律。</p>
+<p>資料中如果突然出現樹蔭 82.5°C，學生還要開始 debugging：</p>
+<p>「是環境真的發生特殊情況，還是儀器、單位或輸入出錯？」</p>
+<p>運算思維本來就是科學探究裡很自然的工作方式。</p>
+<h3>A：AI Literacy——AI 不負責宣布答案，而是幫忙提出第二種看法</h3>
+<p>學生先完成第一輪分析，AI 才出場。</p>
+<p>可以使用這種提示：</p>
+<blockquote>下面是我們實際測量的校園氣溫資料和自己的初步分析。請不要直接替我們寫結論。請指出兩個我們可能忽略的資料特徵，再提出一個需要回到原始紀錄確認的問題。</blockquote>
+<p>這和「請幫我分析數據並寫結論」差別很大。</p>
+<p>前者把 AI 放在第二層思考，後者可能直接把第一層思考外包。</p>
+<p>AI literacy 不只是會寫 Prompt，而是學生知道：</p>
+<p><strong>什麼可以問它、什麼不能直接相信它，以及最後哪個判斷仍然是自己的責任。</strong></p>
+<h3>L：Learning to Learn——讓學生看見「我的想法怎麼改變」</h3>
+<p>學生完成分析後，不需要再交一篇 AI 幫忙潤飾得很漂亮的心得。</p>
+<p>只要回答四題：</p>
+<p>「我一開始認為哪裡最熱？」</p>
+<p>「哪一筆數據讓我改變想法？」</p>
+<p>「AI 提醒了我什麼？」</p>
+<p>「最後哪個判斷是我自己重新決定的？」</p>
+<p>這就是後設認知。</p>
+<p>學生真正需要知道的不只是「AI 幫我做了什麼？」而是：</p>
+<p><strong>「有了 AI 以後，我自己的想法究竟有沒有變得更好？」</strong></p>
+<h3>E：Engineering and Design Thinking——不要停在報告，要做出真的有人會用的東西</h3>
+<p>最後，各組把研究結果做成：</p>
+<p><strong>校園避暑地圖。</strong></p>
+<p>這時再加入一個真實使用者：一年級學生。</p>
+<p>教師問：</p>
+<p>「你畫一張很專業的溫度熱圖，一年級真的看得懂嗎？」</p>
+<p>學生可能開始改成綠色較舒適、黃色注意、紅色正午避免長時間停留。</p>
+<p>但新的問題又出現：</p>
+<p>「最涼的路如果遠很多，還是最好的路嗎？」</p>
+<p>「樹蔭今天很涼，但冬天也適用嗎？」</p>
+<p>「只有一天資料，可以做全年建議嗎？」</p>
+<p>工程設計開始出現：</p>
+<p><strong>需求 → 設計 → 原型 → 測試 → 修改。</strong></p>
+<h3>為什麼 SCALE 架構值得自然老師注意？</h3>
+<p>因為真實世界沒有分科。</p>
+<p>學生未來碰到校園高溫、水質問題、生物多樣性下降、空氣污染、能源利用、氣候變遷時，不會遇到一張考卷告訴他「本題只需要使用科學素養」。</p>
+<p>真正的問題一定同時需要觀察、資料、模型、工具、判斷、設計與修正。</p>
+<p>但必須說清楚：9 月 2 日的文章主要是一篇概念性研究與教學框架建構，並不是大型隨機實驗。它提供的是值得驗證的設計方向，不是已經確定有效的萬用教學法。</p>
+<h3>這也和 9 月 3 日 UNESCO 最新公布的方向不謀而合</h3>
+<p>UNESCO IITE 在 2026 年 9 月 3 日公布全球智慧教育大會成果，主題是：</p>
+<p><strong>Reimagining Education in the Age of AI: Equity, Quality and Sustainability。</strong></p>
+<p>會中啟動 <strong>Global Smart School Initiative</strong>，提出學校 AI 與數位轉型的核心支柱，包括促進學生發展的智慧學習經驗、數位與智慧科技支持的教學創新、提升教師數位能力的專業發展、永續學校規劃，以及家庭、學校與社區合作。</p>
+<p>所謂「智慧學校」不是 AI 工具最多、平板最多、帳號最多，而是回到：</p>
+<p><strong>學生有沒有因此學得更好？</strong></p>
+<p><strong>教師有沒有因此更有能力？</strong></p>
+<p><strong>不同學生有沒有公平參與？</strong></p>
+<p><strong>這套模式能不能長期維持？</strong></p>
+<p>AI 不是課程的中心。</p>
+<p><strong>學生如何觀察、思考、創造、反思與行動，才是中心。</strong></p>
+<p>所以，下次準備設計「AI × 自然科」活動，可以先畫五個小格子：</p>
+<p>S：學生要觀察與驗證什麼？</p>
+<p>C：哪個問題需要拆解、分類或找規律？</p>
+<p>A：AI 最適合在哪一段加入？</p>
+<p>L：學生如何看見自己思考的改變？</p>
+<p>E：最後能不能做出一個真的解決問題的作品？</p>
+<p>只要這五題答得出來，AI 用哪一家工具，反而變成第二層問題。</p>
+<p>未來工具一定會一直換，模型也會一直進步。</p>
+<p>但是學生如果真正學會看到現象會問問題、看到資料會找規律、看到 AI 回答會查證、做錯會重新修改、做完還會想：</p>
+<p><strong>「我的解決方法真的對別人有用嗎？」</strong></p>
+<p>那麼即使工具換了，他還是知道怎麼學。</p>
+<h2>參考資料與延伸閱讀</h2>
+<ol><li>Zhang, L.-X., &amp; Yang, W.，<strong>Fostering SCALE habits of mind through AI-empowered arts-based pedagogy</strong>，《AI, Brain and Child》，2026 年 9 月 2 日。</li></ol>
+<p><a href="https://link.springer.com/article/10.1007/s44436-026-00043-5" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s44436-026-00043-5</a></p>
+<ol><li>UNESCO Institute for Information Technologies in Education，<strong>UNESCO IITE co-organised 2026 Global Smart Education Conference in Beijing</strong>，2026 年 9 月 3 日。</li></ol>
+<p><a href="https://iite.unesco.org/news/unesco-iite-co-organised-2026-global-smart-education-conference-in-beijing/" target="_blank" rel="noopener">https://iite.unesco.org/news/unesco-iite-co-organised-2026-global-smart-education-conference-in-beijing/</a></p>
+<ol><li>Tang, K.-S.，<strong>Reconceptualizing Generative AI as Dialogic Partner</strong>，《International Journal of Science and Mathematics Education》，2026 年 8 月 11 日。</li></ol>
+<p><a href="https://link.springer.com/article/10.1007/s10763-026-10710-x" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s10763-026-10710-x</a></p>
+<ol><li>Boolzen, C., Kuhn, J., Flegr, S., et al.，<strong>Evidence of impact and interpretational limits of generative AI in STEM education</strong>，《Artificial Intelligence Review》，2026 年 8 月 25 日。</li></ol>
+<p><a href="https://link.springer.com/article/10.1007/s10462-026-11665-9" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s10462-026-11665-9</a></p>
+<ol><li>U.S. Institute of Education Sciences，<strong>AI-Supported Project Based Learning</strong>。</li></ol>
+<p><a href="https://ies.ed.gov/use-work/awards/ai-supported-project-based-learning" target="_blank" rel="noopener">https://ies.ed.gov/use-work/awards/ai-supported-project-based-learning</a></p>
+<ol><li>UNESCO，<strong>Digital Learning Week 2026</strong>。</li></ol>
+<p><a href="https://www.unesco.org/en/weeks/digital-learning" target="_blank" rel="noopener">https://www.unesco.org/en/weeks/digital-learning</a></p>
+<p>2026 年 09 月 04 日<br>作者：陳賢宗</p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

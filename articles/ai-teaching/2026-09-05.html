@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 先別急著幫學生分析：真正值得交給它的，可能是科學探究裡最麻煩的「資料整理」｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>AI 先別急著幫學生分析：真正值得交給它的，可能是科學探究裡最麻煩的「資料整理」</h1>
+      <div class="date">2026 年 09 月 05 日</div>
+    </div>
+    <article>
+<p>自然課做完一週的環境感測實驗，學生把 ESP32 裡的資料匯出來。</p>
+<p>打開試算表，老師眼前出現的是：</p>
+<p>`2026/09/01 09:00, 31.5, 68`</p>
+<p>`2026/09/01 09:05, 31.7, 67`</p>
+<p>`2026/09/01 09:10, , 68`</p>
+<p>`2026/09/01 09:10, 31.8, 68`</p>
+<p>`2026-09-01 9:15 AM, 315, 69`</p>
+<p>五分鐘後，學生已經開始喊：</p>
+<p>「老師，這裡怎麼少一格？」</p>
+<p>「為什麼 9:10 有兩筆？」</p>
+<p>「315°C 是不是感測器壞掉了？」</p>
+<p>「這一組時間格式跟我們不一樣！」</p>
+<p>這其實才是真實科學最常遇到的樣子。</p>
+<p>我們很喜歡讓學生畫折線圖、算平均、討論趨勢，但真正的研究資料，很少一出生就是乾乾淨淨、可以直接按下「插入圖表」。</p>
+<p>缺漏值、重複紀錄、單位錯誤、檔名混亂、時間格式不同、異常值，到底該保留還是刪除，全部都是科學資料處理的一部分。</p>
+<p>2026 年 9 月最新一期《The Journal of Academic Librarianship》刊登的一項研究，提供了一個很值得自然科教師參考的新角度：</p>
+<p><strong>生成式 AI 在科學課裡，可能不應該先替學生「分析資料」，而可以先教學生如何把 AI 當成「資料整理助手」。</strong></p>
+<p>這項由 Vanderbilt University 團隊進行的研究，把生成式 AI 直接放進高年級生物醫學工程實驗課的資料素養教學中。學生實際練習讓 AI 協助完成資料清理、格式整理與研究資料管理。</p>
+<p>結果最有意思的地方，不是學生變得更敢把所有東西交給 AI，反而是：</p>
+<p><strong>上完課後，學生比較少把「分析與科學判斷」整包丟給 AI，而更傾向把 AI 用在資料清理、格式整理、文件說明等支援性工作。</strong></p>
+<h3>AI 的位置，也許應該往前移一點，但不要移到「思考」前面</h3>
+<p>研究團隊在原本就必修的實驗課中加入約 75 分鐘的資料素養模組，內容包含研究資料管理、資料格式與生成式 AI 的實際操作。</p>
+<p>學生練習的不是「把整份實驗結果丟給 AI，請它寫 Discussion」，而是：</p>
+<p>怎麼整理表格？</p>
+<p>怎麼處理不一致的資料格式？</p>
+<p>怎麼建立一致的檔名？</p>
+<p>怎麼設計資料夾？</p>
+<p>怎麼留下 README，讓半年後的自己還知道這些檔案是什麼？</p>
+<p>怎麼讓 AI 協助處理大量重複又機械性的資料整理工作？</p>
+<p>研究在 2025 年秋季與 2026 年春季進行前後測。57 名學生完成前測，31 人完成後測，因此樣本流失很高，解讀必須保守。</p>
+<p>但前後回答的變化很有意思。</p>
+<p>課程開始以前，有些學生會想到讓 AI 建議統計、分析趨勢、幫忙計算或解釋。</p>
+<p>課程結束後，回答逐漸轉成讓 AI 整理資料、協助清理資料、把表格整理成一致結構、協助建立檔名規則或 README。</p>
+<p>研究者因此認為，學生對 AI 在科學研究流程中的位置，開始從「AI 主導分析」轉向「AI 增強人自己的研究流程」。</p>
+<h3>具體自然科案例：AI × ESP32 植物環境長期監測</h3>
+<p>教學對象可以設定為國小六年級至國中九年級。</p>
+<p>主題是：</p>
+<p><strong>光照、土壤水分與植物生長環境的關係。</strong></p>
+<p>學生利用 ESP32 搭配光照、溫溼度或土壤水分感測器，在校園花圃連續蒐集一至兩週資料。</p>
+<p>例如每 10 分鐘記錄時間、氣溫、相對溼度、土壤水分、光照值。</p>
+<p>第一堂資料課，老師故意提供一份「不完美資料」，裡面放入時間重複、缺值、9999 異常值、日期格式不一致、單位錯誤等問題。</p>
+<p>學生的第一個任務不是分析，而是回答：</p>
+<p><strong>「這份資料現在可以直接拿來比較嗎？」</strong></p>
+<h3>第一階段：學生先自己當「資料偵探」</h3>
+<p>先不使用 AI。</p>
+<p>每組用紅筆圈出覺得有問題的資料，再分類：</p>
+<p>「確定錯誤」</p>
+<p>「可能錯誤」</p>
+<p>「只是看起來奇怪」</p>
+<p>「目前不知道」</p>
+<p>例如 315°C 幾乎可以高度懷疑是小數點輸入錯誤。</p>
+<p>但是某天中午土壤水分突然上升呢？</p>
+<p>可能是感測器出錯，也可能真的有人澆水，或者剛好下雨。</p>
+<p>這個差別非常重要。</p>
+<p>因為科學資料裡：</p>
+<p><strong>異常值不等於錯誤值。</strong></p>
+<h3>第二階段：AI 只准「找問題」，不准直接修改</h3>
+<p>提示詞可以設計成：</p>
+<blockquote>以下是我們的植物環境感測資料。請不要替我修改任何數字，也不要刪除資料。請只列出可能需要人工檢查的項目，並說明你懷疑它的理由。</blockquote>
+<p>AI 可以找問題，但：</p>
+<p><strong>人決定怎麼處理。</strong></p>
+<p>這就是 human-in-the-loop。</p>
+<h3>第三階段：原始資料永遠不要直接改掉</h3>
+<p>原始檔：</p>
+<p>`raw_20260905.csv`</p>
+<p>永遠不動。</p>
+<p>整理後：</p>
+<p>`cleaned_20260905_v01.csv`</p>
+<p>第二次修正：</p>
+<p>`cleaned_20260905_v02.csv`</p>
+<p>再建立 `README.md`，記錄實驗、日期、感測器位置、取樣頻率、單位、哪些資料曾修正，以及為什麼修正。</p>
+<p>AI 很適合幫學生建立 README 草稿，但不能替學生虛構。</p>
+<h3>第四階段：清乾淨之後，AI 先退出一次</h3>
+<p>資料整理完成後，AI 暫時關掉。</p>
+<p>學生自己畫第一張圖、找第一個趨勢、寫第一句「我們觀察到……」。</p>
+<p>這時再請 AI 回來：</p>
+<blockquote>以下是我們的圖表與初步解釋。請不要替我們寫結論，只提出兩個可能的替代解釋。</blockquote>
+<p>AI 才真正進入分析階段。</p>
+<p>不是代替分析，而是<strong>挑戰分析</strong>。</p>
+<h3>這項研究裡，有兩個數字特別值得注意</h3>
+<p>學生對「自己管理研究資料」的信心，前後沒有統計顯著差異；但對「使用 AI 進行研究資料管理」與「知道如何在研究中合乎倫理地使用 AI」的信心則顯著提升。</p>
+<p>這個結果非常有意思。</p>
+<p>一堂 AI 課真正的效果，不一定是讓學生覺得「我什麼都更會了」，而可能是讓他更清楚：</p>
+<p><strong>「AI 到底應該做哪一部分。」</strong></p>
+<p>這種界線感，本身就是 AI literacy。</p>
+<h3>不過，這篇研究不能直接當成「國小實證」</h3>
+<p>研究對象是 Vanderbilt University 高年級生物醫學工程學生，不是中小學生。</p>
+<p>而且只有 57 人完成前測、31 人完成後測，樣本流失率高。</p>
+<p>因此更合理的說法是：</p>
+<p><strong>這項大學 STEM 實驗課研究，提供了一個非常值得向下轉化到中小學自然探究的教學設計方向。</strong></p>
+<h3>AI 時代的自然課，也許該開始教「資料生命週期」</h3>
+<p>我們過去教探究常畫：</p>
+<p>問題 → 假設 → 實驗 → 結果 → 結論。</p>
+<p>未來也許值得在「實驗」和「結果」之間，加上一格：</p>
+<p><strong>資料整理與查核。</strong></p>
+<p>因為真實的科學，不是感測器跑完就自動生成知識。</p>
+<p>中間還有原始資料保存、命名、清理、紀錄修改、檢查異常、處理缺漏、建立可重現流程。</p>
+<p>AI 出現之後，反而提供一個很好的機會：</p>
+<p><strong>把原本躲在老師電腦後面的科學資料工作，搬到學生面前。</strong></p>
+<p>所以下次學生做完 ESP32 感測實驗，看到五千筆資料時，不必急著叫 AI「幫我找趨勢」。</p>
+<p>可以先問：</p>
+<p><strong>「這五千筆資料，現在真的值得相信嗎？」</strong></p>
+<h2>參考資料與延伸閱讀</h2>
+<ol><li>Carroll, A. J., Borycz, J., Stephens, N. K., Merritt, N., &amp; Lowery, A. R.，<strong>Integrating generative AI into librarian-led data literacy instruction for science and engineering students</strong>，《The Journal of Academic Librarianship》，2026 年 9 月，Vol. 52, Issue 5, Article 103322。</li></ol>
+<p><a href="https://doi.org/10.1016/j.acalib.2026.103322" target="_blank" rel="noopener">https://doi.org/10.1016/j.acalib.2026.103322</a></p>
+<ol><li>Merritt, N., Carroll, A. J., Borycz, J., et al.，<strong>WIP: Using AI Tools to teach research data management skills within biomedical engineering laboratory courses</strong>，2026 ASEE Annual Conference &amp; Exposition。</li></ol>
+<p><a href="https://peer.asee.org/wip-using-ai-tools-to-teach-research-data-management-skills-within-biomedical-engineering-laboratory-courses" target="_blank" rel="noopener">https://peer.asee.org/wip-using-ai-tools-to-teach-research-data-management-skills-within-biomedical-engineering-laboratory-courses</a></p>
+<ol><li>Boolzen, C., Kuhn, J., Flegr, S., et al.，<strong>Evidence of impact and interpretational limits of generative AI in STEM education</strong>，《Artificial Intelligence Review》，2026 年 8 月 25 日。</li></ol>
+<p><a href="https://link.springer.com/article/10.1007/s10462-026-11665-9" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s10462-026-11665-9</a></p>
+<ol><li>UNESCO IITE，<strong>AI in Education</strong>。</li></ol>
+<p><a href="https://iite.unesco.org/theme/artificial-intelligence-in-education/" target="_blank" rel="noopener">https://iite.unesco.org/theme/artificial-intelligence-in-education/</a></p>
+<ol><li>UNESCO，<strong>Digital Learning Week 2026</strong>。</li></ol>
+<p><a href="https://www.unesco.org/en/weeks/digital-learning" target="_blank" rel="noopener">https://www.unesco.org/en/weeks/digital-learning</a></p>
+<p>2026 年 09 月 05 日<br>作者：陳賢宗</p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

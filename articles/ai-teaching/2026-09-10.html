@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 進了自然教室，卻可能把「數位落差」變成「學習落差」：最新生命科學教師研究提醒，真正公平的 AI 教學不能假設每個孩子都有同一種設備｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">AI 與教學／自然科學教育文章</div>
+      <h1>AI 進了自然教室，卻可能把「數位落差」變成「學習落差」：最新生命科學教師研究提醒，真正公平的 AI 教學不能假設每個孩子都有同一種設備</h1>
+      <div class="date">2026 年 09 月 10 日</div>
+    </div>
+    <article>
+<p>在設備充足的教室裡談 AI，很容易。</p>
+<p>每個學生有平板，Wi-Fi 穩定，老師打開生成式 AI，學生可以查資料、比較模型、分析圖片，甚至用 AI 幫忙設計探究問題。</p>
+<p>但如果換一間教室呢？</p>
+<p>只有老師一台電腦。</p>
+<p>網路偶爾斷線。</p>
+<p>學生回家沒有自己的裝置。</p>
+<p>有人可以付費使用進階 AI，有人只能用免費版本，甚至完全沒有帳號。</p>
+<p>這時候，同一句：</p>
+<p>「今天大家用 AI 分析實驗結果。」</p>
+<p>其實可能不是一個公平的教學指令。</p>
+<p>2026 年 9 月 9 日，Springer Nature 旗下《Discover Education》刊登一項非常貼近這個問題的研究。研究團隊訪談南非 10 名即將畢業、主修生命科學教育的準教師，這些學生曾分別到不同社經條件的學校進行教學實習，研究者想知道：</p>
+<p><strong>當學校資源差距很大時，教師對「我有沒有能力把 AI 帶進生命科學課」的感覺，會不會也跟著不同？</strong></p>
+<p>答案相當明顯。</p>
+<p>在資源較充足的學校實習者，比較常提到智慧教室、機器人設備、網路與行政支持，因此對 AI 融入教學的信心較高。</p>
+<p>在資源較不足的學校實習者，談到的卻往往是：</p>
+<p>電力不穩。</p>
+<p>網路不足。</p>
+<p>沒有投影設備。</p>
+<p>學生沒有裝置。</p>
+<p>甚至連基本教學資源都不足。</p>
+<p>這些準教師並不是認為 AI 沒有價值，而是很務實地問：</p>
+<p><strong>「連最基本的條件都沒有，我到底要怎麼用？」</strong></p>
+<p>這個問題其實和臺灣自然科非常有關。</p>
+<p>我們談 AI 融入時，常常把「工具」當成起點。</p>
+<p>但真正公平的 AI 教學，起點應該是：</p>
+<p><strong>學生的學習條件。</strong></p>
+<h3>同一堂課，可以設計成「每人一台 AI」，也可以設計成「全班共享 AI」</h3>
+<p>以國小六年級或國中七年級的「植物蒸散與環境條件」探究為例。</p>
+<p>學生研究：</p>
+<blockquote>光照、溫度與空氣流動，可能如何影響植物水分散失？</blockquote>
+<p>一般做法可以讓學生用塑膠袋套住葉片、觀察凝結水，或利用電子秤比較一段時間前後盆栽的質量變化。</p>
+<p>如果設備充足，我們可能安排每組平板，把數據交給 AI：</p>
+<p>「請分析哪一個條件可能造成較大的水分散失。」</p>
+<p>但如果只有老師一台電腦，就不代表這堂 AI 課不能做。</p>
+<p>反而可以改成：</p>
+<p><strong>學生先分析，AI 最後才進場。</strong></p>
+<h3>第一階段：所有學生都用紙筆做同一件事</h3>
+<p>假設三組植物實驗 40 分鐘後質量變化為：</p>
+<p>強光組：減少 6.8 克</p>
+<p>陰影組：減少 2.7 克</p>
+<p>電風扇組：減少 8.1 克</p>
+<p>學生先不用任何 AI。</p>
+<p>每組完成三個問題：</p>
+<p>「哪一組水分減少最多？」</p>
+<p>「你認為可能原因是什麼？」</p>
+<p>「這個實驗能不能直接證明只有光照或風造成差異？」</p>
+<p>學生可能開始發現：</p>
+<p>不同植物葉片面積是否相同？</p>
+<p>澆水量一不一樣？</p>
+<p>盆器大小一不一樣？</p>
+<p>這些才是真正的科學思考。</p>
+<h3>第二階段：全班只使用「一個 AI」</h3>
+<p>接著老師把學生的三種主要解釋投影到螢幕：</p>
+<p>A 組認為風把水吹走。</p>
+<p>B 組認為風增加蒸散。</p>
+<p>C 組認為可能是電風扇讓溫度降低，所以結果不一定。</p>
+<p>老師再把三個說法一起交給 AI：</p>
+<blockquote>這是三組國中小學生對植物蒸散實驗的解釋。請不要判定誰對誰錯，只提出兩個可以用新實驗區分這些解釋的問題。</blockquote>
+<p>AI 可能建議：</p>
+<p>「如果風速增加但溫度保持相近，結果還會相同嗎？」</p>
+<p>「是否可以測量葉片表面積，確認各組植物條件相近？」</p>
+<p>這時整個班級都在使用 AI。</p>
+<p>可是沒有任何學生因為「沒有自己的平板」而失去學習機會。</p>
+<p>AI 是<strong>班級公共資源</strong>。</p>
+<p>不是個人設備競賽。</p>
+<p>這正好回應最新研究的核心警告：</p>
+<p>AI readiness 不能只被理解成「老師會不會下 Prompt」，還必須考慮基礎設施、學校資源與學生取得科技的條件。</p>
+<h3>第三階段：故意讓 AI 給出「看起來合理但證據不足」的答案</h3>
+<p>老師可以再問 AI：</p>
+<p>「所以我們可以確定風愈大，植物蒸散一定愈快嗎？」</p>
+<p>如果 AI 給出過度肯定的回答，正好可以拿來當教材。</p>
+<p>老師反問學生：</p>
+<p>「我們只有一次實驗。」</p>
+<p>「三盆植物完全相同嗎？」</p>
+<p>「溫度有控制嗎？」</p>
+<p>「溼度有控制嗎？」</p>
+<p>「風速真的測過嗎？」</p>
+<p>這時學生會看到：</p>
+<p><strong>AI 可以有答案，但科學證據可能還沒有。</strong></p>
+<p>這堂課同時就在教 AI literacy。</p>
+<p>而且完全不需要學生人人都有 AI 帳號。</p>
+<h3>AI 公平，不等於每個學生每天使用一樣多</h3>
+<p>我們容易把「公平」理解成：</p>
+<p>每人一台平板。</p>
+<p>每人一個帳號。</p>
+<p>每人問 AI 五次。</p>
+<p>可是教育公平比較接近：</p>
+<p><strong>每個學生都有機會完成最重要的學習。</strong></p>
+<p>有時候 AI 由老師操作，學生負責質疑，可能比每個學生自己開一個聊天室更公平，也更有學習價值。</p>
+<p>例如自然課可以採三層設計：</p>
+<p>第一層：所有學生都能完成的核心探究，不需要 AI。</p>
+<p>第二層：全班共用 AI，進行比較、挑戰或反思。</p>
+<p>第三層：有設備時再進一步讓學生自行操作。</p>
+<p>這種設計有一個很大的優點：</p>
+<p><strong>AI 掛掉，課還是能上。</strong></p>
+<p>網路突然斷線，學生仍然可以觀察、測量、記錄、討論與提出證據。</p>
+<p>這其實才是真正具有韌性的數位教學。</p>
+<h3>最新研究還提醒：設備只是其中一半，老師的「信心」也受到環境影響</h3>
+<p>南非研究中的準生命科學教師還出現另一個很值得注意的現象。</p>
+<p>很多受訪者在教育實習期間根本沒有真正接觸 AI 教學，部分人只使用過 PowerPoint 等基本數位工具。</p>
+<p>因此，他們即使聽過 AI，也不知道怎麼把它真正放進生命科學課。</p>
+<p>相反地，有些人會自己看線上課程、和同儕學習、主動嘗試工具，因此即使實習學校資源有限，仍然建立了一定程度的信心。</p>
+<p>這代表教師 AI 能力不是單純的：</p>
+<p>「有設備＝會使用。」</p>
+<p>而是設備、研習、同儕支持、實際操作經驗與教師自己的教學理念共同作用。</p>
+<h3>這和 UNESCO 這兩天提出的方向幾乎完全重疊</h3>
+<p>UNESCO Digital Learning Week 2026 把今年核心主題設定成：</p>
+<p><strong>Education in the age of AI: Facts | Frictions | Frontiers。</strong></p>
+<p>UNESCO 明確提出，AI 教育未來必須同時維持 human agency——人的主導性、equity——公平，以及 education as a common good——教育作為共同利益。</p>
+<p>9 月 9 日，超過 25 位教育部長及代表共同通過部長聲明，要求 AI 進入教育的方式不能只由市場或科技能力決定，而應透過公共治理、問責，以及尊重學生與教師權利來決定。</p>
+<p>這件事情縮小到自然教室，其實很簡單。</p>
+<p>不是：</p>
+<p>「最新 AI 出了什麼，所以我一定要教。」</p>
+<p>而是：</p>
+<p><strong>「這個 AI 真的能讓我的學生多學到一件重要的事情嗎？」</strong></p>
+<h3>「AI × 自然科」真正值得優先投入的地方，也許是補差距，而不是秀功能</h3>
+<p>例如一個閱讀速度比較慢的孩子，可以請 AI 把同一段光合作用解釋改成比較容易理解的版本。</p>
+<p>一個中文表達困難的學生，可以先用語音描述自己的實驗觀察，再協助整理成文字。</p>
+<p>一個已經理解基本概念的孩子，可以讓 AI 提出更高階的反例。</p>
+<p>這些是真正的差異化。</p>
+<p>AI 不是讓「本來就跑最快的學生跑得更快」，而是讓不同學生都有可能靠近相同的核心學習目標。</p>
+<p>但如果只有部分學生在家能無限制使用高階 AI，作業又大量依賴 AI，那麼原本的數位落差就可能變成：</p>
+<p><strong>AI 學習落差。</strong></p>
+<h3>教師可以先建立一條「AI 公平原則」</h3>
+<p>自然科每次要使用 AI 前，先問五件事：</p>
+<p>第一，沒有個人設備的學生能不能完成核心活動？</p>
+<p>第二，AI 是必要工具，還是只是其中一種輔助？</p>
+<p>第三，家庭設備與付費帳號會不會影響作業成績？</p>
+<p>第四，AI 如果今天不能用，課程是否仍然成立？</p>
+<p>第五，我們是不是把有限設備優先放在真正有學習價值的地方？</p>
+<h3>這篇研究也有很重要的限制</h3>
+<p>這項 9 月 9 日的新研究只有 <strong>10 名南非準生命科學教師</strong>，其中 6 人曾在資源較不足學校實習，4 人在較高資源學校實習。</p>
+<p>它是一項質性研究。</p>
+<p>研究者自己也明確指出，這些結果只能提供情境性的深入理解，不能拿來宣稱：</p>
+<p>「所有低資源學校教師一定缺乏 AI 信心。」</p>
+<p>所以這篇研究真正值得帶走的不是一個簡單結論。</p>
+<p>而是一個提醒：</p>
+<p><strong>我們談 AI 教育時，不能假設所有教室的起跑點相同。</strong></p>
+<p>這句話對臺灣也完全適用。</p>
+<p>城市和偏鄉不同。</p>
+<p>大型學校和小校不同。</p>
+<p>自然專科教室和普通班級不同。</p>
+<p>教師科技經驗不同。</p>
+<p>學生家裡設備也不同。</p>
+<p>當 AI 開始變得愈來愈普遍時，最重要的問題可能已經不是：</p>
+<p><strong>「你的學校有沒有 AI？」</strong></p>
+<p>而是：</p>
+<p><strong>「不管學生出生在哪裡、使用哪一種設備，他還有沒有公平的機會學會觀察、提出問題、分析證據與形成自己的解釋？」</strong></p>
+<p>只要這件事情守得住，AI 才是在縮小差距。</p>
+<p>如果守不住，再先進的 AI，也可能只是把原本存在的差距，用更漂亮的科技包裝一次。</p>
+<h2>參考資料與延伸閱讀</h2>
+<ol><li>Mnguni, L., Nuangchalerm, P., Sari, I. J., et al.，<strong>Preservice life sciences teachers’ readiness for AI integration in teaching across varying socioeconomic contexts</strong>，《Discover Education》，2026 年 9 月 9 日。</li></ol>
+<p><a href="https://link.springer.com/article/10.1007/s44217-026-02140-2" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s44217-026-02140-2</a></p>
+<ol><li>UNESCO，<strong>Education Ministers call for education to remain a common good in the age of AI at UNESCO’s Digital Learning Week</strong>，2026 年 9 月 9 日。</li></ol>
+<p><a href="https://www.unesco.org/en/articles/education-ministers-call-education-remain-common-good-age-ai-unescos-digital-learning-week" target="_blank" rel="noopener">https://www.unesco.org/en/articles/education-ministers-call-education-remain-common-good-age-ai-unescos-digital-learning-week</a></p>
+<ol><li>UNESCO，<strong>Digital Learning Week 2026</strong>。</li></ol>
+<p><a href="https://www.unesco.org/en/weeks/digital-learning" target="_blank" rel="noopener">https://www.unesco.org/en/weeks/digital-learning</a></p>
+<ol><li>UNESCO，<strong>Global consultation on education in the age of AI</strong>。</li></ol>
+<p><a href="https://www.unesco.org/en/digital-education/artificial-intelligence/consultation" target="_blank" rel="noopener">https://www.unesco.org/en/digital-education/artificial-intelligence/consultation</a></p>
+<ol><li>Boolzen, C., Kuhn, J., Flegr, S., et al.，<strong>Evidence of impact and interpretational limits of generative AI in STEM education</strong>，《Artificial Intelligence Review》，2026 年 8 月 25 日。</li></ol>
+<p><a href="https://link.springer.com/article/10.1007/s10462-026-11665-9" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s10462-026-11665-9</a></p>
+<ol><li>Canonigo, A.，<strong>Teacher Mediation and the Contingent Promise of Generative AI in Mathematics Education</strong>，《Journal of Computer Assisted Learning》，2026 年 8 月。</li></ol>
+<p><a href="https://onlinelibrary.wiley.com/doi/10.1002/jcal.70307" target="_blank" rel="noopener">https://onlinelibrary.wiley.com/doi/10.1002/jcal.70307</a></p>
+<p>2026 年 09 月 10 日<br>作者：陳賢宗</p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>
