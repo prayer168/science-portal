@@ -7,6 +7,7 @@
 
 - 新增 2026-08-29～2026-09-10 共 13 篇「AI 與教學／自然科學教育」每日文章頁，沿用 `articles/ai-teaching/YYYY-MM-DD.html` 版型。
 - `data/ai-teaching-articles.js` 保留既有 27 篇並按日期接續新增 13 筆，首頁「教學文章」頁籤維持每篇一列。
+- 首頁加入 Facebook／Twitter Open Graph 預覽標記；公開縮圖為 `assets/ai-teaching-2026-08-29-09-10.png`，分享預覽若仍顯示舊圖需在 Facebook Sharing Debugger 重新抓取。
 
 ---
 
