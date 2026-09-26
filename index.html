@@ -985,8 +985,33 @@ const STATIC_TEACHING_ARTICLE_CATEGORY = {
   custom: true
 };
 
+const STATIC_AI_PROGRAMMING_CATEGORY = {
+  key: "AI程式設計",
+  emoji: "🤖",
+  desc: "AI 程式設計與工作流程技術文章",
+  color: "#e17055",
+  custom: true
+};
+
+// ── 固定 AI 程式設計文章：不寫回 Firestore，避免管理後台儲存時改動原有教材 ──
+const STATIC_AI_PROGRAMMING_MATERIALS = [
+  {
+    cat: "AI程式設計",
+    name: "ChatGPT 桌面版跨裝置同步架構｜技術白皮書",
+    url: "https://prayer168.github.io/docs/chatgpt-desktop-cross-device-sync-architecture.html",
+    icon: "🖥️"
+  },
+  {
+    cat: "AI程式設計",
+    name: "Codex 模型選擇與 Token 成本控制技術指南",
+    url: "https://prayer168.github.io/docs/codex-model-selection-token-cost-control.html",
+    icon: "🎯"
+  }
+];
+
 function staticTeachingArticles() {
-  return Array.isArray(window.AI_TEACHING_ARTICLES) ? window.AI_TEACHING_ARTICLES : [];
+  const teachingArticles = Array.isArray(window.AI_TEACHING_ARTICLES) ? window.AI_TEACHING_ARTICLES : [];
+  return [...teachingArticles, ...STATIC_AI_PROGRAMMING_MATERIALS];
 }
 
 const STATIC_SKILL_REPORTS = [
@@ -1003,9 +1028,9 @@ function staticPortalEntries() {
 }
 
 function ensureStaticTeachingArticleCategory(cats) {
-  const merged = cats.some(c => c.key === STATIC_TEACHING_ARTICLE_CATEGORY.key)
-    ? cats
-    : [...cats, STATIC_TEACHING_ARTICLE_CATEGORY];
+  const staticCategories = [STATIC_TEACHING_ARTICLE_CATEGORY, STATIC_AI_PROGRAMMING_CATEGORY];
+  const missingCategories = staticCategories.filter(category => !cats.some(c => c.key === category.key));
+  const merged = [...cats, ...missingCategories];
   return orderCats(applyCatEmoji(dedupeCatsByKey(merged)));
 }
 
