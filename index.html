@@ -989,6 +989,19 @@ function staticTeachingArticles() {
   return Array.isArray(window.AI_TEACHING_ARTICLES) ? window.AI_TEACHING_ARTICLES : [];
 }
 
+const STATIC_SKILL_REPORTS = [
+  {
+    cat: "skill",
+    name: "AI 創意科學探究文章寫作助手",
+    url: "https://prayer168.github.io/ai-creative-science-inquiry-writing-assistant/",
+    icon: "🧩"
+  }
+];
+
+function staticPortalEntries() {
+  return [...staticTeachingArticles(), ...STATIC_SKILL_REPORTS];
+}
+
 function ensureStaticTeachingArticleCategory(cats) {
   const merged = cats.some(c => c.key === STATIC_TEACHING_ARTICLE_CATEGORY.key)
     ? cats
@@ -1005,20 +1018,19 @@ function dedupeCatsByKey(cats) {
   });
 }
 
-function isStaticTeachingArticle(item) {
-  return item && item.cat === STATIC_TEACHING_ARTICLE_CATEGORY.key
-    && staticTeachingArticles().some(article => article.url === item.url);
+function isStaticPortalEntry(item) {
+  return item && staticPortalEntries().some(entry => entry.url === item.url);
 }
 
 function stripStaticTeachingArticles(items) {
-  return items.filter(item => !isStaticTeachingArticle(item));
+  return items.filter(item => !isStaticPortalEntry(item));
 }
 
 function mergeStaticTeachingArticles(items) {
   const dynamicItems = stripStaticTeachingArticles(items);
   const urls = new Set(dynamicItems.map(item => item.url));
-  const articles = staticTeachingArticles().filter(article => !urls.has(article.url));
-  return applyIconMap([...dynamicItems, ...articles]);
+  const entries = staticPortalEntries().filter(entry => !urls.has(entry.url));
+  return applyIconMap([...dynamicItems, ...entries]);
 }
 
 function tabFromHash() {
@@ -1138,6 +1150,7 @@ const MATERIAL_ICON_MAP = {
     'AI 資料搜尋與查證技術文件': '✅',
     '自然AI命題skill': '🧩',
     'AI 評量規準設計師Rubric Builder': '🧩',
+    'AI 創意科學探究文章寫作助手': '🧩',
     '自然科學探究網站精選': '🔗',
     '國立科學工藝博物館科教活動課程與12年國教新課綱  自然科學領域、科技領域對應一覽表111.11.02': '🏛️',
     '圖片批次轉 PDF': '🖼️',
