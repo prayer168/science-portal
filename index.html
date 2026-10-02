@@ -1036,11 +1036,13 @@ const STATIC_SKILL_REPORTS = [
 ];
 
 function staticPortalEntries() {
-  return [...staticTeachingArticles(), ...STATIC_SKILL_REPORTS];
+  return [...staticTeachingArticles(), ...STATIC_SKILL_REPORTS, {
+    cat: "網站維護", name: "網站優化檢核表", url: "https://prayer168.github.io/updates/", icon: "✅"
+  }];
 }
 
 function ensureStaticTeachingArticleCategory(cats) {
-  const staticCategories = [STATIC_TEACHING_ARTICLE_CATEGORY, STATIC_AI_PROGRAMMING_CATEGORY];
+  const staticCategories = [STATIC_TEACHING_ARTICLE_CATEGORY, STATIC_AI_PROGRAMMING_CATEGORY, { key: "網站維護", emoji: "🛠️", desc: "網站維護與優化檢核", color: "#0984e3", custom: true }];
   const missingCategories = staticCategories.filter(category => !cats.some(c => c.key === category.key));
   const merged = [...cats, ...missingCategories];
   return orderCats(applyCatEmoji(dedupeCatsByKey(merged)));
