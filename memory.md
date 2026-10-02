@@ -3,6 +3,12 @@
 
 ---
 
+## 2026-10-02 更新：教學應用研習手冊
+
+- 加入「AI 時代的國小自然科數位教學整合流程」，原檔完整保留於 `articles/teaching-applications/ai-science-teaching-workflow.html`。
+- 沿用 `data/ai-teaching-articles.js` 靜態清單，分類為「教學應用」；Firestore 載入後仍會合併顯示，技術文件站也會自動計入。
+- 文章產生器保留清單中非「教學文章」的固定入口，避免重建每日文章清單時移除此教材。
+
 ## 2026-09-10 更新：教學文章續篇
 
 - 新增 2026-08-29～2026-09-10 共 13 篇「AI 與教學／自然科學教育」每日文章頁，沿用 `articles/ai-teaching/YYYY-MM-DD.html` 版型。

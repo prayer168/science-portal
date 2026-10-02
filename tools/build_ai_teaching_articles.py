@@ -374,6 +374,11 @@ def main() -> None:
             "icon": "📄",
         })
 
+    # Keep fixed teaching-application entries when rebuilding the article list.
+    if args.data_file.exists():
+        previous = args.data_file.read_text(encoding="utf-8").split("=", 1)[1].strip().rstrip(";")
+        manifest.extend(item for item in json.loads(previous) if item.get("cat") != "教學文章")
+
     data = "window.AI_TEACHING_ARTICLES = "
     data += json.dumps(manifest, ensure_ascii=False, indent=2)
     data += ";\n"

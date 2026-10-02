@@ -238,5 +238,11 @@ window.AI_TEACHING_ARTICLES = [
     "name": "2026-09-10｜AI 進了自然教室，卻可能把「數位落差」變成「學習落差」：最新生命科學教師研究提醒，真正公平的 AI 教學不能假設每個孩子都有同一種設備",
     "url": "articles/ai-teaching/2026-09-10.html",
     "icon": "📄"
+  },
+  {
+    "cat": "教學應用",
+    "name": "AI 時代的國小自然科數位教學整合流程",
+    "url": "articles/teaching-applications/ai-science-teaching-workflow.html",
+    "icon": "🔬"
   }
 ];
