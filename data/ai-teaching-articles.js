@@ -244,5 +244,11 @@ window.AI_TEACHING_ARTICLES = [
     "name": "AI 時代的國小自然科數位教學整合流程",
     "url": "articles/teaching-applications/ai-science-teaching-workflow.html",
     "icon": "🔬"
+  },
+  {
+    "cat": "休閒（動動腦）",
+    "name": "動物王國大亨",
+    "url": "https://prayer168.github.io/animal-paradise/",
+    "icon": "🐾"
   }
 ];

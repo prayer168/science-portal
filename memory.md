@@ -3,6 +3,12 @@
 
 ---
 
+## 2026-10-16 更新：動物王國大亨
+
+- 將 `https://prayer168.github.io/animal-paradise/` 加入「休閒（動動腦）」；圖示為 🐾。
+- 沿用 `data/ai-teaching-articles.js` 的固定教材清單與既有 `mergeStaticTeachingArticles()`，Firestore 同步後仍保留此入口；不直接修改 Firestore。
+- 既有清單產生器會保留非「教學文章」分類；技術文件與統計頁會讀取同一清單，自動計入。
+
 ## 2026-10-02 更新：教學應用研習手冊
 
 - 加入「AI 時代的國小自然科數位教學整合流程」，原檔完整保留於 `articles/teaching-applications/ai-science-teaching-workflow.html`。
