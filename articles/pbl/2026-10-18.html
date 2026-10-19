@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="「老師，我們連什麼是濁度都不知道，怎麼設計濾水器？」 面對這類問題，教師常在兩個極端之間擺盪：一端是先把整個單元講完、考完，再讓學生做作品；另一端則是為了強調自主，把問題直接交給學生，期待他們自行搜尋、實驗與理解。前者容易把 PBL…">
+  <link rel="canonical" href="https://prayer168.github.io/science-portal/articles/pbl/2026-10-18.html">
+  <meta property="og:title" content="PBL 開始前，到底要先教多少？用「最小必要知識」避免空手探究，也避免先講完再做">
+  <meta property="og:description" content="「老師，我們連什麼是濁度都不知道，怎麼設計濾水器？」 面對這類問題，教師常在兩個極端之間擺盪：一端是先把整個單元講完、考完，再讓學生做作品；另一端則是為了強調自主，把問題直接交給學生，期待他們自行搜尋、實驗與理解。前者容易把 PBL…">
+  <meta property="og:url" content="https://prayer168.github.io/science-portal/articles/pbl/2026-10-18.html">
+  <title>PBL 開始前，到底要先教多少？用「最小必要知識」避免空手探究，也避免先講完再做｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    .signature { margin-top: 2rem; color: var(--muted); font-weight: 700; text-align: right; }
+    a { overflow-wrap: anywhere; }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">PBL 教學設計</div>
+      <h1>PBL 開始前，到底要先教多少？用「最小必要知識」避免空手探究，也避免先講完再做</h1>
+      <div class="date">2026 年 10 月 18 日｜作者：陳賢宗與 AI 協作編撰｜分類：PBL 教學設計</div>
+    </div>
+    <article>
+<h2>PBL 開始前，到底要先教多少？用「最小必要知識」避免空手探究，也避免先講完再做</h2>
+<p>「老師，我們連什麼是濁度都不知道，怎麼設計濾水器？」</p>
+<p>面對這類問題，教師常在兩個極端之間擺盪：一端是先把整個單元講完、考完，再讓學生做作品；另一端則是為了強調自主，把問題直接交給學生，期待他們自行搜尋、實驗與理解。前者容易把 PBL 變成課程結束後的「甜點活動」，後者則可能讓探究退化成沒有根據的反覆試做。</p>
+<p>較可行的做法，是在專題開始前提供「最小必要知識」：只先教學生進入第一輪探究所需的安全規則、核心概念、量測方法與公平測試原則；其餘知識則在學生遇到真實困難時，以短講、示範、閱讀或資料卡即時補入。</p>
+<p>這不是少教，而是改變知識出現的時機。</p>
+<h3>近期研究帶來的提醒：低先備知識不等於不需要支援</h3>
+<p>2026 年 9 月發表的一項四年級科學準實驗研究，以中國南方兩所小學的四個班級比較混成同步課堂中的 PBL 學習。研究指出，原先科學知識較有限的學生，在學業表現上反而取得較大的進步；實驗組也呈現較高的學習滿意度與創造思考成長。</p>
+<p>但這項結果不能解讀成「先備知識不重要」。研究中的學生並非被丟進完全無結構的任務，而是在有課程安排、教師引導與同步學習環境下進行專題。它比較合理的啟示是：起點較低的學生，只要獲得適切的任務結構與支援，也能從 PBL 中得到顯著收益。由於研究採非等組準實驗設計，且限於特定地區與混成教學情境，仍不能直接推論到所有臺灣國小班級。</p>
+<p>另一篇於 2026 年 9 月 28 日發表的 K–12 PBL 回顧，分析1,345筆文獻紀錄，並選取20篇2020至2025年的實證研究進行系統性綜整。作者認為，PBL具有促進批判思考、問題解決與創造力的潛力，但成效受到教師能力、技術條件及學校情境影響；研究本身也受限於資料庫、語言與開放取用文章的篩選範圍。換句話說，不能只看到「PBL有效」，還要追問：學生獲得了哪些引導？教師如何安排知識、任務與回饋？</p>
+<p>近期一項印尼五年級食物鏈立體模型案例也呈現相似訊息。學生肯定專題對創意與具體理解的幫助，但實施時仍面臨時間、材料取得及學生所需教學支援不同等問題。這是質性個案，不能用來證明因果效果，卻提醒我們：同一份任務交給全班，並不代表每個孩子都能靠相同程度的提示前進。</p>
+<h3>「最小必要知識」應該包含什麼？</h3>
+<p>教師可以把專題中的知識分成三層。</p>
+<p>第一層是「開始前必須具備」的知識，包括安全規則、基本器材操作、關鍵名詞與初步量測方法。例如進行濾水專題前，學生必須知道「看起來清澈不代表可以飲用」、如何固定水量，以及如何避免接觸或誤飲實驗水。這些內容不能等學生犯錯後才補教。</p>
+<p>第二層是「探究途中即時補充」的知識。當學生第一次測試後發現棉花塞得越緊，水雖然較清澈卻流得很慢，教師便可安排十分鐘短講，引入顆粒大小、孔隙、流速與過濾效果的關係。此時學生手上已有失敗資料，新概念就不只是課本定義，而是解釋現象的工具。</p>
+<p>第三層是「由選擇產生」的知識。不同小組選擇砂、碎石、濾紙或棉布，便需要查找不同材料特性；有人研究清澈度，有人比較流速，也會需要不同的資料處理方式。這一層最適合讓學生自主閱讀、請教、查證，或在教師監督下使用生成式 AI。</p>
+<p>判斷要不要先教，可以問四個問題：</p>
+<ul><li>不知道這項知識，學生會不會有安全風險？</li><li>不知道它，學生能不能做出公平的比較？</li><li>不知道它，學生能不能留下可解讀的資料？</li><li>這項知識若晚一點出現，是否反而更有學習意義？</li></ul>
+<p>前三題若為「不能」，就應在探究前提供；第四題若為「是」，則適合保留到學生產生需求時再教。</p>
+<h3>從四項 PBL 原則檢視知識安排</h3>
+<h4>一、真實問題情境：先讓學生看見「為何需要知道」</h4>
+<p>好的開場不是先定義過濾，而是呈現一瓶校園雨後的花圃泥水，提出任務：「自然老師想保留較清澈的水樣，方便低年級觀察沉澱。我們能不能設計一個低成本、可重複使用的簡易過濾裝置？」</p>
+<p>學生先觀察、提出疑問，再建立「需要知道清單」：什麼叫比較清澈？哪些材料可以攔住泥沙？水量不同還能比較嗎？知識因此由問題引出，而非與情境分離。</p>
+<p>PBLWorks也特別區分「專題作為單元本身」和學完內容後才做的附加作品；在前者中，專題是學習重要知識與技能的載體，不是裝飾性的收尾活動。</p>
+<h4>二、科學實踐整合：知識要能改善證據品質</h4>
+<p>在自然科 PBL 中，前置教學的目的不是讓學生先知道標準答案，而是讓他們能提出可研究的問題、控制變因、記錄資料並形成有證據的解釋。</p>
+<p>一篇涵蓋229項K–12 STEM研究的系統性回顧指出，探究與專題常包含問題辨識、實驗、資料分析、溝通及反思；回顧也發現，部分課程很少真正讓學生提出問題，可能與學生缺乏探究經驗、不易形成有意義的問題有關。</p>
+<p>因此，教師可先示範如何把「哪個最好？」改成「在相同泥水量與容器下，不同濾材組合會如何影響流出時間與清澈度？」這是問題形成的鷹架，不是替學生決定濾材與答案。</p>
+<h4>三、協作與工具：建立共享知識，而不是各自搜尋</h4>
+<p>四人一組可分為實驗操作、計時量測、影像紀錄與資料檢查等角色，但每人都要能解釋小組的變因、結果與修正理由。小組可共同維護一張「已知—證據—仍待確認」表，避免某位擅長搜尋的學生壟斷理解。</p>
+<p>生成式 AI 可以協助學生把陌生詞彙改寫成兒童可懂的說明，或提出需要查證的問題，但不宜直接生成實驗結論。學生若使用 AI，至少要記錄提問內容、核對來源，並指出哪一句建議實際改變了設計。科技的價值在於改善提問、整理與比較，而不是替小組完成思考。</p>
+<h4>四、結構性自主：固定證據規則，開放解決方法</h4>
+<p>教師可以固定安全規則、泥水配方、每次測試水量、資料表格式及至少兩輪測試；學生則自行決定濾材組合、排列順序、裝置外形、分工及發表方式。</p>
+<p>這種安排保留了科學比較所需的共同標準，也讓學生對方案擁有實質選擇。自主不是所有條件都自由，因為如果各組連水量與泥沙濃度都不同，最後便難以用證據比較設計成效。</p>
+<h3>如果要改造成一個國小自然科 PBL，可以這樣設計</h3>
+<p><strong>適用年級：</strong> 四至六年級<br><strong>節數：</strong> 6節，每節40分鐘<br><strong>Driving Question：</strong> 如何用校園常見材料，設計一個能讓花圃泥水變得較清澈、方便觀察沉澱的簡易濾水器？<br><strong>核心概念：</strong> 混合物與分離、顆粒大小、孔隙、流速、公平測試；並強調實驗濾水不可飲用。<br><strong>最終成果：</strong> 可操作的濾水原型、兩輪測試圖表、設計修改說明及安全標示。<br><strong>真實受眾：</strong> 自然科教師、校園生態社團或低年級班級。</p>
+<p>第一節先展示泥水樣本，進行三題診斷：「清澈等於安全嗎？」「要比較兩個濾水器，哪些條件必須相同？」「可以如何記錄清澈程度？」接著建立需要知道清單。</p>
+<p>第二節只安排約十二分鐘的最小必要教學：安全規則、固定水量、單一變因、公平比較，以及簡易清澈度量表的使用。學生完成第一版設計圖與預測。</p>
+<p>第三節進行首次測試。各組使用相同泥水量，記錄過濾時間、流出水量及清澈度等級，並拍攝固定背景照片。</p>
+<p>第四節分析失敗與差異。教師依學生資料提供短講，例如流速與過濾效果的取捨；各組用「證據—解釋—下一步」格式提出修改理由。</p>
+<p>第五節進行第二輪測試，把兩輪結果製成長條圖或比較表。若資料異常，學生必須說明可能的操作誤差，不能任意刪除。</p>
+<p>第六節向真實受眾發表。評量可分為科學證據35%、設計修正25%、概念解釋20%、合作紀錄10%、個人反思10%。即使原型效果不佳，只要能根據可靠資料提出合理修正，仍應獲得肯定。</p>
+<h3>常見問題與改善方式</h3>
+<p>第一，學生只是不斷更換材料。這通常表示任務缺少可量測指標。改善方法是要求每次修改前先寫出預測、變因與成功標準。</p>
+<p>第二，教師的短講逐漸變成整節講述。可以設定「十二分鐘上限」：只處理眼前阻礙下一輪探究的概念，其餘保留到後續檢核點。</p>
+<p>第三，所有小組都照教師範例製作。教師應示範量測方法與安全規範，而非提供完整成品；若必須展示裝置，可故意使用不同材料，避免學生照抄。</p>
+<p>第四，只評成品清不清澈。真正應評量的是學生能否公平測試、分析證據、指出限制並據此修正。失敗但有清楚證據的設計，往往比偶然成功的作品更有學習價值。</p>
+<h3>教師明天就能帶回教室的五個重點</h3>
+<ul><li>專題前先做三至五分鐘診斷，不要憑印象判斷學生是否準備好。</li><li>只預教安全、量測、核心區辨與公平測試所需的最低知識。</li><li>把其餘概念放在第一輪資料出現後，以短講或資料卡即時補入。</li><li>固定證據品質與安全底線，開放材料、方法、分工及成果表達。</li><li>同時評量「知道什麼」、「如何知道」以及「證據如何改變設計」。</li></ul>
+<p>PBL真正要避免的，不是教師教得太多或太少，而是知識與問題彼此失去關係。最理想的狀態，是學生帶著足以開始的理解進場，又在探究過程中真切感受到：為了讓方案更可靠，我還需要學會什麼。</p>
+<h3>參考資料</h3>
+<ol><li>Xu, J., Tong, M., Gao, Q., Xu, Y., Chen, J., Jing, C., &amp; Long, T.（2026）。[The Impact of Project-Based Learning (PjBL) on Creative Thinking in Fourth Graders: A Quasi-Experimental Study in Blended Science Synchronous Classroom](<a href="https://doi.org/10.1016/j.tsc.2026.102165)。《Thinking" target="_blank" rel="noopener">https://doi.org/10.1016/j.tsc.2026.102165)。《Thinking</a> Skills and Creativity》，61，102165。</li><li>Erümit, A. K., &amp; Koçhan, A.（2026年9月28日）。[A bibliometric analysis and systematic literature review of project based learning in K12 education](<a href="https://doi.org/10.1007/s44217-026-02150-0)。《Discover" target="_blank" rel="noopener">https://doi.org/10.1007/s44217-026-02150-0)。《Discover</a> Education》，5，1015。</li><li>Pratiwi, L. D. A., Widiarti, N., &amp; Yuwono, A.（2026年9月8日）。[Students’ perceptions of DIONTANA project-based learning in supporting creativity in elementary school science education](<a href="https://doi.org/10.21831/jppfa.v14i1.85751)。《Jurnal" target="_blank" rel="noopener">https://doi.org/10.21831/jppfa.v14i1.85751)。《Jurnal</a> Pembangunan Pendidikan: Fondasi dan Aplikasi》，14（1）。</li><li>Halawa, S., Lin, T.-C., &amp; Hsu, Y.-S.（2024）。[Exploring instructional design in K-12 STEM education: a systematic literature review](<a href="https://doi.org/10.1186/s40594-024-00503-5)。《International" target="_blank" rel="noopener">https://doi.org/10.1186/s40594-024-00503-5)。《International</a> Journal of STEM Education》，11。</li><li>PBLWorks（無日期）。[What is Project Based Learning?](<a href="https://www.pblworks.org/gold-standard/what-is-pbl" target="_blank" rel="noopener">https://www.pblworks.org/gold-standard/what-is-pbl</a>)。</li></ol>
+    <p class="signature">陳賢宗與AI協作編撰｜2026 年 10 月 18 日</p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>

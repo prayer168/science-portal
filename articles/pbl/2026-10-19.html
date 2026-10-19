@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="保溫套第一次測試結束，學生圍著溫度計喊：「失敗了！我們這組升溫最多。」 教師此時最容易做兩件事：直接指出鋁箔、棉布或氣泡紙該怎麼排列；或者說「沒關係，再做一次」，讓學生繼續更換材料。前者使修正變成照答案施工，後者則可能只是盲目試錯。…">
+  <link rel="canonical" href="https://prayer168.github.io/science-portal/articles/pbl/2026-10-19.html">
+  <meta property="og:title" content="第一次失敗後，先別急著救：用「錯—釋—修—驗」把 PBL 試做變成科學推理">
+  <meta property="og:description" content="保溫套第一次測試結束，學生圍著溫度計喊：「失敗了！我們這組升溫最多。」 教師此時最容易做兩件事：直接指出鋁箔、棉布或氣泡紙該怎麼排列；或者說「沒關係，再做一次」，讓學生繼續更換材料。前者使修正變成照答案施工，後者則可能只是盲目試錯。…">
+  <meta property="og:url" content="https://prayer168.github.io/science-portal/articles/pbl/2026-10-19.html">
+  <title>第一次失敗後，先別急著救：用「錯—釋—修—驗」把 PBL 試做變成科學推理｜黑熊老師自然科學數位教材中心</title>
+  <link rel="icon" href="../../favicon.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #161b22;
+      --card: #1a1d24;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #1dd1a1;
+      --warm: #ff9f43;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      line-height: 1.85;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 209, 161, .12), transparent 32rem),
+        linear-gradient(180deg, #0d1117 0%, #11151d 100%);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 17, 23, .86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .header-inner {
+      width: min(960px, calc(100vw - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(22, 27, 34, .76);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    main {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+    .article-head {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #f0f6fc;
+    }
+    .date {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    article {
+      background: rgba(22, 27, 34, .72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(20px, 4vw, 36px);
+    }
+    article h2 {
+      margin: 34px 0 12px;
+      color: #f0f6fc;
+      font-size: 23px;
+      line-height: 1.4;
+      border-left: 4px solid var(--warm);
+      padding-left: 12px;
+      letter-spacing: 0;
+    }
+    article h3 {
+      margin: 26px 0 10px;
+      color: #f0f6fc;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    article p { margin: 0 0 1.05em; }
+    article ul, article ol { padding-left: 1.5em; margin: 0 0 1.1em; }
+    article li { margin: .35em 0; }
+    blockquote {
+      margin: 1.2em 0;
+      border-left: 4px solid var(--accent);
+      padding: .1em 0 .1em 1em;
+      color: #c9d1d9;
+      background: rgba(88, 166, 255, .08);
+    }
+    .signature { margin-top: 2rem; color: var(--muted); font-weight: 700; text-align: right; }
+    a { overflow-wrap: anywhere; }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+    .footer-note {
+      width: min(860px, calc(100vw - 32px));
+      margin: 0 auto 36px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .header-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav-links { justify-content: flex-start; }
+      article { padding: 18px; }
+      article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../../favicon.png" alt="">
+        <span>黑熊老師自然科學數位教材中心</span>
+      </a>
+      <nav class="nav-links" aria-label="文章導覽">
+        <a href="../../index.html#教學文章">教學文章</a>
+        <a href="../../index.html">教材中心</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="article-head">
+      <div class="eyebrow">PBL 教學設計</div>
+      <h1>第一次失敗後，先別急著救：用「錯—釋—修—驗」把 PBL 試做變成科學推理</h1>
+      <div class="date">2026 年 10 月 19 日｜作者：陳賢宗與 AI 協作編撰｜分類：PBL 教學設計</div>
+    </div>
+    <article>
+<h2>第一次失敗後，先別急著救：用「錯—釋—修—驗」把 PBL 試做變成科學推理</h2>
+<p>保溫套第一次測試結束，學生圍著溫度計喊：「失敗了！我們這組升溫最多。」</p>
+<p>教師此時最容易做兩件事：直接指出鋁箔、棉布或氣泡紙該怎麼排列；或者說「沒關係，再做一次」，讓學生繼續更換材料。前者使修正變成照答案施工，後者則可能只是盲目試錯。</p>
+<p>PBL真正有學習價值的時刻，往往不是作品成功時，而是結果不如預期、學生必須回答三個問題時：</p>
+<ol><li>哪項證據顯示設計沒有達到目標？</li><li>失敗可能來自科學原理、實驗方法，還是製作問題？</li><li>下一輪只改哪一個條件，才能知道修改是否有效？</li></ol>
+<p>如果學生無法回答，第二版即使成功，也未必代表學會了科學探究。</p>
+<h3>最新研究：錯誤必須經過解釋與修正，才可能成為學習資源</h3>
+<p>2026年10月5日發表於《Instructional Science》的研究，邀請276名大學生學習實驗設計原則，再分成三種練習方式：刻意設計一個無效實驗並自行解釋、修正；找出別人實驗中的錯誤並修正；以及直接練習設計正確實驗。</p>
+<p>結果顯示，兩種包含錯誤分析的學習方式，在相近問題的遷移、判斷實驗效度及預測常見錯誤方面，都優於只練習正確設計；其中，刻意製造並修正自己錯誤的組別，在較複雜的新問題遷移上表現更好。</p>
+<p>但要注意，研究對象是大學生，而且他們先接受實驗設計原則的教學，再進行「刻意犯錯」活動。這不能直接證明國小生只要多失敗就會學得更好。可轉化到國小的合理建議是：學生需要在安全、低風險且已有基本概念的情況下，具體指出錯在哪裡、為什麼錯、如何驗證修正，而不是把所有偶發失敗浪漫化。</p>
+<p>另一項模型學習研究更提醒教師：「有修改」不等於「有進步」。研究分析158名高中生、47個小組修改碳循環模型的情形，38組修改了作品，但只有10組的科學品質真正提升。也就是說，學生收到同儕意見後可能換顏色、重排版面或增加文字，卻沒有改善模型的準確性與解釋力。</p>
+<p>因此，PBL不能只要求「做第二版」，還要規定學生說明：第二版根據哪項證據修改？預期改變哪個結果？其他條件如何保持一致？</p>
+<h3>把失敗分成四類，避免一律歸咎於作品</h3>
+<p>學生說「失敗了」時，教師可以先請小組分類。</p>
+<p><strong>一、目標未達成。</strong><br>作品確實沒有符合事先訂定的標準，例如保溫20分鐘後的升溫幅度高於未包覆的對照瓶。</p>
+<p><strong>二、測量失敗。</strong><br>溫度計插入深度不同、讀值時間不同、記錄遺漏，導致資料無法比較。此時不能直接判定保溫套無效。</p>
+<p><strong>三、公平測試失敗。</strong><br>各組使用不同水量、起始水溫、瓶子大小或日照位置。這種結果只能描述，不能支持因果結論。</p>
+<p><strong>四、機制假設失敗。</strong><br>實驗方法沒有明顯問題，但原先推測不成立。例如學生認為外層越亮一定越保溫，卻忽略接縫、空氣層或材料濕潤等因素。</p>
+<p>這四類問題需要不同處理。作品問題可以改設計；測量問題要重測；公平測試問題要重建實驗；機制假設問題則需要新解釋。若全部只用「再做一次」處理，學生很難累積科學推理能力。</p>
+<h3>用「錯—釋—修—驗」建立可追蹤的迭代循環</h3>
+<p>第一步是<strong>錯：指出落差</strong>。學生必須用數據描述，不用「很差」「不好用」等模糊詞句。例如：「對照瓶20分鐘升溫4.1°C，本組升溫4.8°C，沒有達到低於對照組的成功標準。」</p>
+<p>第二步是<strong>釋：提出候選解釋</strong>。小組至少提出兩種可能原因，並標明目前是證據還是推測。例如「接縫沒有封好」可由照片支持；「鋁箔把熱困住」則仍是需要查證的假設。</p>
+<p>第三步是<strong>修：一次只改一項關鍵條件</strong>。若同時更換材料、增加厚度、改變瓶子與測量位置，即使結果改善，也不知道哪項修改產生作用。</p>
+<p>第四步是<strong>驗：用相同指標重新測試</strong>。第二輪要盡量維持相同水量、起始溫度、時間與熱源，並將兩輪數據放在同一張圖上。</p>
+<p>一項兒童STEM研究發現，先進行結構化科學探究的學生，後續工程設計成果及科學對話優於先自由搭建的學生；反方向的遷移則未明顯出現。這項研究使用AI混合實境系統，情境不能直接等同臺灣一般教室，但它支持一個實用原則：先讓學生預測、觀察並解釋現象，再進行開放設計，通常比一開始就大量製作更有依據。</p>
+<h3>從四項 PBL 原則檢查失敗後的教學</h3>
+<h4>一、真實問題情境：失敗標準必須來自使用需求</h4>
+<p>如果任務只是「做一個最厲害的保溫套」，學生容易追求外觀或材料堆疊。若真實情境是「為戶外自然觀察課設計可重複使用的水瓶保溫套」，成功條件就可以包含升溫幅度、重量、材料成本、可重複使用及是否方便攜帶。</p>
+<p>作品可能在溫度控制上成功，卻因太厚、易脫落而不適用。真實問題能讓學生理解工程設計通常不是只有單一最佳答案，而是在多項條件間取捨。</p>
+<h4>二、科學實踐整合：失敗資料不能被刪掉</h4>
+<p>學生應保留第一版數據、異常值、照片及修正紀錄。教師可以問：</p>
+<ul><li>哪筆資料讓你們開始懷疑原來的解釋？</li><li>如果測量方法有問題，哪些結論必須撤回？</li><li>第二輪結果若仍然相同，代表什麼？</li><li>你們的證據只能支持「相關」，還是足以解釋原因？</li></ul>
+<p>失敗數據不是成果報告中需要隱藏的部分，而是說明設計如何改變的重要證據。</p>
+<h4>三、協作與工具：同儕回饋必須指向證據</h4>
+<p>同儕互評不要只問「哪裡需要改進」，可改用三句格式：</p>
+<ul><li>我從你們的資料看見……</li><li>我還不能確定……因為……</li><li>我建議下一輪只改……並測量……</li></ul>
+<p>模型修訂研究顯示，多數學生雖會修改，真正提升科學品質的比例有限，說明互評需要明確的科學準則與教師引導。</p>
+<p>AI可以協助整理候選失敗原因，但不應直接裁定原因。學生可輸入：「我們使用相同水量，A瓶升溫3.2°C、B瓶升溫4.5°C，但B瓶起始溫度高0.8°C。請列出可能原因，分成測量、控制變因與材料機制，並標明仍需哪些證據。」學生再依實際紀錄篩選，而不是複製AI答案。</p>
+<h4>四、結構性自主：固定修正規則，開放修正方向</h4>
+<p>教師可固定每組都要保留對照組、完成兩輪測試、一次只改一個主要變因，並繳交「第一版—證據—修正—第二版」紀錄。學生則自行選擇材料、厚度、接合方式、保留空氣層的方法及成果呈現形式。</p>
+<p>這樣既不會變成教師公布標準答案，也不會讓學生毫無規則地換材料。</p>
+<h3>如果要改造成一個國小自然科 PBL，可以這樣設計</h3>
+<p><strong>適用年級：</strong>五、六年級<br><strong>節數：</strong>6節，每節40分鐘<br><strong>Driving Question：</strong>如何利用乾淨回收材料，為戶外觀察課設計輕便、可重複使用的水瓶保溫套？<br><strong>核心概念：</strong>熱傳導、輻射、空氣層、溫度測量、公平測試。<br><strong>材料：</strong>相同塑膠瓶、溫度計、鋁箔、布、紙、氣泡紙、橡皮筋、膠帶、量杯及計時器。<br><strong>真實受眾：</strong>體育教師、戶外教育帶隊教師或高年級學生。<br><strong>安全提醒：</strong>使用溫水即可，不使用可能造成燙傷的熱水；實驗用水不飲用。</p>
+<p>第一節訪談受眾並建立成功標準；第二節比較單一材料的隔熱效果，學習固定水量、起始溫度與測量時間；第三節設計並測試第一版；第四節使用「錯—釋—修—驗」表分析結果；第五節只修改一項主要條件並重測；第六節向受眾展示兩輪數據及取捨理由。</p>
+<p>評量可分為：公平測試25%、數據與圖表20%、失敗解釋20%、證據導向修正20%、合作與個人反思15%。最終成品是否「全班最保溫」不應占最高比例，否則學生仍會隱藏失敗、堆疊材料或仿製他組答案。</p>
+<h3>教師明天就能實施的五項調整</h3>
+<ol><li>把「再試一次」改成「先指出哪項數據顯示需要重試」。</li><li>要求學生區分作品失敗、測量失敗、公平測試失敗與機制假設失敗。</li><li>第二輪一次只修改一個主要條件，並先寫預測。</li><li>互評必須包含證據、疑問及可驗證的下一步。</li><li>評量第一版到第二版的推理歷程，而不只評最後成品。</li></ol>
+<p>PBL中的失敗不會自動變成學習。只有當學生能保存資料、解釋落差、控制修改並重新驗證，失敗才會從令人沮喪的結果，轉化為下一個可研究的問題。</p>
+<h3>參考資料</h3>
+<ol><li>Wong, S. S. H.（2026年10月5日）。[Deliberate erring improves scientific reasoning: Learning experimentation skills by intentionally designing invalid experiments](<a href="https://doi.org/10.1007/s11251-026-09819-x)。《Instructional" target="_blank" rel="noopener">https://doi.org/10.1007/s11251-026-09819-x)。《Instructional</a> Science》，54，69。</li><li>Erümit, A. K., &amp; Koçhan, A.（2026年9月28日）。[A bibliometric analysis and systematic literature review of project based learning in K12 education](<a href="https://doi.org/10.1007/s44217-026-02150-0)。《Discover" target="_blank" rel="noopener">https://doi.org/10.1007/s44217-026-02150-0)。《Discover</a> Education》，5，1015。</li><li>Chang, H.-Y. et al.（2025年10月11日線上發表；2026年卷期）。[Investigating the Relation Between Peer Critiquing and Model Revisions in Modeling-Based Learning](<a href="https://doi.org/10.1002/sce.70026)。《Science" target="_blank" rel="noopener">https://doi.org/10.1002/sce.70026)。《Science</a> Education》。</li><li>Yannier, N., Li, J., Chang, H., Pavlinek, S., Yim, M., Hudson, S. E., &amp; Koedinger, K. R.（2025年12月22日；2026年卷期）。[Scientific Inquiry before Engineering Activities: Using an AI-based Mixed-Reality System to Investigate Transfer](<a href="https://doi.org/10.1007/s10956-025-10282-5)。《Journal" target="_blank" rel="noopener">https://doi.org/10.1007/s10956-025-10282-5)。《Journal</a> of Science Education and Technology》，35，810–822。</li><li>Sungur, S., &amp; Ozkan, G.（2026年4月21日）。[Coding Science: The Role of Block-Based Programming Activities in Enhancing Computational Thinking and Science Achievement](<a href="https://doi.org/10.1007/s10956-026-10317-5)。《Journal" target="_blank" rel="noopener">https://doi.org/10.1007/s10956-026-10317-5)。《Journal</a> of Science Education and Technology》，35，1376–1393。</li></ol>
+    <p class="signature">陳賢宗與AI協作編撰｜2026 年 10 月 19 日</p>
+    </article>
+  </main>
+  <div class="footer-note">© 2026 陳賢宗｜本文章供教育用途閱讀與教學參考。</div>
+</body>
+</html>
