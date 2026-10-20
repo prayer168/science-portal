@@ -268,5 +268,11 @@ window.AI_TEACHING_ARTICLES = [
     "name": "動物王國大亨",
     "url": "https://prayer168.github.io/animal-paradise/",
     "icon": "🐾"
+  },
+  {
+    "cat": "科學探究",
+    "name": "3D 月相與日月食科學探究實驗室 V2.0",
+    "url": "https://prayer168.github.io/moon-eclipse-lab-v2/",
+    "icon": "🌒"
   }
 ];

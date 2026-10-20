@@ -3,6 +3,13 @@
 
 ---
 
+## 2026-10-20 更新：3D 月相與日月食實驗室
+
+- 將 `https://prayer168.github.io/moon-eclipse-lab-v2/` 加入「科學探究」，名稱為「3D 月相與日月食科學探究實驗室 V2.0」，圖示🌒。
+- 沿用 `data/ai-teaching-articles.js` 的固定教材合併機制，不直接寫入 Firestore；文章產生器保留非教學文章分類，後續重建不會刪除本入口。
+- 技術文件站與統計頁讀取同一清單，自動計入科學探究數量。
+
+
 ## 2026-10-16 更新：動物王國大亨
 
 - 將 `https://prayer168.github.io/animal-paradise/` 加入「休閒（動動腦）」；圖示為 🐾。
