@@ -274,5 +274,11 @@ window.AI_TEACHING_ARTICLES = [
     "name": "3D 月相與日月食科學探究實驗室 V2.0",
     "url": "https://prayer168.github.io/moon-eclipse-lab-v2/",
     "icon": "🌒"
+  },
+  {
+    "cat": "科學探究",
+    "name": "AI 科學探究研究證據中心",
+    "url": "https://prayer168.github.io/ai-science-evidence-inquiry/",
+    "icon": "🔎"
   }
 ];

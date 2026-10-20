@@ -3,6 +3,12 @@
 
 ---
 
+## 2026-10-20 更新：AI 科學探究研究證據中心
+
+- 新增至「科學探究」：https://prayer168.github.io/ai-science-evidence-inquiry/，圖示 🔎。
+- 沿用既有固定清單 `data/ai-teaching-articles.js` 與合併／去重機制，不直接修改 Firestore。
+- 字級切換、分頁案例與全螢幕研習圖卡由教材網站提供；入口僅連結，未變更資料架構。
+
 ## 2026-10-20 更新：3D 月相與日月食實驗室
 
 - 將 `https://prayer168.github.io/moon-eclipse-lab-v2/` 加入「科學探究」，名稱為「3D 月相與日月食科學探究實驗室 V2.0」，圖示🌒。
