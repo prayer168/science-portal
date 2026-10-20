@@ -284,7 +284,7 @@ window.AI_TEACHING_ARTICLES = [
   {
     "cat": "科學探究",
     "name": "AI-SIM × 食蟲植物智慧探究實驗室",
-    "url": "https://ai-sim-carnivorous-plant-lab.prayer168.chatgpt.site/",
+    "url": "https://prayer168.github.io/ai-sim-carnivorous-plant-system/",
     "icon": "🪴"
   }
 ];

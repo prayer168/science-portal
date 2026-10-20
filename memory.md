@@ -5,7 +5,7 @@
 
 ## 2026-10-21 更新：AI-SIM 食蟲植物智慧探究實驗室
 
-- 將 `https://ai-sim-carnivorous-plant-lab.prayer168.chatgpt.site/` 加入「科學探究」，名稱為「AI-SIM × 食蟲植物智慧探究實驗室」，圖示 🪴。
+- 將 `https://prayer168.github.io/ai-sim-carnivorous-plant-system/` 設為「科學探究」入口，名稱為「AI-SIM × 食蟲植物智慧探究實驗室」，圖示 🪴；此入口連向 AI-SIM GitHub repo 的 Pages 網站。
 - 使用 `data/ai-teaching-articles.js` 固定入口清單，Firestore 同步後仍會合併顯示；更新腳本版本參數以刷新入口快取。
 
 ## 2026-10-20 更新：AI 科學探究研究證據中心
