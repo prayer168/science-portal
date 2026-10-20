@@ -280,5 +280,11 @@ window.AI_TEACHING_ARTICLES = [
     "name": "AI 科學探究研究證據中心",
     "url": "https://prayer168.github.io/ai-science-evidence-inquiry/",
     "icon": "🔎"
+  },
+  {
+    "cat": "科學探究",
+    "name": "AI-SIM × 食蟲植物智慧探究實驗室",
+    "url": "https://ai-sim-carnivorous-plant-lab.prayer168.chatgpt.site/",
+    "icon": "🪴"
   }
 ];
