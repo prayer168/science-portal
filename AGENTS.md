@@ -1,6 +1,6 @@
 # AGENTS.md — Science Portal 專案交接文件
 > 適用：OpenAI Codex CLI、Gemini CLI、任何 AI Agent
-> 最後更新：2026-05-31
+> 最後更新：2026-11-06
 
 ---
 
@@ -115,3 +115,17 @@ Firestore onSnapshot
 ---
 
 > 詳細內容請閱讀 `memory.md`
+
+---
+
+## Cursor Cloud specific instructions
+
+這個專案沒有套件管理器、lockfile，也沒有測試或建置指令。預覽時在專案根目錄執行：
+
+```bash
+python3 -m http.server 8080 --bind 0.0.0.0
+```
+
+然後開啟 `http://127.0.0.1:8080/`。分類、搜尋與教材卡片會從 Firestore 載入，需要能連上 `www.gstatic.com` 與 `*.googleapis.com`。連不上時，頁面改用 `DEFAULT_DATA` 與 `localStorage`。`tools/` 裡的文章產生器只用 Python 標準庫。
+
+不要登入「管理教材」，也不要寫入 Firestore。公開瀏覽是唯讀；後台儲存會改到正式資料庫。repo 內可互動的教材頁是 `http://127.0.0.1:8080/convection/`。
