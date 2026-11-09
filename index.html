@@ -38,7 +38,7 @@
   body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
 
   /* SCIENCE BACKGROUND FX - 流動科學感背景（DNA 雙螺旋 + 分子網絡） */
-  #bgFx{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;}
+  #bgFx{opacity:.38;position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;}
   .bg-glow{position:fixed;inset:0;z-index:-1;pointer-events:none;
     background:
       radial-gradient(640px 420px at 88% -6%, rgba(77,184,255,0.075), transparent 70%),
@@ -52,8 +52,8 @@
   .header-icon{display:none;}
   .header-bear{display:block;flex-shrink:0;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.5));}
   .header-title-wrap{flex:1;min-width:0;}
-  header h1{font-family:'Nunito','Noto Sans TC',sans-serif;font-size:clamp(13px,2vw,18px);font-weight:900;color:#e8eaed;letter-spacing:0.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  header p{color:#6b7280;font-size:11px;margin-top:1px;}
+  header h1{font-family:'Nunito','Noto Sans TC',sans-serif;font-size:clamp(16px,2vw,21px);font-weight:800;color:#e8eaed;letter-spacing:0.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  header p{color:#a3afbf;font-size:11px;margin-top:1px;}
   .bear-badge{display:none;}
 
   /* HEADER BUTTONS */
@@ -73,7 +73,7 @@
   .site-search:focus-within .search-box{background:#161b22;border-color:rgba(77,184,255,.72);box-shadow:0 0 0 3px rgba(77,184,255,.12);}
   .search-icon{width:17px;height:17px;color:#6b7280;flex:none;}
   .search-input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:var(--text);font:500 13px/1.4 'Noto Sans TC',sans-serif;}
-  .search-input::placeholder{color:#6b7280;}
+  .search-input::placeholder{color:#a3afbf;}
   .search-input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;}
   .search-shortcut{flex:none;padding:1px 5px;border:1px solid #343946;border-radius:4px;background:#20242d;color:#737b89;font:600 10px/1.5 'Nunito',sans-serif;}
   .search-clear{width:24px;height:24px;display:grid;place-items:center;flex:none;border:0;border-radius:5px;background:transparent;color:#8b949e;font-size:17px;line-height:1;cursor:pointer;}
@@ -92,11 +92,11 @@
   .search-empty{padding:28px 16px;text-align:center;color:#8b949e;font-size:13px;line-height:1.8;}
 
   /* PAGE LAYOUT - two columns */
-  .page-wrap{display:grid;grid-template-columns:236px 1fr;gap:0;max-width:1200px;margin:0 auto;padding:0 24px;align-items:start;}
+  .page-wrap{display:grid;grid-template-columns:236px minmax(0,1fr);gap:22px;max-width:1200px;margin:0 auto;padding:0 24px;align-items:start;}
   .main-col{min-width:0;}
-  .sidebar{position:sticky;top:70px;padding:20px 20px 20px 0;order:-1;}
+  .sidebar{position:sticky;top:78px;padding:24px 0;order:-1;}
   .sidebar-box{background:var(--sidebar-bg);border:1px solid var(--border);border-radius:var(--radius);padding:16px 14px;}
-  .sidebar-title{font-size:10px;font-weight:700;color:#6b7280;margin-bottom:10px;letter-spacing:2px;text-transform:uppercase;}
+  .sidebar-title{font-size:12px;font-weight:700;color:#a3afbf;margin:0 0 8px 6px;}
 
   /* LOGIN OVERLAY */
   .login-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(6px);z-index:1000;display:flex;align-items:center;justify-content:center;}
@@ -109,15 +109,15 @@
   .btn-google-login{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;padding:12px 20px;border:1px solid var(--border);border-radius:10px;background:#21262d;cursor:pointer;font-size:14px;font-weight:700;color:#e6edf3;font-family:'Noto Sans TC',sans-serif;transition:all 0.2s;}
   .btn-google-login:hover{background:#30363d;border-color:#58a6ff;}
   .btn-google-login img{width:20px;height:20px;}
-  .login-hint{margin-top:14px;font-size:11px;color:#484f58;}
+  .login-hint{margin-top:14px;font-size:11px;color:#a3afbf;}
   .login-error{margin-top:10px;font-size:13px;color:#f85149;font-weight:600;min-height:20px;}
   .login-loading{margin-top:10px;font-size:13px;color:#58a6ff;display:none;}
 
   /* TABS - vertical sidebar */
   .tab-bar{display:flex;flex-direction:column;gap:2px;}
-  .tab-btn{font-family:'Noto Sans TC',sans-serif;font-weight:600;font-size:13px;border:none;border-left:3px solid transparent;cursor:pointer;border-radius:0 6px 6px 0;padding:7px 10px;transition:all 0.18s;white-space:nowrap;background:transparent;color:#8b949e;text-align:left;width:100%;}
+  .tab-btn{font-family:'Noto Sans TC',sans-serif;font-weight:600;font-size:13px;border:none;min-height:38px;cursor:pointer;border-radius:7px;padding:7px 10px;transition:background .18s;white-space:nowrap;background:transparent;color:#b4becd;text-align:left;width:100%;}
   .tab-btn .tab-count{display:inline-block;background:rgba(139,148,158,0.12);color:#8b949e;font-size:10px;border-radius:20px;padding:1px 5px;margin-left:4px;font-weight:700;vertical-align:middle;}
-  .tab-btn.active{color:var(--text);background:rgba(255,255,255,0.06);border-left-color:var(--accent);}
+  .tab-btn.active{color:var(--text);background:#273747;}
   .tab-btn.active .tab-count{background:rgba(77,184,255,0.15);color:#4db8ff;}
   .tab-btn:not(.active):hover{color:#c9d1d9;background:rgba(255,255,255,0.04);}
 
@@ -241,34 +241,30 @@
   .cat-tag-rename{background:rgba(0,0,0,0.25);border:none;color:#fff;border-radius:4px;padding:1px 5px;font-size:10px;cursor:pointer;font-family:'Noto Sans TC',sans-serif;font-weight:700;transition:background 0.15s;margin-left:2px;}
   .cat-tag-rename:hover{background:rgba(255,255,255,0.25);}
   .cat-rename-input{background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.4);border-radius:4px;color:#fff;font-size:12px;font-weight:700;font-family:'Noto Sans TC',sans-serif;padding:1px 6px;width:80px;outline:none;}
-  .cat-lock-hint{font-size:11px;color:#484f58;margin-top:8px;}
+  .cat-lock-hint{font-size:11px;color:#a3afbf;margin-top:8px;}
   .drag-over{background:#1a2a3a !important;outline:2px dashed #4db8ff;}
   .drag-handle:hover{color:#4db8ff !important;}
 
   /* CONTENT */
-  .content-area{padding:16px 16px 48px;}
+  .content-area{padding:24px 0 48px;}
   .category-section{display:none;}
-  .category-section.active{display:block;animation:fadeUp 0.28s ease;}
-  @keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-  .section-header{display:flex;align-items:center;gap:12px;margin-bottom:12px;padding:12px 16px;border-radius:var(--radius-sm);background:#161b22;border:1px solid var(--border);}
-  .section-emoji{font-size:28px;}
-  .section-title{font-family:'Nunito','Noto Sans TC',sans-serif;font-size:17px;font-weight:900;letter-spacing:0.5px;color:var(--text);}
-  .section-subtitle{font-size:11px;color:var(--text-sub);margin-top:2px;}
-  .card-grid{display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);}
-  .card{background:var(--card-bg);padding:13px 18px;cursor:pointer;text-decoration:none;color:var(--text);transition:background 0.18s, transform 0.18s, box-shadow 0.18s;display:flex;flex-direction:row;align-items:center;gap:14px;border:none;position:relative;}
-  .card:hover{background:#243044;transform:scale(1.012) translateX(3px);box-shadow:0 4px 18px rgba(0,0,0,0.28);z-index:2;}
+  .category-section.active{display:block;}
+  .section-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding:16px 18px;border-radius:var(--radius);background:#1c2530;border:1px solid var(--border);}
+  .section-emoji{font-size:25px;}
+  .section-title{font-family:'Nunito','Noto Sans TC',sans-serif;font-size:23px;font-weight:800;line-height:1.3;color:var(--text);}
+  .section-subtitle{font-size:13px;color:#aebacd;margin-top:4px;}
+  .card-grid{display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);}
+  .card{background:var(--card-bg);padding:13px 18px;cursor:pointer;text-decoration:none;color:var(--text);transition:background .18s;display:flex;flex-direction:row;align-items:center;gap:14px;border:none;position:relative;}
+  .card:hover,.card:focus-visible{background:#273747;}
   .card::before{display:none;}
-  .card-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;transition:transform 0.18s;}
-  .card:hover .card-icon{transform:rotate(-8deg) scale(1.18);}
-  .card-name{font-size:14px;font-weight:600;line-height:1.4;color:var(--text);flex:1;}
-  .card-arrow{font-size:12px;font-weight:700;color:var(--text-sub);flex-shrink:0;margin-top:0;transition:transform 0.18s;}
-  .card:hover .card-arrow{transform:translateX(4px);}
-  @keyframes cardBounce{0%{transform:scale(1.012) translateX(3px)}30%{transform:scale(1.012) translateX(3px) rotate(1.2deg)}60%{transform:scale(1.012) translateX(3px) rotate(-0.8deg)}100%{transform:scale(1.012) translateX(3px) rotate(0deg)}}
-  .card:hover{animation:cardBounce 0.35s ease forwards;}
+  .card-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+  .card-name{font-size:15px;font-weight:600;line-height:1.55;color:var(--text);flex:1;min-width:0;overflow-wrap:anywhere;}
+  .card-arrow{font-size:12px;font-weight:700;color:#aebacd;flex-shrink:0;margin-top:0;transition:transform 0.18s;}
+  .card:hover .card-arrow{transform:translateX(2px);}
   .empty-state{text-align:center;padding:36px 20px;color:var(--text-sub);font-size:14px;}
   .empty-state .empty-icon{font-size:36px;margin-bottom:10px;}
 
-  footer{padding:20px 28px;color:#484f58;font-size:12px;border-top:1px solid var(--border);text-align:center;}
+  footer{padding:20px 28px;color:#a3afbf;font-size:12px;border-top:1px solid var(--border);text-align:center;}
   .footer-text{text-align:center;}
   /* 「黑熊老師」連結：平時淡綠底線提示，hover 反白（綠底深字） */
   .bear-link{
@@ -284,26 +280,34 @@
   .footer-counter{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:18px;}
   .vc-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:2.5px;text-transform:uppercase;}
   .vc-today{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:1px;margin-top:2px;}
-  #vcCanvas{display:block;}
+  #vcCanvas{display:block;max-width:100%;height:auto;}
+  .tab-btn:focus-visible,.card:focus-visible,.header-btns :focus-visible{
+    outline:2px solid #9bd6ff;outline-offset:-3px;
+  }
+  ::selection{background:#315d7d;color:#fff;}
+  @media(prefers-reduced-motion:reduce){
+    .card,.card-arrow,.tab-btn{transition:none;}
+    .card:hover .card-arrow{transform:none;}
+  }
   /* ── RWD 760px：側欄改橫向 ── */
   @media(max-width:760px){
     header{height:auto;min-height:62px;padding-top:8px;padding-bottom:8px;}
     .header-inner{flex-wrap:wrap;gap:8px;}
     .site-search{order:3;flex-basis:100%;width:100%;}
     .search-results{left:0;right:auto;width:100%;max-height:min(56vh,420px);}
-    .page-wrap{grid-template-columns:1fr;padding:0 12px;}
-    .sidebar{position:static;padding:0;order:0;}
-    .sidebar-box{border-radius:0;border-left:none;border-right:none;margin-bottom:0;}
-    .tab-bar{flex-direction:row;flex-wrap:wrap;gap:4px;padding:8px 10px;}
-    .tab-btn{border-left:none;border-bottom:3px solid transparent;border-radius:6px;width:auto;padding:5px 10px;font-size:12px;}
-    .tab-btn.active{border-bottom-color:var(--accent);background:rgba(255,255,255,0.08);}
+    .page-wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 14px;}
+    .sidebar{position:static;padding:14px 0 0;}
+    .sidebar-box{padding:10px;}
+    .tab-bar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;}
+    .tab-btn{min-height:44px;padding:6px;font-size:12px;white-space:normal;}
+
     .content-area{padding:12px 0 36px;}
     .section-header{padding:10px 12px;}
     .section-emoji{font-size:22px;}
-    .section-title{font-size:15px;}
+    .section-title{font-size:20px;}
     .card{padding:11px 14px;gap:10px;}
     .card-icon{width:32px;height:32px;font-size:16px;}
-    .card-name{font-size:13px;}
+    .card-name{font-size:14px;}
   }
   /* ── RWD 640px：管理表單 ── */
   @media(max-width:640px){
@@ -318,22 +322,22 @@
   }
   /* ── RWD 480px：手機版 ── */
   @media(max-width:480px){
-    .page-wrap{padding:0 8px;}
+
     .add-form{grid-template-columns:1fr;}
     .manage-toggle{padding:5px 8px;font-size:12px;}
     header{padding:7px 12px 8px;height:auto;min-height:54px;}
     header h1{font-size:13px;}
     .header-btns{gap:5px;}
-    .search-box{height:34px;}
+    .search-box{height:44px;}
     .search-shortcut{display:none;}
     .user-avatar{width:24px;height:24px;}
-    .tab-btn{padding:4px 8px;font-size:11px;}
+
     .tab-btn .tab-count{display:none;}
     .card{padding:10px 12px;gap:8px;}
     .card-icon{width:28px;height:28px;font-size:14px;border-radius:6px;}
-    .card-name{font-size:12px;}
+
     .card-arrow{font-size:11px;}
-    .section-title{font-size:13px;}
+
     .section-emoji{font-size:18px;}
     .section-header{padding:8px 10px;gap:8px;}
     .manage-list-header{flex-direction:column;align-items:stretch;}
@@ -352,8 +356,8 @@
     header h1{font-size:11px;}
     .manage-toggle{font-size:11px;padding:4px 6px;}
     .btn-manual{font-size:11px;padding:4px 6px;}
-    .tab-btn{padding:4px 6px;font-size:10px;}
-    .card-name{font-size:11px;}
+
+
   }
 </style>
 </head>
@@ -549,11 +553,11 @@
 <footer>
   <div class="footer-text">
     🐻 <a class="bear-link" href="https://prayer168.github.io/about_blackbear_teacher/" target="_blank" rel="noopener">黑熊老師</a>的自然科學數位教材 · 持續更新中 🐾<br>
-    <span style="margin-top:6px;display:inline-block;color:#6b7280;font-size:11px;">
+    <span style="margin-top:6px;display:inline-block;color:#a3afbf;font-size:11px;">
       設計者：陳賢宗（<a class="bear-link" href="https://prayer168.github.io/about_blackbear_teacher/" target="_blank" rel="noopener">黑熊老師</a>）&nbsp;·&nbsp;
-      Email：<a href="mailto:prayer168@gmail.com" style="color:#6b7280;text-decoration:none;">prayer168@gmail.com</a>
+      Email：<a href="mailto:prayer168@gmail.com" style="color:inherit;text-underline-offset:2px;">prayer168@gmail.com</a>
     </span><br>
-    <span style="margin-top:4px;display:inline-block;color:#6b7280;font-size:11px;line-height:1.8;">
+    <span style="margin-top:4px;display:inline-block;color:#a3afbf;font-size:11px;line-height:1.8;">
       © 2026 陳賢宗（<a class="bear-link" href="https://prayer168.github.io/about_blackbear_teacher/" target="_blank" rel="noopener">黑熊老師</a>）版權所有&nbsp;·&nbsp;
       本網站教材供教育用途免費使用，請勿用於商業目的或未經授權之轉載、改作。
     </span>
@@ -1455,10 +1459,7 @@ function injectCatStyles() {
   let css = '';
   CATS.forEach(cat => {
     const c = cat.color, light = lighten(c);
-    css += `.tab-btn[data-cat="${cat.key}"].active{border-left-color:${c};color:${c};}`;
-    css += `[data-section="${cat.key}"] .section-title{color:${c};}`;
     css += `[data-section="${cat.key}"] .card-icon{background:${light};}`;
-    css += `[data-section="${cat.key}"] .card-arrow{color:${c};opacity:0.8;}`;
   });
   let el = document.getElementById('dynCatStyle');
   if (!el) { el = document.createElement('style'); el.id = 'dynCatStyle'; document.head.appendChild(el); }
@@ -1738,6 +1739,7 @@ function buildPage() {
     const btn = document.createElement('button');
     btn.className = 'tab-btn' + (cat.key === currentTab ? ' active' : '');
     btn.dataset.cat = cat.key;
+    btn.setAttribute('aria-pressed', String(cat.key === currentTab));
     btn.innerHTML = `${cat.emoji} ${cat.key} <span class="tab-count">${items.length}</span>`;
     btn.addEventListener('click', () => switchTab(cat.key));
     tabBar.appendChild(btn);
@@ -1770,7 +1772,11 @@ function buildPage() {
 function switchTab(catKey) {
   currentTab = catKey;
   if (history.replaceState) history.replaceState(null, '', '#' + encodeURIComponent(catKey));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === catKey));
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    const active = btn.dataset.cat === catKey;
+    btn.classList.toggle('active', active);
+    btn.setAttribute('aria-pressed', String(active));
+  });
   // 同步管理列表篩選
   const filterEl = document.getElementById('filterCat');
   if (filterEl && manageOpen) { filterEl.value = catKey; renderManageTable(); }
