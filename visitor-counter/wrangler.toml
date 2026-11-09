@@ -1,0 +1,10 @@
+name = "science-portal-visitor-counter"
+main = "worker.mjs"
+compatibility_date = "2026-11-09"
+workers_dev = true
+preview_urls = false
+
+[[d1_databases]]
+binding = "VISITS"
+database_name = "science-portal-visits"
+database_id = "498e2579-f404-461c-8a05-f4cf0546d62d"

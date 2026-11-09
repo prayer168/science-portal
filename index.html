@@ -22,7 +22,7 @@
 <meta name="twitter:description" content="新增 13 篇 AI × 自然科學教育文章，聚焦科學探究、證據查證、教師主導權與公平的 AI 教學。">
 <meta name="twitter:image" content="https://prayer168.github.io/science-portal/assets/ai-teaching-2026-08-29-09-10.png">
 <meta name="twitter:image:alt" content="AI × 自然科學教學｜每日文章更新 08/29–09/10">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
 <style>
   :root {
     --g3:#FF6B6B; --g4:#FF9F43; --g5:#1DD1A1; --g6:#54A0FF;
@@ -75,7 +75,7 @@
   .search-input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:var(--text);font:500 13px/1.4 'Noto Sans TC',sans-serif;}
   .search-input::placeholder{color:#a3afbf;}
   .search-input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;}
-  .search-shortcut{flex:none;padding:1px 5px;border:1px solid #343946;border-radius:4px;background:#20242d;color:#737b89;font:600 10px/1.5 'Nunito',sans-serif;}
+  .search-shortcut{flex:none;padding:1px 5px;border:1px solid #343946;border-radius:4px;background:#20242d;color:#a3afbf;font:600 11px/1.5 'Nunito',sans-serif;}
   .search-clear{width:24px;height:24px;display:grid;place-items:center;flex:none;border:0;border-radius:5px;background:transparent;color:#8b949e;font-size:17px;line-height:1;cursor:pointer;}
   .search-clear:hover,.search-clear:focus-visible{background:rgba(255,255,255,.08);color:#e8eaed;outline:none;}
   .search-clear[hidden]{display:none;}
@@ -277,10 +277,22 @@
   .bear-link:hover,.bear-link:focus-visible{
     background:var(--g5);color:#0c0e13;text-decoration:none;outline:none;
   }
-  .footer-counter{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:18px;}
-  .vc-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:2.5px;text-transform:uppercase;}
-  .vc-today{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:1px;margin-top:2px;}
-  #vcCanvas{display:block;max-width:100%;height:auto;}
+  .footer-counter{
+    width:fit-content;
+    max-width:100%;
+    margin:22px auto 0;
+    padding:14px 24px 0;
+    border-top:1px solid var(--field-line);
+  }
+  .vc-label{color:var(--field-muted);font-size:16px;font-weight:700;}
+  .vc-value{
+    display:block;
+    color:var(--field-ink);
+    font:800 clamp(30px,5vw,38px)/1.2 "Nunito","Noto Sans TC",sans-serif;
+    font-variant-numeric:tabular-nums;
+    overflow-wrap:anywhere;
+  }
+  .vc-status{color:var(--field-muted);font-size:12px;}
   .tab-btn:focus-visible,.card:focus-visible,.header-btns :focus-visible{
     outline:2px solid #9bd6ff;outline-offset:-3px;
   }
@@ -288,6 +300,80 @@
   @media(prefers-reduced-motion:reduce){
     .card,.card-arrow,.tab-btn{transition:none;}
     .card:hover .card-arrow{transform:none;}
+  }
+  /* Portal field guide */
+  :root{
+    --field-ink:#f1efe4;
+    --field-muted:#b9c7ba;
+    --field-line:#35443b;
+    --field-focus:#f5d08a;
+  }
+  #bgFx{opacity:.16;}
+  .sidebar-box{background:#171f1c;border-color:var(--field-line);}
+  .sidebar-title{color:var(--field-muted);font-size:13px;}
+  .tab-btn{color:var(--field-muted);overflow-wrap:anywhere;white-space:normal;}
+  .tab-btn .tab-count{color:var(--field-muted);font-size:11px;font-variant-numeric:tabular-nums;}
+  .tab-btn.active{background:#2d4538;color:var(--field-ink);}
+  .tab-btn.active .tab-count{background:#1e342a;color:#e0e9d9;}
+  .section-header{
+    position:relative;
+    isolation:isolate;
+    overflow:hidden;
+    min-height:148px;
+    padding:28px clamp(20px,4vw,42px);
+    gap:18px;
+    margin-bottom:18px;
+    background:#20372d;
+    border-color:#3e594b;
+  }
+  .section-header::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 200'%3E%3Cdefs%3E%3Cpath id='contour' d='M-38 57C1 14 63 40 96 16S175 -22 206 5s43 54 83 53 115-17 140 14-8 62-51 75-29 62-89 65-82-23-127-16S59 222 30 190 20 145-6 125-71 93-38 57Z'/%3E%3C/defs%3E%3Cg fill='none' stroke='%239fc4a9' stroke-opacity='.44' stroke-width='1'%3E%3Cuse href='%23contour'/%3E%3Cuse href='%23contour' transform='translate(17 9) scale(.92)'/%3E%3Cuse href='%23contour' transform='translate(34 18) scale(.84)'/%3E%3Cuse href='%23contour' transform='translate(51 27) scale(.76)'/%3E%3Cuse href='%23contour' transform='translate(68 36) scale(.68)'/%3E%3Cuse href='%23contour' transform='translate(85 45) scale(.60)'/%3E%3Cuse href='%23contour' transform='translate(102 54) scale(.52)'/%3E%3Cuse href='%23contour' transform='translate(119 63) scale(.44)'/%3E%3Cuse href='%23contour' transform='translate(136 72) scale(.36)'/%3E%3C/g%3E%3C/svg%3E") right -42px center / min(68%,480px) auto no-repeat;
+    mask-image:linear-gradient(to right,transparent 28%,#000 82%);
+  }
+  .section-header::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    background:linear-gradient(90deg,#20372d 22%,transparent 100%);
+  }
+  .section-emoji{font-size:clamp(24px,4vw,42px);line-height:1;flex:none;}
+  .section-title{
+    color:var(--field-ink);
+    font-family:"Noto Serif TC","PMingLiU",serif;
+    font-size:clamp(28px,4vw,46px);
+    font-weight:700;
+    letter-spacing:.035em;
+    overflow-wrap:anywhere;
+  }
+  .section-subtitle{color:#d3e1d3;font-size:14px;line-height:1.55;}
+  .card-grid{background:var(--field-line);border-color:var(--field-line);}
+  .card{background:#171f1c;}
+  .card:nth-child(even){background:#1b2420;}
+  .card:hover,.card:focus-visible{background:#2b4035;}
+  .card-name{color:var(--field-ink);}
+  .card-arrow{color:#c4d4c6;}
+  .tab-btn:focus-visible,.card:focus-visible{outline-color:var(--field-focus);}
+  .search-input{caret-color:var(--field-focus);}
+  ::selection{background:#e7ca89;color:#18231d;}
+  @media(max-width:760px){
+    .category-section .section-header{min-height:114px;padding:16px 18px;gap:12px;}
+    .category-section .section-title{font-size:28px;}
+    .category-section .section-emoji{font-size:26px;}
+    .category-section .section-header::before{background-size:80% auto;}
+  }
+  @media(min-width:761px){
+    .sidebar{
+      max-height:calc(100vh - 78px);
+      overflow-y:auto;
+      scrollbar-width:thin;
+      scrollbar-color:#52695b transparent;
+    }
   }
   /* ── RWD 760px：側欄改橫向 ── */
   @media(max-width:760px){
@@ -563,178 +649,60 @@
     </span>
   </div>
   <div class="footer-counter">
-    <div class="vc-label">👁 訪客人數</div>
-    <canvas id="vcCanvas" width="320" height="48"></canvas>
-    <div class="vc-today" id="vcToday">載入中…</div>
+    <div class="vc-label">累計到訪</div>
+    <div role="status">
+      <span class="vc-value" id="vcValue">—</span>
+      <div class="vc-status" id="vcStatus">讀取統計中…</div>
+    </div>
   </div>
 </footer>
 
 <script>
-(function() {
-  const API_HIT    = 'https://api.countapi.xyz/hit/prayer168-science-portal/total-visitors';
-  const API_GET    = 'https://api.countapi.xyz/get/prayer168-science-portal/total-visitors';
-  const TODAY      = new Date().toISOString().slice(0,10);
-  const COOKIE_KEY = 'vc_visited';
-  const DIGITS = 10, CW = 28, CH = 48, GAP = 4;
-
-  const canvas = document.getElementById('vcCanvas');
-  canvas.width  = DIGITS * CW + (DIGITS-1) * GAP;
-  canvas.height = CH;
-  const ctx = canvas.getContext('2d');
-
-  const cur  = Array(DIGITS).fill('0');    // 目前顯示字元
-  const next = Array(DIGITS).fill(null);   // 待翻目標字元
-  const prog = Array(DIGITS).fill(0);      // 翻牌進度 0~1
-
-  function rr(x, y, w, h, r) {            // roundRect helper
-    ctx.beginPath();
-    ctx.moveTo(x+r, y);
-    ctx.arcTo(x+w, y, x+w, y+h, r);
-    ctx.arcTo(x+w, y+h, x, y+h, r);
-    ctx.arcTo(x, y+h, x, y, r);
-    ctx.arcTo(x, y, x+w, y, r);
-    ctx.closePath();
+(async function loadVisitorCount() {
+  const value = document.getElementById('vcValue');
+  const status = document.getElementById('vcStatus');
+  const portalOrigin = 'https://prayer168.github.io';
+  if (location.origin !== portalOrigin || !location.pathname.startsWith('/science-portal/')) {
+    status.textContent = '本機預覽';
+    return;
   }
 
-  function drawDigit(i, ch, flipProg, nextCh) {
-    const x = i * (CW + GAP);
-    const cx = x + CW/2, cy = CH/2;
+  const endpoint = 'https://science-portal-visitor-counter.prayer168-science-portal.workers.dev/visit';
 
-    // 背景格
-    ctx.fillStyle = '#0a0a0a';
-    rr(x, 0, CW, CH, 5); ctx.fill();
-    ctx.strokeStyle = 'rgba(255,255,255,0.14)';
-    ctx.lineWidth = 1;
-    rr(x, 0, CW, CH, 5); ctx.stroke();
+  function getBrowserId() {
+    const key = 'science-portal-visitor-id';
+    const existing = localStorage.getItem(key);
+    if (existing) return existing;
 
-    // 中線分隔
-    ctx.fillStyle = 'rgba(0,0,0,0.7)';
-    ctx.fillRect(x+1, cy-1, CW-2, 2);
+    const id = crypto.randomUUID();
+    localStorage.setItem(key, id);
+    return id;
+  }
 
-    ctx.font = 'bold 26px "IBM Plex Mono",monospace';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.shadowColor = 'rgba(255,255,255,0.3)';
-    ctx.shadowBlur = 4;
-
-    if (!flipProg) {
-      // 靜態顯示
-      ctx.fillStyle = '#fff';
-      ctx.fillText(ch, cx, cy);
-    } else {
-      const p = flipProg; // 0→1
-
-      // 下半：固定顯示 nextCh（翻牌後的字）
-      ctx.save();
-      ctx.beginPath(); ctx.rect(x, cy, CW, CH/2); ctx.clip();
-      ctx.fillStyle = '#ccc';
-      ctx.shadowBlur = 0;
-      ctx.fillText(nextCh, cx, cy + CH/4);
-      ctx.restore();
-
-      // 上半：固定顯示 ch（舊字）
-      ctx.save();
-      ctx.beginPath(); ctx.rect(x, 0, CW, cy); ctx.clip();
-      ctx.fillStyle = '#fff';
-      ctx.shadowBlur = 4;
-      ctx.fillText(ch, cx, cy - CH/4 + 2);
-      ctx.restore();
-
-      // 翻牌片（只畫上半區域）
-      if (p < 0.5) {
-        // 舊字上半向下收縮
-        const scale = 1 - p * 2;
-        const fh = (CH/2) * scale;
-        ctx.save();
-        ctx.beginPath(); ctx.rect(x, cy - fh, CW, fh); ctx.clip();
-        ctx.fillStyle = '#161616';
-        rr(x, cy - fh, CW, fh, 3); ctx.fill();
-        ctx.fillStyle = 'rgba(255,255,255,0.9)';
-        ctx.font = 'bold 26px "IBM Plex Mono",monospace';
-        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-        ctx.shadowBlur = 0;
-        ctx.fillText(ch, cx, cy - fh/2);
-        ctx.restore();
-      } else {
-        // 新字下半向下展開
-        const scale = (p - 0.5) * 2;
-        const fh = (CH/2) * scale;
-        ctx.save();
-        ctx.beginPath(); ctx.rect(x, cy, CW, fh); ctx.clip();
-        ctx.fillStyle = '#161616';
-        rr(x, cy, CW, fh, 3); ctx.fill();
-        ctx.fillStyle = 'rgba(200,200,200,0.95)';
-        ctx.font = 'bold 26px "IBM Plex Mono",monospace';
-        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-        ctx.shadowBlur = 0;
-        ctx.fillText(nextCh, cx, cy + fh/2);
-        ctx.restore();
+  try {
+    const browserId = navigator.locks
+      ? await navigator.locks.request('science-portal-visitor-id', getBrowserId)
+      : getBrowserId();
+    const response = await fetch(
+      endpoint,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ browserId }),
+        signal: AbortSignal.timeout(15000)
       }
+    );
+    if (!response.ok) throw new Error('Visitor count unavailable');
+    const { count, startedOn } = await response.json();
+    if (!Number.isSafeInteger(count) || count < 1 ||
+        typeof startedOn !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(startedOn)) {
+      throw new Error('Invalid visitor count');
     }
-    ctx.shadowBlur = 0;
-  }
 
-  function render() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (let i = 0; i < DIGITS; i++) {
-      drawDigit(i, cur[i], next[i] ? prog[i] : 0, next[i] || cur[i]);
-    }
-  }
-
-  let rafId = null;
-  function tick() {
-    let any = false;
-    for (let i = 0; i < DIGITS; i++) {
-      if (next[i]) {
-        prog[i] = Math.min(prog[i] + 0.07, 1);
-        if (prog[i] >= 1) { cur[i] = next[i]; next[i] = null; prog[i] = 0; }
-        else any = true;
-      }
-    }
-    render();
-    rafId = any ? requestAnimationFrame(tick) : null;
-  }
-
-  function setDigits(num) {
-    const str = String(num).padStart(DIGITS, '0');
-    let changed = false;
-    for (let i = 0; i < DIGITS; i++) {
-      if (str[i] !== cur[i] && !next[i]) {
-        next[i] = str[i]; prog[i] = 0; changed = true;
-      }
-    }
-    if (changed && !rafId) rafId = requestAnimationFrame(tick);
-  }
-
-  function animateCount(target) {
-    const s = Math.max(3060, target - 60);
-    let c = s; setDigits(c);
-    const step = Math.max(1, Math.ceil((target-s)/30));
-    const t = setInterval(() => {
-      c = Math.min(c+step, target); setDigits(c);
-      if (c >= target) clearInterval(t);
-    }, 70);
-  }
-
-  render(); // 初始畫面
-
-  // Cookie
-  function getCookie(n){const m=document.cookie.match('(?:^|;)\s*'+n+'=([^;]*)');return m?decodeURIComponent(m[1]):null;}
-  function setCookie(n,v,d){const e=new Date();e.setDate(e.getDate()+d);document.cookie=n+'='+encodeURIComponent(v)+';expires='+e.toUTCString()+';path=/;SameSite=Lax';}
-
-  const label = new Date().toLocaleDateString('zh-TW',{month:'numeric',day:'numeric'});
-  const isNew = getCookie(COOKIE_KEY) !== TODAY;
-
-  if (isNew) {
-    const mid = new Date(); mid.setHours(23,59,59,999);
-    setCookie(COOKIE_KEY, TODAY, (mid-new Date())/86400000);
-    fetch(API_HIT).then(r=>r.json())
-      .then(d=>{animateCount(d.value||3082);document.getElementById('vcToday').textContent='更新於 '+label;})
-      .catch(()=>{const n=parseInt(localStorage.getItem('_vc')||'3082')+1;localStorage.setItem('_vc',n);animateCount(n);document.getElementById('vcToday').textContent='本地計數';});
-  } else {
-    fetch(API_GET).then(r=>r.json())
-      .then(d=>{animateCount(d.value||3082);document.getElementById('vcToday').textContent='更新於 '+label;})
-      .catch(()=>{const n=parseInt(localStorage.getItem('_vc')||'3082');setDigits(n);document.getElementById('vcToday').textContent='本地計數';});
+    value.textContent = new Intl.NumberFormat('zh-TW').format(count);
+    status.textContent = '自 ' + startedOn.replaceAll('-', '/') + ' 起・每個瀏覽器每日計一次';
+  } catch {
+    status.textContent = '暫時無法取得統計';
   }
 })();
 </script>
@@ -1761,7 +1729,7 @@ function buildPage() {
       <div class="section-header">
         <span class="section-emoji">${cat.emoji}</span>
         <div>
-          <div class="section-title">${cat.key}</div>
+          <h2 class="section-title">${cat.key}</h2>
           <div class="section-subtitle">${cat.desc} · ${items.length} 個教材</div>
         </div>
       </div>
