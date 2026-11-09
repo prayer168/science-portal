@@ -700,7 +700,7 @@
     }
 
     value.textContent = new Intl.NumberFormat('zh-TW').format(count);
-    status.textContent = '自 ' + startedOn.replaceAll('-', '/') + ' 起・每個瀏覽器每日計一次';
+    status.hidden = true;
   } catch {
     status.textContent = '暫時無法取得統計';
   }
