@@ -1077,11 +1077,13 @@ function staticPortalEntries() {
     cat: "網站維護", name: "網站優化檢核表", url: "https://prayer168.github.io/updates/", icon: "✅"
   }, {
     cat: "網站維護", name: "雙頻道成長與營利儀表板", url: "https://youtube-growth-dashboard-prayer168s-projects.vercel.app/", icon: "📊"
+  }, {
+    cat: "網站設計", name: "GitHub 使用手冊（繁體中文入門實作版）", url: "https://github-handbook-zh-tw.vercel.app/", icon: "📘"
   }];
 }
 
 function ensureStaticTeachingArticleCategory(cats) {
-  const staticCategories = [STATIC_TEACHING_ARTICLE_CATEGORY, STATIC_AI_PROGRAMMING_CATEGORY, { key: "網站維護", emoji: "🛠️", desc: "網站維護與優化檢核", color: "#0984e3", custom: true }];
+  const staticCategories = [STATIC_TEACHING_ARTICLE_CATEGORY, STATIC_AI_PROGRAMMING_CATEGORY, { key: "網站設計", emoji: "🎨", desc: "網站設計與開發資源", color: "#6c5ce7", custom: true }, { key: "網站維護", emoji: "🛠️", desc: "網站維護與優化檢核", color: "#0984e3", custom: true }];
   const missingCategories = staticCategories.filter(category => !cats.some(c => c.key === category.key));
   const merged = [...cats, ...missingCategories];
   return orderCats(applyCatEmoji(dedupeCatsByKey(merged)));
