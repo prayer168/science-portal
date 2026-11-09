@@ -10,10 +10,25 @@
       p { margin:0; padding:12px; background:#171f1c; color:#f1efe4;
         text-align:center; font:600 13px/1.5 system-ui,sans-serif; }
       strong { margin-inline-start:6px; font-size:17px; font-variant-numeric:tabular-nums; }
+      :host([data-viewport]) { position:fixed; z-index:20; width:auto; pointer-events:none;
+        right:max(8px, env(safe-area-inset-right)); bottom:max(8px, env(safe-area-inset-bottom)); }
+      :host([data-viewport]) p { padding:4px 8px; border-radius:5px; font-size:11px; }
+      :host([data-viewport]) strong { font-size:13px; }
       @media print { :host { display:none; } }
     </style>
     <p>累計到訪<strong>—</strong></p>`;
   document.body.append(container);
+
+  function placeCounter() {
+    const rootOverflow = getComputedStyle(document.documentElement).overflowY;
+    const bodyOverflow = getComputedStyle(document.body).overflowY;
+    container.toggleAttribute('data-viewport', [rootOverflow, bodyOverflow].some(
+      overflow => overflow === 'hidden' || overflow === 'clip'
+    ));
+  }
+  placeCounter();
+  window.addEventListener('load', placeCounter, { once: true });
+  window.addEventListener('resize', placeCounter);
 
   fetch('https://science-portal-visitor-counter.prayer168-science-portal.workers.dev/material-visits', {
     method: 'POST',
