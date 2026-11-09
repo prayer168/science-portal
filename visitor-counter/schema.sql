@@ -22,3 +22,8 @@ WHEN NEW.last_day > OLD.last_day
 BEGIN
   UPDATE totals SET count = count + 1 WHERE id = 1;
 END;
+
+CREATE TABLE IF NOT EXISTS material_visits (
+  url TEXT PRIMARY KEY,
+  count INTEGER NOT NULL
+);
