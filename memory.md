@@ -1,7 +1,27 @@
 # 🐻 Science Portal — memory.md
-> 最後更新：2026-05-31　專案：prayer168/science-portal
+> 最後更新：2026-11-10　專案：prayer168/science-portal
 
 ---
+
+## 2026-11-10 更新：BearFlow 置頂於網站設計
+
+- 固定入口名稱為「BearFlow 影片工作室｜個人專業影片製作工作室。開啟時需要先登入 Vercel 帳號。」網址仍是 `https://bearflow-ai-video-studio.vercel.app/`，圖示 🎬。沒有寫入 Firestore。
+- `mergeStaticTeachingArticles()` 把這張卡片插到「網站設計」第一筆。GitHub 手冊、AI 團隊辦公室、網站優化檢核表、雙頻道儀表板仍接在動態教材之後，相對順序不變。
+- 「網站維護」「網頁應用」繼續從頁籤移除，`#網站維護`、`#網頁應用` 仍改到 `#網站設計`，`#admin` 不變。
+
+## 2026-11-10 更新：網站維護併入網站設計
+
+- 「網站維護」的教材改掛到「網站設計」。Firestore 與 localStorage 載入時由 `rehomeRetiredCategoryItem()` 改 `cat`，名稱、網址、圖示不變；固定入口「網站優化檢核表」「雙頻道成長與營利儀表板」改在 `staticPortalEntries()` 裡歸類，並排在 GitHub 手冊與 AI 團隊辦公室之後。BearFlow 另見上方置頂更新。
+- 「黑熊自然科學工作室」（`https://blackbear-office.vercel.app/`）與「黑熊老師 AI 團隊辦公室」網址相同，只留後者。
+- 「網站維護」「網頁應用」從頁籤、類別快取、後台選單移除。網址 `#網站維護`、`#網頁應用` 會改到 `#網站設計`。`#admin` 不變。
+
+## 2026-11-10 更新：黑熊老師 AI 團隊辦公室
+
+- 將 `https://blackbear-office.vercel.app` 加入「網站設計」，名稱為「黑熊老師 AI 團隊辦公室」，圖示 🏢。
+- 沿用「網站設計」既有固定入口 `staticPortalEntries()`（與「GitHub 完全實戰手冊」「BearFlow AI Video Studio」相同），經 `mergeStaticTeachingArticles()` 在 localStorage 與 Firestore 載入後合併顯示；新卡片不另寫入 Firestore。
+- 此入口不放進 `data/ai-teaching-articles.js`。文章清單產生器只重建該檔，不會移除此卡片；入口腳本的快取參數因此維持 `v=20261021-aisim-github`。
+- 網址不加結尾斜線。「網站維護」裡原本由 Firestore 同步進來的「黑熊自然科學工作室」（`https://blackbear-office.vercel.app/`）已在載入時排除，只保留「網站設計」這張新卡片；「網站維護」其餘教材仍在。
+- 技術文件站與統計頁只另外解析 `STATIC_SKILL_REPORTS` 與靜態文章清單；這次未改那兩處結構，計數頁仍可載入。統計頁直接讀 Firestore，文件裡的舊列要等下次管理後台存檔才會一併寫掉。
 
 ## 2026-10-21 更新：AI-SIM 食蟲植物智慧探究實驗室
 
