@@ -3,11 +3,17 @@
 
 ---
 
+## 2026-11-10 更新：BearFlow 置頂於網站設計
+
+- 固定入口名稱為「BearFlow 影片工作室｜個人專業影片製作工作室。開啟時需要先登入 Vercel 帳號。」網址仍是 `https://bearflow-ai-video-studio.vercel.app/`，圖示 🎬。沒有寫入 Firestore。
+- `mergeStaticTeachingArticles()` 把這張卡片插到「網站設計」第一筆。GitHub 手冊、AI 團隊辦公室、網站優化檢核表、雙頻道儀表板仍接在動態教材之後，相對順序不變。
+- 「網站維護」「網頁應用」繼續從頁籤移除，`#網站維護`、`#網頁應用` 仍改到 `#網站設計`，`#admin` 不變。
+
 ## 2026-11-10 更新：網站維護併入網站設計
 
-- 「網站維護」的教材改掛到「網站設計」。Firestore 與 localStorage 載入時由 `rehomeRetiredCategoryItem()` 改 `cat`，名稱、網址、圖示不變；固定入口「網站優化檢核表」「雙頻道成長與營利儀表板」改在 `staticPortalEntries()` 裡歸類，並排在既有網站設計入口（GitHub 手冊、BearFlow、AI 團隊辦公室）之後。
+- 「網站維護」的教材改掛到「網站設計」。Firestore 與 localStorage 載入時由 `rehomeRetiredCategoryItem()` 改 `cat`，名稱、網址、圖示不變；固定入口「網站優化檢核表」「雙頻道成長與營利儀表板」改在 `staticPortalEntries()` 裡歸類，並排在 GitHub 手冊與 AI 團隊辦公室之後。BearFlow 另見上方置頂更新。
 - 「黑熊自然科學工作室」（`https://blackbear-office.vercel.app/`）與「黑熊老師 AI 團隊辦公室」網址相同，只留後者。
-- 「網站維護」「網頁應用」從頁籤、類別快取、後台選單移除。網址 `#網站維護`、`#網頁應用` 會改到 `#網站設計`。`#admin` 不變。BearFlow 仍沿用原本的合併順序，沒有另外釘選。
+- 「網站維護」「網頁應用」從頁籤、類別快取、後台選單移除。網址 `#網站維護`、`#網頁應用` 會改到 `#網站設計`。`#admin` 不變。
 
 ## 2026-11-10 更新：黑熊老師 AI 團隊辦公室
 
