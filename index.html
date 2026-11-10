@@ -1054,7 +1054,7 @@ function staticPortalEntries() {
   }, {
     cat: "網站設計", name: "GitHub 完全實戰手冊", url: "https://github-handbook-zh-tw.vercel.app/handbook/", icon: "📚"
   }, {
-    cat: "網站設計", name: "BearFlow AI Video Studio｜影片製作工作室", url: "https://bearflow-ai-video-studio.vercel.app/", icon: "🎬"
+    cat: "網站設計", name: "BearFlow 影片工作室｜個人專業影片製作工作室。開啟時需要先登入 Vercel 帳號。", url: "https://bearflow-ai-video-studio.vercel.app/", icon: "🎬"
   }];
 }
 
@@ -1086,7 +1086,19 @@ function mergeStaticTeachingArticles(items) {
   const dynamicItems = stripStaticTeachingArticles(items);
   const urls = new Set(dynamicItems.map(item => item.url));
   const entries = staticPortalEntries().filter(entry => !urls.has(entry.url));
-  return applyIconMap([...dynamicItems, ...entries]);
+  const merged = dynamicItems.slice();
+  const trailing = [];
+  entries.forEach(entry => {
+    const pinToCategoryTop = entry.cat === "網站設計"
+      && String(entry.url).startsWith("https://bearflow-ai-video-studio.vercel.app");
+    if (!pinToCategoryTop) {
+      trailing.push(entry);
+      return;
+    }
+    const index = merged.findIndex(item => item.cat === entry.cat);
+    merged.splice(index < 0 ? merged.length : index, 0, entry);
+  });
+  return applyIconMap(merged.concat(trailing));
 }
 
 function tabFromHash() {
