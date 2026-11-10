@@ -1080,8 +1080,14 @@ function isStaticPortalEntry(item) {
   return item && staticPortalEntries().some(entry => entry.url === item.url);
 }
 
+// 「網站維護」的舊辦公室卡片與「網站設計」新入口重複；網址可能多一個結尾斜線，載入時排除。
+function isRetiredOfficeMaintenanceCard(item) {
+  if (!item || item.cat !== '網站維護') return false;
+  return String(item.url || '').replace(/\/+$/, '') === 'https://blackbear-office.vercel.app';
+}
+
 function stripStaticTeachingArticles(items) {
-  return items.filter(item => !isStaticPortalEntry(item));
+  return items.filter(item => !isStaticPortalEntry(item) && !isRetiredOfficeMaintenanceCard(item));
 }
 
 function mergeStaticTeachingArticles(items) {
