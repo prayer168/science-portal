@@ -1,7 +1,15 @@
 # 🐻 Science Portal — memory.md
-> 最後更新：2026-05-31　專案：prayer168/science-portal
+> 最後更新：2026-11-10　專案：prayer168/science-portal
 
 ---
+
+## 2026-11-10 更新：黑熊老師 AI 團隊辦公室
+
+- 將 `https://blackbear-office.vercel.app` 加入「網站設計」，名稱為「黑熊老師 AI 團隊辦公室」，圖示 🏢。
+- 沿用「網站設計」既有固定入口 `staticPortalEntries()`（與「GitHub 完全實戰手冊」「BearFlow AI Video Studio」相同），經 `mergeStaticTeachingArticles()` 在 localStorage 與 Firestore 載入後合併顯示；不寫入 Firestore。
+- 此入口不放進 `data/ai-teaching-articles.js`。文章清單產生器只重建該檔，不會移除此卡片；入口腳本的快取參數因此維持 `v=20261021-aisim-github`。
+- 網址不加結尾斜線，避免與「網站維護」既有的「黑熊自然科學工作室」（`https://blackbear-office.vercel.app/`）被當成同一筆而從畫面上拿掉。
+- 技術文件站與統計頁只另外解析 `STATIC_SKILL_REPORTS` 與靜態文章清單；這次未改那兩處結構，計數頁仍可載入。
 
 ## 2026-10-21 更新：AI-SIM 食蟲植物智慧探究實驗室
 
