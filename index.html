@@ -1048,22 +1048,33 @@ const STATIC_SKILL_REPORTS = [
 
 function staticPortalEntries() {
   return [...staticTeachingArticles(), ...STATIC_SKILL_REPORTS, {
-    cat: "網站維護", name: "網站優化檢核表", url: "https://prayer168.github.io/updates/", icon: "✅"
-  }, {
-    cat: "網站維護", name: "雙頻道成長與營利儀表板", url: "https://youtube-growth-dashboard-prayer168s-projects.vercel.app/", icon: "📊"
-  }, {
     cat: "網站設計", name: "GitHub 完全實戰手冊", url: "https://github-handbook-zh-tw.vercel.app/handbook/", icon: "📚"
   }, {
     cat: "網站設計", name: "BearFlow AI Video Studio｜影片製作工作室", url: "https://bearflow-ai-video-studio.vercel.app/", icon: "🎬"
   }, {
     cat: "網站設計", name: "黑熊老師 AI 團隊辦公室", url: "https://blackbear-office.vercel.app", icon: "🏢"
+  }, {
+    cat: "網站設計", name: "網站優化檢核表", url: "https://prayer168.github.io/updates/", icon: "✅"
+  }, {
+    cat: "網站設計", name: "雙頻道成長與營利儀表板", url: "https://youtube-growth-dashboard-prayer168s-projects.vercel.app/", icon: "📊"
   }];
 }
 
+// 舊頁籤改接到「網站設計」。Firestore 仍可能帶著這兩個類別，讀取時一律拿掉。
+const RETIRED_PORTAL_CATEGORIES = {
+  '網站維護': '網站設計',
+  '網頁應用': '網站設計'
+};
+
+function withoutRetiredCategories(cats) {
+  return (Array.isArray(cats) ? cats : []).filter(cat => cat && !Object.prototype.hasOwnProperty.call(RETIRED_PORTAL_CATEGORIES, cat.key));
+}
+
 function ensureStaticTeachingArticleCategory(cats) {
-  const staticCategories = [STATIC_TEACHING_ARTICLE_CATEGORY, STATIC_AI_PROGRAMMING_CATEGORY, { key: "網站設計", emoji: "🎨", desc: "網站設計與開發資源", color: "#6c5ce7", custom: true }, { key: "網站維護", emoji: "🛠️", desc: "網站維護與優化檢核", color: "#0984e3", custom: true }];
-  const missingCategories = staticCategories.filter(category => !cats.some(c => c.key === category.key));
-  const merged = [...cats, ...missingCategories];
+  const source = withoutRetiredCategories(cats);
+  const staticCategories = [STATIC_TEACHING_ARTICLE_CATEGORY, STATIC_AI_PROGRAMMING_CATEGORY, { key: "網站設計", emoji: "🎨", desc: "網站設計與開發資源", color: "#6c5ce7", custom: true }];
+  const missingCategories = staticCategories.filter(category => !source.some(c => c.key === category.key));
+  const merged = [...source, ...missingCategories];
   return orderCats(applyCatEmoji(dedupeCatsByKey(merged)));
 }
 
@@ -1080,14 +1091,25 @@ function isStaticPortalEntry(item) {
   return item && staticPortalEntries().some(entry => entry.url === item.url);
 }
 
-// 「網站維護」的舊辦公室卡片與「網站設計」新入口重複；網址可能多一個結尾斜線，載入時排除。
+function canonicalMaterialUrl(url) {
+  return String(url || '').trim().replace(/\/+$/, '');
+}
+
+// 「黑熊自然科學工作室」與「網站設計」的「黑熊老師 AI 團隊辦公室」是同一個網址，只保留後者。
 function isRetiredOfficeMaintenanceCard(item) {
-  if (!item || item.cat !== '網站維護') return false;
-  return String(item.url || '').replace(/\/+$/, '') === 'https://blackbear-office.vercel.app';
+  if (!item || item.name === '黑熊老師 AI 團隊辦公室') return false;
+  return canonicalMaterialUrl(item.url) === 'https://blackbear-office.vercel.app';
+}
+
+function rehomeRetiredCategoryItem(item) {
+  if (!item || item.cat !== '網站維護') return item;
+  return { ...item, cat: '網站設計' };
 }
 
 function stripStaticTeachingArticles(items) {
-  return items.filter(item => !isStaticPortalEntry(item) && !isRetiredOfficeMaintenanceCard(item));
+  return items
+    .filter(item => !isStaticPortalEntry(item) && !isRetiredOfficeMaintenanceCard(item))
+    .map(rehomeRetiredCategoryItem);
 }
 
 function mergeStaticTeachingArticles(items) {
@@ -1097,9 +1119,21 @@ function mergeStaticTeachingArticles(items) {
   return applyIconMap([...dynamicItems, ...entries]);
 }
 
-function tabFromHash() {
+function rawHashTab() {
   const raw = decodeURIComponent((location.hash || '').replace(/^#/, '')).trim();
-  return raw || '';
+  return raw === 'admin' ? '' : raw;
+}
+
+function tabFromHash() {
+  const raw = rawHashTab();
+  return RETIRED_PORTAL_CATEGORIES[raw] || raw || '';
+}
+
+function syncRetiredCategoryHash() {
+  const raw = rawHashTab();
+  const next = RETIRED_PORTAL_CATEGORIES[raw];
+  if (!next || !history.replaceState) return;
+  history.replaceState(null, '', '#' + encodeURIComponent(next));
 }
 
 function resolveCurrentTab(cats) {
@@ -1399,9 +1433,9 @@ window._firestoreDataCallback = function(materials, customCats) {
   DATA = mergeStaticTeachingArticles(materials);
   localStorage.setItem(STORE_KEY, JSON.stringify(stripStaticTeachingArticles(DATA)));
   if (customCats !== undefined) {
-    CATS = ensureStaticTeachingArticleCategory([...DEFAULT_CATS, ...customCats]);
+    const extra = withoutRetiredCategories(customCats);
+    CATS = ensureStaticTeachingArticleCategory([...DEFAULT_CATS, ...extra]);
     currentTab = resolveCurrentTab(CATS);
-    const extra = customCats;
     localStorage.setItem(CAT_STORE, JSON.stringify(extra));
     injectCatStyles();
     syncCatSelects();
@@ -1452,6 +1486,10 @@ function addCategory() {
   const emoji = document.getElementById('catEmoji').value.trim() || '📌';
   const name  = document.getElementById('catName').value.trim();
   if (!name) { alert('請輸入類別名稱'); return; }
+  if (Object.prototype.hasOwnProperty.call(RETIRED_PORTAL_CATEGORIES, name)) {
+    alert(`「${name}」已併入「${RETIRED_PORTAL_CATEGORIES[name]}」，無法再新增`);
+    return;
+  }
   if (CATS.find(c => c.key === name)) { alert('此類別名稱已存在'); return; }
   const color = EXTRA_COLORS[colorIdx % EXTRA_COLORS.length]; colorIdx++;
   CATS.push({ key:name, emoji, desc:name, color, custom:true });
@@ -1509,6 +1547,10 @@ function confirmRenameCategory(key) {
   if (!inp) return;
   const newName = inp.value.trim();
   if (!newName) { alert('名稱不可為空白'); return; }
+  if (Object.prototype.hasOwnProperty.call(RETIRED_PORTAL_CATEGORIES, newName)) {
+    alert(`「${newName}」已併入「${RETIRED_PORTAL_CATEGORIES[newName]}」，無法使用這個名稱`);
+    return;
+  }
   if (newName !== key && CATS.find(c => c.key === newName)) { alert('此類別名稱已存在'); return; }
   const cat = CATS.find(c => c.key === key);
   if (!cat) return;
@@ -1784,6 +1826,7 @@ function bindMaterialVisit(link) {
 
 // ── 建立頁面 ──
 function buildPage() {
+  syncRetiredCategoryHash();
   currentTab = resolveCurrentTab(CATS);
   tabBar.innerHTML = '';
   contentArea.innerHTML = '';
@@ -1840,6 +1883,13 @@ function switchTab(catKey) {
   document.querySelectorAll('.category-section').forEach(s => s.classList.toggle('active', s.dataset.section === catKey));
   loadMaterialVisitCounts();
 }
+
+window.addEventListener('hashchange', () => {
+  const next = RETIRED_PORTAL_CATEGORIES[rawHashTab()];
+  if (!next || !CATS.some(cat => cat.key === next)) return;
+  syncRetiredCategoryHash();
+  switchTab(next);
+});
 
 // ── 管理面板開關 ──
 function onManageClick() {

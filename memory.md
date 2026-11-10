@@ -3,6 +3,12 @@
 
 ---
 
+## 2026-11-10 更新：網站維護併入網站設計
+
+- 「網站維護」的教材改掛到「網站設計」。Firestore 與 localStorage 載入時由 `rehomeRetiredCategoryItem()` 改 `cat`，名稱、網址、圖示不變；固定入口「網站優化檢核表」「雙頻道成長與營利儀表板」改在 `staticPortalEntries()` 裡歸類，並排在既有網站設計入口（GitHub 手冊、BearFlow、AI 團隊辦公室）之後。
+- 「黑熊自然科學工作室」（`https://blackbear-office.vercel.app/`）與「黑熊老師 AI 團隊辦公室」網址相同，只留後者。
+- 「網站維護」「網頁應用」從頁籤、類別快取、後台選單移除。網址 `#網站維護`、`#網頁應用` 會改到 `#網站設計`。`#admin` 不變。BearFlow 仍沿用原本的合併順序，沒有另外釘選。
+
 ## 2026-11-10 更新：黑熊老師 AI 團隊辦公室
 
 - 將 `https://blackbear-office.vercel.app` 加入「網站設計」，名稱為「黑熊老師 AI 團隊辦公室」，圖示 🏢。
