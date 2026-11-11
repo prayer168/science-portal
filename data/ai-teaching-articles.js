@@ -270,6 +270,12 @@ window.AI_TEACHING_ARTICLES = [
     "icon": "🐾"
   },
   {
+    "cat": "休閒（動動腦）",
+    "name": "萬箭金鐘罩",
+    "url": "https://prayer168.github.io/wanjian-fx/",
+    "icon": "🏹"
+  },
+  {
     "cat": "科學探究",
     "name": "3D 月相與日月食科學探究實驗室 V2.0",
     "url": "https://prayer168.github.io/moon-eclipse-lab-v2/",
