@@ -292,5 +292,11 @@ window.AI_TEACHING_ARTICLES = [
     "name": "AI-SIM × 食蟲植物智慧探究實驗室",
     "url": "https://prayer168.github.io/ai-sim-carnivorous-plant-system/",
     "icon": "🪴"
+  },
+  {
+    "cat": "科學探究",
+    "name": "太陽系探險家｜3D 互動太陽系，可比大小、比距離、銀河系縮放、自動導覽",
+    "url": "https://prayer168.github.io/solar-system-explorer/",
+    "icon": "🪐"
   }
 ];

@@ -3,6 +3,12 @@
 
 ---
 
+## 2026-11-18 更新：太陽系探險家
+
+- 將 `https://prayer168.github.io/solar-system-explorer/` 加入「科學探究」，名稱為「太陽系探險家｜3D 互動太陽系，可比大小、比距離、銀河系縮放、自動導覽」，圖示 🪐。
+- 沿用 `data/ai-teaching-articles.js` 固定入口清單，Firestore 同步後仍合併顯示；不直接寫入 Firestore。腳本版本參數改為 `v=20261118-solar-system`。
+- 入口卡片格式只有圖示與名稱，沒有縮圖欄位，所以沒有使用太陽系網站的 og 分享圖。
+
 ## 2026-11-10 更新：BearFlow 置頂於網站設計
 
 - 固定入口名稱為「BearFlow 影片工作室｜個人專業影片製作工作室。開啟時需要先登入 Vercel 帳號。」網址仍是 `https://bearflow-ai-video-studio.vercel.app/`，圖示 🎬。沒有寫入 Firestore。
